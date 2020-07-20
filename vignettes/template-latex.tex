@@ -1,0 +1,41 @@
+
+
+%Make code smaller
+%\DefineVerbatimEnvironment{Highlighting}{Verbatim}{fontsize=\tiny,commandchars=\\\{\}}
+
+% make console-output smaller:
+\makeatletter
+\def\verbatim{\normalsize\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+\usepackage{graphicx}
+
+\usepackage{pdfpages}
+
+
+\usepackage{dsfont}
+\usepackage{longtable}
+% Make figures non-floating
+\usepackage{float}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+\newcommand{\normlp}{L^p}
+\newcommand{\prob}{\mathbb{P}}
+\bibliographystyle{abbrv}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}}
+\let\proglang=\textsf
+\usepackage{mathrsfs}
+\def\WT{\mathcal{W}}
+\def\L{\mathcal L}
+\def\D{D}
+\def\W{W}
+\def\R{\mathbb{R}}
+
+

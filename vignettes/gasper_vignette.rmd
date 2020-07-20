@@ -1,0 +1,163 @@
+---
+title: "GaspeR: Graph Signal ProcEssing in R"
+author: Basile de Loynes, Fabien Navarro, Baptiste Olivier
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::pdf_document:
+    fig_caption: no
+    keep_tex: true
+    includes:
+      in_header: template-latex.tex
+    number_sections: yes
+geometry: margin=1in
+fontsize: 12pt
+bibliography: references.bib
+biblio-style: alphadin
+header-includes:
+  - \setcitestyle{numbers}
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+library(gasper)
+library(rwavelet)
+if (as.numeric(R.version$minor)>6){
+  RNGkind(sample.kind = "Rounding")
+}
+set.seed(0)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=3,
+  fig.height=3, 
+  fig.align="center"
+)
+```
+\begin{abstract}
+We present a short tutorial on to the use of the \proglang{R} \pkg{gasper} package. Gasper is a package dedicated to signal processing on graphs.
+\end{abstract}
+
+# Introduction
+The emerging field of Graph Signal Processing (GSP) aims to bridge the gap between signal processing and spectral graph theory. One of the objectives is to generalize fundamental analysis operations from regular grid signals to irregular structures in the form of graphs. There is an abundant literature on GSP, in particular we refer the reader to @shuman2013emerging and @ortega2018graph for an introduction to this field and an overview of recent developments, challenges and applications. GSP has also given rise to numerous applications in machine/deep learning: convolutional neural networks (CNN) on graphs @bruna2013spectral, @henaff2015deep, @defferrard2016convolutional, semi-supervised classification with graph CNN @kipf2016semi, @hamilton2017inductive,  community detection @tremblay2014graph, to name just a few.
+
+Different software programs exist for processing signals on graphs, in different languages. The Graph Signal Processing toolbox (GSPbox) is an easy to use matlab toolbox that performs a wide variety of operations on graphs. This toolbox was port to Python as the PyGSP @perraudin2014gspbox. There is also another matlab toolbox the Spectral Graph Wavelet Transform (SGWT) toolbox dedicated to the implementation of the SGWT developed in @hammond2011wavelets. However, to our knowledge, there are not yet any tools dedicated to GSP in \proglang{R}.
+
+# Graphs Collection and Visualization
+A certain number of graphs are present in the package. They are stored as an Rdata file  which contains a list consisting of the graph's weight matrix $W$ (in the form of a sparse matrix denoted by `sA`) and the coordinates associated with the graph (if it has any).
+
+A wrapper is also provided. It allows to retrieve the matrices (with the same data structure as the graphs included in the package) associated with many graphs provided by the SuiteSparse Matrix Collection (formerly known as the University of Florida Sparse Matrix Collection) @davis2011university. This collection is a large and actively growing set of sparse matrices that arise in real applications (as structural engineering, computational fluid dynamics, computer graphics/vision, optimization, economic and financial modeling, mathematics and statistics, to name just a few). For more details see https://sparse.tamu.edu/.
+
+The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
+```{r}
+graphname <- "airfoil1"
+groupname <- "AG-Monien"
+download_graph(graphname,groupname)
+attributes(airfoil1)
+```
+The output is stored (in a temporary folder) as a data.frame list composed of $A$ and possibly coordinates.
+
+The package also allows to plot a (plan) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
+```{r,fig.show='hold'}
+f <- rnorm(nrow(airfoil1$xy))
+plot_graph(airfoil1)
+plot_signal(airfoil1, f,size = f)
+```
+
+# Example of application to denoising
+
+Here we give an example of an application in the case of the denoising of a noisy signal $f\in\mathbb{R}^V$ defined on a graph $G$ with set of vertices $V$. More precisly, the (unnormalized) graph Laplacian matrix $\L\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\L=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
+
+The degradation model can be written as
+\[
+\tilde f = f + \xi,
+\]
+where $\xi\sim\mathcal{N}(0,\sigma^2)$. The purpose of denoising is to build an estimator $\hat f$ of $f$ that depends only on $\tilde f$.
+
+A simple way to construct an effective non-linear estimator is obtained by thresholding the SGWT coefficients of $f$ on a frame (see @hammond2011wavelets for details about the SGWT).
+
+A general thresholding operator $\tau$ with threshold parameter $t\geq 0$ applied to some signal $f$ is defined as
+\[
+\tau(x,t)=x\max \{ 1-t^{\beta}|x|^{-\beta},0 \},
+\]
+ with $\beta \geq 1$. The most popular choices are the soft thresholding ($\beta=1$), the James-Stein thresholding ($\beta=2$) and the hard thresholding ($\beta=\infty$).
+
+Given the laplacian and a given frame, denoising in this framework can be summarized as follows:
+
+* Analysis: compute the SGWT transform $\WT \tilde f$;
+
+* Thresholding: apply a given thresholding operator to the coefficients $\WT  \tilde f$; 
+
+* Synthesis: apply the inverse SGWT transform to obtain an estimation $\hat f$ of the original signal.
+
+Each of these steps can be performed via one of the functions `analysis`, `synthesis`, `beta_thresh`. Laplacian is given by the function `laplacian_mat`. The `tight_frame` function allows the construction of a tight frame based on @gobel2018construction and @coulhon2012heat. In order to select a threshold value, we consider the method developed in @de2019data which consists in determining the threshold that minimizes the Stein unbiased risk estimator (SURE) in a graph setting (see @de2019data for more details).
+
+We give an illustrative example on a synthetic graph representing the \proglang{R} logo. We start by calculating the frame coefficients.
+```{r}
+A <- full(rlogo$sA)
+L <- laplacian_mat(A)
+val1 <- eigendec(L)
+evalues <- val1$evalues
+evectors <- val1$evectors
+lmax <- max(evalues)
+b <- 2
+kmax <- floor(log(lmax)/log(b)) + 2
+tf <- tight_frame(evalues, evectors, b=b)
+```
+
+Then noisy observations $\tilde f$ are generated from a random signal $f$.
+```{r}
+x1 <- rlogo$xy[,1]
+x2 <- rlogo$xy[,2]
+n <- length(x1)
+f <- randsignal(0.01, 3, A)
+sigma <- 0.01
+noise <- rnorm(n, sd = sigma)
+tilde_f <- f + noise
+```
+
+Below is a graphical representation of the original signal and its noisy version.
+```{r,fig.show='hold'}
+plot_signal(rlogo, f, size = 3)
+plot_signal(rlogo, tilde_f, size = 3)
+```
+
+We compute the SGWT transforms $\WT \tilde f$ and $\WT f$.
+```{r}
+wcn <- analysis(tilde_f,tf)
+wcf <- analysis(f,tf)
+```
+
+The optimal threshold is then determined by minimizing the SURE.
+```{r}
+diagWWt <- colSums(t(tf)^2)
+thresh <- sort(abs(wcn))
+opt_thresh <- SURE_MSEthresh(wcn, 
+                           wcf, 
+                           thresh, 
+                           diagWWt, 
+                           b=2, 
+                           sigma, 
+                           NA,
+                           policy = "dependent")
+
+```
+
+Finally, the synthesis allows us to determine the resulting estimators, i.e. the one that minimizes the unknown risk and the one that minimizes the SURE.
+```{r}
+hatf_oracle <- synthesis(opt_thresh$wc[,opt_thresh$min[1]], tf)
+hatf_SURE  <- synthesis(opt_thresh$wc[,opt_thresh$min[2]], tf)
+
+SNR(f,tilde_f)
+SNR(f,hatf_oracle)
+SNR(f,hatf_SURE)
+```
+
+
+# Bibliography
+
+
+
+

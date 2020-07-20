@@ -1,0 +1,24 @@
+Package: gasper
+Type: Package
+Title: GrAph Signal ProcEssing in R
+Version: 1.0.0
+Author: Basile de Loynes, Fabien Navarro and Baptiste Olivier
+Maintainer: Navarro Fabien <fnavaro@math.cnrs.fr>
+Description: Graph Signal Processing in R.
+License: LGPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    scatterplot3d,
+    rwavelet,
+    Rcpp,
+    RcppArmadillo,
+    ggplot2
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

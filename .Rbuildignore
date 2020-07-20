@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^\.travis\.yml$
+^README\.Rmd$
+^README\.md$
+^cran-comments\.md$
+^NEWS\.Rmd$
+
