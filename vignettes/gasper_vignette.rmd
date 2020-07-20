@@ -1,5 +1,5 @@
 ---
-title: "GaspeR: Graph Signal ProcEssing in R"
+title: "Gasper: GrAph Signal ProcEssing in R"
 author: Basile de Loynes, Fabien Navarro, Baptiste Olivier
 date: "`r Sys.Date()`"
 output: 
