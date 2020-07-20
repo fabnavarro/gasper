@@ -6,6 +6,10 @@
 #' @param evalues Eigenvalues of the Laplacian matrix.
 #' @param evectors Eigenvectors of the Laplacian matrix.
 #' @param b Parameter that control the number of scales.
+#' @references
+#' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
+#'
+#' de Loynes, B., Navarro, F., Olivier, B. (2019). Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform. arXiv preprint arXiv:1906.01882.
 
 tight_frame <- function(evalues, evectors, b = 2) {
   lmax <- max(evalues)

@@ -16,3 +16,8 @@ tight_frame(evalues, evectors, b = 2)
 \description{
 Construct tight (Parseval) frame.
 }
+\references{
+Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
+
+de Loynes, B., Navarro, F., Olivier, B. (2019). Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform. arXiv preprint arXiv:1906.01882.
+}

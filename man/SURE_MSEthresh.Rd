@@ -35,3 +35,6 @@ Adaptive Threshold Selection Using Principle of SURE
 Note:
  - the calculation of the MSE is also included for comparison purpose.
 }
+\references{
+de Loynes, B., Navarro, F., Olivier, B. (2019). Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform. arXiv preprint arXiv:1906.01882.
+}

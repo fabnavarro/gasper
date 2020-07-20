@@ -17,6 +17,8 @@
 #' @param hatsigma Estimator of the sd (if any).
 #' @param policy Dependent or uniform.
 #' @return \code{res} a dataframe contening MSE, SURE, hatSURE and their respective minima
+#' @references
+#' de Loynes, B., Navarro, F., Olivier, B. (2019). Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform. arXiv preprint arXiv:1906.01882.
 
 SURE_MSEthresh <- function(wcn, wcf, tresh, diagWWt, b, sigma, hatsigma, policy) {
   nthresh <- length(tresh)
