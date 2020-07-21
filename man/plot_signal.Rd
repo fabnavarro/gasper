@@ -4,7 +4,7 @@
 \alias{plot_signal}
 \title{Plot a signal on top of a given graph}
 \usage{
-plot_signal(z, f, size = 0.75)
+plot_signal(z, f, size = 0.75, limits = range(f))
 }
 \arguments{
 \item{z}{Graph data.}

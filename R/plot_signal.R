@@ -8,7 +8,7 @@
 #' f <- rnorm(2642)
 #' plot_signal(minnesota, f)
 
-plot_signal <- function(z, f, size=0.75) {
+plot_signal <- function(z, f, size=0.75, limits=range(f)) {
   x <- z$xy[, 1]
   y <- z$xy[, 2]
   ind_i <- z$sA[, 1]
@@ -24,7 +24,8 @@ plot_signal <- function(z, f, size=0.75) {
                      xend = y1, yend = y2),
                  color = "gray", data = df2) +
     geom_point(size = size, aes(colour = f)) +
-    scale_colour_distiller(palette = "Spectral") +
+    scale_colour_distiller(palette = "Spectral",
+                           limits = limits) +
     theme_void() +
     theme(#legend.position = "bottom",
           legend.text=element_text(size=8),
