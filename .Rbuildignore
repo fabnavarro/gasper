@@ -6,4 +6,5 @@
 ^README\.md$
 ^cran-comments\.md$
 ^NEWS\.Rmd$
+^README_files/
 
