@@ -12,9 +12,6 @@ output:
 geometry: margin=1in
 fontsize: 12pt
 bibliography: references.bib
-biblio-style: alphadin
-header-includes:
-  - \setcitestyle{numbers}
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
