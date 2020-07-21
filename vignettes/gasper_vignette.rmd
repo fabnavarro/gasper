@@ -145,6 +145,13 @@ opt_thresh <- SURE_MSEthresh(wcn,
 
 ```
 
+```{r}
+plot(thresh,opt_thresh$res$MSE,type="l",xlab = "t",ylab = "risk")
+lines(thresh,opt_thresh$res$SURE-n*sigma^2,col="red")
+legend("topleft", legend=c("MSE", "SURE"),
+       col=c("black", "red"),lty=1)
+```
+
 Finally, the synthesis allows us to determine the resulting estimators, i.e. the one that minimizes the unknown risk and the one that minimizes the SURE.
 ```{r}
 hatf_oracle <- synthesis(opt_thresh$wc[,opt_thresh$min[1]], tf)
