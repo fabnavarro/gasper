@@ -12,6 +12,8 @@ plot_signal(z, f, size = 0.75, limits = range(f))
 \item{f}{Signal to plot.}
 
 \item{size}{Dot size.}
+
+\item{limits}{Set colormap limits.}
 }
 \description{
 Plot a signal on top of a given graph

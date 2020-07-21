@@ -4,6 +4,7 @@
 #' @param z Graph data.
 #' @param f Signal to plot.
 #' @param size Dot size.
+#' @param limits Set colormap limits.
 #' @examples
 #' f <- rnorm(2642)
 #' plot_signal(minnesota, f)
