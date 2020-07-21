@@ -56,8 +56,3 @@ SUREthresh <- function(wcn, tresh, diagWWt, b, sigma, hatsigma, policy) {
               "thr"=c(opthreshSURE, opthreshhatSURE))
   return(res)
 }
-
-betathresh <- function(y, t, b) {
-  x <- pmax(0, 1 - t^b/pmax(abs(y), 1e-10)^b) * y
-  return(x)
-}
