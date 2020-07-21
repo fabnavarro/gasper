@@ -11,6 +11,11 @@ knitr::opts_chunk$set(
 )
 ```
 # gasper
+Graph signal processing in R.
+```{r,echo=FALSE}
+f <- exp(-( (rlogo$xy[,1]-1)^2/2+(rlogo$xy[,2]-4)^2/2))
+plot_signal(rlogo,f,size = 3)
+```
 
 ## Download and Install
 
