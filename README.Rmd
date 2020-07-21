@@ -11,6 +11,9 @@ knitr::opts_chunk$set(
 )
 ```
 # gasper
+
+[![Travis build status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://travis-ci.org/fabnavarro/gasper)
+
 Graph signal processing in R.
 ```{r,echo=FALSE}
 f <- exp(-( (rlogo$xy[,1]-1)^2/2+(rlogo$xy[,2]-4)^2/2))
