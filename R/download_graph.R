@@ -24,8 +24,14 @@ download_graph <- function(graphname, groupname) {
     download.file(url,temp)
     untar(temp, exdir=tempd)
 
-    tempp <- file.path(tempd,
-                       paste(graphname,"/",sep=""))
+    if (Sys.info()['sysname']=="Windows"){
+      tempp <- paste(tempd,
+                     paste(graphname,"\\",sep=""),
+                     sep ="\\")
+    } else{
+      tempp <- file.path(tempd,
+                         paste(graphname,"/",sep=""))
+    }
 
     temppath <- paste(tempp,
                       graphname,".mtx",sep="")
