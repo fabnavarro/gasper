@@ -7,7 +7,6 @@ output:
 library(gasper)
 knitr::opts_chunk$set(
   collapse = TRUE,
-  fig.width=3,
   comment = "#>"
 )
 ```
