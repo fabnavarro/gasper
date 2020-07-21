@@ -4,7 +4,7 @@
 \name{gasper-package}
 \alias{gasper}
 \alias{gasper-package}
-\title{gasper: GrAph Signal ProcEssing in R}
+\title{gasper: Graph Signal Processing in R}
 \description{
 Graph Signal Processing in R. It provides 
     the standard operations for signal processing on graphs: 
