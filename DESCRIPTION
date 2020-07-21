@@ -3,7 +3,7 @@ Type: Package
 Title: GrAph Signal ProcEssing in R
 Version: 1.0.0
 Author: Basile de Loynes, Fabien Navarro and Baptiste Olivier
-Maintainer: Navarro Fabien <fnavaro@math.cnrs.fr>
+Maintainer: Fabien Navarro <fabien.navarro@math.cnrs.fr>
 Description: Graph Signal Processing in R. It provides 
     the standard operations for signal processing on graphs: 
     Graph Fourier Transform, Spectral Graph Wavelet Transform, 

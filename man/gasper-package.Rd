@@ -6,6 +6,10 @@
 \alias{gasper-package}
 \title{gasper: GrAph Signal ProcEssing in R}
 \description{
-Graph Signal Processing in R.
+Graph Signal Processing in R. It provides 
+    the standard operations for signal processing on graphs: 
+    Graph Fourier Transform, Spectral Graph Wavelet Transform, 
+    visualization tools. It also implements a data driven method
+    for graph signal denoising.
 }
 \keyword{internal}
