@@ -17,7 +17,6 @@ Imports:
     scatterplot3d,
     rwavelet,
     Rcpp,
-    RcppArmadillo,
     ggplot2
 LinkingTo: 
     Rcpp,
