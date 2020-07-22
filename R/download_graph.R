@@ -9,10 +9,10 @@
 #' @param groupname Name of the group that provides the graph.
 #' @return \code{graphname} a list of dataframe contening W and xy coordinates.
 #' @examples
-#' graphname <- "airfoil1"
+#' graphname <- "grid1"
 #' groupname <- "AG-Monien"
 #' download_graph(graphname,groupname)
-#' plot_graph(airfoil1)
+#' plot_graph(grid1)
 
 download_graph <- function(graphname, groupname) {
     url <- paste("https://sparse.tamu.edu/MM/",

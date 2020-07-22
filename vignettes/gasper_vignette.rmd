@@ -10,7 +10,7 @@ output:
       in_header: template-latex.tex
     number_sections: yes
 geometry: margin=1in
-fontsize: 12pt
+fontsize: 11pt
 bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Gasper Vignette}
@@ -49,18 +49,18 @@ A wrapper is also provided. It allows to retrieve the matrices (with the same da
 
 The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
 ```{r}
-graphname <- "airfoil1"
+graphname <- "netz4504"
 groupname <- "AG-Monien"
 download_graph(graphname,groupname)
-attributes(airfoil1)
+attributes(netz4504)
 ```
 The output is stored (in a temporary folder) as a data.frame list composed of $A$ and possibly coordinates.
 
 The package also allows to plot a (plan) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
 ```{r,fig.show='hold'}
-f <- rnorm(nrow(airfoil1$xy))
-plot_graph(airfoil1)
-plot_signal(airfoil1, f,size = f)
+f <- rnorm(nrow(netz4504$xy))
+plot_graph(netz4504)
+plot_signal(netz4504, f,size = f)
 ```
 
 # Example of application to denoising

@@ -19,8 +19,8 @@ If coordinates are associated with the graphs,
 they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
 }
 \examples{
-graphname <- "airfoil1"
+graphname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(graphname,groupname)
-plot_graph(airfoil1)
+plot_graph(grid1)
 }
