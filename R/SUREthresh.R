@@ -29,7 +29,7 @@ SUREthresh <- function(wcn, tresh, diagWWt, b, sigma, hatsigma, policy) {
                         (1 + (b - 1)*tresh[i]^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
     }
   }
-  if (policy == "dependent") {
+  else if (policy == "dependent") {
     for (i in 1:nthresh) {
       wc <- betathresh(wcn, tresh[i]*sqrt(diagWWt), b)
       wcs[,i] <- wc
