@@ -1,7 +1,7 @@
 Package: gasper
 Type: Package
 Title: Graph Signal Processing in R
-Version: 1.0.0
+Version: 1.0.0.9000
 Author: Basile de Loynes, Fabien Navarro and Baptiste Olivier
 Maintainer: Fabien Navarro <fabien.navarro@math.cnrs.fr>
 Description: Graph Signal Processing in R. It provides 
