@@ -48,3 +48,10 @@ Then, to view the vignette
 ``` r
 vignette("gasper_vignette")
 ```
+
+For an illustration of the features of the package, you can also refer
+to the following repo
+[SGWT-SURE](https://github.com/fabnavarro/SGWT-SURE) which provides an
+effective generalization of the Stein Unbiased Risk Estimate (SURE) for
+signal denoising/regression on graphs using Spectral Graph Wavelet
+Transform.
