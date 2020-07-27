@@ -1,7 +1,10 @@
 gasper News
 
-gasper 1.0.0.9000 dev version
+gasper 1.0.1.9000 dev version
 =============================
+
+gasper 1.0.1 release (07/27/2020)
+=================================
 
 -   fix warnings bug SUREthresh functions
 -   adapt DESCRIPTION to meet CRAN’s expectations (i.e., omit the
@@ -14,6 +17,7 @@ gasper 1.0.0.9000 dev version
 -   optionally specify a RNG seed (for reproducible experiments) in
     swissroll.R
 -   remove adjacency\_mat N arg
+-   Cran resubmission
 
 gasper 1.0.0 release (07/23/2020)
 =================================
