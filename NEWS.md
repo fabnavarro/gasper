@@ -11,7 +11,9 @@ gasper 1.0.0.9000 dev version
     package”, package name, title or similar. Just start with “Provides
     …” or similar, do not start the description with “This package”,
     package name, title or similar).
--   
+-   optionally specify a RNG seed (for reproducible experiments) in
+    swissroll.R
+-   remove adjacency\_mat N arg
 
 gasper 1.0.0 release (07/23/2020)
 =================================
