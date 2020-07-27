@@ -1,14 +1,17 @@
 Package: gasper
 Type: Package
-Title: Graph Signal Processing in R
+Title: Graph Signal Processing
 Version: 1.0.0.9000
-Author: Basile de Loynes, Fabien Navarro and Baptiste Olivier
-Maintainer: Fabien Navarro <fabien.navarro@math.cnrs.fr>
-Description: Graph Signal Processing in R. It provides 
-    the standard operations for signal processing on graphs: 
+Authors@R: c(person("Fabien", "Navarro", role = c("aut", "cre"), 
+                    email = "fabien.navarro@math.cnrs.fr"), 
+             person("Basile", "De Loynes", role = "aut", 
+                    email = "basile.deloynes@ensai.fr"), 
+             person("Baptiste", "Olivier", role = "aut", 
+                    email = "baptiste.olivier@orange.com"))
+Description: Provides the standard operations for signal processing on graphs: 
     Graph Fourier Transform, Spectral Graph Wavelet Transform, 
     visualization tools. It also implements a data driven method
-    for graph signal denoising.
+    for graph signal denoising/regression.
 License: LGPL (>= 2)
 Encoding: UTF-8
 LazyData: true

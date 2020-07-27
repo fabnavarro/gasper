@@ -4,12 +4,21 @@
 \name{gasper-package}
 \alias{gasper}
 \alias{gasper-package}
-\title{gasper: Graph Signal Processing in R}
+\title{gasper: Graph Signal Processing}
 \description{
-Graph Signal Processing in R. It provides 
-    the standard operations for signal processing on graphs: 
+Provides the standard operations for signal processing on graphs: 
     Graph Fourier Transform, Spectral Graph Wavelet Transform, 
     visualization tools. It also implements a data driven method
-    for graph signal denoising.
+    for graph signal denoising/regression.
+}
+\author{
+\strong{Maintainer}: Fabien Navarro \email{fabien.navarro@math.cnrs.fr}
+
+Authors:
+\itemize{
+  \item Basile De Loynes \email{basile.deloynes@ensai.fr}
+  \item Baptiste Olivier \email{baptiste.olivier@orange.com}
+}
+
 }
 \keyword{internal}
