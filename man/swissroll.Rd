@@ -2,14 +2,14 @@
 % Please edit documentation in R/swissroll.R
 \name{swissroll}
 \alias{swissroll}
-\title{Swiss Roll graph generation}
+\title{Swiss roll graph generation}
 \usage{
-swissroll(N = 500, seed = 0, a = 1, b = 4)
+swissroll(N = 500, seed = NULL, a = 1, b = 4)
 }
 \arguments{
 \item{N}{Number of points drawn.}
 
-\item{seed}{To fix the seed (for reproducible experiments).}
+\item{seed}{Optionally specify a RNG seed (for reproducible experiments).}
 
 \item{a, b}{Shape parameters.}
 }
@@ -17,7 +17,7 @@ swissroll(N = 500, seed = 0, a = 1, b = 4)
 N x 3 array for 3d points.
 }
 \description{
-Map the square \eqn{[0,1]^2}{[0,1]^2} in swissroll
+Map the square \eqn{[0,1]^2}{[0,1]^2} in swiss roll
 for all \eqn{x,y} in \eqn{[0,1]^2}{[0,1]^2}, set
 \deqn{Sx=\pi \sqrt{(b^2-a^2)x + a^2)}}{Sx=pi*sqrt((b**2-a**2)*x+a**2)}
 \deqn{Sy=\pi (b^2-a^2)y/2}{Sy=pi**(b**2-a**2)*y/2}
