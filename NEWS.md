@@ -4,6 +4,14 @@ gasper 1.0.0.9000 dev version
 =============================
 
 -   fix warnings bug SUREthresh functions
+-   adapt DESCRIPTION to meet CRAN’s expectations (i.e., omit the
+    redundant “in R” from the title, use the Authors@R field and declare
+    Maintainer, Authors and Contributors with their appropriate roles
+    with person() calls, do not start the description with “This
+    package”, package name, title or similar. Just start with “Provides
+    …” or similar, do not start the description with “This package”,
+    package name, title or similar).
+-   
 
 gasper 1.0.0 release (07/23/2020)
 =================================
