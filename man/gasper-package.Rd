@@ -7,7 +7,7 @@
 \title{gasper: Graph Signal Processing}
 \description{
 Provides the standard operations for signal processing on graphs: 
-    Graph Fourier Transform, Spectral Graph Wavelet Transform, 
+    graph fourier transform, spectral graph wavelet transform, 
     visualization tools. It also implements a data driven method
     for graph signal denoising/regression.
 }

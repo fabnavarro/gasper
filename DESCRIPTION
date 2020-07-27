@@ -9,7 +9,7 @@ Authors@R: c(person("Fabien", "Navarro", role = c("aut", "cre"),
              person("Baptiste", "Olivier", role = "aut", 
                     email = "baptiste.olivier@orange.com"))
 Description: Provides the standard operations for signal processing on graphs: 
-    Graph Fourier Transform, Spectral Graph Wavelet Transform, 
+    graph fourier transform, spectral graph wavelet transform, 
     visualization tools. It also implements a data driven method
     for graph signal denoising/regression.
 License: LGPL (>= 2)
