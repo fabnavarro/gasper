@@ -2,7 +2,6 @@
 #'
 #' @export adjacency_mat
 #' @param pts coordinates of N points in \eqn{R^3}{R^3}.
-#' @param N is the number of points.
 #' @param f is a scalar potential (\eqn{\exp(-x^2/2t^2)}{exp(-x^2/2*t^2)} for gaussian potential)
 #' @param s is a threhold to sparisfy the matrix
 #' @examples

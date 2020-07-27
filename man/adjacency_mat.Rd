@@ -12,8 +12,6 @@ adjacency_mat(pts, f = function(x) {     exp(-x^2/8) }, s = 0)
 \item{f}{is a scalar potential (\eqn{\exp(-x^2/2t^2)}{exp(-x^2/2*t^2)} for gaussian potential)}
 
 \item{s}{is a threhold to sparisfy the matrix}
-
-\item{N}{is the number of points.}
 }
 \description{
 Compute the adjacency matrix of the gaussian weighted graph
