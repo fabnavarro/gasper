@@ -3,7 +3,7 @@ gasper
 
 [![Travis build
 status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://travis-ci.org/fabnavarro/gasper)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/rwavelet)](http://cran.r-project.org/package=rwavelet)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
 
 Graph signal processing in R.
 ![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
