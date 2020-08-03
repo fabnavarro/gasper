@@ -25,6 +25,12 @@ devtools::install_github("fabnavarro/gasper")
 library(gasper)
 ```
 
+To install the CRAN version of the package, type the following:
+
+``` r
+install.packages("gasper")
+```
+
 To obtain the complete list of package functions, simply type
 
 ``` r
