@@ -1,0 +1,26 @@
+options(citation.bibtex.max = Inf)
+PKG <- meta$Package
+VERSION <- meta$Version
+TITLE <- meta$Title
+AUTHORS <- meta$Author
+
+bibentry(
+    key = "gasper",
+    bibtype = "Manual",
+    title = "R package gasper: Graph Signal Processing",
+    author = AUTHORS,
+    year = sub("-.*", "",packageDate("gasper")),
+    note = sprintf("R package version %s",VERSION),
+    url = "https://CRAN.R-project.org/package=gasper",
+    header = "If you use ‘gasper’ in publications, please consider citing the reference manual:"
+)
+
+bibentry(
+    key="deloynes2020datadriven",
+    bibtype = "Misc",
+      title="Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform",
+      author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
+      year={2019},
+      eprint={"arXiv:1906.01882"},
+      header = "or (if relevent) the associated paper:"
+)
