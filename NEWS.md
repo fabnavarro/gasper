@@ -3,6 +3,10 @@ gasper News
 gasper 1.0.1.9000 dev version
 =============================
 
+-   fix bug in `download_graph` function for downloading graph matrix
+    without coordinates
+-   add citation info issue\#1
+
 gasper 1.0.1 release (07/27/2020)
 =================================
 
