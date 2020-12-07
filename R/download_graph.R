@@ -45,7 +45,7 @@ download_graph <- function(graphname, groupname) {
       df$V3 <- rep(1, nrow(df))
     }
 
-    if (length(list.files(tempp)!=1)) {
+    if (length(list.files(tempp))!=1) {
       temppathc <- paste(tempp,
                          graphname,"_coord.mtx",sep="")
 
