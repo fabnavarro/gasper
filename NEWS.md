@@ -7,6 +7,9 @@ gasper 1.0.1.9000 dev version
     without coordinates
 -   add citation info issue\#1
 -   bibliography of SURE paper updated in the vignettes
+-   add boolean argument allowing to export the coefficients of the
+    frame after thresholding (TRUE by default) in SURE\*thresh functions
+    (FALSE save memory allocation for large graphs)
 
 gasper 1.0.1 release (07/27/2020)
 =================================
