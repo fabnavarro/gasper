@@ -4,7 +4,8 @@
 \alias{SUREthresh}
 \title{Stein's Unbiased Risk Estimate.}
 \usage{
-SUREthresh(wcn, tresh, diagWWt, b, sigma, hatsigma, policy)
+SUREthresh(wcn, tresh, diagWWt, b, sigma, hatsigma, policy,
+  keepwc = TRUE)
 }
 \arguments{
 \item{wcn}{Noisy wavelet coefficents.}
@@ -20,6 +21,8 @@ SUREthresh(wcn, tresh, diagWWt, b, sigma, hatsigma, policy)
 \item{hatsigma}{Estimator of the sd (if any).}
 
 \item{policy}{Dependent or uniform.}
+
+\item{keepwc}{Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).}
 }
 \value{
 \code{res} a dataframe contening SURE, hatSURE and their respective minima.
@@ -30,5 +33,5 @@ Adaptive Threshold Selection Using Principle of SURE
  it does not change the position of the minimum).
 }
 \references{
-de Loynes, B., Navarro, F., Olivier, B. (2019). Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform. arXiv preprint arXiv:1906.01882.
+de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 }
