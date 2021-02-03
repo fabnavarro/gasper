@@ -8,12 +8,14 @@
 #' @param graphname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
 #' @return \code{graphname} a list of dataframe contening W and xy coordinates.
+#' @references
+#' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #' @examples
 #' graphname <- "grid1"
 #' groupname <- "AG-Monien"
 #' download_graph(graphname,groupname)
 #' plot_graph(grid1)
-
+#'
 download_graph <- function(graphname, groupname) {
     url <- paste("https://sparse.tamu.edu/MM/",
                  groupname,"/",

@@ -23,4 +23,8 @@ graphname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(graphname,groupname)
 plot_graph(grid1)
+
+}
+\references{
+Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 }
