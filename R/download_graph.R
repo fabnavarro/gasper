@@ -7,13 +7,14 @@
 #' @import utils
 #' @param graphname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
-#' @return \code{graphname} a list of dataframe contening W and xy coordinates.
+#' @return \code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any) and info, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #' @examples
 #' graphname <- "grid1"
 #' groupname <- "AG-Monien"
 #' download_graph(graphname,groupname)
+#' file.show(grid1$info)
 #' plot_graph(grid1)
 #'
 download_graph <- function(graphname, groupname) {
@@ -40,6 +41,13 @@ download_graph <- function(graphname, groupname) {
 
     tmp <- readLines(temppath)
     nskip <- length(grep("%",tmp))+1
+
+    #store graph descrition in tmp folder
+    graphdesc <- paste(tempp,
+                       graphname,sep="")
+    writeLines(tmp[1:(nskip-2)],
+               graphdesc)
+
     df <- read.table(temppath,
                      comment.char = "%",
                      skip = nskip)
@@ -65,11 +73,16 @@ download_graph <- function(graphname, groupname) {
       {
         colnames(dfc) <- c("x", "y")
       }
-      return(assign(graphname,list("sA"=df,"xy"=dfc),
+      return(assign(graphname,
+                    list("sA"=df,
+                         "xy"=dfc,
+                         "info"=graphdesc),
                     envir = parent.frame()))
     }
     else {
-      return(assign(graphname,list("sA"=df),
+      return(assign(graphname,
+                    list("sA"=df,
+                         "info"=graphdesc),
                     envir = parent.frame()))
     }
 

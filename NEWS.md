@@ -8,8 +8,10 @@ gasper 1.0.1.9000 dev version
 -   add citation info issue\#1
 -   bibliography of SURE paper updated in the vignettes
 -   add boolean argument allowing to export the coefficients of the
-    frame after thresholding (TRUE by default) in SURE\*thresh functions
-    (FALSE save memory allocation for large graphs)
+    frame after thresholding (TRUE by default) in `SURE*thresh`
+    functions (FALSE save memory allocation for large graphs)
+-   add a new output to `download_graph` providing a url to a temporary
+    file containing the information about the considered matrix.
 
 gasper 1.0.1 release (07/27/2020)
 =================================
