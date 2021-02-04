@@ -62,3 +62,21 @@ to the following repo
 effective generalization of the Stein Unbiased Risk Estimate (SURE) for
 signal denoising/regression on graphs using Spectral Graph Wavelet
 Transform.
+
+Interface to the SuiteSparse Matrix Collection
+----------------------------------------------
+
+The package also provides an interface to the SuiteSparse Matrix
+Collection, which is a large and actively growing set of sparse matrix
+benchmarks gathered from a broad spectrum of applications (for more
+details
+<a href="https://sparse.tamu.edu/" class="uri">https://sparse.tamu.edu/</a>).
+
+``` r
+graphname <- "usroads-48"
+groupname <- "Gleich"
+download_graph(graphname,groupname)
+plot_graph(`usroads-48`, size = 0.05)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
