@@ -7,6 +7,7 @@ output:
 library(gasper)
 knitr::opts_chunk$set(
   collapse = TRUE,
+  fig.align="center",
   comment = "#>"
 )
 ```
@@ -63,7 +64,7 @@ For an illustration of the features of the package, you can also refer to the fo
 
 ## Interface to the SuiteSparse Matrix Collection
 
-The package also provides an interface to the SuiteSparse Matrix Collection, which is a large and actively growing set of sparse matrix benchmarks gathered from a broad spectrum of applications (for more details https://sparse.tamu.edu/).
+The package also provides an interface to the SuiteSparse Matrix Collection, which is a large and actively growing set of sparse matrix benchmarks gathered from a broad spectrum of applications (for more details see https://sparse.tamu.edu/).
 
 ```{r}
 graphname <- "usroads-48"

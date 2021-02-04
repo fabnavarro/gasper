@@ -6,7 +6,7 @@ status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://trav
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
 
 Graph signal processing in R.
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
+<img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 Download and Install
 --------------------
@@ -69,7 +69,7 @@ Interface to the SuiteSparse Matrix Collection
 The package also provides an interface to the SuiteSparse Matrix
 Collection, which is a large and actively growing set of sparse matrix
 benchmarks gathered from a broad spectrum of applications (for more
-details
+details see
 <a href="https://sparse.tamu.edu/" class="uri">https://sparse.tamu.edu/</a>).
 
 ``` r
@@ -79,4 +79,4 @@ download_graph(graphname,groupname)
 plot_graph(`usroads-48`, size = 0.05)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+<img src="README_files/figure-markdown_github/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
