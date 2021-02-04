@@ -68,8 +68,8 @@ Interface to the SuiteSparse Matrix Collection
 
 The package also provides an interface to the SuiteSparse Matrix
 Collection, which is a large and actively growing set of sparse matrix
-benchmarks gathered from a broad spectrum of applications (for more
-details see
+benchmarks gathered from a broad spectrum of applications (for details
+see
 <a href="https://sparse.tamu.edu/" class="uri">https://sparse.tamu.edu/</a>).
 
 ``` r

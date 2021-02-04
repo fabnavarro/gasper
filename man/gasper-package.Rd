@@ -12,6 +12,14 @@ Provides the standard operations for signal processing on graphs:
     for graph signal denoising/regression, for details see 
     De Loynes, Navarro, Olivier (2019) <arxiv:1906.01882>.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/fabnavarro/gasper}
+  \item Report bugs at \url{https://github.com/fabnavarro/gasper/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Fabien Navarro \email{fabien.navarro@math.cnrs.fr}
 
