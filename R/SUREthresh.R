@@ -57,7 +57,7 @@ SUREthresh <- function(wcn, tresh, diagWWt, b, sigma, hatsigma, policy, keepwc=T
                 "min"=c(minSURE, minhatSURE),
                 "thr"=c(opthreshSURE, opthreshhatSURE))
   }
-  if(!keepwc){
+  else{
     if (policy == "uniform") {
       for (i in 1:nthresh) {
         wc <- betathresh(wcn, tresh[i], b)
