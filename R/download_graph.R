@@ -4,7 +4,7 @@
 #' they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
 #'
 #' @export download_graph
-#' @import utils
+#' @importFrom utils download.file untar read.table
 #' @param graphname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
 #' @return \code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any) and info, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
@@ -16,7 +16,7 @@
 #' download_graph(graphname,groupname)
 #' file.show(grid1$info)
 #' plot_graph(grid1)
-#'
+
 download_graph <- function(graphname, groupname) {
     url <- paste("https://sparse.tamu.edu/MM/",
                  groupname,"/",
@@ -44,9 +44,7 @@ download_graph <- function(graphname, groupname) {
 
     #store graph descrition in tmp folder
     graphdesc <- paste(tempp,
-                       graphname,sep="")
-    writeLines(tmp[1:(nskip-2)],
-               graphdesc)
+                        graphname,sep="")
 
     df <- read.table(temppath,
                      comment.char = "%",
@@ -56,6 +54,8 @@ download_graph <- function(graphname, groupname) {
     }
 
     if (length(list.files(tempp))!=1) {
+      writeLines(tmp[1:(nskip-2)],
+                 graphdesc)
       temppathc <- paste(tempp,
                          graphname,"_coord.mtx",sep="")
 
@@ -80,6 +80,8 @@ download_graph <- function(graphname, groupname) {
                     envir = parent.frame()))
     }
     else {
+      writeLines(tmp[1:(nskip-2)],
+                 graphdesc)
       return(assign(graphname,
                     list("sA"=df,
                          "info"=graphdesc),
