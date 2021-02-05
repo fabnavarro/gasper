@@ -4,7 +4,7 @@
 \alias{randsignal}
 \title{Generate random signal with varying regularity.}
 \usage{
-randsignal(eta, k, A)
+randsignal(eta, k, A, r)
 }
 \arguments{
 \item{eta}{Smoothness parameter.}
@@ -12,12 +12,14 @@ randsignal(eta, k, A)
 \item{k}{Smoothness parameter.}
 
 \item{A}{Adjacency matrix.}
+
+\item{r}{Optional argument corresponding to the largest eigenvalue (in magnitude), avoids the need to calculate the spectrum.}
 }
 \value{
 \code{f} output signal.
 }
 \description{
-Generate f  = A^k * x_eta / lambda_1^k,
+Generate \eqn{f = A^k x_eta / r^k}{f = A^k * x_eta / r^k},
 with A the adjacency matrix and
-x_eta realization of Bernoulli random variables of parameter eta.
+x_eta realization of Bernoulli random variables of parameter eta and r the largest eigenvalue (in magnitude).
 }

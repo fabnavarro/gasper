@@ -12,6 +12,7 @@ gasper 1.0.1.9000 dev version
     functions (FALSE save memory allocation for large graphs)
 -   add a new output to `download_graph` providing a url to a temporary
     file containing the information about the considered matrix.
+-   add new argument to `randsignal` to avoid full spectrum calculation.
 
 gasper 1.0.1 release (07/27/2020)
 =================================
