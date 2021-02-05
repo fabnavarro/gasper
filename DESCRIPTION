@@ -23,7 +23,10 @@ Imports:
     scatterplot3d,
     rwavelet,
     Rcpp,
-    ggplot2
+    ggplot2,
+    methods,
+    Matrix,
+    RSpectra
 LinkingTo: 
     Rcpp,
     RcppArmadillo
