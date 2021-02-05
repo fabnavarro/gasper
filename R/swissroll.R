@@ -6,7 +6,7 @@
 #' \deqn{Sy=\pi (b^2-a^2)y/2}{Sy=pi**(b**2-a**2)*y/2}
 #'
 #' @export swissroll
-#' @import stats
+#' @importFrom stats runif
 #' @param a,b Shape parameters.
 #' @param N Number of points drawn.
 #' @param seed Optionally specify a RNG seed (for reproducible experiments).
