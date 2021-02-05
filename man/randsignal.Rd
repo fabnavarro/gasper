@@ -13,7 +13,7 @@ randsignal(eta, k, A, r)
 
 \item{A}{Adjacency matrix.}
 
-\item{r}{Optional argument corresponding to the largest eigenvalue (in magnitude), avoids the need to calculate the spectrum.}
+\item{r}{Optional argument corresponding to the largest eigenvalue (in magnitude), avoids the need to calculate the full spectrum.}
 }
 \value{
 \code{f} output signal.
@@ -21,5 +21,5 @@ randsignal(eta, k, A, r)
 \description{
 Generate \eqn{f = A^k x_eta / r^k}{f = A^k * x_eta / r^k},
 with A the adjacency matrix and
-x_eta realization of Bernoulli random variables of parameter eta and r the largest eigenvalue (in magnitude).
+x_eta realization of Bernoulli random variables of parameter eta and r the largest eigenvalue (in magnitude). The generation is carried out in sparse matrices in order to scale up.
 }
