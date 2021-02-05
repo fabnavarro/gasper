@@ -13,11 +13,14 @@ gasper 1.0.1.9000 dev version
 -   add a new output to `download_graph` providing a url to a temporary
     file containing the information about the considered matrix.
 -   add new argument to `randsignal` to avoid full spectrum calculation.
+-   add new import (methods, Matrix, RSpectra) to consider large sparse
+    matrices.
+-   modify `randsignal` to benefit from sparse computation.
 
 gasper 1.0.1 release (07/27/2020)
 =================================
 
--   fix warnings bug SUREthresh functions
+-   fix warnings bug `SUREthresh` functions
 -   adapt DESCRIPTION to meet CRAN’s expectations (i.e., omit the
     redundant “in R” from the title, use the Authors@R field and declare
     Maintainer, Authors and Contributors with their appropriate roles
@@ -27,7 +30,7 @@ gasper 1.0.1 release (07/27/2020)
     package name, title or similar).
 -   optionally specify a RNG seed (for reproducible experiments) in
     swissroll.R
--   remove adjacency\_mat N arg
+-   remove `adjacency_mat` N arg
 -   Cran resubmission
 
 gasper 1.0.0 release (07/23/2020)
