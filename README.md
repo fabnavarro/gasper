@@ -6,7 +6,7 @@ status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://trav
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
 
 Graph signal processing in R.
-<img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
 
 Download and Install
 --------------------
@@ -79,4 +79,4 @@ download_graph(graphname,groupname)
 plot_graph(`usroads-48`, size = 0.05)
 ```
 
-<img src="README_files/figure-markdown_github/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="README_files/figure-markdown_github/unnamed-chunk-8-1.png" width="50%" style="display: block; margin: auto;" />

@@ -7,7 +7,9 @@ output:
 library(gasper)
 knitr::opts_chunk$set(
   collapse = TRUE,
-  fig.align="center",
+  fig.align = "center",
+  out.width = '50%',
+  dpi = 600,
   comment = "#>"
 )
 ```
