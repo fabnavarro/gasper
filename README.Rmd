@@ -8,7 +8,7 @@ library(gasper)
 knitr::opts_chunk$set(
   collapse = TRUE,
   fig.align = "center",
-  out.width = '60%',
+  out.width = '50%',
   dpi = 150,
   comment = "#>"
 )
@@ -68,12 +68,23 @@ For an illustration of the features of the package, you can also refer to the fo
 
 The package also provides an interface to the SuiteSparse Matrix Collection, which is a large and actively growing set of sparse matrix benchmarks gathered from a broad spectrum of applications (for details see https://sparse.tamu.edu/).
 
-```{r}
+The `download_graph` function allows to download a test matrix from this collection. For example:
+```{r, message=FALSE}
 graphname <- "usroads-48"
 groupname <- "Gleich"
 download_graph(graphname,groupname)
-plot_graph(`usroads-48`, size = 0.05)
+attributes(`usroads-48`)
+```
+`usroads-48` is composed of the matrix `sA`, coordinates `xy` (if present) and `info` about the matrix (stored in a temporary folder as a plain text file) that can be display via `file.show(`usroads-48`$info)` for example or in the console:
+
+```{r}
+cat(readLines(`usroads-48`$info), sep = "\n")
 ```
 
- 
+It is also possible to plot a (planar) graph and plot signals defined on top of the graph.
+```{r,fig.show='hold'}
+f <- rnorm(nrow(`usroads-48`$xy))
+plot_graph(`usroads-48`, size = 0.05)
+plot_signal(`usroads-48`, f, size = f)
+```
 
