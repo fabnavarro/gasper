@@ -22,6 +22,7 @@ they are automatically downloaded and added to the output. See \url{https://spar
 graphname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(graphname,groupname)
+file.show(grid1$info)
 plot_graph(grid1)
 }
 \references{
