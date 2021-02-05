@@ -21,7 +21,6 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports: 
     scatterplot3d,
-    rwavelet,
     Rcpp,
     ggplot2,
     methods,

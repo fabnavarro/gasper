@@ -21,7 +21,6 @@ vignette: >
 
 ```{r setup, include = FALSE}
 library(gasper)
-library(rwavelet)
 if (as.numeric(R.version$minor)>6){
   RNGkind(sample.kind = "Rounding")
 }
