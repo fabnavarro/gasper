@@ -86,7 +86,7 @@ attributes(`usroads-48`)
 
 `usroads-48` is composed of the matrix `sA`, coordinates `xy` (if
 present) and `info` about the matrix (stored in a temporary folder as a
-plain text file) that can be display via `file.show(`usroads-48`$info)`
+plain text file) that can be display via `file.show(usroads-48$info)`
 for example or in the console:
 
 ``` r
@@ -107,12 +107,12 @@ cat(readLines(`usroads-48`$info), sep = "\n")
 ```
 
 It is also possible to plot a (planar) graph and plot signals defined on
-top of the graph.
+top of the graph. For example :
 
 ``` r
 f <- rnorm(nrow(`usroads-48`$xy))
 plot_graph(`usroads-48`, size = 0.05)
-plot_signal(`usroads-48`, f, size = f)
+plot_signal(`usroads-48`, f, size = f/4)
 ```
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-10-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-markdown_github/unnamed-chunk-10-2.png" width="50%" style="display: block; margin: auto;" />
