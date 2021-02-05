@@ -8,8 +8,8 @@ library(gasper)
 knitr::opts_chunk$set(
   collapse = TRUE,
   fig.align = "center",
-  out.width = '50%',
-  dpi = 200,
+  out.width = '60%',
+  dpi = 150,
   comment = "#>"
 )
 ```
