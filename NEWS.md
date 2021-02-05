@@ -15,7 +15,10 @@ gasper 1.0.1.9000 dev version
 -   add new argument to `randsignal` to avoid full spectrum calculation.
 -   add new import (methods, Matrix, RSpectra) to consider large sparse
     matrices.
--   modify `randsignal` to benefit from sparse computation.
+-   modify `randsignal` to benefit from sparse computation (much
+    faster).
+-   add `SNR` function (to remove rwavelet import used only in
+    vignettes)
 
 gasper 1.0.1 release (07/27/2020)
 =================================
