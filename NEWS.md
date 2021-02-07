@@ -10,8 +10,9 @@ gasper 1.0.1.9000 dev version
 -   add boolean argument allowing to export the coefficients of the
     frame after thresholding (TRUE by default) in `SURE*thresh`
     functions (FALSE save memory allocation for large graphs)
--   add a new output to `download_graph` providing a url to a temporary
-    file containing the information about the considered matrix.
+-   add a new output `dim` to `download_graph` providing a url to a
+    temporary file containing the information about the considered
+    matrix.
 -   add new argument to `randsignal` to avoid full spectrum calculation.
 -   add new import (methods, Matrix, RSpectra) to consider large sparse
     matrices.
@@ -19,6 +20,8 @@ gasper 1.0.1.9000 dev version
     faster).
 -   add `SNR` function (to remove rwavelet import used only in
     vignettes)
+-   add a new output `dim` to `download_graph` providing the numbers of
+    rows, columns and numerically nonzero elements of the sparse matrix.
 
 gasper 1.0.1 release (07/27/2020)
 =================================
