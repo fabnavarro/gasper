@@ -4,14 +4,16 @@
 #'
 #' @export laplacian_mat
 #' @importFrom methods is
-#' @importFrom Matrix Diagonal
+#' @importFrom Matrix Diagonal rowSums
 #' @param W Adjacency matrix.
-#'
+#' @return \code{L} (unormalized) Laplacian matrix.
+
 laplacian_mat <- function(W) {
   if(is(W, 'sparseMatrix')){
     D <- Diagonal(nrow(W), rowSums(W))
   } else {
     D <- rowSums(W)
   }
-  return(D - W)
+  L <- D - W
+  return(L)
 }

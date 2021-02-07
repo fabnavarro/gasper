@@ -9,6 +9,9 @@ laplacian_mat(W)
 \arguments{
 \item{W}{Adjacency matrix.}
 }
+\value{
+\code{L} (unormalized) Laplacian matrix.
+}
 \description{
 Compute the (unormalized) laplacian matrix from the adjacency matrix.
 }
