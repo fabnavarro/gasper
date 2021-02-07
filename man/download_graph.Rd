@@ -12,7 +12,7 @@ download_graph(graphname, groupname)
 \item{groupname}{Name of the group that provides the graph.}
 }
 \value{
-\code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any) and info, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
+\code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
 }
 \description{
 If coordinates are associated with the graphs,

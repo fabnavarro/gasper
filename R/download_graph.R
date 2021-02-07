@@ -7,7 +7,7 @@
 #' @importFrom utils download.file untar read.table
 #' @param graphname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
-#' @return \code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any) and info, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
+#' @return \code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #' @examples
