@@ -22,6 +22,8 @@ gasper 1.0.1.9000 dev version
     vignettes)
 -   add a new output `dim` to `download_graph` providing the numbers of
     rows, columns and numerically nonzero elements of the sparse matrix.
+-   add Matrix Market files import (remove data.frame storage to save a
+    lot of memory) to `download_graph`.
 
 gasper 1.0.1 release (07/27/2020)
 =================================
