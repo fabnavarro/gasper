@@ -3,7 +3,7 @@
 #' Convert a symmetric sparse matrix sA stored as upper triangular matrix to full matrix A.
 #'
 #' @export fullup
-#' @param sA Sparse upper triangular matrix matrix to convert.
+#' @param sA Sparse upper triangular matrix to convert.
 #' @examples
 #' graphname <- "grid1"
 #' groupname <- "AG-Monien"

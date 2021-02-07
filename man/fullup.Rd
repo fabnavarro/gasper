@@ -7,7 +7,7 @@
 fullup(sA)
 }
 \arguments{
-\item{sA}{Sparse upper triangular matrix matrix to convert.}
+\item{sA}{Sparse upper triangular matrix to convert.}
 }
 \description{
 Convert a symmetric sparse matrix sA stored as upper triangular matrix to full matrix A.
