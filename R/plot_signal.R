@@ -1,6 +1,8 @@
 #' Plot a signal on top of a given graph
 #'
 #' @export plot_signal
+#' @importFrom methods is
+#' @importFrom Matrix summary
 #' @param z Graph data.
 #' @param f Signal to plot.
 #' @param size Dot size.
@@ -10,6 +12,9 @@
 #' plot_signal(minnesota, f)
 
 plot_signal <- function(z, f, size=0.75, limits=range(f)) {
+  if(is(z$sA, 'sparseMatrix')){
+    z$sA <- summary(z$sA)
+  }
   x <- z$xy[, 1]
   y <- z$xy[, 2]
   ind_i <- z$sA[, 1]

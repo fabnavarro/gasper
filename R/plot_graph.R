@@ -1,12 +1,17 @@
 #' Graph plot
 #'
 #' @export plot_graph
+#' @importFrom methods is
+#' @importFrom Matrix summary
 #' @param z Graph data.
 #' @param size Dot size.
 #' @examples
 #' plot_graph(minnesota)
 
 plot_graph <- function(z, size=0.75) {
+  if(is(z$sA, 'sparseMatrix')){
+    z$sA <- summary(z$sA)
+  }
   x <- z$xy[, 1]
   y <- z$xy[, 2]
   ind_i <- z$sA[, 1]
