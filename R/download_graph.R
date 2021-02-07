@@ -52,7 +52,8 @@ download_graph <- function(graphname, groupname) {
     #                  skip = nskip)
     gdim <- scan(temppath,
                  skip = nskip-1,
-                 nmax = 3)
+                 nmax = 3,
+                 quiet = TRUE)
     NumRows <- gdim[1]
     NumCols <- gdim[2]
     NonZeros <- gdim[3]
