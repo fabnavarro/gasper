@@ -54,7 +54,7 @@ groupname <- "AG-Monien"
 download_graph(graphname,groupname)
 attributes(netz4504)
 ```
-The output is stored (in a temporary folder) as a data.frame list composed of $A$ and possibly coordinates.
+The output is stored (in a temporary folder) as a data.frame list composed of "sA", possibly coordinates "xy", "dim" the number of rows, columns and numerically nonzero elements and "info"" about the matrix. 
 
 The package also allows to plot a (plan) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
 ```{r,fig.show='hold'}

@@ -81,11 +81,12 @@ groupname <- "Gleich"
 download_graph(graphname,groupname)
 attributes(`usroads-48`)
 #> $names
-#> [1] "sA"   "xy"   "info"
+#> [1] "sA"   "xy"   "dim"  "info"
 ```
 
 `usroads-48` is composed of the matrix `sA`, coordinates `xy` (if
-present) and `info` about the matrix (stored in a temporary folder as a
+present), `dim` the number of rows, columns and numerically nonzero
+elements and `info` about the matrix (stored in a temporary folder as a
 plain text file) that can be display via `file.show(usroads-48$info)`
 for example or in the console:
 
@@ -104,6 +105,8 @@ cat(readLines(`usroads-48`$info), sep = "\n")
 #> % fields: name title A id date author ed kind aux
 #> % aux: coord
 #> % kind: undirected graph
+#> %-------------------------------------------------------------------------------
+#> 126146 126146 161950
 ```
 
 It is also possible to plot a (planar) graph and plot signals defined on

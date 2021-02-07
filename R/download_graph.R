@@ -49,12 +49,21 @@ download_graph <- function(graphname, groupname) {
     df <- read.table(temppath,
                      comment.char = "%",
                      skip = nskip)
+    gdim <- scan(temppath,
+                 skip = nskip-1,
+                 nmax = 3)
+    NumRows <- gdim[1]
+    NumCols <- gdim[2]
+    NonZeros <- gdim[3]
+    graphdim <- data.frame(NumRows,
+                           NumCols,
+                           NonZeros)
     if (ncol(df)==2){
       df$V3 <- rep(1, nrow(df))
     }
 
     if (length(list.files(tempp))!=1) {
-      writeLines(tmp[1:(nskip-2)],
+      writeLines(tmp[1:(nskip)],
                  graphdesc)
       temppathc <- paste(tempp,
                          graphname,"_coord.mtx",sep="")
@@ -76,14 +85,16 @@ download_graph <- function(graphname, groupname) {
       return(assign(graphname,
                     list("sA"=df,
                          "xy"=dfc,
+                         "dim"=graphdim,
                          "info"=graphdesc),
                     envir = parent.frame()))
     }
     else {
-      writeLines(tmp[1:(nskip-2)],
+      writeLines(tmp[1:(nskip)],
                  graphdesc)
       return(assign(graphname,
                     list("sA"=df,
+                         "dim"=graphdim,
                          "info"=graphdesc),
                     envir = parent.frame()))
     }
