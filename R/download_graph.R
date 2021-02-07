@@ -5,6 +5,7 @@
 #'
 #' @export download_graph
 #' @importFrom utils download.file untar read.table
+#' @importFrom Matrix readMM
 #' @param graphname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
 #' @return \code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
@@ -46,9 +47,9 @@ download_graph <- function(graphname, groupname) {
     graphdesc <- paste(tempp,
                         graphname,sep="")
 
-    df <- read.table(temppath,
-                     comment.char = "%",
-                     skip = nskip)
+    # df <- read.table(temppath,
+    #                  comment.char = "%",
+    #                  skip = nskip)
     gdim <- scan(temppath,
                  skip = nskip-1,
                  nmax = 3)
@@ -58,9 +59,18 @@ download_graph <- function(graphname, groupname) {
     graphdim <- data.frame(NumRows,
                            NumCols,
                            NonZeros)
-    if (ncol(df)==2){
-      df$V3 <- rep(1, nrow(df))
+
+    m <- readMM(temppath)
+    m <- as(m, "CsparseMatrix")
+    if(nrow(m)==ncol(m)){
+      m <- as(m, "dsCMatrix")
+    } else{
+      m <- as(m, "dgCMatrix")
     }
+
+    # if (ncol(df)==2){
+    #   df$V3 <- rep(1, nrow(df))
+    # }
 
     if (length(list.files(tempp))!=1) {
       writeLines(tmp[1:(nskip)],
@@ -83,7 +93,7 @@ download_graph <- function(graphname, groupname) {
         colnames(dfc) <- c("x", "y")
       }
       return(assign(graphname,
-                    list("sA"=df,
+                    list("sA"=m,
                          "xy"=dfc,
                          "dim"=graphdim,
                          "info"=graphdesc),
@@ -93,7 +103,7 @@ download_graph <- function(graphname, groupname) {
       writeLines(tmp[1:(nskip)],
                  graphdesc)
       return(assign(graphname,
-                    list("sA"=df,
+                    list("sA"=m,
                          "dim"=graphdim,
                          "info"=graphdesc),
                     envir = parent.frame()))
