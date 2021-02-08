@@ -127,7 +127,12 @@ wcn <- analysis(tilde_f,tf)
 wcf <- analysis(f,tf)
 ```
 
-The optimal threshold is then determined by minimizing the SURE.
+An alternative to avoid frame calculation is given by the `forward_tf` function which provides a fast SGWT. For exemple:
+```{r}
+# wcf <- forward_tf(f, evalues, evectors, b=b)
+```
+
+The optimal threshold is then determined by minimizing the SURE (using the Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
