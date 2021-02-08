@@ -84,11 +84,12 @@ attributes(`usroads-48`)
 #> [1] "sA"   "xy"   "dim"  "info"
 ```
 
-`usroads-48` is composed of the matrix `sA`, coordinates `xy` (if
-present), `dim` the number of rows, columns and numerically nonzero
-elements and `info` about the matrix (stored in a temporary folder as a
-plain text file) that can be display via `file.show(usroads-48$info)`
-for example or in the console:
+`usroads-48` is composed of the sparse matrix `sA` (in compressed sparse
+column format), coordinates `xy` (if present, in a data.frame), `dim`
+the number of rows, columns and numerically nonzero elements and `info`
+about the matrix (stored in a temporary folder as a plain text file)
+that can be display via `file.show(usroads-48$info)` for example or in
+the console:
 
 ``` r
 cat(readLines(`usroads-48`$info), sep = "\n")
@@ -110,7 +111,7 @@ cat(readLines(`usroads-48`$info), sep = "\n")
 ```
 
 It is also possible to plot a (planar) graph and plot signals defined on
-top of the graph. For example :
+top of it. For example :
 
 ``` r
 f <- rnorm(nrow(`usroads-48`$xy))
