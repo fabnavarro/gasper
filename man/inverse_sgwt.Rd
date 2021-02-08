@@ -7,7 +7,7 @@
 inverse_sgwt(wc, evalues, evectors, b = 2)
 }
 \arguments{
-\item{wc}{wavelet coefficients.}
+\item{wc}{Wavelet coefficients.}
 
 \item{evalues}{Eigenvalues of the Laplacian matrix.}
 
@@ -16,7 +16,7 @@ inverse_sgwt(wc, evalues, evectors, b = 2)
 \item{b}{Parameter that control the number of scales.}
 }
 \value{
-\code{f} sgwt adjoint applied to wc.
+\code{f} SGWT adjoint applied to wc.
 }
 \description{
 Compute inverse (adjoint) SGWT for signal f (without frame calculation). The calculation is perform for the frame defined by the `tight_frame` function. The tightness of the underlying frame implies that the computation is obtained by simply applying the adjoint linear transformation to the wavelet coefficients.

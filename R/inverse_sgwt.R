@@ -3,11 +3,11 @@
 #' Compute inverse (adjoint) SGWT for signal f (without frame calculation). The calculation is perform for the frame defined by the `tight_frame` function. The tightness of the underlying frame implies that the computation is obtained by simply applying the adjoint linear transformation to the wavelet coefficients.
 #'
 #' @export inverse_sgwt
-#' @param wc wavelet coefficients.
+#' @param wc Wavelet coefficients.
 #' @param evalues Eigenvalues of the Laplacian matrix.
 #' @param evectors Eigenvectors of the Laplacian matrix.
 #' @param b Parameter that control the number of scales.
-#' @return \code{f} sgwt adjoint applied to wc.
+#' @return \code{f} SGWT adjoint applied to wc.
 #' @seealso \code{\link{forward_sgwt}}, \code{\link{tight_frame}}
 #' @references
 #' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
