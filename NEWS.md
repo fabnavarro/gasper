@@ -23,13 +23,15 @@ gasper 1.0.1.9000 dev version
 -   add a new output `dim` to `download_graph` providing the numbers of
     rows, columns and numerically nonzero elements of the sparse matrix.
 -   add Matrix Market files import (remove data.frame storage to save a
-    lot of memory) to `download_graph`.
+    lot of memory and speed-up computation) to `download_graph`.
 -   add fast forward/inverse sgwt functions (`foward_sgwt` and
     `inverse_sgwt`). Faster than calculation via
     `tight_frame`/`analysis` and potentially useful when frame elements
     do not need to be calculated.
 -   add graph extension of the Von Neummann variance estimator using
     finest scale coefficients (`HPFVN`).
+-   add kernel tight-frame evaluation function `zetav` (to avoid
+    redundancy).
 
 gasper 1.0.1 release (07/27/2020)
 =================================
