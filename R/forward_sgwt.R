@@ -2,7 +2,7 @@
 #'
 #' Compute forward SGWT for signal f (without frame calculation). The calculation corresponds to the frame defined by the `tight_frame` function (without explicit calculation of the latter).
 #'
-#' @export forward_tf
+#' @export forward_sgwt
 #' @param f Graph signal to analyze.
 #' @param evalues Eigenvalues of the Laplacian matrix.
 #' @param evectors Eigenvectors of the Laplacian matrix.
@@ -16,7 +16,7 @@
 #' Hammond, D. K., Vandergheynst, P., & Gribonval, R. (2011). Wavelets on graphs via spectral graph theory. Applied and Computational Harmonic Analysis, 30(2), 129-150.
 #- todo: export zetav et gv
 
-forward_tf <- function(f, evalues, evectors, b = 2) {
+forward_sgwt <- function(f, evalues, evectors, b = 2) {
   lmax <- max(evalues)
   kmax <- floor(log(lmax)/log(b)) + 2
   N <- length(evalues)
