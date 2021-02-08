@@ -15,7 +15,6 @@
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'
 #' Hammond, D. K., Vandergheynst, P., & Gribonval, R. (2011). Wavelets on graphs via spectral graph theory. Applied and Computational Harmonic Analysis, 30(2), 129-150.
-#- todo: export zetav et gv
 
 inverse_sgwt <- function(wc, evalues, evectors, b = 2) {
   lmax <- max(evalues)
@@ -27,28 +26,4 @@ inverse_sgwt <- function(wc, evalues, evectors, b = 2) {
     f[, k+1] <- ((t(wc[(k*N+1):((k+1)*N)])%*%evectors)*G)%*%t(evectors)
   }
   return(rowSums(f))
-}
-
-zetav <- function(x, k, b) {
-  if (k == 0) {
-    return(gv(x, b))
-  } else {
-    return(gv(b^(-k) * x, b) - gv(b^(-k + 1) * x, b))
-  }
-}
-
-gv <- function(x, b) {
-  low <- outer(x, 0, "<")
-  mid1 <- outer(x, 0, ">=")
-  mid2 <- outer(x, 1/b, "<=")
-  mid3 <- outer(x, 1/b, ">=")
-  mid4 <- outer(x, 1, "<=")
-  up <- outer(x, 1, ">")
-
-  gg <- rep(0, length(x))
-  gg[low] <- 1
-  gg[mid1 & mid2] <- 1
-  gg[mid3 & mid4] <- b * x[mid3 & mid4]/(1 - b) + b/(b - 1)
-  gg[up] <- 0
-  return(gg)
 }
