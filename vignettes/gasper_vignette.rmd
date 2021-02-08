@@ -132,7 +132,7 @@ An alternative to avoid frame calculation is given by the `forward_sgwt` functio
 # wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
 
-The optimal threshold is then determined by minimizing the SURE (using the Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data).
+The optimal threshold is then determined by minimizing the SURE (using Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
