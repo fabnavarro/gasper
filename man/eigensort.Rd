@@ -7,7 +7,7 @@
 eigensort(x)
 }
 \arguments{
-\item{x}{Symetric matrix whose spectral decomposition is to be computed.}
+\item{x}{Symetric matrix (sparse or dense) whose spectral decomposition is to be computed.}
 }
 \description{
 Computes eigenvalues and eigenvectors of matrices
