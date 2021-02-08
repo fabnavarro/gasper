@@ -127,9 +127,9 @@ wcn <- analysis(tilde_f,tf)
 wcf <- analysis(f,tf)
 ```
 
-An alternative to avoid frame calculation is given by the `forward_tf` function which provides a fast SGWT. For exemple:
+An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a fast forward SGWT. For exemple:
 ```{r}
-# wcf <- forward_tf(f, evalues, evectors, b=b)
+# wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
 
 The optimal threshold is then determined by minimizing the SURE (using the Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data).
@@ -163,6 +163,12 @@ SNR(f,tilde_f)
 SNR(f,hatf_oracle)
 SNR(f,hatf_SURE)
 ```
+
+Equivalently, estimators can be obtained by the inverse of the SGWT given by the function `inverse_sgwt`. For exemple:
+```{r}
+#hatf_oracle <- inverse_sgwt(opt_thresh$wc[,opt_thresh$min[1]], evalues, evectors, b)
+```
+
 
 
 # Bibliography
