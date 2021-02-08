@@ -2,7 +2,7 @@
 % Please edit documentation in R/tight_frame.R
 \name{tight_frame}
 \alias{tight_frame}
-\title{Tight frame computation.}
+\title{Tight-frame computation.}
 \usage{
 tight_frame(evalues, evectors, b = 2)
 }
@@ -14,9 +14,11 @@ tight_frame(evalues, evectors, b = 2)
 \item{b}{Parameter that control the number of scales.}
 }
 \description{
-Construct tight (Parseval) frame.
+Constructs tight-frame.
 }
 \references{
+Coulhon, T., Kerkyacharian, G., & Petrushev, P. (2012). Heat kernel generated frames in the setting of Dirichlet spaces. Journal of Fourier Analysis and Applications, 18(5), 995-1066.
+
 Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
