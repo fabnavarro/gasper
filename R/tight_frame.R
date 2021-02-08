@@ -47,7 +47,6 @@ gv <- function(x, b) {
   mid4 <- outer(x, 1, "<=")
   up <- outer(x, 1, ">")
 
-  # gg <- rep(NA, length(x))
   gg <- rep(0, length(x))
   gg[low] <- 1
   gg[mid1 & mid2] <- 1

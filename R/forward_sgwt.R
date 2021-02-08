@@ -8,6 +8,7 @@
 #' @param evectors Eigenvectors of the Laplacian matrix.
 #' @param b Parameter that control the number of scales.
 #' @return \code{wc} wavelet coefficients.
+#' @seealso \code{\link{inverse_sgwt}}, \code{\link{tight_frame}}
 #' @references
 #' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 #'

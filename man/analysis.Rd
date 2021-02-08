@@ -17,3 +17,6 @@ analysis(y, tf)
 \description{
 Compute the analysis operator for coefficient y.
 }
+\seealso{
+\code{\link{synthesis}}, \code{\link{tight_frame}}
+}

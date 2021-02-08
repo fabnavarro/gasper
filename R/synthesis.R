@@ -5,7 +5,8 @@
 #' @export synthesis
 #' @param coeff Transform coefficients.
 #' @param tf Frame coefficients.
-#' @return \code{y} synthesis signal.
+#' @return \code{y} Synthesis signal.
+#' @seealso \code{\link{analysis}}, \code{\link{tight_frame}}
 
 synthesis <- function(coeff, tf) {
   y <- t(coeff) %*% tf

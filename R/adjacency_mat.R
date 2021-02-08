@@ -7,7 +7,8 @@
 #' @examples
 #' pts <- swissroll(N=100, seed=0, a=1, b=4)
 #' W <- adjacency_mat(pts)
-#' @seealso \code{\link{laplacian_mat}}
+#' @seealso \code{\link{laplacian_mat}}, \code{\link{swissroll}}
+
 adjacency_mat <- function(pts, f = function(x) {exp(-x^2/8)},
                           s = 0) {
   N <- nrow(pts)

@@ -5,6 +5,7 @@
 #' @export full
 #' @importFrom methods is
 #' @param sA Sparse matrix to convert.
+#' @seealso \code{\link{fullup}}
 #' @examples
 #' sA <- pittsburgh$sA
 #' A <- full(sA)

@@ -16,3 +16,6 @@ Convert a symmetric sparse matrix sA to full matrix A.
 sA <- pittsburgh$sA
 A <- full(sA)
 }
+\seealso{
+\code{\link{fullup}}
+}

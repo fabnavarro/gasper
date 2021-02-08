@@ -28,3 +28,6 @@ de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in deno
 
 Hammond, D. K., Vandergheynst, P., & Gribonval, R. (2011). Wavelets on graphs via spectral graph theory. Applied and Computational Harmonic Analysis, 30(2), 129-150.
 }
+\seealso{
+\code{\link{inverse_sgwt}}, \code{\link{tight_frame}}
+}

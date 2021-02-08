@@ -12,8 +12,11 @@ synthesis(coeff, tf)
 \item{tf}{Frame coefficients.}
 }
 \value{
-\code{y} synthesis signal.
+\code{y} Synthesis signal.
 }
 \description{
 Compute the synthesis operator for coefficient coeff.
+}
+\seealso{
+\code{\link{analysis}}, \code{\link{tight_frame}}
 }

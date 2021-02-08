@@ -15,6 +15,7 @@
 #' pts <- swissroll(N=500, seed=0, a=1, b=4)
 #' scatterplot3d::scatterplot3d(pts, y=NULL, z=NULL)
 #' @seealso \code{\link{adjacency_mat}}
+
 swissroll <- function(N = 500, seed = NULL, a = 1, b = 4) {
   set.seed(seed)
   x <- runif(N)

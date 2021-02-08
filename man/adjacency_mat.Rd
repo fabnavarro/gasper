@@ -21,5 +21,5 @@ pts <- swissroll(N=100, seed=0, a=1, b=4)
 W <- adjacency_mat(pts)
 }
 \seealso{
-\code{\link{laplacian_mat}}
+\code{\link{laplacian_mat}}, \code{\link{swissroll}}
 }
