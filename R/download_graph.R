@@ -73,7 +73,9 @@ download_graph <- function(graphname, groupname) {
     #   df$V3 <- rep(1, nrow(df))
     # }
 
-    if (length(list.files(tempp))!=1) {
+    #if (length(list.files(tempp))!=1) {
+    if (length(list.files(path=tempp,
+                          pattern = "_coord.mtx"))==1) {
       writeLines(tmp[1:(nskip)],
                  graphdesc)
       temppathc <- paste(tempp,
