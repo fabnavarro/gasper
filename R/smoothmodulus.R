@@ -4,8 +4,8 @@
 #'
 #' @export smoothmodulus
 #' @param f Signal.
-#' @param A Adjacency matrix.
-#' @param L Laplacian matrix.
+#' @param A Adjacency matrix (sparse or dense).
+#' @param L Laplacian matrix (sparse or dense).
 #' @examples
 #' data(minnesota)
 #' A <- minnesota$A

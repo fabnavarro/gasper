@@ -9,9 +9,9 @@ smoothmodulus(f, A, L)
 \arguments{
 \item{f}{Signal.}
 
-\item{A}{Adjacency matrix.}
+\item{A}{Adjacency matrix (sparse or dense).}
 
-\item{L}{Laplacian matrix.}
+\item{L}{Laplacian matrix (sparse or dense).}
 }
 \description{
 Compute the modulus of smoothness of a graph signal.
