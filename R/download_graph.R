@@ -16,7 +16,6 @@
 #' groupname <- "AG-Monien"
 #' download_graph(graphname,groupname)
 #' file.show(grid1$info)
-#' plot_graph(grid1)
 
 download_graph <- function(graphname, groupname) {
     url <- paste("https://sparse.tamu.edu/MM/",
