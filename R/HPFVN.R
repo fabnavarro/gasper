@@ -43,28 +43,3 @@ HPFVN <- function(wcn, evalues, b){
                  sum(zetav(evalues, kmax, b)))
   return(sig)
 }
-
-zetav <- function(x, k, b) {
-  if (k == 0) {
-    return(gv(x, b))
-  } else {
-    return(gv(b^(-k) * x, b) - gv(b^(-k + 1) * x, b))
-  }
-}
-
-gv <- function(x, b) {
-  low <- outer(x, 0, "<")
-  mid1 <- outer(x, 0, ">=")
-  mid2 <- outer(x, 1/b, "<=")
-  mid3 <- outer(x, 1/b, ">=")
-  mid4 <- outer(x, 1, "<=")
-  up <- outer(x, 1, ">")
-
-  gg <- rep(0, length(x))
-  gg[low] <- 1
-  gg[mid1 & mid2] <- 1
-  gg[mid3 & mid4] <- b * x[mid3 & mid4]/(1 - b) + b/(b - 1)
-  gg[up] <- 0
-  return(gg)
-}
-
