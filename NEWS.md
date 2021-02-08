@@ -28,6 +28,8 @@ gasper 1.0.1.9000 dev version
     `inverse_sgwt`). Faster than calculation via
     `tight_frame`/`analysis` and potentially useful when frame elements
     do not need to be calculated.
+-   add graph extension of the Von Neummann variance estimator using
+    finest scale coefficients (`HPFVN`).
 
 gasper 1.0.1 release (07/27/2020)
 =================================
