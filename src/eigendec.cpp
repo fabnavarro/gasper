@@ -5,13 +5,10 @@ using namespace Rcpp;
 //' Spectral decomposition of a symetric matrix
 //'
 //' Eigen decomposition of dense symmetric/hermitian matrix M
-//' using standard or divide-and-conquer methods.
-//' the divide-and-conquer method provides slightly different results
-//' than the standard method, but is considerably faster for large matrices
+//' using divide-and-conquer methods that provides slightly different results
+//' than the standard method, but is considerably faster for large matrices.
 //'
 //' @param M a matrix.
-//' //@param method "dc" indicates divide-and-conquer method (par).
-//' //              "std" indicates standard method.
 //' @export eigendec
 // [[Rcpp::export]]
 List eigendec(arma::mat M) {

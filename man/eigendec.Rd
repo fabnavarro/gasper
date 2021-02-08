@@ -7,13 +7,10 @@
 eigendec(M)
 }
 \arguments{
-\item{M}{a matrix.
-//@param method "dc" indicates divide-and-conquer method (par).
-//              "std" indicates standard method.}
+\item{M}{a matrix.}
 }
 \description{
 Eigen decomposition of dense symmetric/hermitian matrix M
-using standard or divide-and-conquer methods.
-the divide-and-conquer method provides slightly different results
-than the standard method, but is considerably faster for large matrices
+using divide-and-conquer methods that provides slightly different results
+than the standard method, but is considerably faster for large matrices.
 }
