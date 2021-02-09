@@ -29,6 +29,7 @@ gasper News
 * add fast forward/inverse sgwt functions (`foward_sgwt` and `inverse_sgwt`). Faster than calculation via `tight_frame`/`analysis` and potentially useful when frame elements do not need to be calculated.
 * add graph extension of the Von Neummann variance estimator using finest scale coefficients (`HPFVN`).
 * add kernel tight-frame evaluation function `zetav` (to avoid redundancy).
+* add new `plot_filter` function (plot wavelet tight-frame functions).
 
 # gasper 1.0.1 release (07/27/2020)
 * fix warnings bug `SUREthresh` functions

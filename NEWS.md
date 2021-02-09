@@ -32,6 +32,7 @@ gasper 1.0.1.9000 dev version
     finest scale coefficients (`HPFVN`).
 -   add kernel tight-frame evaluation function `zetav` (to avoid
     redundancy).
+-   add new `plot_filter` function (plot wavelet tight-frame functions).
 
 gasper 1.0.1 release (07/27/2020)
 =================================
