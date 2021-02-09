@@ -78,9 +78,9 @@ cat(readLines(grid1$info, n=14), sep = "\n")
 
 The package also allows to plot a (planar) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
 ```{r, fig.show='hold'}
-f <- randsignal(eta=0.01, k=5, A=grid1$sA)
+f <- rnorm(nrow(grid1$sA))
 plot_graph(grid1)
-plot_signal(grid1, f, size = 50*f)
+plot_signal(grid1, f, size = 2)
 ```
 
 # Example of application to denoising
@@ -113,18 +113,6 @@ Each of these steps can be performed via one of the functions `analysis`, `synth
 
 #We give an illustrative example on a synthetic graph representing the \proglang{R} logo. 
 We give an illustrative example on the `grid1` graph from the previous section. We start by calculating, the Laplacian matrix (from the adjacency matrix), its eigendecomposition and the frame coefficients.
-# ```{r}
-# A <- full(rlogo$sA)
-# L <- laplacian_mat(A)
-# val1 <- eigendec(L)
-# evalues <- val1$evalues
-# evectors <- val1$evectors
-# lmax <- max(evalues)
-# b <- 2
-# kmax <- floor(log(lmax)/log(b)) + 2
-# tf <- tight_frame(evalues, evectors, b=b)
-# ```
-
 ```{r}
 A <- grid1$sA
 L <- laplacian_mat(A)
@@ -135,12 +123,33 @@ evectors <- val1$evectors
 lmax <- max(evalues)
 #- parameter that controls the scale number
 b <- 2
-#- number of scale 
-kmax <- floor(log(lmax)/log(b)) + 2
 tf <- tight_frame(evalues, evectors, b=b)
 ```
 
-Then noisy observations $\tilde f$ are generated from a random signal $f$.
+Wavelet frames can be seen as special filter banks. The tight-frame considered here is a finite collection $(\psi_j)_{j=0, \ldots,J}$ forming a finite partition of unity on the compact $[0,\lambda_1]$, where $\lambda_1$ is the largest eigenvalue of the Laplacian spectrum $\mathrm{sp}(\L)$. This partition is defined as follows: let $\omega : \mathbb R^+ \rightarrow [0,1]$ be some function with support in $[0,1]$, satisfying $\omega \equiv 1$ on $[0,b^{-1}]$, for some $b>1$, and set
+\begin{equation*}
+\psi_0(x)=\omega(x)~~\textrm{and}~~\psi_j(x)=\omega(b^{-j}x)-\omega(b^{-j+1}x)~~\textrm{for}~~j=1, \ldots, J,~~\textrm{where}~~J= \left \lfloor \frac{\log \lambda_1}{\log b} \right \rfloor + 2.
+\end{equation*}
+Thanks to Parseval identity, the following set of vectors is a tight frame:
+\[
+\mathfrak F = \left \{ \sqrt{\psi_j}(\L)\delta_i, j=0, \ldots, J, i \in V \right \}.
+\]
+The `plot_filter` function allows to represent the elements (filters) of this partition.
+```{r}
+plot_filter(lmax,b)
+```
+
+The  SGWT of a signal $f \in \mathbb R^V$ is given by
+\[
+\WT f = \left ( \sqrt{\psi_0}(\L)f^{T},\ldots,\sqrt{\psi_J}(\L)f^{T} \right )^{T} \in \mathbb R^{n(J+1)}.
+\]
+The adjoint linear transformation $\WT^\ast$ of $\WT$ is:
+\[
+\WT^\ast \left (\eta_{0}^{T}, \eta_{1}^{T}, \ldots, \eta_{J}^T \right )^{T} = \sum_{j\geq 0} \sqrt{\psi_j}(\L)\eta_{j}.
+\]
+The tightness of the underlying frame implies that $\WT^\ast \WT=\mathrm{Id}_{\mathbb R^V}$ so that a signal $f \in \mathbb R^V$ can be recovered by applying $\WT^\ast$ to its wavelet coefficients $((\WT f)_i)_{i=1, \ldots, n(J+1)} \in \mathbb R^{n(J+1)}$.
+
+Then, noisy observations $\tilde f$ are generated from a random signal $f$.
 ```{r}
 n <- nrow(L)
 f <- randsignal(0.01, 3, A)
@@ -203,8 +212,6 @@ Equivalently, estimators can be obtained by the inverse of the SGWT given by the
 ```{r}
 #hatf_oracle <- inverse_sgwt(opt_thresh$wc[,opt_thresh$min[1]], evalues, evectors, b)
 ```
-
-
 
 # Bibliography
 
