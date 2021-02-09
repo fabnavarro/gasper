@@ -1,7 +1,10 @@
 gasper News
 
-gasper 1.0.1.9000 dev version
+gasper 1.1.0.9000 dev version
 =============================
+
+gasper 1.1.0 release (02/09/2021)
+=================================
 
 -   fix bug in `download_graph` function for downloading graph matrix
     without coordinates
