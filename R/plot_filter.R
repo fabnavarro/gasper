@@ -3,8 +3,10 @@
 #' Plot tight-frame kernels/filters.
 #'
 #' @export plot_filter
+#' @importFrom graphics lines plot
 #' @param lmax Largest eigenvalues of the Laplacian matrix.
 #' @param b Parameter that control the number of scales.
+#' @param N Number of discretization points (by default N=1000).
 
 plot_filter <- function(lmax, b, N=1000){
   kmax <- floor(log(lmax)/log(b)) + 2

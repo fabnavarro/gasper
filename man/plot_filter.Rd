@@ -10,6 +10,8 @@ plot_filter(lmax, b, N = 1000)
 \item{lmax}{Largest eigenvalues of the Laplacian matrix.}
 
 \item{b}{Parameter that control the number of scales.}
+
+\item{N}{Number of discretization points (by default N=1000).}
 }
 \description{
 Plot tight-frame kernels/filters.
