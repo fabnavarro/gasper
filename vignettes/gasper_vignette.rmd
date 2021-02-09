@@ -24,7 +24,7 @@ library(gasper)
 if (as.numeric(R.version$minor)>6){
   RNGkind(sample.kind = "Rounding")
 }
-set.seed(0)
+set.seed(434343)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -135,7 +135,7 @@ Thanks to Parseval identity, the following set of vectors is a tight frame:
 \mathfrak F = \left \{ \sqrt{\psi_j}(\L)\delta_i, j=0, \ldots, J, i \in V \right \}.
 \]
 The `plot_filter` function allows to represent the elements (filters) of this partition.
-```{r}
+```{r,fig.width=5}
 plot_filter(lmax,b)
 ```
 
@@ -160,8 +160,8 @@ tilde_f <- f + noise
 
 Below is a graphical representation of the original signal and its noisy version.
 ```{r,fig.show='hold'}
-plot_signal(grid1, f, size = 3)
-plot_signal(grid1, tilde_f, size = 3)
+plot_signal(grid1, f, size = 2)
+plot_signal(grid1, tilde_f, size = 2)
 ```
 
 We compute the SGWT transforms $\WT \tilde f$ and $\WT f$.
