@@ -1,8 +1,8 @@
 #' Generate random signal with varying regularity.
 #'
-#' Generate \eqn{f = A^k x_eta / r^k}{f = A^k * x_eta / r^k},
+#' Generate \eqn{f = A^k x_{\eta} / r^k}{f = A^k * x_eta / r^k},
 #' with A the adjacency matrix and
-#' x_eta realization of Bernoulli random variables of parameter eta and r the largest eigenvalue (in magnitude). The generation is carried out in sparse matrices in order to scale up.
+#' \eqn{x_{\eta}} realization of Bernoulli random variables of parameter \eqn{\eta} and \eqn{r} the largest eigenvalue (in magnitude). The generation is carried out in sparse matrices in order to scale up.
 #'
 #' @export randsignal
 #' @importFrom methods as
@@ -12,7 +12,7 @@
 #' @param eta Smoothness parameter.
 #' @param k Smoothness parameter.
 #' @param A Adjacency matrix.
-#' @param r Optional argument corresponding to the largest eigenvalue (in magnitude), avoids the need to calculate the full spectrum.
+#' @param r Optional argument corresponding to the largest eigenvalue of A (in magnitude).
 #' @return \code{f} output signal.
 
 randsignal <- function(eta, k, A, r){
