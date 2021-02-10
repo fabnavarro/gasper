@@ -12,7 +12,7 @@ laplacian_mat <- function(W) {
   if(is(W, 'sparseMatrix')){
     D <- Diagonal(nrow(W), rowSums(W))
   } else {
-    D <- rowSums(W)
+    D <- diag(rowSums(W))
   }
   L <- D - W
   return(L)
