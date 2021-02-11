@@ -6,9 +6,9 @@
 #' @importFrom methods is
 #' @param sA Sparse upper triangular matrix to convert.
 #' @examples
-#' graphname <- "grid1"
+#' matrixname <- "grid1"
 #' groupname <- "AG-Monien"
-#' download_graph(graphname,groupname)
+#' download_graph(matrixname,groupname)
 #' A <- fullup(grid1$sA)
 
 fullup <- function(sA) {

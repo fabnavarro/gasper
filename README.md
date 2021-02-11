@@ -76,9 +76,9 @@ The `download_graph` function allows to download a test matrix from this
 collection. For example:
 
 ``` r
-graphname <- "usroads-48"
+matrixname <- "usroads-48"
 groupname <- "Gleich"
-download_graph(graphname,groupname)
+download_graph(matrixname,groupname)
 attributes(`usroads-48`)
 #> $names
 #> [1] "sA"   "xy"   "dim"  "info"

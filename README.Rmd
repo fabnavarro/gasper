@@ -70,9 +70,9 @@ The package also provides an interface to the SuiteSparse Matrix Collection, whi
 
 The `download_graph` function allows to download a test matrix from this collection. For example:
 ```{r, message=FALSE}
-graphname <- "usroads-48"
+matrixname <- "usroads-48"
 groupname <- "Gleich"
-download_graph(graphname,groupname)
+download_graph(matrixname,groupname)
 attributes(`usroads-48`)
 ```
 `usroads-48` is composed of the sparse matrix `sA` (in compressed sparse column format), coordinates `xy` (if present, in a data.frame), `dim` the number of rows, columns and numerically nonzero elements and `info` about the matrix (stored in a temporary folder as a plain text file) that can be display via `file.show(usroads-48$info)` for example or in the console:

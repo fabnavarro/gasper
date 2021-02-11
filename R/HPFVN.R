@@ -7,9 +7,9 @@
 #' @param b Parameter that control the number of scales.
 #' @param evalues Laplacian spectrum.
 #' @examples
-#' graphname <- "grid1"
+#' matrixname <- "grid1"
 #' groupname <- "AG-Monien"
-#' graph <- download_graph(graphname,groupname)
+#' graph <- download_graph(matrixname,groupname)
 #' A <- graph$sA
 #' L <- laplacian_mat(A)
 #' n <- nrow(L)

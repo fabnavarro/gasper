@@ -4,24 +4,24 @@
 \alias{download_graph}
 \title{Download sparse matrix form the SuiteSparse Matrix Collection.}
 \usage{
-download_graph(graphname, groupname)
+download_graph(matrixname, groupname)
 }
 \arguments{
-\item{graphname}{Name of the graph to download.}
+\item{matrixname}{Name of the graph to download.}
 
 \item{groupname}{Name of the group that provides the graph.}
 }
 \value{
-\code{graphname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(graphname$info)}).
+\code{matrixname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
 }
 \description{
 If coordinates are associated with the graphs,
 they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
 }
 \examples{
-graphname <- "grid1"
+matrixname <- "grid1"
 groupname <- "AG-Monien"
-download_graph(graphname,groupname)
+download_graph(matrixname,groupname)
 file.show(grid1$info)
 }
 \references{

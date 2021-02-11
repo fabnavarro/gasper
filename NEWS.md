@@ -3,6 +3,11 @@ gasper News
 gasper 1.1.0.9000 dev version
 =============================
 
+-   correction of an error in `laplacian_mat` function (in the case of a
+    full matrix)
+-   replace `graphname` by `matrixname` (matrices in the SuiteSparse are
+    not necessarily adjacency matrices.)
+
 gasper 1.1.0 release (02/09/2021)
 =================================
 

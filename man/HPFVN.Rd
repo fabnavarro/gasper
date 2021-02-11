@@ -17,9 +17,9 @@ HPFVN(wcn, evalues, b)
 Graph extension of the Von Neummann variance estimator using finest scale coefficients.
 }
 \examples{
-graphname <- "grid1"
+matrixname <- "grid1"
 groupname <- "AG-Monien"
-graph <- download_graph(graphname,groupname)
+graph <- download_graph(matrixname,groupname)
 A <- graph$sA
 L <- laplacian_mat(A)
 n <- nrow(L)

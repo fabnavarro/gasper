@@ -49,9 +49,9 @@ An interface is also provided. It allows to retrieve the matrices  related to ma
 
 The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
 ```{r}
-graphname <- "grid1"
+matrixname <- "grid1"
 groupname <- "AG-Monien"
-download_graph(graphname, groupname)
+download_graph(matrixname, groupname)
 attributes(grid1)
 ```
 The output is stored (in a temporary folder) as a list composed of:
