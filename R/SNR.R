@@ -10,7 +10,7 @@
 #' SNR(x, y)
 
 SNR <- function(x, y) {
-  Asignal <- norm(as.matrix(x), "2")
-  Anoise <- norm(as.matrix(x)-as.matrix(y), "2")
+  Asignal <- norm(as.vector(x), "2")
+  Anoise <- norm(as.vector(x)-as.vector(y), "2")
   return(20*log10(Asignal/Anoise))
 }

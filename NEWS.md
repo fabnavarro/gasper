@@ -3,21 +3,22 @@ gasper News
 gasper 1.1.0.9000 dev version
 =============================
 
--   correction of an error in `laplacian_mat` function (in the case of a
-    full matrix)
+-   correction of an error in `laplacian_mat` function (in the case of
+    full matrix input).
 -   replace `graphname` by `matrixname` (matrices in the SuiteSparse are
-    not necessarily adjacency matrices.)
+    not necessarily adjacency matrices).
+-   error correction in `SNR` fun (wrong output for matrices)
 
 gasper 1.1.0 release (02/09/2021)
 =================================
 
 -   fix bug in `download_graph` function for downloading graph matrix
-    without coordinates
--   add citation info issue\#1
--   bibliography of SURE paper updated in the vignettes
+    without coordinates.
+-   add citation info issue\#1.
+-   bibliography of SURE paper updated in the vignettes.
 -   add boolean argument allowing to export the coefficients of the
     frame after thresholding (TRUE by default) in `SURE*thresh`
-    functions (FALSE save memory allocation for large graphs)
+    functions (FALSE save memory allocation for large graphs).
 -   add a new output `dim` to `download_graph` providing a url to a
     temporary file containing the information about the considered
     matrix.
