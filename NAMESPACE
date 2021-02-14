@@ -2,6 +2,7 @@
 
 export(GVN)
 export(HPFVN)
+export(PSNR)
 export(SNR)
 export(SURE_MSEthresh)
 export(SUREthresh)

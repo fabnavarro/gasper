@@ -18,6 +18,7 @@ gasper News
 * correction of an error in `laplacian_mat` function (in the case of full matrix input).
 * replace `graphname` by `matrixname` (matrices in the SuiteSparse are not necessarily adjacency matrices).
 * error correction in `SNR` fun (wrong output for matrices)
+* add Peak Signal to Noise Ratio (`PNSR`) function.
 
 # gasper 1.1.0 release (02/09/2021)
 * fix bug in `download_graph` function for downloading graph matrix without coordinates.

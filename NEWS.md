@@ -8,6 +8,7 @@ gasper 1.1.0.9000 dev version
 -   replace `graphname` by `matrixname` (matrices in the SuiteSparse are
     not necessarily adjacency matrices).
 -   error correction in `SNR` fun (wrong output for matrices)
+-   add Peak Signal to Noise Ratio (`PNSR`) function.
 
 gasper 1.1.0 release (02/09/2021)
 =================================
