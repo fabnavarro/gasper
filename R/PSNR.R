@@ -1,7 +1,7 @@
 #' Peak Signal to Noise Ratio.
 #'
 #' Compute the Peack Signal to Noise Ratio, defined by:
-#' \deqn{PSNR(x,y)=10 \log_{10}( \max(\max(x),\max(y))^2 / |x-y|^2 )}{10*log10( max(max(x),max(y))^2 / |x-y|^2 )}
+#' \deqn{PSNR(x,y)=10 \log_{10}( \max(\max(x),\max(y))^2 / |x-y|^2 )}{PSNR(x,y)=10*log10( max(max(x),max(y))^2 / |x-y|^2 )}
 #'
 #' @export PSNR
 #' @param x Original reference signal/image.

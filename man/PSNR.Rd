@@ -16,7 +16,7 @@ Peak Signal to Noise ratio.
 }
 \description{
 Compute the Peack Signal to Noise Ratio, defined by:
-\deqn{PSNR(x,y)=10 \log_{10}( \max(\max(x),\max(y))^2 / |x-y|^2 )}{10*log10( max(max(x),max(y))^2 / |x-y|^2 )}
+\deqn{PSNR(x,y)=10 \log_{10}( \max(\max(x),\max(y))^2 / |x-y|^2 )}{PSNR(x,y)=10*log10( max(max(x),max(y))^2 / |x-y|^2 )}
 }
 \examples{
 x <- cos(seq(0, 10, length=100))
