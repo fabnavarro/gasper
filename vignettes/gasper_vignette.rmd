@@ -171,50 +171,86 @@ wcf <- analysis(f,tf)
 ```
 
 An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a fast forward SGWT. For exemple:
-```{r}
-# wcf <- forward_sgwt(f, evalues, evectors, b=b)
+```{r, eval=FALSE}
+wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
 
 The optimal threshold is then determined by minimizing the SURE (using Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data). More precisely,  the SURE for a general thresholding process $h$ is given by the following identity  
 \begin{equation}
 \mathbf{SURE}(h)=-n \sigma^2 + \|h(\widetilde F)-\widetilde F\|^2 + 2 \sum_{i,j=1}^{n(J+1)} \gamma_{i,j}^2 \partial_j h_i(\widetilde F),
 \end{equation}
-where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau} (the parameter `b` stands for $\beta$ in the definition). These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame).
+where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau} (the parameter `b` stands for $\beta$ in the definition). These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame). A comparative example of these two approaches is given below (with $\beta=2$ James-Stein attenuation threshold).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
-opt_thresh <- SURE_MSEthresh(wcn, 
+opt_thresh_d <- SURE_MSEthresh(wcn, 
                            wcf, 
                            thresh, 
                            diagWWt, 
                            b=2, 
                            sigma, 
                            NA,
-                           policy = "dependent")
+                           policy = "dependent",
+                           keepwc = TRUE)
+
+opt_thresh_u <- SURE_MSEthresh(wcn, 
+                           wcf, 
+                           thresh, 
+                           diagWWt, 
+                           b=2, 
+                           sigma, 
+                           NA,
+                           policy = "uniform",
+                           keepwc = TRUE)
 ```
 
-We can plot MSE risk and its SURE estimates as a function of the threshold parameter (assuming that $\sigma$ is known)
-```{r}
-plot(thresh, opt_thresh$res$MSE,
+We can plot MSE risks and their SUREs estimates as a function of the threshold parameter (assuming that $\sigma$ is known).
+```{r,fig.width=5}
+plot(thresh, opt_thresh_u$res$MSE,
      type="l", xlab = "t", ylab = "risk")
-lines(thresh, opt_thresh$res$SURE-n*sigma^2, col="red")
-legend("topleft", legend=c("MSE", "SURE"),
-       col=c("black", "red"),lty=1)
+lines(thresh, opt_thresh_u$res$SURE-n*sigma^2, col="red")
+lines(thresh, opt_thresh_d$res$MSE, lty=2)
+lines(thresh, opt_thresh_d$res$SURE-n*sigma^2, col="red", lty=2)
+legend("topleft", legend=c("MSE_u", "SURE_u",
+                           "MSE_d", "SURE_d"),
+       col=rep(c("black", "red"), 2), 
+       lty=c(1,1,2,2), cex = 0.75)
 ```
 
-Finally, the synthesis allows us to determine the resulting estimators of $f$, \emph{i.e.}, the one that minimizes the unknown MSE risk and the one that minimizes the SURE.
+Finally, the synthesis allows us to determine the resulting estimators of $f$, \emph{i.e.}, the ones that minimize the unknown MSE risks and the ones that minimizes the SUREs.
 ```{r}
-hatf_oracle <- synthesis(opt_thresh$wc[,opt_thresh$min[1]], tf)
-hatf_SURE  <- synthesis(opt_thresh$wc[,opt_thresh$min[2]], tf)
+wc_oracle_u <- opt_thresh_u$wc[, opt_thresh_u$min[1]]
+wc_oracle_d <- opt_thresh_d$wc[, opt_thresh_d$min[1]]
+wc_SURE_u <- opt_thresh_u$wc[, opt_thresh_u$min[2]]
+wc_SURE_d <- opt_thresh_d$wc[, opt_thresh_d$min[2]]
 
-SNR(f,tilde_f)
-SNR(f,hatf_oracle)
-SNR(f,hatf_SURE)
+hatf_oracle_u <- synthesis(wc_oracle_u, tf)
+hatf_oracle_d <- synthesis(wc_oracle_d, tf)
+hatf_SURE_u  <- synthesis(wc_SURE_u, tf)
+hatf_SURE_d  <- synthesis(wc_SURE_d, tf)
+
+res <- data.frame("Input_SNR"=round(SNR(f,tilde_f),2),
+                  "MSE_u"=round(SNR(f,hatf_oracle_u),2),
+                  "SURE_u"=round(SNR(f,hatf_SURE_u),2),
+                  "MSE_d"=round(SNR(f,hatf_oracle_d),2),
+                  "SURE_d"=round(SNR(f,hatf_SURE_d),2))
 ```
+
+```{r, echo=F}
+knitr::kable(res, caption="Uniform vs Dependent" )
+```
+It can be seen form Table 1 that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators are close to the unknown risk minimizers.
 
 Equivalently, estimators can be obtained by the inverse of the SGWT given by the function `inverse_sgwt`. For exemple:
-```{r}
-#hatf_oracle <- inverse_sgwt(opt_thresh$wc[,opt_thresh$min[1]], evalues, evectors, b)
+```{r, eval=FALSE}
+hatf_oracle_u <- inverse_sgwt(wc_oracle_u,
+                              evalues, evectors, b)
+```
+
+Or if the coefficients have not been stored for each threshold value (\emph{i.e.}, with the argument "keepwc=FALSE"  when calling `SUREthresh`) using the thresholding function `beta_thresh`, \emph{e.g.}, 
+```{r, eval=FALSE}
+wc_oracle_u <- betathresh(wcn, 
+                          thresh[opt_thresh_u$min[[1]]], 2)
 ```
 
 # Bibliography
