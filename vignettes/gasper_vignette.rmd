@@ -205,16 +205,16 @@ opt_thresh_u <- SURE_MSEthresh(wcn,
 ```
 
 We can plot MSE risks and their SUREs estimates as a function of the threshold parameter (assuming that $\sigma$ is known).
-```{r,fig.width=5}
+```{r, fig.width=5, fig.height=4}
 plot(thresh, opt_thresh_u$res$MSE,
-     type="l", xlab = "t", ylab = "risk")
+     type="l", xlab = "t", ylab = "risk", log="x")
 lines(thresh, opt_thresh_u$res$SURE-n*sigma^2, col="red")
 lines(thresh, opt_thresh_d$res$MSE, lty=2)
 lines(thresh, opt_thresh_d$res$SURE-n*sigma^2, col="red", lty=2)
 legend("topleft", legend=c("MSE_u", "SURE_u",
                            "MSE_d", "SURE_d"),
        col=rep(c("black", "red"), 2), 
-       lty=c(1,1,2,2), cex = 0.75)
+       lty=c(1,1,2,2), cex = 1)
 ```
 
 Finally, the synthesis allows us to determine the resulting estimators of $f$, \emph{i.e.}, the ones that minimize the unknown MSE risks and the ones that minimizes the SUREs.
