@@ -96,9 +96,9 @@ where $\xi\sim\mathcal{N}(0,\sigma^2)$. The purpose of denoising is to build an 
 A simple way to construct an effective non-linear estimator is obtained by thresholding the SGWT coefficients of $f$ on a frame (see @hammond2011wavelets for details about the SGWT).
 
 A general thresholding operator $\tau$ with threshold parameter $t\geq 0$ applied to some signal $f$ is defined as
-\[
+\begin{equation}\label{eq:tau}
 \tau(x,t)=x\max \{ 1-t^{\beta}|x|^{-\beta},0 \},
-\]
+\end{equation}
  with $\beta \geq 1$. The most popular choices are the soft thresholding ($\beta=1$), the James-Stein thresholding ($\beta=2$) and the hard thresholding ($\beta=\infty$).
 
 Given the laplacian and a given frame, denoising in this framework can be summarized as follows:
@@ -175,7 +175,11 @@ An alternative to avoid frame calculation is given by the `forward_sgwt` functio
 # wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
 
-The optimal threshold is then determined by minimizing the SURE (using Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data).
+The optimal threshold is then determined by minimizing the SURE (using Donoho and Johnstone's trick @donoho1995adapting which remains valid here, see @de2019data). More precisely,  the SURE for a general thresholding process $h$ is given by the following identity  
+\begin{equation}
+\mathbf{SURE}(h)=-n \sigma^2 + \|h(\widetilde F)-\widetilde F\|^2 + 2 \sum_{i,j=1}^{n(J+1)} \gamma_{i,j}^2 \partial_j h_i(\widetilde F),
+\end{equation}
+where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau} (the parameter `b` stands for $\beta$ in the definition). These functions provide two different ways of applying the threshold, "uniform" and "dependent"" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
