@@ -16,11 +16,23 @@ bibentry(
 )
 
 bibentry(
-    key="deloynes2020datadriven",
+    key="deloynes2020gasper",
     bibtype = "Misc",
+      title="Gasper: GrAph Signal ProcEssing in R",
+      author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
+      year={2020},
+      eprint={"2007.10642"},
+      header = "or the package vignettes:"
+)
+
+bibentry(
+    key="deloynes2020datadriven",
+    bibtype = "Article",
       title="Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform",
       author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
-      year={2019},
-      eprint={"arXiv:1906.01882"},
+  journal = "Journal of Computational and Applied Mathematics",
+  volume = "389",
+  pages = "113319",
+  year = "2021",
       header = "or (if relevent) the associated paper:"
 )
