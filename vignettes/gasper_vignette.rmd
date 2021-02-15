@@ -239,7 +239,7 @@ res <- data.frame("Input_SNR"=round(SNR(f,tilde_f),2),
 ```{r, echo=F}
 knitr::kable(res, caption="Uniform vs Dependent" )
 ```
-It can be seen form Table 1 that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators are close to the unknown risk minimizers.
+It can be seen form Table 1 that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators have performances close (in terms of SNR) to those obtained by minimizing the unknown risk.
 
 Equivalently, estimators can be obtained by the inverse of the SGWT given by the function `inverse_sgwt`. For exemple:
 ```{r, eval=FALSE}
