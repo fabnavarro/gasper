@@ -1,7 +1,7 @@
 gasper News
 
-gasper 1.1.0.9000 dev version
-=============================
+gasper 1.1.1 release (02/16/2021)
+=================================
 
 -   correction of an error in `laplacian_mat` function (in the case of
     full matrix input).
