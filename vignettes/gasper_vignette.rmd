@@ -101,7 +101,7 @@ A general thresholding operator $\tau$ with threshold parameter $t\geq 0$ applie
 \end{equation}
  with $\beta \geq 1$. The most popular choices are the soft thresholding ($\beta=1$), the James-Stein thresholding ($\beta=2$) and the hard thresholding ($\beta=\infty$).
 
-Given the laplacian and a given frame, denoising in this framework can be summarized as follows:
+Given the Laplacian and a given frame, denoising in this framework can be summarized as follows:
 
 * Analysis: compute the SGWT transform $\WT \tilde f$;
 
@@ -111,7 +111,6 @@ Given the laplacian and a given frame, denoising in this framework can be summar
 
 Each of these steps can be performed via one of the functions `analysis`, `synthesis`, `beta_thresh`. Laplacian is given by the function `laplacian_mat`. The `tight_frame` function allows the construction of a tight frame based on @gobel2018construction and @coulhon2012heat. In order to select a threshold value, we consider the method developed in @de2019data which consists in determining the threshold that minimizes the Stein unbiased risk estimator (SURE) in a graph setting (see @de2019data for more details).
 
-#We give an illustrative example on a synthetic graph representing the \proglang{R} logo. 
 We give an illustrative example on the `grid1` graph from the previous section. We start by calculating, the Laplacian matrix (from the adjacency matrix), its eigendecomposition and the frame coefficients.
 ```{r}
 A <- grid1$sA
@@ -130,7 +129,7 @@ Wavelet frames can be seen as special filter banks. The tight-frame considered h
 \begin{equation*}
 \psi_0(x)=\omega(x)~~\textrm{and}~~\psi_j(x)=\omega(b^{-j}x)-\omega(b^{-j+1}x)~~\textrm{for}~~j=1, \ldots, J,~~\textrm{where}~~J= \left \lfloor \frac{\log \lambda_1}{\log b} \right \rfloor + 2.
 \end{equation*}
-Thanks to Parseval identity, the following set of vectors is a tight frame:
+Thanks to Parseval's identity, the following set of vectors is a tight frame:
 \[
 \mathfrak F = \left \{ \sqrt{\psi_j}(\L)\delta_i, j=0, \ldots, J, i \in V \right \}.
 \]
