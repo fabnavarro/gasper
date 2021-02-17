@@ -22,3 +22,6 @@ Plot a signal on top of a given graph
 f <- rnorm(2642)
 plot_signal(minnesota, f)
 }
+\seealso{
+\code{\link{plot_graph}}
+}

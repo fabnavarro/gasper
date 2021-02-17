@@ -17,3 +17,6 @@ Graph plot
 \examples{
 plot_graph(minnesota)
 }
+\seealso{
+\code{\link{plot_signal}}
+}

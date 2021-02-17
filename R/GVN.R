@@ -19,6 +19,7 @@
 #' y <- f + noise
 #' sigma^2
 #' GVN(y, A, L)
+#' @seealso \code{\link{HPFVN}}
 #' @references
 #' von Neumann, J. (1941). Distribution of the ratio of the mean square successive difference to the variance. \emph{Ann. Math. Statistics}, 35(3), 433--451.
 #'

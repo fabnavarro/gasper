@@ -24,6 +24,7 @@
 #' b <- 2
 #' wcn <- forward_sgwt(y, evalues, evectors, b=b)
 #' HPFVN(wcn, evalues, b)
+#' @seealso \code{\link{GVN}}
 #' @references
 #' von Neumann, J. (1941). Distribution of the ratio of the mean square successive difference to the variance. \emph{Ann. Math. Statistics}, 35(3), 433--451.
 #'

@@ -18,6 +18,7 @@
 #' @param policy Dependent or uniform.
 #' @param keepwc Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).
 #' @return \code{res} a dataframe contening MSE, SURE, hatSURE and their respective minima
+#' @seealso \code{\link{SUREthresh}}
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 

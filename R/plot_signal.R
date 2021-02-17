@@ -10,6 +10,7 @@
 #' @examples
 #' f <- rnorm(2642)
 #' plot_signal(minnesota, f)
+#' @seealso \code{\link{plot_graph}}
 
 plot_signal <- function(z, f, size=0.75, limits=range(f)) {
   if(is(z$sA, 'sparseMatrix')){

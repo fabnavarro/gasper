@@ -18,4 +18,6 @@ A <- full(sA)
 }
 \seealso{
 \code{\link{fullup}}
+
+\code{\link{fullup}}
 }

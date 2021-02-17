@@ -9,6 +9,7 @@
 #' @examples
 #' sA <- pittsburgh$sA
 #' A <- full(sA)
+#' @seealso \code{\link{fullup}}
 
 full <- function(sA) {
   if(is(sA, 'sparseMatrix')){

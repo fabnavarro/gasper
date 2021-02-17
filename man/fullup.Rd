@@ -18,3 +18,6 @@ groupname <- "AG-Monien"
 download_graph(matrixname,groupname)
 A <- fullup(grid1$sA)
 }
+\seealso{
+\code{\link{full}}
+}

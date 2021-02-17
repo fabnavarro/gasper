@@ -7,6 +7,7 @@
 #' @param size Dot size.
 #' @examples
 #' plot_graph(minnesota)
+#' @seealso \code{\link{plot_signal}}
 
 plot_graph <- function(z, size=0.75) {
   if(is(z$sA, 'sparseMatrix')){

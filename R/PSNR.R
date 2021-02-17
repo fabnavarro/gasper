@@ -11,6 +11,7 @@
 #' x <- cos(seq(0, 10, length=100))
 #' y <- x + rnorm(100, sd=0.5)
 #' PSNR(x, y)
+#' @seealso \code{\link{SNR}}
 
 PSNR <- function(x, y){
   d <- mean((x-y)^2)

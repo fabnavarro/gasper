@@ -34,3 +34,6 @@ von Neumann, J. (1941). Distribution of the ratio of the mean square successive 
 
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 }
+\seealso{
+\code{\link{HPFVN}}
+}
