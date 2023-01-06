@@ -28,7 +28,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Basile De Loynes \email{basile.deloynes@ensai.fr}
+  \item Basile de Loynes \email{basile.deloynes@ensai.fr}
   \item Baptiste Olivier \email{baptiste.olivier@orange.com}
 }
 
