@@ -2,6 +2,8 @@ gasper News
 
 # gasper 1.1.2.9000
 
+-   fix error in `HPFVN`.
+
 # gasper 1.1.2 relase (01/06/2023)
 
 -   satisfy CRAN policy: ‘Packages which use Internet resources should

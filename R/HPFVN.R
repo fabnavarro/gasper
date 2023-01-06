@@ -23,6 +23,7 @@
 #' y <- f + noise
 #' b <- 2
 #' wcn <- forward_sgwt(y, evalues, evectors, b=b)
+#' sigma^2
 #' HPFVN(wcn, evalues, b)
 #' @seealso \code{\link{GVN}}
 #' @references
@@ -32,7 +33,7 @@
 
 HPFVN <- function(wcn, evalues, b){
   n <- length(evalues)
-  kmax <- length(wcn)/n
+  kmax <- length(wcn)/n-1
   #- Estimated variance at each scale
   # scay <- rep(0, kmax+1)
   # for(j in 1:(kmax+1)) {
@@ -40,7 +41,7 @@ HPFVN <- function(wcn, evalues, b){
   #                     sum(zetav(evalues, j-1, b)))
   # }
   # return(scay)
-  sig <- sqrt(sum(wcn[(n*kmax):(n*(kmax+1))]^2)/
-                 sum(zetav(evalues, kmax, b)))
+  sig <- sum(wcn[(n*kmax+1):(n*(kmax+1))]^2)/
+                 sum(zetav(evalues, kmax, b))
   return(sig)
 }
