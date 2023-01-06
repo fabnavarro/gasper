@@ -19,8 +19,8 @@ plot_signal(z, f, size = 0.75, limits = range(f))
 Plot a signal on top of a given graph
 }
 \examples{
-f <- rnorm(2642)
-plot_signal(minnesota, f)
+f <- rnorm(length(grid1$xy[,1]))
+plot_signal(grid1, f)
 }
 \seealso{
 \code{\link{plot_graph}}

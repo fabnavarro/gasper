@@ -15,7 +15,8 @@ plot_graph(z, size = 0.75)
 Graph plot
 }
 \examples{
-plot_graph(minnesota)
+data(grid1)
+plot_graph(grid1)
 }
 \seealso{
 \code{\link{plot_signal}}

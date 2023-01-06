@@ -13,9 +13,7 @@ fullup(sA)
 Convert a symmetric sparse matrix sA stored as upper triangular matrix to full matrix A.
 }
 \examples{
-matrixname <- "grid1"
-groupname <- "AG-Monien"
-download_graph(matrixname,groupname)
+data(grid1)
 A <- fullup(grid1$sA)
 }
 \seealso{

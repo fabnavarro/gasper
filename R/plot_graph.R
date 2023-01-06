@@ -6,7 +6,8 @@
 #' @param z Graph data.
 #' @param size Dot size.
 #' @examples
-#' plot_graph(minnesota)
+#' data(grid1)
+#' plot_graph(grid1)
 #' @seealso \code{\link{plot_signal}}
 
 plot_graph <- function(z, size=0.75) {

@@ -6,9 +6,9 @@
 #' @param f Signal.
 #' @param A Adjacency matrix (sparse or dense).
 #' @examples
-#' data(minnesota)
-#' A <- minnesota$A
-#' x <- minnesota$xy[ ,1]
+#' data(grid1)
+#' A <- grid1$A
+#' x <- grid1$xy[ ,1]
 #' f <- sin(x)
 #' smoothmodulus(f, A)
 

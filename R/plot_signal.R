@@ -8,8 +8,8 @@
 #' @param size Dot size.
 #' @param limits Set colormap limits.
 #' @examples
-#' f <- rnorm(2642)
-#' plot_signal(minnesota, f)
+#' f <- rnorm(length(grid1$xy[,1]))
+#' plot_signal(grid1, f)
 #' @seealso \code{\link{plot_graph}}
 
 plot_signal <- function(z, f, size=0.75, limits=range(f)) {

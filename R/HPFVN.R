@@ -7,17 +7,15 @@
 #' @param b Parameter that control the number of scales.
 #' @param evalues Laplacian spectrum.
 #' @examples
-#' matrixname <- "grid1"
-#' groupname <- "AG-Monien"
-#' graph <- download_graph(matrixname,groupname)
-#' A <- graph$sA
+#' data(grid1)
+#' A <- grid1$sA
 #' L <- laplacian_mat(A)
-#' n <- nrow(L)
+#' x <- grid1$xy[ ,1]
+#' n <- length(x)
 #' val1 <- eigensort(L)
 #' evalues <- val1$evalues
 #' evectors <- val1$evectors
-#' lmax <- max(evalues)
-#' f <- randsignal(eta=0.01,k=5,A=A)
+#' f <- sin(x)
 #' sigma <- 0.1
 #' noise <- rnorm(n, sd = sigma)
 #' y <- f + noise
