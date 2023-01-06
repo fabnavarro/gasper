@@ -19,6 +19,7 @@ gasper News
 # gasper 1.1.2 relase (01/06/2023)
 * satisfy CRAN policy: 'Packages which use Internet resources should fail gracefully with an informative message
 if the resource is not available or has changed (and not give a check warning nor error).'
+* CRAN resubmission.
 
 # gasper 1.1.1 release (02/16/2021)
 * correction of an error in `laplacian_mat` function (in the case of full matrix input).
@@ -44,12 +45,12 @@ if the resource is not available or has changed (and not give a check warning no
 * add new `plot_filter` function (plot wavelet tight-frame functions).
 
 # gasper 1.0.1 release (07/27/2020)
-* fix warnings bug `SUREthresh` functions
+* fix warnings bug `SUREthresh` functions.
 * adapt DESCRIPTION to meet CRAN's expectations (i.e., omit the redundant "in R" from the title, use the Authors\@R field and declare Maintainer, Authors and Contributors with their appropriate roles with person() calls, do not start the description with "This package", package name, title or similar. Just start with "Provides ..." or similar,  do not start the description with "This package", package name, title or similar).
-* optionally specify a RNG seed (for reproducible experiments) in swissroll.R
-* remove `adjacency_mat` N arg
-* Cran resubmission
+* optionally specify a RNG seed (for reproducible experiments) in swissroll.R.
+* remove `adjacency_mat` N arg.
+* CRAN resubmission.
 
 # gasper 1.0.0 release (07/23/2020)
-* First release
-* Cran submission
+* First release.
+* CRAN submission.

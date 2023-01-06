@@ -7,6 +7,7 @@ gasper News
 -   satisfy CRAN policy: ‘Packages which use Internet resources should
     fail gracefully with an informative message if the resource is not
     available or has changed (and not give a check warning nor error).’
+-   CRAN resubmission.
 
 # gasper 1.1.1 release (02/16/2021)
 
@@ -52,7 +53,7 @@ gasper News
 
 # gasper 1.0.1 release (07/27/2020)
 
--   fix warnings bug `SUREthresh` functions
+-   fix warnings bug `SUREthresh` functions.
 -   adapt DESCRIPTION to meet CRAN’s expectations (i.e., omit the
     redundant “in R” from the title, use the Authors@R field and declare
     Maintainer, Authors and Contributors with their appropriate roles
@@ -61,11 +62,11 @@ gasper News
     …” or similar, do not start the description with “This package”,
     package name, title or similar).
 -   optionally specify a RNG seed (for reproducible experiments) in
-    swissroll.R
--   remove `adjacency_mat` N arg
--   Cran resubmission
+    swissroll.R.
+-   remove `adjacency_mat` N arg.
+-   CRAN resubmission.
 
 # gasper 1.0.0 release (07/23/2020)
 
--   First release
--   Cran submission
+-   First release.
+-   CRAN submission.
