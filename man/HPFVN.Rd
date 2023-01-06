@@ -33,6 +33,7 @@ noise <- rnorm(n, sd = sigma)
 y <- f + noise
 b <- 2
 wcn <- forward_sgwt(y, evalues, evectors, b=b)
+sigma^2
 HPFVN(wcn, evalues, b)
 }
 \references{
