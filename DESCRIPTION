@@ -4,7 +4,7 @@ Title: Graph Signal Processing
 Version: 1.1.2.9000
 Authors@R: c(person("Fabien", "Navarro", role = c("aut", "cre"), 
                     email = "fabien.navarro@math.cnrs.fr"), 
-             person("Basile", "De Loynes", role = "aut", 
+             person("Basile", "de Loynes", role = "aut", 
                     email = "basile.deloynes@ensai.fr"), 
              person("Baptiste", "Olivier", role = "aut", 
                     email = "baptiste.olivier@orange.com"))
