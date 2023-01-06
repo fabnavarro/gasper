@@ -1,7 +1,7 @@
 Package: gasper
 Type: Package
 Title: Graph Signal Processing
-Version: 1.1.1.9000
+Version: 1.1.2
 Authors@R: c(person("Fabien", "Navarro", role = c("aut", "cre"), 
                     email = "fabien.navarro@math.cnrs.fr"), 
              person("Basile", "De Loynes", role = "aut", 
@@ -27,7 +27,9 @@ Imports:
     ggplot2,
     methods,
     Matrix,
-    RSpectra
+    RSpectra,
+    httr,
+    curl
 LinkingTo: 
     Rcpp,
     RcppArmadillo

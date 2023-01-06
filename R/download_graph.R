@@ -4,6 +4,8 @@
 #' they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
 #'
 #' @export download_graph
+#' @importFrom httr GET timeout http_error message_for_status
+#' @importFrom curl has_internet
 #' @importFrom utils download.file untar read.table
 #' @importFrom Matrix readMM
 #' @param matrixname Name of the graph to download.
@@ -24,7 +26,9 @@ download_graph <- function(matrixname, groupname) {
 
     temp <- tempfile()
     tempd <- tempdir()
-    download.file(url,temp)
+    gracefully_fail(url)
+    download.file(url, temp)
+
     untar(temp, exdir=tempd)
 
     if (Sys.info()['sysname']=="Windows"){
@@ -111,5 +115,39 @@ download_graph <- function(matrixname, groupname) {
                     envir = parent.frame()))
     }
 
+}
+
+gracefully_fail <- function(remote_file) {
+  # Fail gracefully if API or internet not available
+  # Based on code:
+  # https://github.com/lgnbhl/wikisourcer/blob/master/R/utils.R
+  # See full discussion to be compliante with the CRAN policy
+  # https://community.rstudio.com/t/internet-resources-should-fail-gracefully/49199
+  try_GET <- function(x, ...) {
+    tryCatch(
+      GET(url = x, timeout(60), ...),
+      error = function(e) conditionMessage(e),
+      warning = function(w) conditionMessage(w)
+    )
+  }
+  is_response <- function(x) {
+    class(x) == "response"
+  }
+  # First check internet connection
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
+  # Then try for timeout problems
+  resp <- try_GET(remote_file)
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  # Then stop if status > 400
+  if (httr::http_error(resp)) {
+    message_for_status(resp)
+    return(invisible(NULL))
+  }
 }
 
