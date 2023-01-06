@@ -5,16 +5,14 @@
 #' @export smoothmodulus
 #' @param f Signal.
 #' @param A Adjacency matrix (sparse or dense).
-#' @param L Laplacian matrix (sparse or dense).
 #' @examples
 #' data(minnesota)
 #' A <- minnesota$A
-#' L <- laplacian_mat(A)
 #' x <- minnesota$xy[ ,1]
 #' f <- sin(x)
-#' smoothmodulus(f, A, L)
+#' smoothmodulus(f, A)
 
-smoothmodulus <- function(f, A, L) {
+smoothmodulus <- function(f, A) {
   modulef <- 0.5 * sum(A * outer(f, f, "-")^2)
   return(modulef)
 }
