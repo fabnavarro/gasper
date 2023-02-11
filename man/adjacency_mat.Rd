@@ -4,7 +4,13 @@
 \alias{adjacency_mat}
 \title{Compute the adjacency matrix of the gaussian weighted graph}
 \usage{
-adjacency_mat(pts, f = function(x) {     exp(-x^2/8) }, s = 0)
+adjacency_mat(
+  pts,
+  f = function(x) {
+     exp(-x^2/8)
+ },
+  s = 0
+)
 }
 \arguments{
 \item{pts}{coordinates of N points in \eqn{R^3}{R^3}.}

@@ -6,14 +6,7 @@
 \alias{gasper-package}
 \title{gasper: Graph Signal Processing}
 \description{
-Provides the standard operations for signal processing on graphs: 
-    graph Fourier transform, spectral graph wavelet transform, 
-    visualization tools. It also implements a data driven method
-    for graph signal denoising/regression, for details see 
-    De Loynes, Navarro, Olivier (2019) <arxiv:1906.01882>. 
-    The package also provides an interface to the SuiteSparse Matrix Collection, 
-    <https://sparse.tamu.edu/>, a large and widely used set of sparse matrix 
-    benchmarks collected from a wide range of applications.
+Provides the standard operations for signal processing on graphs: graph Fourier transform, spectral graph wavelet transform, visualization tools. It also implements a data driven method for graph signal denoising/regression, for details see De Loynes, Navarro, Olivier (2019) \href{https://arxiv.org/abs/1906.01882}{arXiv:1906.01882}. The package also provides an interface to the SuiteSparse Matrix Collection, \url{https://sparse.tamu.edu/}, a large and widely used set of sparse matrix benchmarks collected from a wide range of applications.
 }
 \seealso{
 Useful links:

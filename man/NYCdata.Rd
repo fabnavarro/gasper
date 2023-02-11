@@ -4,11 +4,13 @@
 \name{NYCdata}
 \alias{NYCdata}
 \title{NYC network.}
-\format{list of 2 elements
+\format{
+list of 2 elements
 \describe{
 \item{A}{NYC adjacency matrix (built using exponential weights between two nodes).}
 \item{f}{median price observed from miles travelled to the given drop off point.}
-}}
+}
+}
 \usage{
 NYCdata
 }

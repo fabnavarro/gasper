@@ -4,11 +4,13 @@
 \name{rlogo}
 \alias{rlogo}
 \title{R logo graph.}
-\format{list of 2 elements
+\format{
+list of 2 elements
 \describe{
 \item{xy}{coordinates}
 \item{sA}{adjacency matrix}
-}}
+}
+}
 \usage{
 rlogo
 }

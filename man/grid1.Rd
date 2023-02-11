@@ -4,11 +4,13 @@
 \name{grid1}
 \alias{grid1}
 \title{grid1 graph.}
-\format{list of 2 elements
+\format{
+list of 2 elements
 \describe{
 \item{xy}{coordinates}
 \item{sA}{adjacency matrix}
-}}
+}
+}
 \usage{
 grid1
 }

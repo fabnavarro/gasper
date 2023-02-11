@@ -4,7 +4,8 @@
 \name{minnesota}
 \alias{minnesota}
 \title{Minnesota road network.}
-\format{list of 6 elements
+\format{
+list of 6 elements
 \describe{
 \item{xy}{coordinates}
 \item{A}{adjacency matrix}
@@ -12,7 +13,8 @@
 \item{f1}{eta=0.01 and k=2}
 \item{f2}{eta = 0.001 and k=4}
 \item{labels}{labels}
-}}
+}
+}
 \source{
 D. Gleich. The MatlabBGL Matlab library. \url{https://www.cs.purdue.edu/homes/dgleich/packages/matlab_bgl/index.html}.
 }

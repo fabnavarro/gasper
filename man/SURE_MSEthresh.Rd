@@ -4,8 +4,17 @@
 \alias{SURE_MSEthresh}
 \title{Stein's Unbiased Risk Estimate.}
 \usage{
-SURE_MSEthresh(wcn, wcf, tresh, diagWWt, b, sigma, hatsigma, policy,
-  keepwc = TRUE)
+SURE_MSEthresh(
+  wcn,
+  wcf,
+  tresh,
+  diagWWt,
+  b,
+  sigma,
+  hatsigma,
+  policy,
+  keepwc = TRUE
+)
 }
 \arguments{
 \item{wcn}{Noisy wavelet coefficents.}
