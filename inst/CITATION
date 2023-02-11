@@ -9,7 +9,7 @@ bibentry(
     bibtype = "Manual",
     title = "R package gasper: Graph Signal Processing",
     author = AUTHORS,
-    year = sub("-.*", "",packageDate("gasper")),
+    year = sub("-.*", "",packageDate(desc = as.list(meta))),
     note = sprintf("R package version %s",VERSION),
     url = "https://CRAN.R-project.org/package=gasper",
     header = "If you use ‘gasper’ in publications, please consider citing the reference manual:"

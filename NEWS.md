@@ -1,7 +1,9 @@
 gasper News
 
-# gasper 1.1.2.9000
+# gasper 1.1.3 (02/11/2023)
 
+-   fix CITATION file to work properly when the package is not
+    installed.
 -   fix error in `HPFVN`.
 
 # gasper 1.1.2 relase (01/06/2023)
