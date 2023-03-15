@@ -1,15 +1,15 @@
-gasper
-======
+# gasper
 
 [![Travis build
 status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://travis-ci.org/fabnavarro/gasper)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
+![CRAN Downloads](http://cranlogs.r-pkg.org/badges/gasper) ![CRAN
+Downloads](http://cranlogs.r-pkg.org/badges/grand-total/gasper)
 
 Graph signal processing in R.
 <img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
 
-Download and Install
---------------------
+## Download and Install
 
 Install the devtools package if you haven’t already.
 
@@ -37,8 +37,7 @@ To obtain the complete list of package functions, simply type
 help(package = "gasper")
 ```
 
-Getting Started
----------------
+## Getting Started
 
 See the [package
 vignette](https://fnavarro.perso.math.cnrs.fr/rpackage/gasper_vignette.pdf)
@@ -63,14 +62,12 @@ effective generalization of the Stein Unbiased Risk Estimate (SURE) for
 signal denoising/regression on graphs using Spectral Graph Wavelet
 Transform.
 
-Interface to the SuiteSparse Matrix Collection
-----------------------------------------------
+## Interface to the SuiteSparse Matrix Collection
 
 The package also provides an interface to the SuiteSparse Matrix
 Collection, which is a large and actively growing set of sparse matrix
 benchmarks gathered from a broad spectrum of applications (for details
-see
-<a href="https://sparse.tamu.edu/" class="uri">https://sparse.tamu.edu/</a>).
+see <https://sparse.tamu.edu/>).
 
 The `download_graph` function allows to download a test matrix from this
 collection. For example:
