@@ -1,7 +1,5 @@
 # gasper
 
-[![Travis build
-status](https://travis-ci.org/fabnavarro/gasper.svg?branch=master)](https://travis-ci.org/fabnavarro/gasper)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/gasper) ![CRAN
 Downloads](http://cranlogs.r-pkg.org/badges/grand-total/gasper)
