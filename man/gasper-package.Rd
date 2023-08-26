@@ -17,12 +17,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Fabien Navarro \email{fabien.navarro@math.cnrs.fr}
+\strong{Maintainer}: Fabien Navarro \email{fabien.navarro@math.cnrs.fr} (\href{https://orcid.org/0000-0002-4979-2745}{ORCID})
 
 Authors:
 \itemize{
-  \item Basile de Loynes \email{basile.deloynes@ensai.fr}
-  \item Baptiste Olivier \email{baptiste.olivier@orange.com}
+  \item Basile de Loynes \email{basile.deloynes@ensai.fr} (\href{https://orcid.org/0000-0002-5397-6811}{ORCID})
+  \item Baptiste Olivier \email{baptiste.olivier@orange.com} (\href{https://orcid.org/0000-0002-5853-0341}{ORCID})
 }
 
 }
