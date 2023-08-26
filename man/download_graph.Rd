@@ -19,10 +19,12 @@ If coordinates are associated with the graphs,
 they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
 }
 \examples{
+\dontrun{
 matrixname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(matrixname,groupname)
 file.show(grid1$info)
+}
 }
 \references{
 Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.

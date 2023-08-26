@@ -14,10 +14,12 @@
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #' @examples
+#' \dontrun{
 #' matrixname <- "grid1"
 #' groupname <- "AG-Monien"
 #' download_graph(matrixname,groupname)
 #' file.show(grid1$info)
+#' }
 
 download_graph <- function(matrixname, groupname) {
     url <- paste("https://sparse.tamu.edu/MM/",
