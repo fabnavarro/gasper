@@ -25,6 +25,7 @@ if (as.numeric(R.version$minor)>6){
   RNGkind(sample.kind = "Rounding")
 }
 set.seed(434343)
+data(grid1)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -48,7 +49,7 @@ A certain number of graphs are present in the package. They are stored as an Rda
 An interface is also provided. It allows to retrieve the matrices  related to many problems provided by the SuiteSparse Matrix Collection (formerly known as the University of Florida Sparse Matrix Collection) @davis2011university. This collection is a large and actively growing set of sparse matrices that arise in real applications (as structural engineering, computational fluid dynamics, computer graphics/vision, optimization, economic and financial modeling, mathematics and statistics, to name just a few). For more details see https://sparse.tamu.edu/.
 
 The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
-```{r}
+```{r, eval = FALSE}
 matrixname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(matrixname, groupname)
