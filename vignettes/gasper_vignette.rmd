@@ -73,7 +73,7 @@ grid1$dim
 ```
 
 * "info" information about the matrix that can be display via `file.show(grid1$info)` for example or in the console:
-```{r}
+```{r, eval = FALSE}
 cat(readLines(grid1$info, n=14), sep = "\n")
 ```
 
