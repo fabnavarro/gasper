@@ -1,6 +1,11 @@
 gasper News
 
-# gasper 1.1.3 (02/11/2023)
+# gasper 1.1.4 relase (08/26/2023)
+
+-   satisfy CRAN policy (by removing external download).
+-   CRAN resubmission.
+
+# gasper 1.1.3 relase (02/11/2023)
 
 -   fix CITATION file to work properly when the package is not
     installed.
