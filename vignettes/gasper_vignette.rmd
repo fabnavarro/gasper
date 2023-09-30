@@ -170,7 +170,7 @@ wcn <- analysis(tilde_f,tf)
 wcf <- analysis(f,tf)
 ```
 
-An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a fast forward SGWT. For exemple:
+An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a fast forward SGWT. For example:
 ```{r, eval=FALSE}
 wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
