@@ -67,7 +67,7 @@ download_graph <- function(matrixname, groupname) {
                            NonZeros)
 
     m <- readMM(temppath)
-    m <- as(m, "CsparseMatrix")
+    m <- as(m, "dMatrix")
     if(nrow(m)==ncol(m)){
       m <- as(m, "dsCMatrix")
     } else{
