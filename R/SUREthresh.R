@@ -18,7 +18,7 @@
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
-SUREthresh <- function(wcn, tresh, diagWWt, b, sigma, hatsigma, policy, keepwc=TRUE) {
+SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma, policy = "uniform", keepwc=TRUE) {
   nthresh <- length(tresh)
   erisk <- dof  <- MSE <- rep(0, nthresh)
   if(keepwc){

@@ -2,12 +2,12 @@ Package: gasper
 Type: Package
 Title: Graph Signal Processing
 Version: 1.1.4
-Authors@R: c(person("Fabien", "Navarro", role = c("aut", "cre"), 
-                    email = "fabien.navarro@math.cnrs.fr", 
-                    comment = c(ORCID = "0000-0002-4979-2745")), 
-             person("Basile", "de Loynes", role = "aut", 
+Authors@R: c(person("Basile", "de Loynes", role = "aut", 
                     email = "basile.deloynes@ensai.fr",
-                    comment = c(ORCID = "0000-0002-5397-6811")), 
+                    comment = c(ORCID = "0000-0002-5397-6811")),
+             person("Fabien", "Navarro", role = c("aut", "cre"), 
+                    email = "fabien.navarro@math.cnrs.fr", 
+                    comment = c(ORCID = "0000-0002-4979-2745")),
              person("Baptiste", "Olivier", role = "aut", 
                     email = "baptiste.olivier@orange.com",
                     comment = c(ORCID = "0000-0002-5853-0341")))
