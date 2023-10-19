@@ -13,12 +13,12 @@
 #' @param hatsigma Estimator of the sd (if any).
 #' @param policy Dependent or uniform.
 #' @param keepwc Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).
-#' @return \code{res} a dataframe contening SURE, hatSURE and their respective minima.
+#' @return \code{res} a dataframe containing SURE, hatSURE and their respective minima.
 #' @seealso \code{\link{SURE_MSEthresh}}
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
-SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma, policy = "uniform", keepwc=TRUE) {
+SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma = NA, policy = "uniform", keepwc=TRUE) {
   nthresh <- length(tresh)
   erisk <- dof  <- MSE <- rep(0, nthresh)
   if(keepwc){
@@ -55,8 +55,8 @@ SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma, policy = "un
     opthreshhatSURE <- tresh[minhatSURE]
     res <- list("wc"=wcs,
                 "res"=data.frame(SURE = SURE, hatSURE = hatSURE),
-                "min"=c(minSURE, minhatSURE),
-                "thr"=c(opthreshSURE, opthreshhatSURE))
+                "min"=c(xminSURE = minSURE, xminhatSURE = minhatSURE),
+                "thr"=c(opthreshSURE = opthreshSURE, opthreshSURE = opthreshhatSURE))
   }
   else{
     if (policy == "uniform") {
@@ -86,8 +86,8 @@ SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma, policy = "un
     opthreshSURE <- tresh[minSURE]
     opthreshhatSURE <- tresh[minhatSURE]
     res <- list("res"=data.frame(SURE = SURE, hatSURE = hatSURE),
-                "min"=c(minSURE, minhatSURE),
-                "thr"=c(opthreshSURE, opthreshhatSURE))
+                "min"=c(xminSURE = minSURE, xminhatSURE = minhatSURE),
+                "thr"=c(opthreshSURE = opthreshSURE, opthreshhatSURE = opthreshhatSURE))
   }
   return(res)
 }

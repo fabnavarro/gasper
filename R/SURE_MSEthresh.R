@@ -8,21 +8,21 @@
 #'  - the calculation of the MSE is also included for comparison purpose.
 #'
 #' @export SURE_MSEthresh
-#' @param wcn Noisy wavelet coefficents.
+#' @param wcn Noisy wavelet coefficients.
 #' @param wcf True wavelet coefficients.
 #' @param tresh Threshold values.
 #' @param diagWWt Weights.
-#' @param b Thresholding type (b=1: soft, b=2: JS).
-#' @param sigma Sd of the noise.
-#' @param hatsigma Estimator of the sd (if any).
+#' @param b Threshold type (e.g, b=1: soft, b=2: JS).
+#' @param sigma Standard deviation of the noise.
+#' @param hatsigma Estimator of the standard deviation (if any).
 #' @param policy Dependent or uniform.
 #' @param keepwc Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).
-#' @return \code{res} a dataframe contening MSE, SURE, hatSURE and their respective minima
+#' @return \code{res} a dataframe containing MSE, SURE, hatSURE and their respective minima
 #' @seealso \code{\link{SUREthresh}}
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
-SURE_MSEthresh <- function(wcn, wcf, tresh, diagWWt, b = 2, sigma, hatsigma, policy = "uniform", keepwc=TRUE) {
+SURE_MSEthresh <- function(wcn, wcf, tresh, diagWWt, b = 2, sigma, hatsigma = NA, policy = "uniform", keepwc=TRUE) {
   nthresh <- length(tresh)
   erisk <- dof  <- MSE <- rep(0, nthresh)
   if(keepwc){
@@ -63,8 +63,12 @@ SURE_MSEthresh <- function(wcn, wcf, tresh, diagWWt, b = 2, sigma, hatsigma, pol
     opthreshhatSURE <- tresh[minhatSURE]
     res <- list("wc"=wcs,
                 "res"=data.frame(MSE = MSE, SURE = SURE, hatSURE = hatSURE),
-                "min"=c(minMSE, minSURE, minhatSURE),
-                "thr"=c(opthreshMSE, opthreshSURE, opthreshhatSURE))
+                "min"=c(xminMSE = minMSE,
+                        xminSURE = minSURE,
+                        xminhatSURE = minhatSURE),
+                "thr"=c(opthreshMSE = opthreshMSE,
+                        opthreshSURE = opthreshSURE,
+                        opthreshhatSURE = opthreshhatSURE))
   }
   else{
     if (policy == "uniform") {
@@ -100,8 +104,12 @@ SURE_MSEthresh <- function(wcn, wcf, tresh, diagWWt, b = 2, sigma, hatsigma, pol
     res <- list("res"=data.frame(MSE = MSE,
                                  SURE = SURE,
                                  hatSURE = hatSURE),
-                "min"=c(minMSE, minSURE, minhatSURE),
-                "thr"=c(opthreshMSE, opthreshSURE, opthreshhatSURE))
+                "min"=c(xminMSE = minMSE,
+                        xminSURE = minSURE,
+                        xminhatSURE = minhatSURE),
+                "thr"=c(opthreshMSE = opthreshMSE,
+                        opthreshSURE = opthreshSURE,
+                        opthreshhatSURE = opthreshhatSURE))
   }
   return(res)
 }

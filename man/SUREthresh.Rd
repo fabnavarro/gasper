@@ -4,7 +4,16 @@
 \alias{SUREthresh}
 \title{Stein's Unbiased Risk Estimate.}
 \usage{
-SUREthresh(wcn, tresh, diagWWt, b, sigma, hatsigma, policy, keepwc = TRUE)
+SUREthresh(
+  wcn,
+  tresh,
+  diagWWt,
+  b = 2,
+  sigma,
+  hatsigma = NA,
+  policy = "uniform",
+  keepwc = TRUE
+)
 }
 \arguments{
 \item{wcn}{Noisy wavelet coefficents.}
@@ -24,7 +33,7 @@ SUREthresh(wcn, tresh, diagWWt, b, sigma, hatsigma, policy, keepwc = TRUE)
 \item{keepwc}{Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).}
 }
 \value{
-\code{res} a dataframe contening SURE, hatSURE and their respective minima.
+\code{res} a dataframe containing SURE, hatSURE and their respective minima.
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE

@@ -9,15 +9,15 @@ SURE_MSEthresh(
   wcf,
   tresh,
   diagWWt,
-  b,
+  b = 2,
   sigma,
-  hatsigma,
-  policy,
+  hatsigma = NA,
+  policy = "uniform",
   keepwc = TRUE
 )
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficents.}
+\item{wcn}{Noisy wavelet coefficients.}
 
 \item{wcf}{True wavelet coefficients.}
 
@@ -25,18 +25,18 @@ SURE_MSEthresh(
 
 \item{diagWWt}{Weights.}
 
-\item{b}{Thresholding type (b=1: soft, b=2: JS).}
+\item{b}{Threshold type (e.g, b=1: soft, b=2: JS).}
 
-\item{sigma}{Sd of the noise.}
+\item{sigma}{Standard deviation of the noise.}
 
-\item{hatsigma}{Estimator of the sd (if any).}
+\item{hatsigma}{Estimator of the standard deviation (if any).}
 
 \item{policy}{Dependent or uniform.}
 
 \item{keepwc}{Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).}
 }
 \value{
-\code{res} a dataframe contening MSE, SURE, hatSURE and their respective minima
+\code{res} a dataframe containing MSE, SURE, hatSURE and their respective minima
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE
