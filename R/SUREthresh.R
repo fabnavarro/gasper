@@ -1,12 +1,12 @@
 #' Stein's Unbiased Risk Estimate.
 #'
 #' Adaptive Threshold Selection Using Principle of SURE
-#' (The irreductible variance term is not included,
+#' (The irreducible variance term is not included,
 #'  it does not change the position of the minimum).
 #'
 #' @export SUREthresh
-#' @param wcn Noisy wavelet coefficents.
-#' @param tresh Threshold values.
+#' @param wcn Noisy wavelet coefficients.
+#' @param thresh Threshold values.
 #' @param diagWWt Weights.
 #' @param b Thresholding type (b=1: soft, b=2: JS).
 #' @param sigma Sd of the noise.
@@ -18,41 +18,39 @@
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
-SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma = NA, policy = "uniform", keepwc=TRUE) {
-  nthresh <- length(tresh)
+SUREthresh <- function(wcn, thresh, diagWWt, b = 2, sigma, hatsigma = NA, policy = "uniform", keepwc=TRUE) {
+  nthresh <- length(thresh)
   erisk <- dof  <- MSE <- rep(0, nthresh)
   if(keepwc){
     wcs <- matrix(0, ncol=nthresh, nrow = length(wcn))
     if (policy == "uniform") {
       for (i in 1:nthresh) {
-        wc <- betathresh(wcn, tresh[i], b)
+        wc <- betathresh(wcn, thresh[i], b)
         wcs[,i] <- wc
         erisk[i] <- sum((wc - wcn)^2)
-        dof[i] <- 2*sum((abs(wcn) > tresh[i])*
-                          (1 + (b - 1)*tresh[i]^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
+        dof[i] <- 2*sum((abs(wcn) > thresh[i])*
+                          (1 + (b - 1)*thresh[i]^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
       }
     }
     else if (policy == "dependent") {
       for (i in 1:nthresh) {
-        wc <- betathresh(wcn, tresh[i]*sqrt(diagWWt), b)
+        wc <- betathresh(wcn, thresh[i]*sqrt(diagWWt), b)
         wcs[,i] <- wc
         erisk[i] <- sum((wc - wcn)^2)
-        dof[i] <- 2*sum((abs(wcn) > tresh[i]*sqrt(diagWWt))*
-                          (1 + (b - 1)*(tresh[i]*sqrt(diagWWt))^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
+        dof[i] <- 2*sum((abs(wcn) > thresh[i]*sqrt(diagWWt))*
+                          (1 + (b - 1)*(thresh[i]*sqrt(diagWWt))^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
       }
     } else {
       warning("Allowable policy are listed above")
       print("uniform")
       print("dependent")
     }
-    #MSE <- colSums((as.vector(wcf) - wcs)^2)
-    #erisk <- colSums((wcs - as.vector(wcn))^2)
     SURE <- erisk + dof*sigma^2
     hatSURE <- erisk + dof*hatsigma^2
     minSURE <- which.min(SURE)
     minhatSURE <- which.min(hatSURE)
-    opthreshSURE <- tresh[minSURE]
-    opthreshhatSURE <- tresh[minhatSURE]
+    opthreshSURE <- thresh[minSURE]
+    opthreshhatSURE <- thresh[minhatSURE]
     res <- list("wc"=wcs,
                 "res"=data.frame(SURE = SURE, hatSURE = hatSURE),
                 "min"=c(xminSURE = minSURE, xminhatSURE = minhatSURE),
@@ -61,18 +59,19 @@ SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma = NA, policy 
   else{
     if (policy == "uniform") {
       for (i in 1:nthresh) {
-        wc <- betathresh(wcn, tresh[i], b)
+        wc <- betathresh(wcn, thresh[i], b)
         erisk[i] <- sum((wc - wcn)^2)
-        dof[i] <- 2*sum((abs(wcn) > tresh[i])*
-                          (1 + (b - 1)*tresh[i]^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
+        dof[i] <- 2*sum((abs(wcn) > thresh[i])*
+                          (1 + (b - 1)*thresh[i]^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
       }
     }
     else if (policy == "dependent") {
       for (i in 1:nthresh) {
-        wc <- betathresh(wcn, tresh[i]*sqrt(diagWWt), b)
+        wc <- betathresh(wcn, thresh[i]*sqrt(diagWWt), b)
         erisk[i] <- sum((wc - wcn)^2)
-        dof[i] <- 2*sum((abs(wcn) > tresh[i]*sqrt(diagWWt))*
-                          (1 + (b - 1)*(tresh[i]*sqrt(diagWWt))^b/abs(wcn)^b)*diagWWt,na.rm=TRUE)
+        dof[i] <- 2*sum((abs(wcn) > thresh[i]*sqrt(diagWWt))*
+                          (1 + (b - 1)*(thresh[i]*sqrt(diagWWt))^b/abs(wcn)^b)*diagWWt,
+                        na.rm=TRUE)
       }
     } else {
       warning("Allowable policy are listed above")
@@ -83,8 +82,8 @@ SUREthresh <- function(wcn, tresh, diagWWt, b = 2, sigma, hatsigma = NA, policy 
     hatSURE <- erisk + dof*hatsigma^2
     minSURE <- which.min(SURE)
     minhatSURE <- which.min(hatSURE)
-    opthreshSURE <- tresh[minSURE]
-    opthreshhatSURE <- tresh[minhatSURE]
+    opthreshSURE <- thresh[minSURE]
+    opthreshhatSURE <- thresh[minhatSURE]
     res <- list("res"=data.frame(SURE = SURE, hatSURE = hatSURE),
                 "min"=c(xminSURE = minSURE, xminhatSURE = minhatSURE),
                 "thr"=c(opthreshSURE = opthreshSURE, opthreshhatSURE = opthreshhatSURE))

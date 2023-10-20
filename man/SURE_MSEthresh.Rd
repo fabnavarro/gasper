@@ -7,7 +7,7 @@
 SURE_MSEthresh(
   wcn,
   wcf,
-  tresh,
+  thresh,
   diagWWt,
   b = 2,
   sigma,
@@ -21,7 +21,7 @@ SURE_MSEthresh(
 
 \item{wcf}{True wavelet coefficients.}
 
-\item{tresh}{Threshold values.}
+\item{thresh}{Threshold values.}
 
 \item{diagWWt}{Weights.}
 
@@ -40,7 +40,7 @@ SURE_MSEthresh(
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE
-(The irreductible variance term is not included,
+(The irreducible variance term is not included,
  it does not change the position of the minimum).
 }
 \details{

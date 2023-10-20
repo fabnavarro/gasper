@@ -6,7 +6,7 @@
 \usage{
 SUREthresh(
   wcn,
-  tresh,
+  thresh,
   diagWWt,
   b = 2,
   sigma,
@@ -16,9 +16,9 @@ SUREthresh(
 )
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficents.}
+\item{wcn}{Noisy wavelet coefficients.}
 
-\item{tresh}{Threshold values.}
+\item{thresh}{Threshold values.}
 
 \item{diagWWt}{Weights.}
 
@@ -37,7 +37,7 @@ SUREthresh(
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE
-(The irreductible variance term is not included,
+(The irreducible variance term is not included,
  it does not change the position of the minimum).
 }
 \references{
