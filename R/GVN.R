@@ -26,7 +26,7 @@
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #' @details
 #'
-#' \deqn{\hat \sigma = \frac{ y^T L y}{\mathrm{Tr}~L}}
+#' \deqn{\hat \sigma^2 = \frac{ y^T L y}{\mathrm{Tr}~L}}
 
 GVN <- function(y, A, L) {
   sig <- 0.5 * sum(A * outer(y, y, "-")^2)/sum(Matrix::diag(L))

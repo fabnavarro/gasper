@@ -17,7 +17,7 @@ GVN(y, A, L)
 Graph equivalent of the Von Neummann variance estimator.
 }
 \details{
-\deqn{\hat \sigma = \frac{\widetilde f^T \L \widetilde f}{\mathrm{Tr}~\L}}
+\deqn{\hat \sigma^2 = \frac{ y^T L y}{\mathrm{Tr}~L}}
 }
 \examples{
 data(minnesota)
