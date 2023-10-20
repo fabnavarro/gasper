@@ -9,7 +9,7 @@ SURE_MSEthresh(
   wcf,
   thresh,
   diagWWt,
-  b = 2,
+  beta = 2,
   sigma,
   hatsigma = NA,
   policy = "uniform",
@@ -25,7 +25,7 @@ SURE_MSEthresh(
 
 \item{diagWWt}{Weights.}
 
-\item{b}{Threshold type (e.g, b=1: soft, b=2: JS).}
+\item{beta}{Threshold type (e.g, beta=1: soft, beta=2: JS).}
 
 \item{sigma}{Standard deviation of the noise.}
 

@@ -1,5 +1,11 @@
 gasper News
 
+# gasper 1.1.4.xxx
+
+-   change b by beta in `betathresh` and `SUREThresh` to avoid confusion
+    with the parameter that control the number of scales in other
+    functions.
+
 # gasper 1.1.4 relase (08/26/2023)
 
 -   satisfy CRAN policy (by removing external download).

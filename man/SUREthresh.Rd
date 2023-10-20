@@ -8,7 +8,7 @@ SUREthresh(
   wcn,
   thresh,
   diagWWt,
-  b = 2,
+  beta = 2,
   sigma,
   hatsigma = NA,
   policy = "uniform",
@@ -22,7 +22,7 @@ SUREthresh(
 
 \item{diagWWt}{Weights.}
 
-\item{b}{Thresholding type (b=1: soft, b=2: JS).}
+\item{beta}{Thresholding type (beta=1: soft, beta=2: JS).}
 
 \item{sigma}{Sd of the noise.}
 

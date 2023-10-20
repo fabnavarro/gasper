@@ -4,14 +4,14 @@
 \alias{betathresh}
 \title{Apply Beta Threshold.}
 \usage{
-betathresh(y, t, b)
+betathresh(y, t, beta)
 }
 \arguments{
 \item{y}{Noisy Data.}
 
 \item{t}{Threshold.}
 
-\item{b}{Thresholding type (b=1: soft, b=2: JS).}
+\item{beta}{Thresholding type (beta=1: soft, beta=2: JS).}
 }
 \value{
 \code{x} Filtered result.
