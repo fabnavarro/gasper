@@ -13,7 +13,7 @@
 #' @param hatsigma Estimator of the sd (if any).
 #' @param policy Dependent or uniform.
 #' @param keepwc Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).
-#' @return \code{res} a dataframe containing SURE, hatSURE and their respective minima.
+#' @return \code{res} A dataframe containing SURE, hatSURE and their respective minima and corresponding optimal thresholds.
 #' @seealso \code{\link{SURE_MSEthresh}}
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.

@@ -39,7 +39,7 @@ We present a short tutorial on to the use of the \proglang{R} \pkg{gasper} packa
 \end{abstract}
 
 # Introduction
-The emerging field of Graph Signal Processing (GSP) aims to bridge the gap between signal processing and spectral graph theory. One of the objectives is to generalize fundamental analysis operations from regular grid signals to irregular structures in the form of graphs. There is an abundant literature on GSP, in particular we refer the reader to @shuman2013emerging and @ortega2018graph for an introduction to this field and an overview of recent developments, challenges and applications. GSP has also given rise to numerous applications in machine/deep learning: convolutional neural networks (CNN) on graphs @bruna2013spectral, @henaff2015deep, @defferrard2016convolutional, semi-supervised classification with graph CNN @kipf2016semi, @hamilton2017inductive,  community detection @tremblay2014graph, to name just a few.
+The emerging field of Graph Signal Processing (GSP) aims to bridge the gap between signal processing and spectral graph theory. One of the objectives is to generalize fundamental analysis operations from regular grid signals to irregular structures in the form of graphs. There is an abundant literature on GSP, in particular we refer the reader to @shuman2013emerging and @ortega2018graph for an introduction to this field and an overview of recent developments, challenges and applications. GSP has also given rise to numerous applications in machine/deep learning: convolutional neural networks (CNN) on graphs @bruna2013spectral, @henaff2015deep, @defferrard2016convolutional, semi-supervised classification with graph CNN @kipf2016semi, @hamilton2017inductive, community detection @tremblay2014graph, to name just a few.
 
 Different software programs exist for processing signals on graphs, in different languages. The Graph Signal Processing toolbox (GSPbox) is an easy to use matlab toolbox that performs a wide variety of operations on graphs. This toolbox was port to Python as the PyGSP @perraudin2014gspbox. There is also another matlab toolbox the Spectral Graph Wavelet Transform (SGWT) toolbox dedicated to the implementation of the SGWT developed in @hammond2011wavelets. However, to our knowledge, there are not yet any tools dedicated to GSP in \proglang{R}. A first version of the \pkg{gasper} package is available online\footnote{https://github.com/fabnavarro/gasper}. In particular, it includes the methodology and codes\footnote{https://github.com/fabnavarro/SGWT-SURE} developed in @de2019data and provides an interface to the SuiteSparse Matrix Collection @davis2011university. 
 
@@ -187,7 +187,7 @@ opt_thresh_d <- SURE_MSEthresh(wcn,
                            wcf, 
                            thresh, 
                            diagWWt, 
-                           b=2, 
+                           beta=2, 
                            sigma, 
                            NA,
                            policy = "dependent",
@@ -197,7 +197,7 @@ opt_thresh_u <- SURE_MSEthresh(wcn,
                            wcf, 
                            thresh, 
                            diagWWt, 
-                           b=2, 
+                           beta=2, 
                            sigma, 
                            NA,
                            policy = "uniform",
@@ -253,7 +253,22 @@ wc_oracle_u <- betathresh(wcn,
                           thresh[opt_thresh_u$min[[1]]], 2)
 ```
 
-Even though the SURE no longer depends on the original signal, it does depend on $\sigma^2$, two naive (biased) estimators are obtained via `GVN` or `HPVN` functions.
+Notably, SURE can also be applied in a level-dependent manner using `SUREthresh` at each scale (the output of `SUREthresh` can be retrieve with the argument "keepSURE = TRUE" at the function call).
+```{r}
+J <- floor(log(lmax)/log(b)) + 2
+LD_opt_thresh_d <- LD_SUREthresh(J=J, 
+                             wcn=wcn, 
+                             diagWWt=diagWWt, 
+                             beta=2, 
+                             sigma=sigma,
+                             hatsigma=NA,
+                             policy = "uniform",
+                             keepSURE = FALSE)
+hatf_LD_SURE_d <- synthesis(LD_opt_thresh_d$wcLDSURE, tf)
+print(paste0("LD_SURE_u = ",round(SNR(f,hatf_LD_SURE_d),2),"dB"))
+```
+
+Even though the SURE no longer depends on the original signal, it does depend on $\sigma^2$, two naive (biased) estimators are obtained via `GVN` or `HPVN` functions (see @de2019data for more details). Another possible improvement would be to use a scale-dependent variance estimator (especially in the case of "policy = "dependent"").
 
 # Bibliography
 

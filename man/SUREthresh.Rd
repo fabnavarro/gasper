@@ -33,7 +33,7 @@ SUREthresh(
 \item{keepwc}{Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).}
 }
 \value{
-\code{res} a dataframe containing SURE, hatSURE and their respective minima.
+\code{res} A dataframe containing SURE, hatSURE and their respective minima and corresponding optimal thresholds.
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE

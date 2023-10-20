@@ -2,9 +2,10 @@ gasper News
 
 # gasper 1.1.4.xxx
 
--   change b by beta in `betathresh` and `SUREThresh` to avoid confusion
-    with the parameter that control the number of scales in other
-    functions.
+-   change `b` by `beta` in `betathresh` and `SUREThresh` to avoid
+    confusion with the parameter that control the number of scales in
+    other functions.
+-   add Level dependent SURE thresholding `LD_SUREthresh`.
 
 # gasper 1.1.4 relase (08/26/2023)
 
