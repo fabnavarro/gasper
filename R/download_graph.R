@@ -69,9 +69,9 @@ download_graph <- function(matrixname, groupname) {
     m <- readMM(temppath)
     m <- as(m, "dMatrix")
     if(nrow(m)==ncol(m)){
-      m <- as(m, "dsCMatrix")
+      m <- as(m, "CsparseMatrix")
     } else{
-      m <- as(m, "dgCMatrix")
+      m <- as(m, "CsparseMatrix")
     }
 
     # if (ncol(df)==2){
