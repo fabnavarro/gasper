@@ -16,6 +16,9 @@ GVN(y, A, L)
 \description{
 Graph equivalent of the Von Neummann variance estimator.
 }
+\details{
+\deqn{\hat \sigma = \frac{\widetilde f^T \L \widetilde f}{\mathrm{Tr}~\L}}
+}
 \examples{
 data(minnesota)
 A <- minnesota$A
