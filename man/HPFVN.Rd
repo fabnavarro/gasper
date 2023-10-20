@@ -16,6 +16,9 @@ HPFVN(wcn, evalues, b)
 \description{
 Graph extension of the Von Neummann variance estimator using finest scale coefficients.
 }
+\details{
+\deqn{\hat \sigma^2 = \frac{\sum_{i=nJ+1}^{n(J+1)} (\mathcal{W} y)^2_i}{\mathrm{Tr}~\psi_J(L)}}
+}
 \examples{
 data(grid1)
 A <- grid1$sA
