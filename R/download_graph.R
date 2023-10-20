@@ -1,7 +1,7 @@
 #' Download sparse matrix form the SuiteSparse Matrix Collection.
 #'
 #' If coordinates are associated with the graphs,
-#' they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
+#' they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph/matrix names.
 #'
 #' @export download_graph
 #' @importFrom httr GET timeout http_error message_for_status
@@ -10,7 +10,7 @@
 #' @importFrom Matrix readMM
 #' @param matrixname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
-#' @return \code{matrixname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
+#' @return \code{matrixname} a list containing the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #' @examples
@@ -123,7 +123,7 @@ gracefully_fail <- function(remote_file) {
   # Fail gracefully if API or internet not available
   # Based on code:
   # https://github.com/lgnbhl/wikisourcer/blob/master/R/utils.R
-  # See full discussion to be compliante with the CRAN policy
+  # See full discussion to be compliant with the CRAN policy
   # https://community.rstudio.com/t/internet-resources-should-fail-gracefully/49199
   try_GET <- function(x, ...) {
     tryCatch(

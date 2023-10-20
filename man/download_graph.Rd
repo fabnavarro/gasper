@@ -12,11 +12,11 @@ download_graph(matrixname, groupname)
 \item{groupname}{Name of the group that provides the graph.}
 }
 \value{
-\code{matrixname} a list contening the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
+\code{matrixname} a list containing the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
 }
 \description{
 If coordinates are associated with the graphs,
-they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph names.
+they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph/matrix names.
 }
 \examples{
 \dontrun{
