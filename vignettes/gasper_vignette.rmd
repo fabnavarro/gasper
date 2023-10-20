@@ -270,6 +270,8 @@ print(paste0("LD_SURE_u = ",round(SNR(f,hatf_LD_SURE_d),2),"dB"))
 
 Even though the SURE no longer depends on the original signal, it does depend on $\sigma^2$, two naive (biased) estimators are obtained via `GVN` or `HPVN` functions (see @de2019data for more details). Another possible improvement would be to use a scale-dependent variance estimator (especially in the case of "policy = "dependent"").
 
+Furthermore, the major limitations are the need to diagonalize the graph's Laplacian, and the calculation of the weights involved in the SURE (which requires an explicit calculation of the frame). To address the first limitation, several strategies have been proposed in the literature, notably via approximation by Chebyshev polynomials (see @hammond2011wavelets or @shuman18). Combined with these approximations, a monte carlo method to estimate the SURE weights has been proposed in @chedemail22, extending the applicability of SURE to large graphs.
+
 # Bibliography
 
 
