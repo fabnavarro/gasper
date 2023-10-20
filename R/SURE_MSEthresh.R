@@ -34,7 +34,7 @@ SURE_MSEthresh <- function(wcn, wcf, thresh, diagWWt, beta = 2, sigma, hatsigma 
         MSE[i] <- sum((wcf - wc)^2)
         erisk[i] <- sum((wc - wcn)^2)
         dof[i] <- 2*sum((abs(wcn) > thresh[i])*
-                          (1 + (beta - 1)*thresh[i]^b/abs(wcn)^beta)*diagWWt,na.rm=TRUE)
+                          (1 + (beta - 1)*thresh[i]^beta/abs(wcn)^beta)*diagWWt,na.rm=TRUE)
       }
     }
     else if (policy == "dependent") {
