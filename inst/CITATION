@@ -20,7 +20,7 @@ bibentry(
     bibtype = "Misc",
       title="Gasper: GrAph Signal ProcEssing in R",
       author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
-      year={2020},
+      year={2023},
       eprint={"2007.10642"},
       header = "or the package vignettes:"
 )
