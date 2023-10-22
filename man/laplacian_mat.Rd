@@ -13,5 +13,5 @@ laplacian_mat(W)
 \code{L} (unormalized) Laplacian matrix.
 }
 \description{
-Compute the (unormalized) laplacian matrix from the adjacency matrix.
+Compute the (unnormalized) Laplacian matrix from the adjacency matrix.
 }
