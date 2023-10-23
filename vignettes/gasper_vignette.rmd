@@ -179,7 +179,7 @@ The optimal threshold is then determined by minimizing the SURE (using Donoho an
 \begin{equation}
 \mathbf{SURE}(h)=-n \sigma^2 + \|h(\widetilde F)-\widetilde F\|^2 + 2 \sum_{i,j=1}^{n(J+1)} \gamma_{i,j}^2 \partial_j h_i(\widetilde F),
 \end{equation}
-where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau} (the parameter `b` stands for $\beta$ in the definition). These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame). A comparative example of these two approaches is given below (with $\beta=2$ James-Stein attenuation threshold).
+where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau}. These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame). A comparative example of these two approaches is given below (with $\beta=2$ James-Stein attenuation threshold).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
@@ -270,7 +270,7 @@ print(paste0("LD_SURE_u = ",round(SNR(f,hatf_LD_SURE_d),2),"dB"))
 
 Even though the SURE no longer depends on the original signal, it does depend on $\sigma^2$, two naive (biased) estimators are obtained via `GVN` or `HPVN` functions (see @de2019data for more details). Another possible improvement would be to use a scale-dependent variance estimator (especially in the case of "policy = "dependent"").
 
-Furthermore, the major limitations are the need to diagonalize the graph's Laplacian, and the calculation of the weights involved in the SURE (which requires an explicit calculation of the frame). To address the first limitation, several strategies have been proposed in the literature, notably via approximation by Chebyshev polynomials (see @hammond2011wavelets or @shuman18). Combined with these approximations, a monte carlo method to estimate the SURE weights has been proposed in @chedemail22, extending the applicability of SURE to large graphs.
+Furthermore, the major limitations are the need to diagonalize the graph's Laplacian, and the calculation of the weights involved in the SURE (which requires an explicit calculation of the frame). To address the first limitation, several strategies have been proposed in the literature, notably via approximation by Chebyshev polynomials (see @hammond2011wavelets or @shuman18). Combined with these approximations, a Monte Carlo method to estimate the SURE weights has been proposed in @chedemail22, extending the applicability of SURE to large graphs.
 
 # Bibliography
 

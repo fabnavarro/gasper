@@ -2,7 +2,7 @@
 % Please edit documentation in R/laplacian_mat.R
 \name{laplacian_mat}
 \alias{laplacian_mat}
-\title{Laplacian matrix.}
+\title{Graph Laplacian matrix.}
 \usage{
 laplacian_mat(W)
 }
@@ -10,8 +10,8 @@ laplacian_mat(W)
 \item{W}{Adjacency matrix.}
 }
 \value{
-\code{L} (unormalized) Laplacian matrix.
+\code{L} (unnormalized) graph Laplacian matrix.
 }
 \description{
-Compute the (unnormalized) Laplacian matrix from the adjacency matrix.
+Compute the (unnormalized) graph Laplacian matrix from the adjacency matrix.
 }

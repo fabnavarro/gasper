@@ -1,17 +1,14 @@
-#' Laplacian matrix.
+#' Graph Laplacian matrix.
 #'
-#' Compute the (unnormalized) Laplacian matrix from the adjacency matrix.
+#' Compute the (unnormalized) graph Laplacian matrix from the adjacency matrix.
 #'
 #' @export laplacian_mat
 #' @importFrom methods is
 #' @importFrom Matrix Diagonal rowSums
 #' @param W Adjacency matrix.
-#' @return \code{L} (unormalized) Laplacian matrix.
+#' @return \code{L} (unnormalized) graph Laplacian matrix.
 
 laplacian_mat <- function(W) {
-  if (!identical(W, t(W))) {
-    stop("W is not symmetric")
-  }
   if(is(W, 'sparseMatrix')){
     D <- Diagonal(nrow(W), rowSums(W))
   } else {
