@@ -1,14 +1,32 @@
 #' Compute Inverse Spectral Graph Wavelet Transform.
 #'
-#' Compute inverse (adjoint) SGWT for signal f (without frame calculation). The calculation is perform for the frame defined by the `tight_frame` function. The tightness of the underlying frame implies that the computation is obtained by simply applying the adjoint linear transformation to the wavelet coefficients.
+#' \code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \eqn{wc}{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
 #'
 #' @export inverse_sgwt
-#' @param wc Wavelet coefficients.
-#' @param evalues Eigenvalues of the Laplacian matrix.
-#' @param evectors Eigenvectors of the Laplacian matrix.
-#' @param b Parameter that control the number of scales.
-#' @return \code{f} SGWT adjoint applied to wc.
+#' @param wc Wavelet coefficients to reconstruct the graph signal from (numeric vector).
+#' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
+#' @param evectors Eigenvectors of the Laplacian matrix (matrix).
+#' @param b Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.
+#' @return \code{f} A graph signal obtained by applying the SGWT adjoint to \eqn{wc}{wc}.
 #' @seealso \code{\link{forward_sgwt}}, \code{\link{tight_frame}}
+#'
+#' @details
+#'
+#' Given wavelet coefficients \eqn{wc}{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
+#'
+#' The eigenvalues and eigenvectors of the graph Laplacian are denoted as \eqn{\Lambda}{Lambda} and \eqn{U}{U} respectively. The parameter \eqn{b}{b} controls the number of scales, and \eqn{\lambda_{\text{max}}}{lambda_max} is the largest eigenvalue.
+#'
+#'
+#' For each scale \eqn{j = 0, 1, \ldots, J}{j = 0, 1, ..., J}, where
+#' \deqn{J = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2}{J = floor(log(lambda_max)/log(b)) + 2}, the reconstructed signal for that scale is computed as:
+#' \deqn{
+#' \mathbf{f}_j = (U \mathbf{wc}_j \odot g_j) U^T
+#' }{\mathbf{f}_j = (U wc_j * g_j) U^T}
+#' where \deqn{g_j(\lambda) = \sqrt{\psi_j(\lambda)}}{g_j(lambda) = sqrt(psi_j(lambda))} and \eqn{\odot}{*} denotes element-wise multiplication.
+#'
+#' The final result is the sum of \eqn{\mathbf{f}_j}{f_j} across all scales to reconstruct the entire graph signal.
+#'
+#'
 #' @references
 #' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 #'
