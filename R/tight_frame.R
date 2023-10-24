@@ -1,11 +1,14 @@
-#' Tight-frame computation.
+#' Tight-Frame Computation.
 #'
-#' Constructs tight-frame.
+#' Constructs a tight-frame wavelet on graphs
 #'
 #' @export tight_frame
-#' @param evalues Eigenvalues of the Laplacian matrix.
-#' @param evectors Eigenvectors of the Laplacian matrix.
-#' @param b Parameter that control the number of scales.
+#' @param evalues Numeric vector containing the eigenvalues of the Laplacian matrix.
+#' @param evectors Matrix of the corresponding eigenvectors of the Laplacian matrix.
+#' @param b Numeric scalar. Parameter that controls the number of scales in the wavelet decomposition.
+#'
+#' @return Matrix of the tight-frame wavelet coefficients.
+#'
 #' @references
 #' Coulhon, T., Kerkyacharian, G., & Petrushev, P. (2012). Heat kernel generated frames in the setting of Dirichlet spaces. Journal of Fourier Analysis and Applications, 18(5), 995-1066.
 #'

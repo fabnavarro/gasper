@@ -2,19 +2,22 @@
 % Please edit documentation in R/tight_frame.R
 \name{tight_frame}
 \alias{tight_frame}
-\title{Tight-frame computation.}
+\title{Tight-Frame Computation.}
 \usage{
 tight_frame(evalues, evectors, b = 2)
 }
 \arguments{
-\item{evalues}{Eigenvalues of the Laplacian matrix.}
+\item{evalues}{Numeric vector containing the eigenvalues of the Laplacian matrix.}
 
-\item{evectors}{Eigenvectors of the Laplacian matrix.}
+\item{evectors}{Matrix of the corresponding eigenvectors of the Laplacian matrix.}
 
-\item{b}{Parameter that control the number of scales.}
+\item{b}{Numeric scalar. Parameter that controls the number of scales in the wavelet decomposition.}
+}
+\value{
+Matrix of the tight-frame wavelet coefficients.
 }
 \description{
-Constructs tight-frame.
+Constructs a tight-frame wavelet on graphs
 }
 \references{
 Coulhon, T., Kerkyacharian, G., & Petrushev, P. (2012). Heat kernel generated frames in the setting of Dirichlet spaces. Journal of Fourier Analysis and Applications, 18(5), 995-1066.
