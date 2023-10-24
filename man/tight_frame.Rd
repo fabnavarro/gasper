@@ -19,6 +19,19 @@ Matrix of the tight-frame wavelet coefficients.
 \description{
 Constructs a tight-frame wavelet on graphs
 }
+\examples{
+\dontrun{
+# Extract the adjacency matrix from the grid1 and compute the Laplacian
+L <- laplacian_mat(grid1$sA)
+
+# Compute the spectral decomposition of L
+decomp <- eigensort(L)
+
+# Generate the tight frame coefficients using the tight_frame function
+tf <- tight_frame(decomp$evalues, decomp$evectors)
+}
+
+}
 \references{
 Coulhon, T., Kerkyacharian, G., & Petrushev, P. (2012). Heat kernel generated frames in the setting of Dirichlet spaces. Journal of Fourier Analysis and Applications, 18(5), 995-1066.
 

@@ -2,20 +2,45 @@
 % Please edit documentation in R/analysis.R
 \name{analysis}
 \alias{analysis}
-\title{Analysis operator.}
+\title{Compute the Analysis Operator for a Graph Signal.}
 \usage{
 analysis(y, tf)
 }
 \arguments{
-\item{y}{Graph signal to analyze.}
+\item{y}{Graph signal to analyze (numeric vector/matrix).}
 
-\item{tf}{frame coefficients.}
+\item{tf}{Frame coefficients (numeric matrix).}
 }
 \value{
-\code{coef} Transform coefficients.
+\code{coef} Transform coefficients of the graph signal (numeric vector/matrix).
 }
 \description{
-Compute the analysis operator for coefficient y.
+\code{analysis} function computes the transform coefficients of a given graph signal using the provided frame coefficients.
+}
+\details{
+The \code{analysis} operator uses the frame coefficients to transform a given graph signal into its representation in the transform domain.
+
+The transform is computed as:
+\deqn{coef = tf \times y}{coef = tf \%*\% y}
+}
+\examples{
+\dontrun{
+# Extract the adjacency matrix from the grid1 and compute the Laplacian
+L <- laplacian_mat(grid1$sA)
+
+# Compute the spectral decomposition of L
+decomp <- eigensort(L)
+
+# Generate the tight frame coefficients using the tight_frame function
+tf <- tight_frame(decomp$evalues, decomp$evectors)
+
+# Create a random graph signal.
+f <- rnorm(nrow(L))
+
+# Compute the transform coefficients using the analysis operator
+coef <- analysis(f, tf)
+}
+
 }
 \seealso{
 \code{\link{synthesis}}, \code{\link{tight_frame}}

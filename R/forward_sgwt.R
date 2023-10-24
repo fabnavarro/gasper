@@ -25,6 +25,21 @@
 #'
 #' The final result is a concatenated vector of these coefficients for all scales.
 #'
+#' @examples
+#' \dontrun{
+#' # Extract the adjacency matrix from the grid1 and compute the Laplacian
+#' L <- laplacian_mat(grid1$sA)
+#'
+#' # Compute the spectral decomposition of L
+#' decomp <- eigensort(L)
+#'
+#' # Create a sample graph signal
+#' f <- rnorm(nrow(W))
+#'
+#' # Compute the forward Spectral Graph Wavelet Transform
+#' wc <- forward_sgwt(f, decomp$evalues, decomp$evectors)
+#' }
+#'
 #' @references
 #' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 #'
