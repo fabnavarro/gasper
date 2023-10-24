@@ -6,6 +6,7 @@ gasper News
     confusion with the parameter that control the number of scales in
     other functions.
 -   add Level dependent SURE thresholding `LD_SUREthresh`.
+-   add graph Fourier transform functions `gft`/`igft`.
 
 # gasper 1.1.4 relase (08/26/2023)
 
