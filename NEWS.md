@@ -6,7 +6,7 @@ gasper News
     confusion with the parameter that control the number of scales in
     other functions.
 -   add Level dependent SURE thresholding `LD_SUREthresh`.
--   add graph Fourier transform functions `gft`/`igft`.
+-   add graph Fourier transform functions `forward_gft`/`inverse_gft`.
 -   add `spectral_coords` function to compute spectral coordinates of a
     graph using the two smallest non-zero eigenvalues of the graph
     Laplacian.
