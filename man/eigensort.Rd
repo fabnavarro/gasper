@@ -2,16 +2,22 @@
 % Please edit documentation in R/eigensort.R
 \name{eigensort}
 \alias{eigensort}
-\title{Spectral decomposition of a symetric matrix.}
+\title{Spectral Decomposition of a Symmetric Matrix/}
 \usage{
 eigensort(x)
 }
 \arguments{
-\item{x}{Symetric matrix (sparse or dense) whose spectral decomposition is to be computed.}
+\item{x}{Symmetric matrix, either sparse or dense, to be decomposed.}
+}
+\value{
+A list containing:
+\itemize{
+  \item \code{evalues}: A vector of sorted eigenvalues in increasing order.
+  \item \code{evectors}: A matrix of corresponding eigenvectors.
+}
 }
 \description{
-Computes eigenvalues and eigenvectors of matrices
-(output sorted in increasing order).
+\code{eigensort} performs the spectral decomposition of a symmetric matrix. The eigenvalues and eigenvectors are sorted in increasing order by eigenvalues.
 }
 \examples{
 A <- matrix(1, ncol=2, nrow=2)

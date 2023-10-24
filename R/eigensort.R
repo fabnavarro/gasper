@@ -1,10 +1,16 @@
-#' Spectral decomposition of a symetric matrix.
+#' Spectral Decomposition of a Symmetric Matrix/
 #'
-#' Computes eigenvalues and eigenvectors of matrices
-#' (output sorted in increasing order).
+#' \code{eigensort} performs the spectral decomposition of a symmetric matrix. The eigenvalues and eigenvectors are sorted in increasing order by eigenvalues.
 #'
 #' @export eigensort
-#' @param x Symetric matrix (sparse or dense) whose spectral decomposition is to be computed.
+#' @param x Symmetric matrix, either sparse or dense, to be decomposed.
+#'
+#' @return A list containing:
+#' \itemize{
+#'   \item \code{evalues}: A vector of sorted eigenvalues in increasing order.
+#'   \item \code{evectors}: A matrix of corresponding eigenvectors.
+#' }
+#'
 #' @examples
 #' A <- matrix(1, ncol=2, nrow=2)
 #' dec <- eigensort(A)
