@@ -83,7 +83,7 @@ zetav <- function(x, k, b=2) {
     up <- outer(x, 1, ">")
 
     gg <- rep(0, length(x))
-    gg[low] <- 1
+    gg[low] <- 0
     gg[mid1 & mid2] <- 1
     gg[mid3 & mid4] <- b * x[mid3 & mid4]/(1 - b) + b/(b - 1)
     gg[up] <- 0

@@ -24,7 +24,7 @@ The function `zetav` evaluates the partition of unity functions \eqn{\psi} follo
 
 A finite collection \eqn{(\psi_j)_{j=0, \ldots, J}} is a finite partition of unity on the compact interval \eqn{[0, \lambda_{\mathrm{max}}]}. It satisfies:
 \deqn{
-\psi_j : [0,\lambda_1] \rightarrow [0,1]~\textrm{for all}~ j \in \{1,...,J\}~\textrm{and}~\forall \lambda \in [0,\lambda_{\mathrm{max}}],~\sum_{j=0}^J \psi_j(\lambda)=1.
+\psi_j : [0,\lambda_{\mathrm{max}}] \rightarrow [0,1]~\textrm{for all}~ j \in \{1,...,J\}~\textrm{and}~\forall \lambda \in [0,\lambda_{\mathrm{max}}],~\sum_{j=0}^J \psi_j(\lambda)=1.
 }{
 psi_j: [0, lambda_{\mathrm{max}}] -> [0,1] for all j in J and for all lambda in [0, lambda_{\mathrm{max}}], sum(psi_j(lambda)) from j=0 to J = 1.
 }
