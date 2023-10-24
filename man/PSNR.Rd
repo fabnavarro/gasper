@@ -2,21 +2,26 @@
 % Please edit documentation in R/PSNR.R
 \name{PSNR}
 \alias{PSNR}
-\title{Peak Signal to Noise Ratio.}
+\title{Compute the Peak Signal to Noise Ratio (PSNR).}
 \usage{
 PSNR(x, y)
 }
 \arguments{
-\item{x}{Original reference signal/image.}
+\item{x}{Original reference signal/image (numeric vector/matrix).}
 
-\item{y}{Restored or noisy signal/image.}
+\item{y}{Restored or noisy signal/image (numeric vector/matrix).}
 }
 \value{
-Peak Signal to Noise ratio.
+\code{PSNR} Peak Signal to Noise Ratio (numeric).
 }
 \description{
-Compute the Peack Signal to Noise Ratio, defined by:
-\deqn{PSNR(x,y)=10 \log_{10}( \max(\max(x),\max(y))^2 / |x-y|^2 )}{PSNR(x,y)=10*log10( max(max(x),max(y))^2 / |x-y|^2 )}
+\code{PSNR} function computes the PSNR between two signals or images.
+}
+\details{
+Higher values of PSNR indicate closer similarity between the original and the compared signal or image.
+
+The PSNR is defined by:
+\deqn{PSNR(x,y) = 10 \log_{10}\left(\frac{\max(\max(x),\max(y))^2}{\mathrm{MSE}(x, y)}\right)}{PSNR(x,y) = 10*log10( max(max(x),max(y))^2 / mean((x-y)^2) )}
 }
 \examples{
 x <- cos(seq(0, 10, length=100))

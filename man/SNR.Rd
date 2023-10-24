@@ -2,20 +2,26 @@
 % Please edit documentation in R/SNR.R
 \name{SNR}
 \alias{SNR}
-\title{Signal to Noise Ratio.}
+\title{Compute the Signal to Noise Ratio (SNR).}
 \usage{
 SNR(x, y)
 }
 \arguments{
-\item{x}{Original reference signal.}
+\item{x}{Original reference signal (numeric vector/matrix).}
 
-\item{y}{Restored or noisy signal.}
+\item{y}{Restored or noisy signal (numeric vector/matrix).}
 }
 \value{
-Signal to Noise ratio.
+\code{SNR} Signal to Noise Ratio (numeric).
 }
 \description{
-Signal to Noise Ratio.
+\code{SNR} computes the SNR between two signals, indicating the level of desired signal to the level of background noise.
+}
+\details{
+Higher values of SNR indicate a cleaner signal compared to the noise level. The SNR is computed as the ratio of the power of the signal (or the square of the Euclidean norm of the signal) to the power of the noise (or the square of the Euclidean norm of the signal difference), represented in decibels (dB).
+
+The SNR is defined by:
+\deqn{SNR(x,y) = 20 \log_{10}\left(\frac{\|x\|_2}{\|x-y\|_2}\right)}{SNR(x,y) = 20*log10( norm(x, "2") / norm(x-y, "2") )}
 }
 \examples{
 x <- cos(seq(0, 10, length=100))
