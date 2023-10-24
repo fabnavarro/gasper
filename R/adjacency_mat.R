@@ -1,9 +1,17 @@
-#' Compute the adjacency matrix of the gaussian weighted graph
+#' Compute the Adjacency Matrix of a Gaussian Weighted Graph
+#'
+#' \code{adjacency_mat} calculates the adjacency matrix of a Gaussian weighted graph based on the distance between points in \eqn{R^3}{R^3}.
 #'
 #' @export adjacency_mat
-#' @param pts coordinates of N points in \eqn{R^3}{R^3}.
-#' @param f is a scalar potential (\eqn{\exp(-x^2/2t^2)}{exp(-x^2/2*t^2)} for gaussian potential)
-#' @param s is a threhold to sparisfy the matrix
+#' @param pts Matrix representing the coordinates of N points in \eqn{R^3}{R^3}. Each row should correspond to a point.
+#' @param f Function representing the scalar potential. By default, the Gaussian potential \eqn{\exp(-x^2/8)}{exp(-x^2/8)} is used.
+#' @param s Numeric threshold used to sparsify the adjacency matrix. Any value below this threshold will be set to zero. Default is 0.
+#'
+#' @details
+#' The function computes pairwise distances between each point in \eqn{pts}{pts} and weights the adjacency matrix based on the scalar potential \eqn{f}{f}. The final adjacency matrix can be sparsified by setting values below the threshold \eqn{s}{s} to zero.
+#'
+#' @return A matrix representing the adjacency matrix of the Gaussian weighted graph.
+#'
 #' @examples
 #' pts <- swissroll(N=100, seed=0, a=1, b=4)
 #' W <- adjacency_mat(pts)

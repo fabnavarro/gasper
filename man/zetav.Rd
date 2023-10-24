@@ -2,22 +2,22 @@
 % Please edit documentation in R/zetav.R
 \name{zetav}
 \alias{zetav}
-\title{Evaluate Tight-Frame Kernel Functions.}
+\title{Evaluate Tight-Frame Filter Functions.}
 \usage{
 zetav(x, k, b = 2)
 }
 \arguments{
-\item{x}{A vector representing the support on which to evaluate the kernel.}
+\item{x}{A vector representing the support on which to evaluate the filter}
 
 \item{k}{A scalar representing the scale index.}
 
 \item{b}{A scalar parameter that governs the number of scales (b=2 default).}
 }
 \value{
-Returns a numeric vector of evaluated kernel values.
+Returns a numeric vector of evaluated filter values.
 }
 \description{
-Evaluates kernel associated with the particular (Littlewood-Paley type) tight-frame construction, based on a unity partition, proposed in the reference papers.
+Evaluates filter associated with the particular (Littlewood-Paley type) tight-frame construction, based on a unity partition, proposed in the reference papers.
 }
 \details{
 The function `zetav` evaluates the partition of unity functions \eqn{\psi} following the methodology described in the references.
