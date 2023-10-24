@@ -1,14 +1,30 @@
 #' Compute Forward Spectral Graph Wavelet Transform.
 #'
-#' Compute forward SGWT for signal f (without frame calculation). The calculation corresponds to the frame defined by the `tight_frame` function (without explicit calculation of the latter).
+#' \code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. The SGWT provides a multi-scale analysis of graph signals.
 #'
 #' @export forward_sgwt
-#' @param f Graph signal to analyze.
-#' @param evalues Eigenvalues of the Laplacian matrix.
-#' @param evectors Eigenvectors of the Laplacian matrix.
-#' @param b Parameter that control the number of scales.
-#' @return \code{wc} wavelet coefficients.
+#' @param f Graph signal to analyze (numeric vector).
+#' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
+#' @param evectors Eigenvectors of the Laplacian matrix (matrix).
+#' @param b Parameter that control the number of scales in the SGWT (numeric scalar). It must be greater than 1.
+#' @return \code{wc} A concatenated vector of wavelet coefficients.
 #' @seealso \code{\link{inverse_sgwt}}, \code{\link{tight_frame}}
+#'
+#' @details
+#'
+#' Given a graph signal \eqn{f}{f} of length \eqn{N}{N}, \code{forward_sgwt} computes the wavelet coefficients using SGWT.
+#'
+#' The eigenvalues and eigenvectors of the graph Laplacian, are denoted as \eqn{\Lambda}{Lambda} and \eqn{U}{U} respectively. The parameter \eqn{b}{b} controls the number of scales, and \eqn{\lambda_{\text{max}}}{lambda_max} is the largest eigenvalue.
+#'
+#' For each scale \eqn{j = 0, 1, \ldots, J}{j = 0, 1, ..., J}, where
+#' \deqn{J = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2}{J = floor(log(lambda_max)/log(b)) + 2} the wavelet coefficients are computed as:
+#' \deqn{
+#' \mathbf{w}_j = U \left( g_j \odot (U^T f) \right)
+#' }{\mathbf{w}_j = U (g_j * (U^T f))}
+#' where \deqn{g_j(\lambda) = \sqrt{\psi_j(\lambda)}}{g_j(lambda) = sqrt(psi_j(lambda))} and \eqn{\odot}{*} denotes element-wise multiplication.
+#'
+#' The final result is a concatenated vector of these coefficients for all scales.
+#'
 #' @references
 #' Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 #'
