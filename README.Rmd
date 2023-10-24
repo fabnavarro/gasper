@@ -94,7 +94,10 @@ In cases where these coordinates are not supplied, `plot_graph` employs simple s
 matrixname <- "delaunay_n10"
 groupname <- "DIMACS10"
 download_graph(matrixname,groupname)
+attributes(delaunay_n10)
 plot_graph(delaunay_n10)
+plot_signal(delaunay_n10,
+            cos(1:nrow(delaunay_n10$sA)))
 ```
 
 

@@ -19,7 +19,7 @@ plot_graph(z, size = 0.75)
 Visualizes a graph using ggplot2. It plots nodes as points and edges as segments connecting these points. If the input graph data is represented using a sparse matrix, it will be converted to a regular summary format for visualization.
 If node coordinates are not provided, they are computed using spectral coordinates.
 }
-\details{
+\note{
 If node coordinates \code{xy} are not provided, they will be calculated using spectral methods. For larger graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
 }
 \examples{

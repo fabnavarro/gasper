@@ -128,7 +128,17 @@ non-zero eigenvalues of the graph’s Laplacian.
 matrixname <- "delaunay_n10"
 groupname <- "DIMACS10"
 download_graph(matrixname,groupname)
+attributes(delaunay_n10)
+#> $names
+#> [1] "sA"   "dim"  "info"
 plot_graph(delaunay_n10)
 ```
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" />
+
+``` r
+plot_signal(delaunay_n10,
+            cos(1:nrow(delaunay_n10$sA)))
+```
+
+<img src="README_files/figure-markdown_github/unnamed-chunk-11-2.png" width="50%" style="display: block; margin: auto;" />

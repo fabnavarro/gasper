@@ -16,12 +16,16 @@ plot_signal(z, f, size = 0.75, limits = range(f))
 \item{limits}{Set colormap limits.}
 }
 \description{
-Plot a signal on top of a given graph
+Visualize a signal `f` over a graph defined by `z`.
+If the graph does not provide spatial coordinates (`xy`), the function computes them using spectral graph embedding based on the graph's Laplacian eigenvectors.
+}
+\note{
+If node coordinates \code{xy} are not provided, they will be calculated using spectral methods. For larger graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
 }
 \examples{
 f <- rnorm(length(grid1$xy[,1]))
 plot_signal(grid1, f)
 }
 \seealso{
-\code{\link{plot_graph}}
+\code{\link{plot_graph}}, \code{\link{spectral_coords}}
 }
