@@ -47,6 +47,9 @@
 #'
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
+#'
+#' Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.
+
 
 SUREthresh <- function(wcn, thresh, diagWWt, beta = 2, sigma, hatsigma = NA, policy = "uniform", keepwc=TRUE) {
   nthresh <- length(thresh)
