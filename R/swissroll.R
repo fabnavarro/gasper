@@ -1,18 +1,24 @@
-#' Swiss roll graph generation
+#' Swiss Roll Graph Generation.
 #'
-#' Map the square \eqn{[0,1]^2}{[0,1]^2} in swiss roll
-#' for all \eqn{x,y} in \eqn{[0,1]^2}{[0,1]^2}, set
-#' \deqn{Sx=\pi \sqrt{(b^2-a^2)x + a^2)}}{Sx=pi*sqrt((b**2-a**2)*x+a**2)}
-#' \deqn{Sy=\pi (b^2-a^2)y/2}{Sy=pi**(b**2-a**2)*y/2}
+#' Generates points for a Swiss roll graph. The function maps points from the square \eqn{[0,1]^2} into the Swiss roll using the specified transformations.
 #'
 #' @export swissroll
 #' @importFrom stats runif
-#' @param a,b Shape parameters.
-#' @param N Number of points drawn.
-#' @param seed Optionally specify a RNG seed (for reproducible experiments).
+#' @param a,b Shape parameters (numeric).
+#' @param N Number of points drawn (numeric).
+#' @param seed Optionally specify a RNG seed for reproducible experiments (numeric).
 #' @return N x 3 array for 3d points.
+#'
+#' @details Given points \eqn{(x,y)} within the unit square \eqn{[0,1]^2}, the Swiss roll transformation is achieved using:
+#' \eqn{Sx = \pi \sqrt{(b^2 - a^2) x + a^2}} and
+#' \eqn{Sy = \frac{\pi^2 (b^2 - a^2) y}{2}}.
+#' The transformed \eqn{(x,y)} coordinates are then projected into 3D space to produce the characteristic rolled shape.
+#'
 #' @examples
+#' \dontrun{
 #' pts <- swissroll(N=500, seed=0, a=1, b=4)
+#' plot3D::scatter3D(pts[,1], pts[,2], pts[,3], colvar=NULL, col="red")
+#' }
 #' @seealso \code{\link{adjacency_mat}}
 
 swissroll <- function(N = 500, seed = NULL, a = 1, b = 4) {

@@ -2,15 +2,21 @@
 % Please edit documentation in R/fullup.R
 \name{fullup}
 \alias{fullup}
-\title{Convert symmetric sparse matrix to full matrix.}
+\title{Convert Symmetric Sparse Matrix to Full Matrix.}
 \usage{
 fullup(sA)
 }
 \arguments{
-\item{sA}{Sparse upper triangular matrix to convert.}
+\item{sA}{Matrix (sparseMatrix). Symmetric upper triangular matrix to be converted.}
+}
+\value{
+A full symmetric matrix.
 }
 \description{
-Convert a symmetric sparse matrix sA stored as upper triangular matrix to full matrix A.
+\code{fullup} converts a symmetric sparse matrix \code{sA}, stored as an upper triangular matrix, to a full matrix \code{A}.
+}
+\details{
+This function is useful for transforming matrices that have been stored in a memory-efficient format (i.e., the upper triangle of a symmetric matrix) to their full format. The conversion is done either by directly transforming the sparse matrix or by leveraging the \code{\link{full}} function.
 }
 \examples{
 data(grid1)

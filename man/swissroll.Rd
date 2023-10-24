@@ -2,28 +2,34 @@
 % Please edit documentation in R/swissroll.R
 \name{swissroll}
 \alias{swissroll}
-\title{Swiss roll graph generation}
+\title{Swiss Roll Graph Generation.}
 \usage{
 swissroll(N = 500, seed = NULL, a = 1, b = 4)
 }
 \arguments{
-\item{N}{Number of points drawn.}
+\item{N}{Number of points drawn (numeric).}
 
-\item{seed}{Optionally specify a RNG seed (for reproducible experiments).}
+\item{seed}{Optionally specify a RNG seed for reproducible experiments (numeric).}
 
-\item{a, b}{Shape parameters.}
+\item{a, b}{Shape parameters (numeric).}
 }
 \value{
 N x 3 array for 3d points.
 }
 \description{
-Map the square \eqn{[0,1]^2}{[0,1]^2} in swiss roll
-for all \eqn{x,y} in \eqn{[0,1]^2}{[0,1]^2}, set
-\deqn{Sx=\pi \sqrt{(b^2-a^2)x + a^2)}}{Sx=pi*sqrt((b**2-a**2)*x+a**2)}
-\deqn{Sy=\pi (b^2-a^2)y/2}{Sy=pi**(b**2-a**2)*y/2}
+Generates points for a Swiss roll graph. The function maps points from the square \eqn{[0,1]^2} into the Swiss roll using the specified transformations.
+}
+\details{
+Given points \eqn{(x,y)} within the unit square \eqn{[0,1]^2}, the Swiss roll transformation is achieved using:
+\eqn{Sx = \pi \sqrt{(b^2 - a^2) x + a^2}} and
+\eqn{Sy = \frac{\pi^2 (b^2 - a^2) y}{2}}.
+The transformed \eqn{(x,y)} coordinates are then projected into 3D space to produce the characteristic rolled shape.
 }
 \examples{
+\dontrun{
 pts <- swissroll(N=500, seed=0, a=1, b=4)
+plot3D::scatter3D(pts[,1], pts[,2], pts[,3], colvar=NULL, col="red")
+}
 }
 \seealso{
 \code{\link{adjacency_mat}}
