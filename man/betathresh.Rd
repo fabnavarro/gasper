@@ -2,20 +2,41 @@
 % Please edit documentation in R/betathresh.R
 \name{betathresh}
 \alias{betathresh}
-\title{Apply Beta Threshold.}
+\title{Apply Beta Threshold to Data.}
 \usage{
 betathresh(y, t, beta)
 }
 \arguments{
-\item{y}{Noisy Data.}
+\item{y}{Noisy data (numeric vector or matrix).}
 
-\item{t}{Threshold.}
+\item{t}{Threshold (non-negative numeric).}
 
-\item{beta}{Thresholding type (beta=1: soft, beta=2: JS).}
+\item{beta}{Thresholding type. \eqn{\beta = 1} corresponds to soft thresholding and \eqn{\beta = 2} corresponds to James-Stein thresholding.}
 }
 \value{
 \code{x} Filtered result.
 }
 \description{
-Apply Beta Threshold.
+This function performs a generalized thresholding operation on noisy data based on the parameter \eqn{\beta}{beta}. Soft thresholding is applied when \eqn{\beta = 1} and JS thresholding is applied when \eqn{\beta = 2}.
+}
+\details{
+Soft thresholding is commonly used in wavelet-based denoising techniques, where coefficients below a certain threshold are shrunk toward zero. JS thresholding is another variant. The implementation includes a small constant for numerical stability when computing the thresholding operation.
+
+The thresholding operation is defined as:
+\deqn{
+x = \max(0, 1 - \frac{t^\beta}{|y|^\beta}) \times y
+}{x = max(0, 1 - t^beta/|y|^beta) * y}
+}
+\examples{
+# Define a 2x2 matrix
+mat <- matrix(c(2, -3, 1.5, -0.5), 2, 2)
+
+# Apply soft thresholding with a threshold of 1
+betathresh(mat, 1, 1)
+
+}
+\references{
+Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+
+De Loynes, B., Navarro, F., & Olivier, B. (2021). Data-driven thresholding in denoising with spectral graph wavelet transform. Journal of Computational and Applied Mathematics, 389, 113319.
 }
