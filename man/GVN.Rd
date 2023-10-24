@@ -2,24 +2,34 @@
 % Please edit documentation in R/GVN.R
 \name{GVN}
 \alias{GVN}
-\title{Graph Von Neumann Estimator.}
+\title{Graph Von Neumann Variance Estimator.}
 \usage{
 GVN(y, A, L)
 }
 \arguments{
-\item{y}{Noisy data.}
+\item{y}{Vector that represents the noisy data (numeric).}
 
-\item{A}{Adjacency matrix.}
+\item{A}{Adjacency matrix of the graph (matrix).}
 
-\item{L}{Laplacian matrix.}
+\item{L}{Laplacian matrix of the graph (matrix).}
+}
+\value{
+The Graph Von Neumann variance estimate for the given noisy data.
 }
 \description{
-Graph equivalent of the Von Neummann variance estimator.
+\code{GVN} computes graph equivalent of the Von Neummann variance estimator.
 }
 \details{
-\deqn{\hat \sigma^2 = \frac{ y^T L y}{\mathrm{Tr}~L}}
+In many real-world scenarios, the noise level (\eqn{\sigma^2}) remains generally unknown. Given any function \eqn{g : \mathbb R_+ \rightarrow \mathbb R_+}, the expectation of the graph signal can be expressed as:
+\deqn{\mathbf E[\widetilde f^T g(L) \widetilde f] = f^T g(L) f + \mathbf E[\xi^T g(L) \xi] = f^T g(L) f + \sigma^2 \mathrm{Tr}(g(L))}
+A biased estimator of the variance \eqn{\sigma^2} can be given by:
+\deqn{\hat \sigma^2_1 = \frac{\widetilde f^T g(L) \widetilde f}{\mathrm{Tr}(g(L))}}
+Assuming the original graph signal is smooth enough that \eqn{f^T g(L) f} is negligible compared to \eqn{\mathrm{Tr}(g(L))}, \eqn{\hat \sigma^2} provides a reasonably accurate estimate of \eqn{\sigma^2}. For this function, a common choice is \eqn{g(x) = x}, leading to:
+\deqn{\hat \sigma^2_1 = \frac{\widetilde f^T \L \widetilde f}{\mathrm{Tr}(L)} = \frac{\sum_{i,j \in V} w_{ij} |\widetilde f(i) - \widetilde f(j)|^2}{2 \mathrm{Tr}(L)}}
+This is the graph adaptation of the Von Neumann estimator, hence the term Graph Von Neumann estimator (GVN).
 }
 \examples{
+\dontrun{
 data(minnesota)
 A <- minnesota$A
 L <- laplacian_mat(A)
@@ -31,6 +41,7 @@ noise <- rnorm(n, sd = sigma)
 y <- f + noise
 sigma^2
 GVN(y, A, L)
+}
 }
 \references{
 von Neumann, J. (1941). Distribution of the ratio of the mean square successive difference to the variance. \emph{Ann. Math. Statistics}, 35(3), 433--451.
