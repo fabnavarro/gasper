@@ -2,7 +2,7 @@
 % Please edit documentation in R/SUREthresh.R
 \name{SUREthresh}
 \alias{SUREthresh}
-\title{Stein's Unbiased Risk Estimate.}
+\title{Stein's Unbiased Risk Estimate (SURE).}
 \usage{
 SUREthresh(
   wcn,
@@ -16,33 +16,62 @@ SUREthresh(
 )
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficients.}
+\item{wcn}{Noisy wavelet coefficients (numeric vector).}
 
-\item{thresh}{Threshold values.}
+\item{thresh}{Threshold values (numeric vector).}
 
-\item{diagWWt}{Weights.}
+\item{diagWWt}{Weights (numeric vector). These weights are typically derived from the diagonal
+elements of the wavelet frame operator matrix.}
 
-\item{beta}{Thresholding type (beta=1: soft, beta=2: JS).}
+\item{beta}{A numeric value specifying the type of thresholding to be used:
+- 1 for soft thresholding.
+- 2 for James-Stein thresholding.}
 
-\item{sigma}{Sd of the noise.}
+\item{sigma}{A numeric value representing the standard deviation (sd) of the noise.}
 
-\item{hatsigma}{Estimator of the sd (if any).}
+\item{hatsigma}{An optional numeric value providing an estimate of the noise standard deviation (default is NA).}
 
-\item{policy}{Dependent or uniform.}
+\item{policy}{A character string determining the thresholding policy. Valid options include:
+- "uniform" for a global threshold applied uniformly across all coefficients.
+- "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.}
 
-\item{keepwc}{Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).}
+\item{keepwc}{A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).}
 }
 \value{
-\code{res} A dataframe containing SURE, hatSURE and their respective minima and corresponding optimal thresholds.
+A list containing:
+        - A dataframe with calculated SURE and hatSURE values.
+        - Minima of SURE and hatSURE and their corresponding optimal thresholds.
+        - Thresholded wavelet coefficients (if `keepwc = TRUE`).
 }
 \description{
-Adaptive Threshold Selection Using Principle of SURE
-(The irreducible variance term is not included,
- it does not change the position of the minimum).
+Adaptive Threshold Selection Using Principle of SURE.
+}
+\details{
+The \code{SUREthresh} function is a data-driven approach to finding the optimal thresholding value for denoising wavelet coefficients. SURE provides a means to evaluate the denoising quality of a given thresholding function \eqn{h}. The expected risk in terms of the mean squared error (MSE) between the original coefficients \eqn{\mathbf{F}} and their thresholded counterparts \eqn{h(\widetilde{\mathbf{F}})}, considering a noise variance \eqn{\sigma^2}, is given by:
+\deqn{
+\mathbb E \left[\|\mathbf{F} - h(\widetilde{\mathbf{F}})\|_2^2 \right] = \mathbb E \left[-n\sigma^2 + \|\widetilde{\mathbf{F}} - h(\widetilde{\mathbf{F}})\|_2^2 + 2\sigma^2 \sum_{i,j = 1}^{n(J+1)} \gamma_{ij} \partial_j h_i(\widetilde{\mathbf{F}}) \right]
+}
+Where:
+\itemize{
+  \item \eqn{\widetilde{\mathbf{F}}} are the noisy wavelet coefficients.
+  \item \eqn{\gamma_{ij}} represents the elements of the matrix obtained by multiplying the transpose of the wavelet transform matrix \eqn{\mathbf{\Psi}} with itself, i.e., \eqn{\gamma_{ij} = (\mathbf{\Psi}^\top \mathbf{\Psi})_{ij}}.
+  \item \eqn{h_i} is the \eqn{i^{th}} component of the thresholding function \eqn{h}.
+  \item \eqn{n} is the sample size.
+}
+
+The thresholding operator, represented by \eqn{h} in the \code{\link{SUREthresh}} function, is obtained using this \code{\link{betathresh}} function. The SURE in the transformed domain can be explicitly stated as:
+\deqn{
+\mathbf{SURE}(h) = -n \sigma^2 + \sum_{i=1}^{n(J+1)} \widetilde{F}_i^2 \left ( 1 \wedge \frac{t_i^\beta}{|\widetilde{F}_i|^\beta} \right )^2
++ 2 \sum_{i=1}^{n(J+1)} \gamma_{ij} \mathbf{1}_{[t_i,\infty)}(|\widetilde{F}_i|) \left [ 1+\frac{(\beta-1) t_i^\beta}{|\widetilde{F}_i|^\beta} \right ].
+}
+\code{\link{GVN}} and \code{\link{HPFVN}} provide naive noise variance estimation.
+}
+\note{
+The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location. Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
 }
 \references{
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 }
 \seealso{
-\code{\link{SURE_MSEthresh}}
+\code{\link{SURE_MSEthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
 }
