@@ -24,7 +24,7 @@ Soft thresholding is commonly used in wavelet-based denoising techniques, where 
 
 The thresholding operator is defined as:
 \deqn{
-\tau(x,t) = x \times \max \left( 1 - t^{\beta} \times |x|^{-\beta}, 0 \right)
+\tau(x,t) = x \max \left( 1 - t^{\beta} |x|^{-\beta}, 0 \right)
 }{\tau(x,t) = x * max(1 - t^beta * |x|^-beta, 0)}
 
 with \eqn{\beta \geq 1}{beta >= 1}.

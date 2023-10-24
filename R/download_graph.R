@@ -13,6 +13,9 @@
 #' @return \code{matrixname} a list containing the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
+#'
+#' Kolodziej, S. P., Aznaveh, M., Bullock, M., David, J., Davis, T. A., Henderson, M., Hu, Y., & Sandstrom, R. (2019). The suitesparse matrix collection website interface. Journal of Open Source Software, 4(35), 1244.
+#'
 #' @examples
 #' \dontrun{
 #' matrixname <- "grid1"
