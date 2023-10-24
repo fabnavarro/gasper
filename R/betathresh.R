@@ -11,10 +11,12 @@
 #'
 #' Soft thresholding is commonly used in wavelet-based denoising techniques, where coefficients below a certain threshold are shrunk toward zero. JS thresholding is another variant. The implementation includes a small constant for numerical stability when computing the thresholding operation.
 #'
-#' The thresholding operation is defined as:
+#' The thresholding operator is defined as:
 #' \deqn{
-#' x = \max(0, 1 - \frac{t^\beta}{|y|^\beta}) \times y
-#' }{x = max(0, 1 - t^beta/|y|^beta) * y}
+#' \tau(x,t) = x \times \max \left( 1 - t^{\beta} \times |x|^{-\beta}, 0 \right)
+#' }{\tau(x,t) = x * max(1 - t^beta * |x|^-beta, 0)}
+#'
+#' with \eqn{\beta \geq 1}{beta >= 1}.
 #'
 #' @examples
 #' # Define a 2x2 matrix
@@ -22,7 +24,6 @@
 #'
 #' # Apply soft thresholding with a threshold of 1
 #' betathresh(mat, 1, 1)
-#'
 #' @references
 #' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
 #'
