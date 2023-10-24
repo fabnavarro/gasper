@@ -2,17 +2,45 @@
 % Please edit documentation in R/plot_filter.R
 \name{plot_filter}
 \alias{plot_filter}
-\title{Plot tight-frame filters.}
+\title{Plot Tight-Frame Filters.}
 \usage{
 plot_filter(lmax, b, N = 1000)
 }
 \arguments{
-\item{lmax}{Largest eigenvalues of the Laplacian matrix.}
+\item{lmax}{Largest eigenvalue of the Laplacian matrix (numeric scalar).}
 
-\item{b}{Parameter that control the number of scales.}
+\item{b}{Parameter that controls the number of scales (numeric scalar).}
 
-\item{N}{Number of discretization points (by default N=1000).}
+\item{N}{Number of discretization points for the x-axis. By default, N is set to 1000.}
 }
 \description{
-Plot tight-frame kernels/filters.
+\code{plot_filter} provides a graphical representation of tight-frame filters as functions of the eigenvalues of the Laplacian matrix. The plotted functions represent the square root of the values given by the \code{zetav} function at different scales.
+}
+\details{
+This function plots the square roots of the functions forming the partition of unity,
+corresponding to the construction of tight frames on the graph. The square root operation is
+essential as it ensures the Parseval identity, making the constructed frame "tight" and
+preserving the energy of signals on the graph when mapped to their frame representation.
+
+`plot_filter` first determines the number of scales based on the largest eigenvalue \eqn{\lambda_{\text{max}}}{lambda_max} and the parameter \eqn{b}{b} as:
+\deqn{
+k_{\text{max}} = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2
+}{k_max = floor(log(lambda_max)/log(b)) + 2}
+
+The function then plots the square root of the values given by the \code{\link{zetav}} function over the range [0, \eqn{\lambda_{\text{max}}}{lambda_max}] for each scale.
+}
+\examples{
+plot_filter(6,2)
+}
+\references{
+Coulhon, T., Kerkyacharian, G., & Petrushev, P. (2012). Heat kernel generated frames in the setting of Dirichlet spaces. Journal of Fourier Analysis and Applications, 18(5), 995-1066.
+
+Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
+
+Leonardi, N., & Van De Ville, D. (2013). Tight wavelet frames on multislice graphs. IEEE Transactions on Signal Processing, 61(13), 3357-3367.
+
+de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
+}
+\seealso{
+\code{\link{zetav}}
 }
