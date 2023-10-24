@@ -18,6 +18,7 @@ gasper News
 * change `b` by `beta` in `betathresh` and `SUREThresh` to avoid confusion with the parameter that control the number of scales in other functions.
 * add Level dependent SURE thresholding `LD_SUREthresh`.
 * add graph Fourier transform functions `gft`/`igft`.
+* add `spectral_coords` function to compute spectral coordinates of a graph using the two smallest non-zero eigenvalues of the graph Laplacian.
 
 # gasper 1.1.4 relase (08/26/2023)
 * satisfy CRAN policy (by removing external download).

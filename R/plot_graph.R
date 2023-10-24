@@ -1,16 +1,28 @@
 #' Graph plot
 #'
+#' Visualizes a graph using ggplot2. It plots nodes as points and edges as segments connecting these points. If the input graph data is represented using a sparse matrix, it will be converted to a regular summary format for visualization.
+#' If node coordinates are not provided, they are computed using spectral coordinates.
+#'
+#'@details If node coordinates \code{xy} are not provided, they will be calculated using spectral methods. For larger graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
+#'
 #' @export plot_graph
 #' @importFrom methods is
 #' @importFrom Matrix summary
-#' @param z Graph data.
-#' @param size Dot size.
+#' @param z A list containing graph data. This list must have the following components:
+#'          \itemize{
+#'            \item{sA} - An adjacency matrix or a sparse Matrix representation of the graph.
+#'            \item{xy} - A matrix or dataframe containing the x and y coordinates of each node in the graph.
+#'          }
+#' @param size Numeric. Dot size for nodes. Default is 0.75.
 #' @examples
 #' data(grid1)
 #' plot_graph(grid1)
-#' @seealso \code{\link{plot_signal}}
+#' @seealso \code{\link{plot_signal}}, \code{\link{spectral_coords}}
 
 plot_graph <- function(z, size=0.75) {
+  if(!"xy" %in% names(z)){
+    z$xy <- spectral_coords(z$sA)
+  }
   if(is(z$sA, 'sparseMatrix')){
     z$sA <- summary(z$sA)
   }

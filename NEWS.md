@@ -7,6 +7,9 @@ gasper News
     other functions.
 -   add Level dependent SURE thresholding `LD_SUREthresh`.
 -   add graph Fourier transform functions `gft`/`igft`.
+-   add `spectral_coords` function to compute spectral coordinates of a
+    graph using the two smallest non-zero eigenvalues of the graph
+    Laplacian.
 
 # gasper 1.1.4 relase (08/26/2023)
 

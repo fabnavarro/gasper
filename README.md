@@ -115,3 +115,20 @@ plot_signal(`usroads-48`, f, size = f/4)
 ```
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-10-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-markdown_github/unnamed-chunk-10-2.png" width="50%" style="display: block; margin: auto;" />
+
+In cases where these coordinates are not supplied, `plot_graph` employs
+simple spectral graph embedding to calculate some node coordinates
+(nodes that are connected or share structural similarities in the graph
+are placed close to each other in the spectral drawing). This is done
+using the function `spectral_coords`, which computes the spectral
+coordinates based on the eigenvectors associated with the smallest
+non-zero eigenvalues of the graph’s Laplacian.
+
+``` r
+matrixname <- "delaunay_n10"
+groupname <- "DIMACS10"
+download_graph(matrixname,groupname)
+plot_graph(delaunay_n10)
+```
+
+<img src="README_files/figure-markdown_github/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" />

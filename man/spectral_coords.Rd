@@ -15,6 +15,9 @@ A matrix where each row represents the spectral coordinates of a node in the gra
 \description{
 Calculates the spectral coordinates of a graph using the two smallest non-zero eigenvalues of the graph Laplacian.
 }
+\references{
+Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Soc.
+}
 \seealso{
 \code{\link{plot_graph}}
 }
