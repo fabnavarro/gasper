@@ -1,12 +1,12 @@
-#' Evaluate Tight-Frame Kernel Functions.
+#' Evaluate Tight-Frame Filter Functions.
 #'
-#' Evaluates kernel associated with the particular (Littlewood-Paley type) tight-frame construction, based on a unity partition, proposed in the reference papers.
+#' Evaluates filter associated with the particular (Littlewood-Paley type) tight-frame construction, based on a unity partition, proposed in the reference papers.
 #'
 #' @export zetav
-#' @param x A vector representing the support on which to evaluate the kernel.
+#' @param x A vector representing the support on which to evaluate the filter
 #' @param k A scalar representing the scale index.
 #' @param b A scalar parameter that governs the number of scales (b=2 default).
-#' @return Returns a numeric vector of evaluated kernel values.
+#' @return Returns a numeric vector of evaluated filter values.
 #' @examples
 #' \dontrun{
 #'   x <- seq(0, 2, by = 0.1)

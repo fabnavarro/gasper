@@ -39,6 +39,8 @@ help(package = "gasper")
 
 See the [package
 vignette](https://fnavarro.perso.math.cnrs.fr/rpackage/gasper_vignette.pdf)
+or
+[documentation](https://fnavarro.perso.math.cnrs.fr/rpackage/gasper.pdf)
 for more details. You could also build and see the vignette associated
 with the package using the following lines of code
 
