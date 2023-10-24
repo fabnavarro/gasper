@@ -8,7 +8,8 @@
 #' @return \code{y} Synthesized graph signal (numeric vector/matrix).
 #'
 #' @details
-#' The \code{synthesis} operator uses the frame coefficients to retrieve the graph signal from its representation in the transform domain.
+#' The \code{synthesis} operator uses the frame coefficients to retrieve the graph signal from its representation in the transform domain. It is the adjoint of the analysis operator \eqn{T_{\mathfrak F}}{T_F} and is defined by the linear map \eqn{T_{\mathfrak F}^\ast : \mathbb R^I \rightarrow \mathbb R^V}{T_F* : R^I -> R^V}. For a vector of coefficients \eqn{(c_i)_{i \in I}}{(c_i) for all i in I}, the synthesis operation is defined as:
+#' \deqn{T^\ast_{\mathfrak F}(c_i)_{i \in I}=\sum_{i \in I} c_i r_i}{T*_F(c_i) for all i in I = sum of c_i * r_i for all i in I}
 #'
 #' The synthesis is computed as:
 #' \deqn{y = tf^{T} \times coeff}{y = t(coeff) \%*\% tf}
