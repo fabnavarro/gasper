@@ -2,15 +2,18 @@
 % Please edit documentation in R/full.R
 \name{full}
 \alias{full}
-\title{Convert symmetric sparse matrix to full matrix.}
+\title{Conversion of Symmetric Sparse Matrix to Full Matrix.}
 \usage{
 full(sA)
 }
 \arguments{
-\item{sA}{Sparse matrix to convert.}
+\item{sA}{Symmetric sparse matrix, either in a sparse matrix format or in a three-column format, that needs to be converted into a full matrix.}
+}
+\value{
+\eqn{A}{A} Full matrix constructed from the symmetric sparse matrix \eqn{sA}{sA}.
 }
 \description{
-Convert a symmetric sparse matrix sA to full matrix A.
+\code{full} converts a symmetric sparse matrix, represented as \eqn{sA}{sA}, into a full matrix \eqn{A}{A}.
 }
 \examples{
 sA <- pittsburgh$sA
