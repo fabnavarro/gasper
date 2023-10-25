@@ -4,7 +4,7 @@
 \alias{plot_filter}
 \title{Plot Tight-Frame Filters.}
 \usage{
-plot_filter(lmax, b, N = 1000)
+plot_filter(lmax, b, N = 1000, filter_func = zetav, filter_params = list())
 }
 \arguments{
 \item{lmax}{Largest eigenvalue of the Laplacian matrix (numeric scalar).}
@@ -12,15 +12,16 @@ plot_filter(lmax, b, N = 1000)
 \item{b}{Parameter that controls the number of scales (numeric scalar).}
 
 \item{N}{Number of discretization points for the x-axis. By default, N is set to 1000.}
+
+\item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.}
+
+\item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \description{
-\code{plot_filter} provides a graphical representation of tight-frame filters as functions of the eigenvalues of the Laplacian matrix. The plotted functions represent the square root of the values given by the \code{zetav} function at different scales.
+\code{plot_filter} provides a graphical representation of tight-frame filters as functions of the eigenvalues of the Laplacian matrix. The plotted functions represent the square root of the values given by the \code{zetav} function at different scales. Other filters can be passed as parameters.
 }
 \details{
-This function plots the square roots of the functions forming the partition of unity,
-corresponding to the construction of tight frames on the graph. The square root operation is
-essential as it ensures the Parseval identity, making the constructed frame "tight" and
-preserving the energy of signals on the graph when mapped to their frame representation.
+This function plots the square roots of the functions forming the partition of unity, corresponding to the construction of tight frames on the graph. The square root operation is essential as it ensures the Parseval identity, making the constructed frame "tight" and preserving the energy of signals on the graph when mapped to their frame representation.
 
 `plot_filter` first determines the number of scales based on the largest eigenvalue \eqn{\lambda_{\text{max}}}{lambda_max} and the parameter \eqn{b}{b} as:
 \deqn{
@@ -28,6 +29,10 @@ k_{\text{max}} = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\
 }{k_max = floor(log(lambda_max)/log(b)) + 2}
 
 The function then plots the square root of the values given by the \code{\link{zetav}} function over the range [0, \eqn{\lambda_{\text{max}}}{lambda_max}] for each scale.
+}
+\note{
+\code{plot_filter} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
 }
 \examples{
 plot_filter(6,2)
