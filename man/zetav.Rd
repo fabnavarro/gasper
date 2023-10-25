@@ -2,7 +2,7 @@
 % Please edit documentation in R/zetav.R
 \name{zetav}
 \alias{zetav}
-\title{Evaluate Tight-Frame Filter Functions.}
+\title{Evaluate Localized Tight-Frame Filter Functions.}
 \usage{
 zetav(x, k, b = 2)
 }
@@ -17,14 +17,14 @@ zetav(x, k, b = 2)
 Returns a numeric vector of evaluated filter values.
 }
 \description{
-Evaluates filter associated with the particular (Littlewood-Paley type) tight-frame construction, based on a unity partition, proposed in the reference papers.
+\code{zetav} evaluates the filters associated with a specific tight-frame construction of the Littlewood-Paley type, based on a partition of unity, as proposed in the reference papers.
 }
 \details{
-The function `zetav` evaluates the partition of unity functions \eqn{\psi} following the methodology described in the references.
+The function `zetav` evaluates the partition of unity functions \eqn{\psi} following the methodology described in the references. This approach, inspired by frame theory, facilitates the construction of band-pass filters, ensuring effective spectral localization.
 
 A finite collection \eqn{(\psi_j)_{j=0, \ldots, J}} is a finite partition of unity on the compact interval \eqn{[0, \lambda_{\mathrm{max}}]}. It satisfies:
 \deqn{
-\psi_j : [0,\lambda_{\mathrm{max}}] \rightarrow [0,1]~\textrm{for all}~ j \in \{1,...,J\}~\textrm{and}~\forall \lambda \in [0,\lambda_{\mathrm{max}}],~\sum_{j=0}^J \psi_j(\lambda)=1.
+\psi_j : [0,\lambda_{\mathrm{max}}] \rightarrow [0,1]~\textrm{for all}~ j \in \{1,\ldots,J\}~\textrm{and}~\forall \lambda \in [0,\lambda_{\mathrm{max}}],~\sum_{j=0}^J \psi_j(\lambda)=1.
 }{
 psi_j: [0, lambda_{\mathrm{max}}] -> [0,1] for all j in J and for all lambda in [0, lambda_{\mathrm{max}}], sum(psi_j(lambda)) from j=0 to J = 1.
 }
