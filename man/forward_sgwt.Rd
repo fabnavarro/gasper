@@ -4,7 +4,14 @@
 \alias{forward_sgwt}
 \title{Compute Forward Spectral Graph Wavelet Transform.}
 \usage{
-forward_sgwt(f, evalues, evectors, b = 2)
+forward_sgwt(
+  f,
+  evalues,
+  evectors,
+  b = 2,
+  filter_func = zetav,
+  filter_params = list()
+)
 }
 \arguments{
 \item{f}{Graph signal to analyze (numeric vector).}
@@ -14,12 +21,16 @@ forward_sgwt(f, evalues, evectors, b = 2)
 \item{evectors}{Eigenvectors of the Laplacian matrix (matrix).}
 
 \item{b}{Parameter that control the number of scales in the SGWT (numeric scalar). It must be greater than 1.}
+
+\item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.}
+
+\item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \value{
 \code{wc} A concatenated vector of wavelet coefficients.
 }
 \description{
-\code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. The SGWT provides a multi-scale analysis of graph signals.
+\code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. Other filters can be passed as parameters. The SGWT provides a multi-scale analysis of graph signals.
 }
 \details{
 Given a graph signal \eqn{f}{f} of length \eqn{N}{N}, \code{forward_sgwt} computes the wavelet coefficients using SGWT.
@@ -35,6 +46,10 @@ where \deqn{g_j(\lambda) = \sqrt{\psi_j(\lambda)}}{g_j(lambda) = sqrt(psi_j(lamb
 
 The final result is a concatenated vector of these coefficients for all scales.
 }
+\note{
+\code{forward_sgwt} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
+}
 \examples{
 \dontrun{
 # Extract the adjacency matrix from the grid1 and compute the Laplacian
@@ -44,7 +59,7 @@ L <- laplacian_mat(grid1$sA)
 decomp <- eigensort(L)
 
 # Create a sample graph signal
-f <- rnorm(nrow(W))
+f <- rnorm(nrow(L))
 
 # Compute the forward Spectral Graph Wavelet Transform
 wc <- forward_sgwt(f, decomp$evalues, decomp$evectors)

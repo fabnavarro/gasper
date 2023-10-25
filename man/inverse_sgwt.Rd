@@ -4,7 +4,14 @@
 \alias{inverse_sgwt}
 \title{Compute Inverse Spectral Graph Wavelet Transform.}
 \usage{
-inverse_sgwt(wc, evalues, evectors, b = 2)
+inverse_sgwt(
+  wc,
+  evalues,
+  evectors,
+  b = 2,
+  filter_func = zetav,
+  filter_params = list()
+)
 }
 \arguments{
 \item{wc}{Wavelet coefficients to reconstruct the graph signal from (numeric vector).}
@@ -14,12 +21,16 @@ inverse_sgwt(wc, evalues, evectors, b = 2)
 \item{evectors}{Eigenvectors of the Laplacian matrix (matrix).}
 
 \item{b}{Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.}
+
+\item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.}
+
+\item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \value{
 \code{f} A graph signal obtained by applying the SGWT adjoint to \eqn{wc}{wc}.
 }
 \description{
-\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \eqn{wc}{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
+\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \eqn{wc}{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
 }
 \details{
 Given wavelet coefficients \eqn{wc}{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
@@ -36,6 +47,10 @@ where \deqn{g_j(\lambda) = \sqrt{\psi_j(\lambda)}}{g_j(lambda) = sqrt(psi_j(lamb
 
 The final result is the sum of \eqn{\mathbf{f}_j}{f_j} across all scales to reconstruct the entire graph signal.
 }
+\note{
+\code{inverse_sgwt} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
+}
 \examples{
 \dontrun{
 # Extract the adjacency matrix from the grid1 and compute the Laplacian
@@ -45,7 +60,7 @@ L <- laplacian_mat(grid1$sA)
 decomp <- eigensort(L)
 
 # Create a sample graph signal
-f <- rnorm(nrow(W))
+f <- rnorm(nrow(L))
 
 # Compute the forward Spectral Graph Wavelet Transform
 wc <- forward_sgwt(f, decomp$evalues, decomp$evectors)

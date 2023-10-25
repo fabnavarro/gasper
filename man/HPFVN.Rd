@@ -4,7 +4,7 @@
 \alias{HPFVN}
 \title{High Pass Filter Von Neumann Estimator.}
 \usage{
-HPFVN(wcn, evalues, b)
+HPFVN(wcn, evalues, b, filter_func = zetav, filter_params = list())
 }
 \arguments{
 \item{wcn}{Noisy wavelet coefficients (numeric vector).}
@@ -12,6 +12,10 @@ HPFVN(wcn, evalues, b)
 \item{evalues}{Laplacian spectrum (numeric vector).}
 
 \item{b}{Parameter that control the number of scales (numeric).}
+
+\item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.}
+
+\item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \description{
 \code{HPFVN} computes graph extension of the Von Neummann variance estimator using finest scale coefficients (as in classical wavelet approaches).
@@ -20,9 +24,12 @@ HPFVN(wcn, evalues, b)
 The High Pass Filter Von Neumann Estimator (HPFVN) is the graph analog of the classical Von Neumann estimator, focusing on the finest scale coefficients. It leverages the characteristics of the graph signal's wavelet coefficients to estimate the variance:
 \deqn{\hat \sigma^2 = \frac{\sum_{i=nJ+1}^{n(J+1)} (\mathcal{W} y)^2_i}{\mathrm{Tr}~\psi_J(L)}}
 }
+\note{
+\code{HPFVN} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
+}
 \examples{
 \dontrun{
-data(grid1)
 A <- grid1$sA
 L <- laplacian_mat(A)
 x <- grid1$xy[ ,1]

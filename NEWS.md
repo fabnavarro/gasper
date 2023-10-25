@@ -14,6 +14,9 @@ gasper News
     (keep unnormalized as default).
 -   add more info in doc.
 -   add `localize_gft`/`localize_sgwt` fun.
+-   add custom frame filters support (in `forward/inverse_sgwt`,
+    `HPFVN`, `plot_filter` and `tight_frame`) by passing additional
+    arguments (`filter_params`/`filter_func`).
 
 # gasper 1.1.4 relase (08/26/2023)
 

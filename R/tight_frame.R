@@ -37,7 +37,8 @@
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
 tight_frame <- function(evalues, evectors, b = 2,
-                        filter_func=zetav, filter_params=list()) {
+                        filter_func=zetav,
+                        filter_params=list()) {
   lmax <- max(evalues)
   kmax <- floor(log(lmax)/log(b)) + 2
   if ("kmax" %in% names(filter_params)) {

@@ -1,12 +1,14 @@
 #' Compute Forward Spectral Graph Wavelet Transform.
 #'
-#' \code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. The SGWT provides a multi-scale analysis of graph signals.
+#' \code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. Other filters can be passed as parameters. The SGWT provides a multi-scale analysis of graph signals.
 #'
 #' @export forward_sgwt
 #' @param f Graph signal to analyze (numeric vector).
 #' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
 #' @param evectors Eigenvectors of the Laplacian matrix (matrix).
 #' @param b Parameter that control the number of scales in the SGWT (numeric scalar). It must be greater than 1.
+#' @param filter_func Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.
+#' @param filter_params List of additional parameters required by filter_func. Default is an empty list.
 #' @return \code{wc} A concatenated vector of wavelet coefficients.
 #' @seealso \code{\link{inverse_sgwt}}, \code{\link{tight_frame}}
 #'
@@ -25,6 +27,10 @@
 #'
 #' The final result is a concatenated vector of these coefficients for all scales.
 #'
+#' @note
+#' \code{forward_sgwt} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+#' The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
+#'
 #' @examples
 #' \dontrun{
 #' # Extract the adjacency matrix from the grid1 and compute the Laplacian
@@ -34,7 +40,7 @@
 #' decomp <- eigensort(L)
 #'
 #' # Create a sample graph signal
-#' f <- rnorm(nrow(W))
+#' f <- rnorm(nrow(L))
 #'
 #' # Compute the forward Spectral Graph Wavelet Transform
 #' wc <- forward_sgwt(f, decomp$evalues, decomp$evectors)
@@ -48,13 +54,22 @@
 #' Hammond, D. K., Vandergheynst, P., & Gribonval, R. (2011). Wavelets on graphs via spectral graph theory. Applied and Computational Harmonic Analysis, 30(2), 129-150.
 #- todo: export zetav et gv
 
-forward_sgwt <- function(f, evalues, evectors, b = 2) {
+forward_sgwt <- function(f, evalues, evectors, b = 2,
+                         filter_func = zetav,
+                         filter_params = list()) {
   lmax <- max(evalues)
   kmax <- floor(log(lmax)/log(b)) + 2
+  if ("kmax" %in% names(filter_params)) {
+    kmax <- filter_params$kmax
+    filter_params$kmax <- NULL
+  }
   N <- length(evalues)
   wc <- matrix(0, nrow = N*(kmax+1), ncol = 1)
   for (k in 0:kmax) {
-    G <- sqrt(zetav(evalues, k, b))
+    #G <- sqrt(zetav(evalues, k, b))
+    G <- sqrt(do.call(filter_func,
+                      c(list(evalues, k, b),
+                        filter_params)))
     wc[(k*N+1):((k+1)*N)] <- evectors%*%(G*(t(evectors)%*%f))
   }
   return(wc)
