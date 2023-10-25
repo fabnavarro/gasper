@@ -15,7 +15,7 @@
 #' @details
 #' The Minnesota roads graph represents a planar structure consisting of 2642 vertices and 6606 edges.
 #'
-#' The signals come from the referenced paper generated using \code{\link{randsignal}}, with parameters \eqn{\eta=0.01, k=2}{eta=0.01, k=2} and \eqn{\eta=0.001,k=4}{eta=0.001, k=4}.
+#' The signals come from the referenced paper generated using \code{\link{randsignal}} with parameters \eqn{\eta=0.01, k=2}{eta=0.01, k=2} and \eqn{\eta=0.001,k=4}{eta=0.001, k=4}.
 #'
 #' @source D. Gleich. The MatlabBGL Matlab library.
 #'

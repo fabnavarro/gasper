@@ -12,7 +12,7 @@
 #' @details
 #' This function plots the square roots of the functions forming the partition of unity, corresponding to the construction of tight frames on the graph. The square root operation is essential as it ensures the Parseval identity, making the constructed frame "tight" and preserving the energy of signals on the graph when mapped to their frame representation.
 #'
-#' `plot_filter` first determines the number of scales based on the largest eigenvalue \eqn{\lambda_{\text{max}}}{lambda_max} and the parameter \eqn{b}{b} as:
+#' \code{plot_filter} first determines the number of scales based on the largest eigenvalue \eqn{\lambda_{\text{max}}}{lambda_max} and the parameter \eqn{b}{b} as:
 #' \deqn{
 #' k_{\text{max}} = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2
 #' }{k_max = floor(log(lambda_max)/log(b)) + 2}

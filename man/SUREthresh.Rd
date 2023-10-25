@@ -31,22 +31,22 @@ elements of the wavelet frame operator matrix.}
 
 \item{sigma}{A numeric value representing the standard deviation (sd) of the noise.}
 
-\item{hatsigma}{An optional numeric value providing an estimate of the noise standard deviation (default is NA).}
+\item{hatsigma}{An optional numeric value providing an estimate of the noise standard deviation (default is \code{NA}).}
 
 \item{policy}{A character string determining the thresholding policy. Valid options include:
 \itemize{
-              \item "uniform" for a global threshold applied uniformly across all coefficients.
-              \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+              \item \code{"uniform"} for a global threshold applied uniformly across all coefficients.
+              \item \code{"dependent"} for threshold values that adaptively depend on the corresponding \code{diagWWt} weights.
               }}
 
-\item{keepwc}{A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).}
+\item{keepwc}{A logical value determining if the thresholded wavelet coefficients should be returned (Default is \code{TRUE}).}
 }
 \value{
 A list containing:
 \itemize{
         \item A dataframe with calculated SURE and hatSURE values.
         \item Minima of SURE and hatSURE and their corresponding optimal thresholds.
-        \item Thresholded wavelet coefficients (if `keepwc = TRUE`).
+        \item Thresholded wavelet coefficients (if \code{keepwc = TRUE}).
         }
 }
 \description{

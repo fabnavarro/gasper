@@ -1,4 +1,4 @@
-#' Level Dependent Stein's Unbiased Risk Estimate (LD-SURE) Thresholding
+#' Level Dependent Stein's Unbiased Risk Estimate Thresholding.
 #'
 #' Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Estimate (LD-SURE).
 #' This function applies SURE in a level dependent manner to wavelet coefficients, which aims to
@@ -7,7 +7,7 @@
 #' @export
 #' @param J The finest scale, or the highest frequency. This parameter determines the total number of scales that the function will process (interger).
 #' @param wcn A vector of noisy wavelet coefficients that need to be thresholded (numeric).
-#' @param diagWWt A vector of weights.
+#' @param diagWWt A vector of weights (numeric).
 #' @param beta The type of thresholding to be used. If beta=1, soft thresholding is applied.
 #'        If beta=2, James-Stein thresholding is applied (Default is 2).
 #' @param sigma The standard deviation of the noise present in the wavelet coefficients (numeric).
@@ -17,7 +17,7 @@
 #'        "dependent". In the "uniform" policy, the thresholds are set based on the absolute
 #'        value of the wavelet coefficients. In the "dependent" policy, the thresholds are
 #'        set based on the wavelet coefficients normalized by the weights from `diagWWt`.
-#' @param keepSURE A logical flag. If `TRUE`, the function will also return a list containing
+#' @param keepSURE A logical flag. If \code{TRUE}, the function will also return a list containing
 #'        the results of the SURE thresholding for each scale.
 #' @return A list containing the wavelet coefficient estimates after applying the SURE
 #'         thresholding. The list will contain the following components:

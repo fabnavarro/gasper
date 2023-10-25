@@ -6,8 +6,11 @@
 #' @importFrom RSpectra eigs_sym
 #' @param adj_mat A symmetric adjacency matrix or sparse matrix representing an undirected graph.
 #' @return A matrix where each row represents the spectral coordinates of a node in the graph.
-#' @seealso \code{\link{plot_graph}}
-#' @references Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Soc.
+#' @seealso \code{\link{plot_graph}}, \code{\link{plot_signal}}
+#' @references
+#' Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Soc.
+#'
+#' Hall, K. M. (1970). An r-dimensional quadratic placement algorithm. Management science, 17(3), 219-229.
 
 #- todo add test to deal with eigenvalues with algebraic multiplicity>1 particulary for 0
 # non_zero_eig_vals <- eig_dec$evalues[eig_dec$evalues > 1e-10]

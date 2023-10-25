@@ -2,7 +2,7 @@
 % Please edit documentation in R/LD_SUREthresh.R
 \name{LD_SUREthresh}
 \alias{LD_SUREthresh}
-\title{Level Dependent Stein's Unbiased Risk Estimate (LD-SURE) Thresholding}
+\title{Level Dependent Stein's Unbiased Risk Estimate Thresholding.}
 \usage{
 LD_SUREthresh(
   J,
@@ -20,7 +20,7 @@ LD_SUREthresh(
 
 \item{wcn}{A vector of noisy wavelet coefficients that need to be thresholded (numeric).}
 
-\item{diagWWt}{A vector of weights.}
+\item{diagWWt}{A vector of weights (numeric).}
 
 \item{beta}{The type of thresholding to be used. If beta=1, soft thresholding is applied.
 If beta=2, James-Stein thresholding is applied (Default is 2).}
@@ -35,7 +35,7 @@ function will also compute wavelet coefficient estimates using this estimator (n
 value of the wavelet coefficients. In the "dependent" policy, the thresholds are
 set based on the wavelet coefficients normalized by the weights from `diagWWt`.}
 
-\item{keepSURE}{A logical flag. If `TRUE`, the function will also return a list containing
+\item{keepSURE}{A logical flag. If \code{TRUE}, the function will also return a list containing
 the results of the SURE thresholding for each scale.}
 }
 \value{

@@ -59,5 +59,5 @@ barplot(abs(s_gft), main="GFT of Localized Signal",
 }
 }
 \seealso{
-\code{\link{forward_sgwt}},\code{\link{forward_gft}},\code{\link{forward_gft}}
+\code{\link{forward_sgwt}}, \code{\link{forward_gft}}, \code{\link{forward_gft}}
 }

@@ -27,19 +27,18 @@ inverse_sgwt(
 \item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \value{
-\code{f} A graph signal obtained by applying the SGWT adjoint to \eqn{wc}{wc}.
+\code{f} A graph signal obtained by applying the SGWT adjoint to \code{wc}.
 }
 \description{
-\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \eqn{wc}{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
+\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
 }
 \details{
-Given wavelet coefficients \eqn{wc}{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
+Given wavelet coefficients \code{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
 
 The eigenvalues and eigenvectors of the graph Laplacian are denoted as \eqn{\Lambda}{Lambda} and \eqn{U}{U} respectively. The parameter \eqn{b}{b} controls the number of scales, and \eqn{\lambda_{\text{max}}}{lambda_max} is the largest eigenvalue.
 
-
-For each scale \eqn{j = 0, 1, \ldots, J}{j = 0, 1, ..., J}, where
-\deqn{J = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2}{J = floor(log(lambda_max)/log(b)) + 2}, the reconstructed signal for that scale is computed as:
+For each scale \eqn{j = 0,\ldots, J}{j = 0,..., J}, where
+\deqn{J = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2}{J = floor(log(lambda_max)/log(b)) + 2} the reconstructed signal for that scale is computed as:
 \deqn{
 \mathbf{f}_j = (U \mathbf{wc}_j \odot g_j) U^T
 }{\mathbf{f}_j = (U wc_j * g_j) U^T}
@@ -73,9 +72,9 @@ f_rec <- inverse_sgwt(wc, decomp$evalues, decomp$evectors)
 \references{
 Göbel, F., Blanchard, G., von Luxburg, U. (2018). Construction of tight frames on graphs and application to denoising. In Handbook of Big Data Analytics (pp. 503-522). Springer, Cham.
 
-de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
-
 Hammond, D. K., Vandergheynst, P., & Gribonval, R. (2011). Wavelets on graphs via spectral graph theory. Applied and Computational Harmonic Analysis, 30(2), 129-150.
+
+de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 }
 \seealso{
 \code{\link{forward_sgwt}}, \code{\link{tight_frame}}

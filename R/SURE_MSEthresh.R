@@ -22,9 +22,9 @@
 #' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
 #' @return A list containing:
 #' \itemize{
-#'         - A dataframe with calculated MSE, SURE, and hatSURE values.
-#'         - Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
-#'         - Thresholded wavelet coefficients (if `keepwc = TRUE`).
+#'         \item A dataframe with calculated MSE, SURE, and hatSURE values.
+#'         \item Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
+#'         \item Thresholded wavelet coefficients (if \code{keepwc = TRUE}).
 #'         }
 #' @details
 #' \code{SURE_MSEthresh} function extends the \code{SUREthresh} function by providing an MSE between the true coefficients and their thresholded versions for a given thresholding function \eqn{h}. This allows for a more comprehensive evaluation of the denoising quality in simulated scenarios where the true function is known.

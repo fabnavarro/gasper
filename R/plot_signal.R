@@ -1,7 +1,7 @@
 #' Plot a signal on top of a given graph
 #'
-#' Visualize a signal `f` over a graph defined by `z`.
-#' If the graph does not provide spatial coordinates (`xy`), the function computes them using spectral graph embedding based on the graph's Laplacian eigenvectors.
+#' Visualize a signal \code{f} over a graph defined by \code{z}.
+#' If the graph does not provide spatial coordinates \code{xy}, the function computes them using spectral graph embedding based on the graph's Laplacian eigenvectors.
 #'
 #'@note If node coordinates \code{xy} are not provided, they will be calculated using spectral methods. For larger graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
 #'

@@ -21,9 +21,9 @@
 #' When the eigenvectors \eqn{U}{U} are not provided, the function computes them from the Laplacian matrix \eqn{L}{L}.
 #'
 #' @references
-#' Shuman, D. I., Narang, S. K., Frossard, P., Ortega, A., & Vandergheynst, P. (2013). The emerging field of signal processing on graphs: Extending high-dimensional data analysis to networks and other irregular domains. IEEE signal processing magazine, 30(3), 83-98.
-#'
 #' Ortega, A., Frossard, P., Kovačević, J., Moura, J. M., & Vandergheynst, P. (2018). Graph signal processing: Overview, challenges, and applications. Proceedings of the IEEE, 106(5), 808-828.
+#'
+#' Shuman, D. I., Narang, S. K., Frossard, P., Ortega, A., & Vandergheynst, P. (2013). The emerging field of signal processing on graphs: Extending high-dimensional data analysis to networks and other irregular domains. IEEE signal processing magazine, 30(3), 83-98.
 
 inverse_gft <- function(L, hatf, U = NULL) {
   if (is.null(U)) {

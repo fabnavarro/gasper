@@ -10,7 +10,7 @@
 #' @seealso \code{\link{inverse_gft}}
 #' @details
 #'
-#' The GFT allows one to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are akin to the harmonics in classical Fourier analysis.
+#' The GFT allows one to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are similar to the harmonics of classical Fourier analysis.
 #'
 #' The GFT of a graph signal \eqn{f}{f} is given by:
 #' \deqn{
@@ -21,9 +21,11 @@
 #' When the eigenvectors \eqn{U}{U} are not provided, the function computes them using the Laplacian matrix \eqn{L}{L}.
 #'
 #' @references
-#' Shuman, D. I., Narang, S. K., Frossard, P., Ortega, A., & Vandergheynst, P. (2013). The emerging field of signal processing on graphs: Extending high-dimensional data analysis to networks and other irregular domains. IEEE signal processing magazine, 30(3), 83-98.
-#'
 #' Ortega, A., Frossard, P., Kovačević, J., Moura, J. M., & Vandergheynst, P. (2018). Graph signal processing: Overview, challenges, and applications. Proceedings of the IEEE, 106(5), 808-828.
+#'
+#' Shuman, D. I., Narang, S. K., Frossard, P., Ortega, A., & Vandergheynst, P. (2013). The emerging field of signal processing on graphs: Extending high-dimensional data analysis to networks and other irregular domains. IEEE signal processing magazine, 30(3), 83-98.
+
+
 
 forward_gft <- function(L, f, U=NULL) {
   if (is.null(U)) {

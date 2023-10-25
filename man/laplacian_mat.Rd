@@ -20,11 +20,11 @@ laplacian_mat(W, type = "unnormalized")
 \details{
 The function supports three types of Laplacian matrices:
 \itemize{
-  \item \strong{Unnormalized Laplacian}:
+  \item Unnormalized Laplacian:
     \deqn{L = D - W}{L = D - W}
-  \item \strong{Normalized Laplacian}:
+  \item Normalized Laplacian:
     \deqn{L_{norm} = I - D^{-1/2} W D^{-1/2}}{L_{norm} = I - D^{-1/2} W D^{-1/2}}
-  \item \strong{Random Walk Laplacian}:
+  \item Random Walk Laplacian:
     \deqn{L_{rw} = I - D^{-1} W}{L_{rw} = I - D^{-1} W}
 }
 

@@ -46,9 +46,9 @@ SURE_MSEthresh(
 \value{
 A list containing:
 \itemize{
-        - A dataframe with calculated MSE, SURE, and hatSURE values.
-        - Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
-        - Thresholded wavelet coefficients (if `keepwc = TRUE`).
+        \item A dataframe with calculated MSE, SURE, and hatSURE values.
+        \item Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
+        \item Thresholded wavelet coefficients (if \code{keepwc = TRUE}).
         }
 }
 \description{

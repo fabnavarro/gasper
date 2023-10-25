@@ -17,7 +17,9 @@ Calculates the spectral coordinates of a graph using the two smallest non-zero e
 }
 \references{
 Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Soc.
+
+Hall, K. M. (1970). An r-dimensional quadratic placement algorithm. Management science, 17(3), 219-229.
 }
 \seealso{
-\code{\link{plot_graph}}
+\code{\link{plot_graph}}, \code{\link{plot_signal}}
 }

@@ -45,7 +45,7 @@
 #' barplot(abs(s_gft), main="GFT of Localized Signal",
 #'         xlab="Eigenvalue Index", ylab="Magnitude")
 #' }
-#' @seealso \code{\link{forward_sgwt}},\code{\link{forward_gft}},\code{\link{forward_gft}}
+#' @seealso \code{\link{forward_sgwt}}, \code{\link{forward_gft}}, \code{\link{forward_gft}}
 
 localize_sgwt <- function(i, evalues, evectors, b=2) {
   N <- nrow(evectors)

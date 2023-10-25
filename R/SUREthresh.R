@@ -13,18 +13,18 @@
 #'             \item 2 for James-Stein thresholding.
 #'             }
 #' @param sigma A numeric value representing the standard deviation (sd) of the noise.
-#' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is NA).
+#' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is \code{NA}).
 #' @param policy A character string determining the thresholding policy. Valid options include:
 #' \itemize{
-#'               \item "uniform" for a global threshold applied uniformly across all coefficients.
-#'               \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+#'               \item \code{"uniform"} for a global threshold applied uniformly across all coefficients.
+#'               \item \code{"dependent"} for threshold values that adaptively depend on the corresponding \code{diagWWt} weights.
 #'               }
-#' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
+#' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is \code{TRUE}).
 #' @return A list containing:
 #' \itemize{
 #'         \item A dataframe with calculated SURE and hatSURE values.
 #'         \item Minima of SURE and hatSURE and their corresponding optimal thresholds.
-#'         \item Thresholded wavelet coefficients (if `keepwc = TRUE`).
+#'         \item Thresholded wavelet coefficients (if \code{keepwc = TRUE}).
 #'         }
 #' @seealso \code{\link{SURE_MSEthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
 #'

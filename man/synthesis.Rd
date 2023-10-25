@@ -22,7 +22,7 @@ The \code{synthesis} operator uses the frame coefficients to retrieve the graph 
 \deqn{T^\ast_{\mathfrak F}(c_i)_{i \in I}=\sum_{i \in I} c_i r_i}{T*_F(c_i) for all i in I = sum of c_i * r_i for all i in I}
 
 The synthesis is computed as:
-\deqn{y = tf^{T} \times coeff}{y = t(coeff) \%*\% tf}
+\deqn{\code{y} = \code{coeff}^T\code{tf}}{y = t(coeff) \%*\% tf}
 }
 \examples{
 \dontrun{
