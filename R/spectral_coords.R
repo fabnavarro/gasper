@@ -18,7 +18,7 @@
 spectral_coords <- function(adj_mat) {
   L <- laplacian_mat(adj_mat)
 
-  if (max(dim(adj_mat)) > 5000) {
+  if (max(dim(adj_mat)) > 3000) {
     # Use Rspectra::eigs_sym for larger matrices
     adj_mat <- as(adj_mat, "dgCMatrix")
     u <- eigs_sym(L, 3, which = "SM")$vectors
@@ -27,6 +27,10 @@ spectral_coords <- function(adj_mat) {
     eig_dec <- eigensort(L)
     u2 <- eig_dec$evectors[, 2]
     u3 <- eig_dec$evectors[, 3]
+    #non_zero_eig_vals <- eig_dec$evalues[eig_dec$evalues > 1e-10]
+    #smallest_indices <- which(eig_dec$evalues %in% non_zero_eig_vals)[1:2]
+    #u2 <- eig_dec$evectors[, smallest_indices[1]]
+    #u3 <- eig_dec$evectors[, smallest_indices[2]]
     u <- cbind(u2, u3)
   }
   return(u)

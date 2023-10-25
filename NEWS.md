@@ -12,6 +12,7 @@ gasper News
     Laplacian.
 -   add random walk and normalized laplacian matrix to `laplacian_mat`
     (keep unnormalized as default).
+-   add more info in doc.
 
 # gasper 1.1.4 relase (08/26/2023)
 

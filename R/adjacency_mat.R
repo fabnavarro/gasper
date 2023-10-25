@@ -1,9 +1,9 @@
 #' Compute the Adjacency Matrix of a Gaussian Weighted Graph
 #'
-#' \code{adjacency_mat} calculates the adjacency matrix of a Gaussian weighted graph based on the distance between points in \eqn{R^3}{R^3}.
+#' \code{adjacency_mat} calculates the adjacency matrix of a Gaussian weighted graph based on the distance between points in \eqn{\mathbb{R}^3}{R^3}.
 #'
 #' @export adjacency_mat
-#' @param pts Matrix representing the coordinates of N points in \eqn{R^3}{R^3}. Each row should correspond to a point.
+#' @param pts Matrix representing the coordinates of N points in \eqn{\mathbb{R}^3}{R^3}. Each row should correspond to a point.
 #' @param f Function representing the scalar potential. By default, the Gaussian potential \eqn{\exp(-x^2/8)}{exp(-x^2/8)} is used.
 #' @param s Numeric threshold used to sparsify the adjacency matrix. Any value below this threshold will be set to zero. Default is 0.
 #'

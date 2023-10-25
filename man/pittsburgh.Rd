@@ -3,26 +3,29 @@
 \docType{data}
 \name{pittsburgh}
 \alias{pittsburgh}
-\title{Pittsburgh network.}
+\title{Pittsburgh Census Tracts Network.}
 \format{
-list of 7 elements
-\describe{
-\item{A}{pittsburgh adjacency matrix}
-\item{sA}{pittsburgh sparse adjacency matrix}
-\item{xy}{coordinates}
-\item{f}{signal used in Trend filtering on graphs}
-\item{y}{noisy signal used in Trend filtering on graph}
-\item{f1}{eta=0.01, k=5}
-\item{geo}{geometry}
+A list with 7 elements:
+\itemize{
+  \item \code{A} A dense matrix capturing the connections between spatially adjacent census tracts in Allegheny County.
+  \item \code{sA} A sparse matrix representation of the census tracts' adjacency matrix.
+  \item \code{xy} A matrix indicating the spatial location of each census tract.
+  \item \code{f} Artificial signal with inhomogeneous smoothness across nodes and two sharp peaks near the center. This signal is formed using a mixture of five Gaussians in the underlying spatial coordinates.
+  \item \code{y} Noisy version of the signal.
+  \item \code{f1} Synthetic signal, possibly generated with specific smoothness parameters.
+  \item \code{geo} Geometry data for the census tract nodes.
 }
 }
 \source{
-The sources come from different codes provided by Yu-Xiang Wang (UC Santa Barbara) and are associated with the article: "Trend Filtering on Graphs, JMLR, 2016". \url{https://sites.cs.ucsb.edu/~yuxiangw/resources.html}.
+Data and associated materials were sourced from codes provided by Yu-Xiang Wang (UC Santa Barbara) and are associated with the referenced paper.
 }
 \usage{
 pittsburgh
 }
 \description{
-A dataset containing the pittsubrgh network.
+A dataset representing the graph structure of 402 census tracts of Allegheny County, PA.
+}
+\references{
+Wang, Y. X., Sharpnack, J., Smola, A. J., & Tibshirani, R. J. (2016). Trend Filtering on Graphs. Journal of Machine Learning Research, 17, 1-41.
 }
 \keyword{datasets}

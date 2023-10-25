@@ -3,18 +3,27 @@
 \docType{data}
 \name{NYCdata}
 \alias{NYCdata}
-\title{NYC network.}
+\title{NYC Taxi Network Dataset.}
 \format{
-list of 2 elements
-\describe{
-\item{A}{NYC adjacency matrix (built using exponential weights between two nodes).}
-\item{f}{median price observed from miles travelled to the given drop off point.}
+A list with 2 elements:
+\itemize{
+  \item \code{A}: NYC adjacency matrix, constructed using Gaussian weights based on mean distances between locations.
+  \item \code{f}: Signal representing the "total amount" with added artificial noise.
 }
 }
 \usage{
 NYCdata
 }
 \description{
-A dataset containing the NYC network.
+A dataset derived from NYC taxi trip records. The graph constructed represents the connectivity based on taxi trips between different locations. The weights of the edges represent the frequency and distances of trips between locations. Additionally, the dataset includes a signal \code{f} that represents the total amount with added noise.
+}
+\details{
+The data comes from the methodology in the referenced paper. It is constructed from real-world data fetched from NYC taxis databases. The graph consists of 265 vertices which correspond to different LocationID (both Pick-Up and Drop-Off points). Gaussian weights are defined by
+\deqn{w_{ij} = \exp(-\tau d_{i,j}^2)}{w_ij = exp(-tau * d_ij^2)}, where \eqn{d_{i,j}}{d_ij} represents the mean distance taken on all the trips between locations \eqn{i}{i} and \eqn{j}{j} or \eqn{j}{j} and \eqn{i}{i}.
+
+The signal \code{f} is constructed based on the "total amount" variable from the taxi dataset, with added artificial noise.
+}
+\references{
+de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 }
 \keyword{datasets}

@@ -1,38 +1,23 @@
-options(citation.bibtex.max = Inf)
-PKG <- meta$Package
-VERSION <- meta$Version
-TITLE <- meta$Title
-AUTHORS <- meta$Author
-
 bibentry(
-    key = "gasper",
-    bibtype = "Manual",
-    title = "R package gasper: Graph Signal Processing",
-    author = AUTHORS,
-    year = sub("-.*", "",packageDate(desc = as.list(meta))),
-    note = sprintf("R package version %s",VERSION),
-    url = "https://CRAN.R-project.org/package=gasper",
-    header = "If you use ‘gasper’ in publications, please consider citing the reference manual:"
+  header="To cite gasper in publications use:",
+  key="deloynes2023",
+  bibtype = "Misc",
+  title = "Gasper: GrAph Signal ProcEssing in R",
+  author = "Basile de Loynes and Fabien Navarro and Baptiste Olivier",
+  year = "2023",
+  eprint={"arXiv:2007.10642"},
+  url = "https://doi.org/10.48550/arXiv.2007.10642"
 )
 
 bibentry(
-    key="deloynes2020gasper",
-    bibtype = "Misc",
-      title="Gasper: GrAph Signal ProcEssing in R",
-      author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
-      year={2023},
-      eprint={"2007.10642"},
-      header = "or the package vignettes:"
-)
-
-bibentry(
-    key="deloynes2020datadriven",
-    bibtype = "Article",
-      title="Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform",
-      author="Basile de Loynes and Fabien Navarro and Baptiste Olivier",
+  header = "or the associated paper:",
+  key = "deloynes2020",
+  bibtype = "Article",
+  title = "Data-driven Thresholding in Denoising with Spectral Graph Wavelet Transform",
+  author = "Basile de Loynes and Fabien Navarro and Baptiste Olivier",
   journal = "Journal of Computational and Applied Mathematics",
   volume = "389",
   pages = "113319",
   year = "2021",
-      header = "or (if relevent) the associated paper:"
+  url = "https://doi.org/10.1016/j.cam.2020.113319"
 )

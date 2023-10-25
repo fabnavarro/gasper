@@ -3,19 +3,24 @@
 \docType{data}
 \name{grid1}
 \alias{grid1}
-\title{grid1 graph.}
+\title{Grid1 Graph from AG-Monien Graph Collection.}
 \format{
 list of 3 elements
-\describe{
-\item{xy}{coordinates}
-\item{sA}{adjacency matrix}
-\item{dim}{numbers of rows, columns and numerically nonzero elements}
+\itemize{
+  \item \code{xy}: A matrix with the coordinates for each node in the graph.
+  \item \code{sA}: A sparse matrix representation of the graph's adjacency matrix.
+  \item \code{dim}: A numeric vector containing the numbers of rows, columns, and numerically nonzero elements in the adjacency matrix.
 }
+}
+\source{
+AG-Monien Graph Collection by Ralf Diekmann and Robert Preis.
 }
 \usage{
 grid1
 }
 \description{
-A dataset containing grid1 graph.
+This dataset represents the "grid1" graph sourced from the AG-Monien Graph Collection,
+a collection of test graphs provided by Ralf Diekmann and Robert Preis.
+The AG-Monien collection encompasses graphs from various origins, including the Harwell-Boeing collection, NASA matrices, and other graphs.
 }
 \keyword{datasets}
