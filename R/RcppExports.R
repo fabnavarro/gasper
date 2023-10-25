@@ -13,12 +13,3 @@ eigendec <- function(M) {
     .Call('_gasper_eigendec', PACKAGE = 'gasper', M)
 }
 
-#' Matrix multiplication
-#'
-#' @param A a matrix.
-#' @param B a matrix.
-#' @export matmult
-matmult <- function(A, B) {
-    .Call('_gasper_matmult', PACKAGE = 'gasper', A, B)
-}
-

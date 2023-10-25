@@ -22,22 +22,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// matmult
-arma::mat matmult(arma::mat A, arma::mat B);
-RcppExport SEXP _gasper_matmult(SEXP ASEXP, SEXP BSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type A(ASEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type B(BSEXP);
-    rcpp_result_gen = Rcpp::wrap(matmult(A, B));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_gasper_eigendec", (DL_FUNC) &_gasper_eigendec, 1},
-    {"_gasper_matmult", (DL_FUNC) &_gasper_matmult, 2},
     {NULL, NULL, 0}
 };
 
