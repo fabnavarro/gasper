@@ -4,7 +4,13 @@
 \alias{tight_frame}
 \title{Tight-Frame Computation.}
 \usage{
-tight_frame(evalues, evectors, b = 2)
+tight_frame(
+  evalues,
+  evectors,
+  b = 2,
+  filter_func = zetav,
+  filter_params = list()
+)
 }
 \arguments{
 \item{evalues}{Numeric vector containing the eigenvalues of the Laplacian matrix.}
@@ -12,12 +18,20 @@ tight_frame(evalues, evectors, b = 2)
 \item{evectors}{Matrix of the corresponding eigenvectors of the Laplacian matrix.}
 
 \item{b}{Numeric scalar. Parameter that controls the number of scales in the wavelet decomposition.}
+
+\item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.}
+
+\item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \value{
 Matrix of the tight-frame wavelet coefficients.
 }
 \description{
 Constructs a tight-frame wavelet on graphs
+}
+\note{
+\code{tight_frame} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
 }
 \examples{
 \dontrun{
