@@ -36,7 +36,7 @@
 #' # Plot the localized kernel (for the chosen scale) as a signal on the graph
 #' plot_signal(grid1, s)
 #' }
-#' @seealso \code{\link{forward_sgwt}}
+#' @seealso \code{\link{forward_sgwt}},\code{\link{localize_gft}}
 
 localize_sgwt <- function(i, evalues, evectors, b=2) {
   N <- nrow(evectors)

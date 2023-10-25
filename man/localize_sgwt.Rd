@@ -51,5 +51,5 @@ plot_signal(grid1, s)
 }
 }
 \seealso{
-\code{\link{forward_sgwt}}
+\code{\link{forward_sgwt}},\code{\link{localize_gft}}
 }

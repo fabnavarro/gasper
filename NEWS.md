@@ -10,9 +10,10 @@ gasper News
 -   add `spectral_coords` function to compute spectral coordinates of a
     graph using the two smallest non-zero eigenvalues of the graph
     Laplacian.
--   add random walk and normalized laplacian matrix to `laplacian_mat`
+-   add random walk and normalized Laplacian matrix to `laplacian_mat`
     (keep unnormalized as default).
 -   add more info in doc.
+-   add `localize_gft`/`localize_sgwt` fun.
 
 # gasper 1.1.4 relase (08/26/2023)
 
