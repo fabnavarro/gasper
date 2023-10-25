@@ -24,24 +24,26 @@ SUREthresh(
 elements of the wavelet frame operator matrix.}
 
 \item{beta}{A numeric value specifying the type of thresholding to be used:
-- 1 for soft thresholding.
-- 2 for James-Stein thresholding.}
+\itemize{
+           - 1 for soft thresholding.
+           - 2 for James-Stein thresholding.}}
 
 \item{sigma}{A numeric value representing the standard deviation (sd) of the noise.}
 
 \item{hatsigma}{An optional numeric value providing an estimate of the noise standard deviation (default is NA).}
 
-\item{policy}{A character string determining the thresholding policy. Valid options include:
+\item{policy}{A character string determining the thresholding policy. Valid options include: \itemize{
 - "uniform" for a global threshold applied uniformly across all coefficients.
-- "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.}
+- "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+}}
 
 \item{keepwc}{A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).}
 }
 \value{
-A list containing:
+A list containing: \itemize{
         - A dataframe with calculated SURE and hatSURE values.
         - Minima of SURE and hatSURE and their corresponding optimal thresholds.
-        - Thresholded wavelet coefficients (if `keepwc = TRUE`).
+        - Thresholded wavelet coefficients (if `keepwc = TRUE`).}
 }
 \description{
 Adaptive Threshold Selection Using Principle of SURE.

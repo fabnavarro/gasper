@@ -1,23 +1,41 @@
-#' Level Dependent Stein's Unbiased Risk Estimate.
+#' Level Dependent Stein's Unbiased Risk Estimate (LD-SURE) Thresholding
 #'
-#' Level Dependent adaptive threshold selection using SURE.
+#' Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Estimate (LD-SURE).
+#' This function applies SURE in a level dependent manner to wavelet coefficients, which aims to
+#' minimize SURE at each wavelet scale.
 #'
-#' @export LD_SUREthresh
-#' @param J Finest-scale (highest frequency).
-#' @param wcn Noisy wavelet coefficents.
-#' @param diagWWt Weights.
-#' @param beta Thresholding type (beta=1: soft, beta=2: JS).
-#' @param sigma Sd of the noise.
-#' @param hatsigma Estimator of the sd (if any).
-#' @param policy Dependent or uniform.
-#' @param keepSURE Boolean allowing to export the dataframe outuput of SUREthresh (FALSE by default).
-#' @return \code{wcLDSURE} Wavelet coefficient estimates applying SURE scale by scale.
-#' @return \code{wcLDhatSURE} if hatsigma provided, wavelet coefficient estimates applying SURE scale by scale.
-#' @seealso \code{\link{SUREthresh}}
+#' @export
+#' @param J The finest scale, or the highest frequency. This parameter determines the total number of scales that the function will process (interger).
+#' @param wcn A vector of noisy wavelet coefficients that need to be thresholded (numeric).
+#' @param diagWWt A vector of weights.
+#' @param beta The type of thresholding to be used. If beta=1, soft thresholding is applied.
+#'        If beta=2, James-Stein thresholding is applied (Default is 2).
+#' @param sigma The standard deviation of the noise present in the wavelet coefficients (numeric).
+#' @param hatsigma An optional estimator of the noise standard deviation. If provided, the
+#'        function will also compute wavelet coefficient estimates using this estimator (numeric).
+#' @param policy The policy for threshold setting. It can be either "uniform" (default) or
+#'        "dependent". In the "uniform" policy, the thresholds are set based on the absolute
+#'        value of the wavelet coefficients. In the "dependent" policy, the thresholds are
+#'        set based on the wavelet coefficients normalized by the weights from `diagWWt`.
+#' @param keepSURE A logical flag. If `TRUE`, the function will also return a list containing
+#'        the results of the SURE thresholding for each scale.
+#' @return A list containing the wavelet coefficient estimates after applying the SURE
+#'         thresholding. The list will contain the following components:
+#'         \itemize{
+#'           \item \code{wcLDSURE}: The wavelet coefficient estimates obtained by minimizing SURE.
+#'           \item \code{wcLDhatSURE}: If `hatsigma` is provided, this component contains the
+#'                  wavelet coefficient estimates obtained using the `hatsigma` estimator.
+#'           \item \code{lev_thresh}: If `keepSURE` is `TRUE`, this component contains a list
+#'                  of results similar to the output of \code{SUREthresh} for each scale.
+#'         }
+#' @seealso
+#' \code{\link{SUREthresh}}
+#' \note See \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
 #' @references
-#' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
+#' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with
+#' Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'
-#'Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.
+#' Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.
 
 LD_SUREthresh <- function(J, wcn, diagWWt, beta = 2, sigma, hatsigma = NA, policy = "uniform", keepSURE = FALSE){
   N <- length(wcn)

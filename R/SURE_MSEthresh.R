@@ -1,24 +1,32 @@
-#' Stein's Unbiased Risk Estimate.
+#' Stein's Unbiased Risk Estimate with MSE.
 #'
-#' Adaptive Threshold Selection Using Principle of SURE
-#' (The irreducible variance term is not included,
-#'  it does not change the position of the minimum).
-#'
-#' Note:
-#'  - the calculation of the MSE is also included for comparison purpose.
+#' Adaptive Threshold Selection Using Principle of SURE with the inclusion of Mean Squared Error (MSE) for comparison. The irreducible variance term is intentionally not included in the SURE calculations, as it does not change the position of the minimum.
 #'
 #' @export SURE_MSEthresh
-#' @param wcn Noisy wavelet coefficients.
-#' @param wcf True wavelet coefficients.
-#' @param thresh Threshold values.
-#' @param diagWWt Weights.
-#' @param beta Threshold type (e.g, beta=1: soft, beta=2: JS).
-#' @param sigma Standard deviation of the noise.
-#' @param hatsigma Estimator of the standard deviation (if any).
-#' @param policy Dependent or uniform.
-#' @param keepwc Boolean allowing to export the coefficients of the frame after thresholding (TRUE by default).
-#' @return \code{res} a dataframe containing MSE, SURE, hatSURE and their respective minima and corresponding optimal thresholds.
-#' @seealso \code{\link{SUREthresh}}
+#' @param wcn Noisy wavelet coefficients (numeric vector).
+#' @param wcf True wavelet coefficients (numeric vector).
+#' @param thresh Threshold values (numeric vector).
+#' @param diagWWt Weights (numeric vector). These weights are typically derived from the diagonal elements of the wavelet frame matrix.
+#' @param beta A numeric value specifying the type of thresholding to be used:
+#'  \itemize{
+#'             - 1 for soft thresholding.
+#'             - 2 for James-Stein thresholding.
+#'             }
+#' @param sigma A numeric value representing the standard deviation (sd) of the noise.
+#' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is NA).
+#' @param policy A character string determining the thresholding policy. Valid options include: \itemize{
+#'               - "uniform" for a global threshold applied uniformly across all coefficients.
+#'               - "dependent" for threshold values that adaptively depend on the} corresponding `diagWWt` weights.
+#' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
+#' @return A list containing: \itemize{
+#'         - A dataframe with calculated MSE, SURE, and hatSURE values.
+#'         - Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
+#'         - Thresholded wavelet coefficients (if `keepwc = TRUE`).}
+#' @details
+#' \code{SURE_MSEthresh} function extends the \code{SUREthresh} function by providing an MSE between the true coefficients and their thresholded versions for a given thresholding function \eqn{h}. This allows for a more comprehensive evaluation of the denoising quality in simulated scenarios where the true function is known.
+#'
+#' @seealso \code{\link{SUREthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
+#'
 #' @references
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'

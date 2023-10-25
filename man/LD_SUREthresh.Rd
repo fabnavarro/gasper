@@ -2,7 +2,7 @@
 % Please edit documentation in R/LD_SUREthresh.R
 \name{LD_SUREthresh}
 \alias{LD_SUREthresh}
-\title{Level Dependent Stein's Unbiased Risk Estimate.}
+\title{Level Dependent Stein's Unbiased Risk Estimate (LD-SURE) Thresholding}
 \usage{
 LD_SUREthresh(
   J,
@@ -16,35 +16,51 @@ LD_SUREthresh(
 )
 }
 \arguments{
-\item{J}{Finest-scale (highest frequency).}
+\item{J}{The finest scale, or the highest frequency. This parameter determines the total number of scales that the function will process (interger).}
 
-\item{wcn}{Noisy wavelet coefficents.}
+\item{wcn}{A vector of noisy wavelet coefficients that need to be thresholded (numeric).}
 
-\item{diagWWt}{Weights.}
+\item{diagWWt}{A vector of weights.}
 
-\item{beta}{Thresholding type (beta=1: soft, beta=2: JS).}
+\item{beta}{The type of thresholding to be used. If beta=1, soft thresholding is applied.
+If beta=2, James-Stein thresholding is applied (Default is 2).}
 
-\item{sigma}{Sd of the noise.}
+\item{sigma}{The standard deviation of the noise present in the wavelet coefficients (numeric).}
 
-\item{hatsigma}{Estimator of the sd (if any).}
+\item{hatsigma}{An optional estimator of the noise standard deviation. If provided, the
+function will also compute wavelet coefficient estimates using this estimator (numeric).}
 
-\item{policy}{Dependent or uniform.}
+\item{policy}{The policy for threshold setting. It can be either "uniform" (default) or
+"dependent". In the "uniform" policy, the thresholds are set based on the absolute
+value of the wavelet coefficients. In the "dependent" policy, the thresholds are
+set based on the wavelet coefficients normalized by the weights from `diagWWt`.}
 
-\item{keepSURE}{Boolean allowing to export the dataframe outuput of SUREthresh (FALSE by default).}
+\item{keepSURE}{A logical flag. If `TRUE`, the function will also return a list containing
+the results of the SURE thresholding for each scale.}
 }
 \value{
-\code{wcLDSURE} Wavelet coefficient estimates applying SURE scale by scale.
-
-\code{wcLDhatSURE} if hatsigma provided, wavelet coefficient estimates applying SURE scale by scale.
+A list containing the wavelet coefficient estimates after applying the SURE
+        thresholding. The list will contain the following components:
+        \itemize{
+          \item \code{wcLDSURE}: The wavelet coefficient estimates obtained by minimizing SURE.
+          \item \code{wcLDhatSURE}: If `hatsigma` is provided, this component contains the
+                 wavelet coefficient estimates obtained using the `hatsigma` estimator.
+          \item \code{lev_thresh}: If `keepSURE` is `TRUE`, this component contains a list
+                 of results similar to the output of \code{SUREthresh} for each scale.
+        }
 }
 \description{
-Level Dependent adaptive threshold selection using SURE.
+Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Estimate (LD-SURE).
+This function applies SURE in a level dependent manner to wavelet coefficients, which aims to
+minimize SURE at each wavelet scale.
 }
 \references{
-de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
+de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with
+Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
 Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.
 }
 \seealso{
 \code{\link{SUREthresh}}
+\note See \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
 }
