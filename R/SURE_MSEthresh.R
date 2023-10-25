@@ -9,19 +9,23 @@
 #' @param diagWWt Weights (numeric vector). These weights are typically derived from the diagonal elements of the wavelet frame matrix.
 #' @param beta A numeric value specifying the type of thresholding to be used:
 #'  \itemize{
-#'             - 1 for soft thresholding.
-#'             - 2 for James-Stein thresholding.
+#'             \item 1 for soft thresholding.
+#'             \item 2 for James-Stein thresholding.
 #'             }
 #' @param sigma A numeric value representing the standard deviation (sd) of the noise.
 #' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is NA).
-#' @param policy A character string determining the thresholding policy. Valid options include: \itemize{
-#'               - "uniform" for a global threshold applied uniformly across all coefficients.
-#'               - "dependent" for threshold values that adaptively depend on the} corresponding `diagWWt` weights.
+#' @param policy A character string determining the thresholding policy. Valid options include:
+#' \itemize{
+#'               \item "uniform" for a global threshold applied uniformly across all coefficients.
+#'               \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+#'               }
 #' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
-#' @return A list containing: \itemize{
+#' @return A list containing:
+#' \itemize{
 #'         - A dataframe with calculated MSE, SURE, and hatSURE values.
 #'         - Minima of SURE, hatSURE, and MSE, and their corresponding optimal thresholds.
-#'         - Thresholded wavelet coefficients (if `keepwc = TRUE`).}
+#'         - Thresholded wavelet coefficients (if `keepwc = TRUE`).
+#'         }
 #' @details
 #' \code{SURE_MSEthresh} function extends the \code{SUREthresh} function by providing an MSE between the true coefficients and their thresholded versions for a given thresholding function \eqn{h}. This allows for a more comprehensive evaluation of the denoising quality in simulated scenarios where the true function is known.
 #'

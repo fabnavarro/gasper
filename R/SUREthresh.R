@@ -9,19 +9,23 @@
 #'                elements of the wavelet frame operator matrix.
 #' @param beta A numeric value specifying the type of thresholding to be used:
 #'  \itemize{
-#'             - 1 for soft thresholding.
-#'             - 2 for James-Stein thresholding.}
+#'             \item 1 for soft thresholding.
+#'             \item 2 for James-Stein thresholding.
+#'             }
 #' @param sigma A numeric value representing the standard deviation (sd) of the noise.
 #' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is NA).
-#' @param policy A character string determining the thresholding policy. Valid options include: \itemize{
-#'               - "uniform" for a global threshold applied uniformly across all coefficients.
-#'               - "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+#' @param policy A character string determining the thresholding policy. Valid options include:
+#' \itemize{
+#'               \item "uniform" for a global threshold applied uniformly across all coefficients.
+#'               \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
 #'               }
 #' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
-#' @return A list containing: \itemize{
-#'         - A dataframe with calculated SURE and hatSURE values.
-#'         - Minima of SURE and hatSURE and their corresponding optimal thresholds.
-#'         - Thresholded wavelet coefficients (if `keepwc = TRUE`).}
+#' @return A list containing:
+#' \itemize{
+#'         \item A dataframe with calculated SURE and hatSURE values.
+#'         \item Minima of SURE and hatSURE and their corresponding optimal thresholds.
+#'         \item Thresholded wavelet coefficients (if `keepwc = TRUE`).
+#'         }
 #' @seealso \code{\link{SURE_MSEthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
 #'
 #' @details
