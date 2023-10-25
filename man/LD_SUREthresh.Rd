@@ -54,6 +54,9 @@ Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Est
 This function applies SURE in a level dependent manner to wavelet coefficients, which aims to
 minimize SURE at each wavelet scale.
 }
+\note{
+See \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
+}
 \references{
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with
 Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
@@ -62,5 +65,4 @@ Stein, C. M. (1981). Estimation of the mean of a multivariate normal distributio
 }
 \seealso{
 \code{\link{SUREthresh}}
-\note See \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
 }
