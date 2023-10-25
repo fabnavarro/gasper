@@ -35,6 +35,9 @@ L <- laplacian_mat(grid1$sA)
 vertex_i <- sample(1:nrow(L), 1)
 s <- localize_gft(vertex_i, L=L)
 plot_signal(grid1, s)
+s_gft <- forward_gft(L, s)
+barplot(abs(s_gft), main="GFT of Localized Signal",
+        xlab="Eigenvalue Index", ylab="Magnitude")
 }
 }
 \seealso{
