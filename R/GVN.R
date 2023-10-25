@@ -34,7 +34,7 @@
 #' A biased estimator of the variance \eqn{\sigma^2} can be given by:
 #' \deqn{\hat \sigma^2_1 = \frac{\widetilde f^T g(L) \widetilde f}{\mathrm{Tr}(g(L))}}
 #' Assuming the original graph signal is smooth enough that \eqn{f^T g(L) f} is negligible compared to \eqn{\mathrm{Tr}(g(L))}, \eqn{\hat \sigma^2} provides a reasonably accurate estimate of \eqn{\sigma^2}. For this function, a common choice is \eqn{g(x) = x}, leading to:
-#' \deqn{\hat \sigma^2_1 = \frac{\widetilde f^T \L \widetilde f}{\mathrm{Tr}(L)} = \frac{\sum_{i,j \in V} w_{ij} |\widetilde f(i) - \widetilde f(j)|^2}{2 \mathrm{Tr}(L)}}
+#' \deqn{\hat \sigma^2_1 = \frac{\widetilde f^T L \widetilde f}{\mathrm{Tr}(L)} = \frac{\sum_{i,j \in V} w_{ij} |\widetilde f(i) - \widetilde f(j)|^2}{2 \mathrm{Tr}(L)}}
 #' This is the graph adaptation of the Von Neumann estimator, hence the term Graph Von Neumann estimator (GVN).
 #'
 
