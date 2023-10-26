@@ -35,6 +35,7 @@ info_tables[[2]]
 # SVD Statistics
 info_tables[[3]]
 }
+#' @seealso \code{\link{download_graph}}
 }
 \references{
 Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.

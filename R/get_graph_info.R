@@ -32,6 +32,7 @@
 #' # SVD Statistics
 #' info_tables[[3]]
 #' }
+#' #' @seealso \code{\link{download_graph}}
 
 #- todo change download graph dependcy to rvest
 #- todo maybe check other possible conflict with different graphs

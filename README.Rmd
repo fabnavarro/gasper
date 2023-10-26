@@ -76,10 +76,13 @@ download_graph(matrixname,groupname)
 attributes(`usroads-48`)
 ```
 
-`usroads-48` is composed of the sparse matrix `sA` (in compressed sparse column format), coordinates `xy` (if present, in a data.frame), `dim` the number of rows, columns and numerically nonzero elements and `info` about the matrix (stored in a temporary folder as a plain text file) that can be display via `file.show(`usroads-48`$info)` for example or in the console:
-
+`usroads-48` is composed of the sparse matrix `sA` (in compressed sparse column format), coordinates `xy` (if present, in a data.frame), `dim` the number of rows, columns and numerically nonzero elements and `temp` path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored. Information about the matrix can be display via `file.show(paste(`usroads-48`$temp,"usroads-48",sep=""))` or in the console:
 ```{r}
-cat(readLines(`usroads-48`$info), sep = "\n")
+cat(readLines(paste(`usroads-48`$temp,"usroads-48",sep="")), sep = "\n")
+```
+`download_graph` function has an optional svd argument; setting "svd = TRUE" downloads a ".mat" file containing the singular values of the matrix, if available. To access the temporary folder use, for example, 
+```{r}
+list.files(`usroads-48`$temp)
 ```
 
 In addition, the `get_graph_info` function allows to retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website (`rvest` package needs to be installed to use it). This function extracts and formats various properties and metadata associated with the matrix (i.e., it fetches the two to three tables with "Matrix Information," "Matrix Properties" and, if available, "SVD Statistics"), providing a convenient way to access this overview of the graph directly within R. Here is how you can use it:

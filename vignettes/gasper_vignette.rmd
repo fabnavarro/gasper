@@ -72,11 +72,17 @@ head(grid1$xy, 3)
 ```{r}
 grid1$dim
 ```
-
-* "info" information about the matrix that can be display via `file.show(grid1$info)` for example or in the console:
-```{r, eval = FALSE}
-cat(readLines(grid1$info, n=14), sep = "\n")
+* "temp" The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+```{r}
+list.files(grid1$temp)
 ```
+
+Information about the matrix that can be display via `file.show(paste(grid1$temp,"grid1",sep=""))` for example or in the console:
+```{r, eval = FALSE}
+cat(readLines(paste(grid1$temp,"grid1",sep=""), n=14), sep = "\n")
+```
+`download_graph` function has an optional svd argument; setting "svd = TRUE" downloads a ".mat" file containing the singular values of the matrix, if available.
+
 For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "Matrix Information", "Matrix Properties," and "SVD Statistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
 ```{r, eval=FALSE}
 matrix_info <- get_graph_info(matrixname, groupname)

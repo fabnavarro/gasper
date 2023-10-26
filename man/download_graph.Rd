@@ -2,32 +2,48 @@
 % Please edit documentation in R/download_graph.R
 \name{download_graph}
 \alias{download_graph}
-\title{Download Sparse mMatrix form the SuiteSparse Matrix Collection.}
+\title{Download Sparse Matrix form the SuiteSparse Matrix Collection.}
 \usage{
-download_graph(matrixname, groupname)
+download_graph(matrixname, groupname, svd = FALSE)
 }
 \arguments{
 \item{matrixname}{Name of the graph to download.}
 
 \item{groupname}{Name of the group that provides the graph.}
+
+\item{svd}{Logical, if \code{TRUE}, a ".mat" file containing the sigular values of the matrix is downloaded (if available). Default is \code{FALSE}.}
 }
 \value{
-\code{matrixname} a list containing the sparse matrix \code{sA}, \code{xy} coordinates (if any), \code{dim} the number of rows, columns and numerically nonzero elements  and \code{info}, the path to a plain txt file containing information associated with \code{sA} (accessible for example via \code{file.show(matrixname$info)}).
+A list containing several components:
+        \itemize{
+          \item \code{sA}: A sparse matrix representation of the downloaded graph.
+          \item \code{xy}: Coordinates associated with the graph nodes (if available).
+          \item \code{dim}: A data frame with the number of rows, columns, and numerically nonzero elements.
+          \item \code{temp}: The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+}
 }
 \description{
-If coordinates are associated with the graphs,
-they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph/matrix names.
+\code{download_graph} allows to download sparse matrices from the SuiteSparse Matrix Collection.
+}
+\details{
+\code{download_graph}  automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+}
+\note{
+This temporary directory can be accessed, for example, via \code{list.files(grid1$info)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used.
 }
 \examples{
 \dontrun{
 matrixname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(matrixname,groupname)
-file.show(grid1$info)
+list.files(grid1$info)
 }
 }
 \references{
 Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 
 Kolodziej, S. P., Aznaveh, M., Bullock, M., David, J., Davis, T. A., Henderson, M., Hu, Y., & Sandstrom, R. (2019). The suitesparse matrix collection website interface. Journal of Open Source Software, 4(35), 1244.
+}
+\seealso{
+\code{\link{get_graph_info}}
 }

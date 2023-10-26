@@ -78,18 +78,20 @@ groupname <- "Gleich"
 download_graph(matrixname,groupname)
 attributes(`usroads-48`)
 #> $names
-#> [1] "sA"   "xy"   "dim"  "info"
+#> [1] "sA"   "xy"   "dim"  "temp"
 ```
 
 `usroads-48` is composed of the sparse matrix `sA` (in compressed sparse
 column format), coordinates `xy` (if present, in a data.frame), `dim`
-the number of rows, columns and numerically nonzero elements and `info`
-about the matrix (stored in a temporary folder as a plain text file)
-that can be display via `file.show(`usroads-48`$info)` for example or in
-the console:
+the number of rows, columns and numerically nonzero elements and `temp`
+path to the temporary directory where the matrix and downloaded files
+(including singular values if requested) are stored. Information about
+the matrix can be display via
+`file.show(paste(`usroads-48`$temp,"usroads-48",sep=""))` or in the
+console:
 
 ``` r
-cat(readLines(`usroads-48`$info), sep = "\n")
+cat(readLines(paste(`usroads-48`$temp,"usroads-48",sep="")), sep = "\n")
 #> %%MatrixMarket matrix coordinate pattern symmetric
 #> %-------------------------------------------------------------------------------
 #> % UF Sparse Matrix Collection, Tim Davis
@@ -105,6 +107,15 @@ cat(readLines(`usroads-48`$info), sep = "\n")
 #> % kind: undirected graph
 #> %-------------------------------------------------------------------------------
 #> 126146 126146 161950
+```
+
+`download_graph` function has an optional svd argument; setting “svd =
+TRUE” downloads a “.mat” file containing the singular values of the
+matrix, if available. To access the temporary folder use, for example,
+
+``` r
+list.files(`usroads-48`$temp)
+#> [1] "usroads-48"           "usroads-48_coord.mtx" "usroads-48.mtx"
 ```
 
 In addition, the `get_graph_info` function allows to retrieve detailed
@@ -171,7 +182,7 @@ plot_graph(`usroads-48`, size = 0.05)
 plot_signal(`usroads-48`, f, size = f/4)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-12-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" style="display: block; margin: auto;" />
 
 In cases where these coordinates are not supplied, `plot_graph` employs
 simple spectral graph embedding to calculate some node coordinates
@@ -187,13 +198,13 @@ groupname <- "DIMACS10"
 download_graph(matrixname,groupname)
 attributes(delaunay_n10)
 #> $names
-#> [1] "sA"   "dim"  "info"
+#> [1] "sA"   "dim"  "temp"
 plot_graph(delaunay_n10)
 plot_signal(delaunay_n10,
             cos(1:nrow(delaunay_n10$sA)))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-14-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-14-2.png" width="50%" style="display: block; margin: auto;" />
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)

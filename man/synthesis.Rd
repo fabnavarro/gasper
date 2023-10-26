@@ -45,3 +45,6 @@ coef <- analysis(f, tf)
 f_rec <- synthesis(coef, tf)
 }
 }
+\seealso{
+\code{\link{analysis}}, \code{\link{tight_frame}}
+}
