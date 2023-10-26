@@ -19,9 +19,9 @@
 #' }
 #'
 #' @details
-#' \code{download_graph}  automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+#' \code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
 #'
-#' @note This temporary directory can be accessed, for example, via \code{list.files(grid1$info)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used.
+#' @note This temporary directory can be accessed, for example, via \code{list.files(grid1$info)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used. After using the downloaded data, you can delete the content of the temporary folder.
 #'
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
