@@ -12,10 +12,18 @@ get_graph_info(matrixname, groupname)
 \item{groupname}{Name of the group that provides the matrix/graph.}
 }
 \value{
-A list of tables with detailed information about the specified matrix/graph.
+A list of tables with detailed information about the specified matrix/graph:
+\itemize{
+  \item "Matrix Information"
+  \item "Matrix Properties"
+  \item "SVD Statistics" (if available)
+}
 }
 \description{
-\code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection. The tables contain detailed information about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+\code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection.
+}
+\details{
+The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
 }
 \note{
 The \code{rvest} package is used for parsing HTML, if it is not installed, the function will prompt for installation.

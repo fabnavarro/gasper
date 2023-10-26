@@ -1,4 +1,4 @@
-#' Grid1 Graph from AG-Monien Graph Collection.
+#' Grid1 Graph from AG-Monien Graph Collection
 #'
 #' This dataset represents the "grid1" graph sourced from the AG-Monien Graph Collection,
 #' a collection of test graphs provided by Ralf Diekmann and Robert Preis.

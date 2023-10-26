@@ -1,4 +1,4 @@
-#' Spectral Coordinates for Graph Drawing.
+#' Spectral Coordinates for Graph Drawing
 #'
 #' Calculates the spectral coordinates of a graph using the two smallest non-zero eigenvalues of the graph Laplacian.
 #'

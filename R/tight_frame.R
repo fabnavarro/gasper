@@ -1,4 +1,4 @@
-#' Tight-Frame Computation.
+#' Tight-Frame Computation
 #'
 #' Constructs a tight-frame wavelet on graphs
 #'

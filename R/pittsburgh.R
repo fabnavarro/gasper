@@ -13,7 +13,6 @@
 #'   \item \code{geo} Geometry data for the census tract nodes.
 #' }
 #'
-#'
 #' @source Data and associated materials were sourced from codes provided by Yu-Xiang Wang (UC Santa Barbara) and are associated with the referenced paper.
 #'
 #' @references

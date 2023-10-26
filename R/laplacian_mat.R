@@ -1,11 +1,11 @@
-#' Compute the Graph Laplacian Matrix.
+#' Compute the Graph Laplacian Matrix
 #'
-#' \code{laplacian_mat} computes various forms of the graph Laplacian matrix for a given adjacency matrix \eqn{W}{W}.
+#' \code{laplacian_mat} computes various forms of the graph Laplacian matrix for a given adjacency matrix \code{W}.
 #'
 #' @export laplacian_mat
 #' @importFrom methods is
 #' @importFrom Matrix Diagonal rowSums
-#' @param W Adjacency matrix (matrix or sparseMatrix).
+#' @param W Adjacency matrix (dense or sparseMatrix).
 #' @param type Character string, type of Laplacian matrix to compute. Can be "unnormalized" (default), "normalized", or "randomwalk".
 #' @return \code{L} The graph Laplacian matrix.
 #' @details
@@ -73,16 +73,3 @@ laplacian_mat <- function(W, type = "unnormalized") {
   }
   return(L)
 }
-
-
-#\code{laplacian_mat} computes the (unnormalized) graph Laplacian matrix for a given adjacency matrix \eqn{W}{W}. The graph Laplacian is defined as \eqn{L = D - W}{L = D - W}, where \eqn{D}{D} is the degree matrix and \eqn{W}{W} is the adjacency matrix.
-
-# laplacian_mat <- function(W) {
-#   if(is(W, 'sparseMatrix')){
-#     D <- Diagonal(nrow(W), rowSums(W))
-#   } else {
-#     D <- diag(rowSums(W))
-#   }
-#   L <- D - W
-#   return(L)
-# }

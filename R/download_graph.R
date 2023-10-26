@@ -1,4 +1,4 @@
-#' Download Sparse Matrix form the SuiteSparse Matrix Collection.
+#' Download Sparse Matrix form the SuiteSparse Matrix Collection
 #'
 #' \code{download_graph} allows to download sparse matrices from the SuiteSparse Matrix Collection.
 #'
@@ -9,7 +9,7 @@
 #' @importFrom Matrix readMM
 #' @param matrixname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
-#' @param svd Logical, if \code{TRUE}, a ".mat" file containing the sigular values of the matrix is downloaded (if available). Default is \code{FALSE}.
+#' @param svd Logical, if \code{TRUE}, a ".mat" file containing the singular values of the matrix is downloaded (if available). Default is \code{FALSE}.
 #' @return A list containing several components:
 #'         \itemize{
 #'           \item \code{sA}: A sparse matrix representation of the downloaded graph.

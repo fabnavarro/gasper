@@ -2,7 +2,7 @@
 % Please edit documentation in R/SURE_MSEthresh.R
 \name{SURE_MSEthresh}
 \alias{SURE_MSEthresh}
-\title{Stein's Unbiased Risk Estimate with MSE.}
+\title{Stein's Unbiased Risk Estimate with MSE}
 \usage{
 SURE_MSEthresh(
   wcn,
@@ -17,13 +17,13 @@ SURE_MSEthresh(
 )
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficients (numeric vector).}
+\item{wcn}{Numeric vector of the noisy spectral graph wavelet coefficients.}
 
-\item{wcf}{True wavelet coefficients (numeric vector).}
+\item{wcf}{Numeric vector of the true spectral graph wavelet coefficients.}
 
-\item{thresh}{Threshold values (numeric vector).}
+\item{thresh}{Numeric vector of threshold values.}
 
-\item{diagWWt}{Weights (numeric vector). These weights are typically derived from the diagonal elements of the wavelet frame matrix.}
+\item{diagWWt}{Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.}
 
 \item{beta}{A numeric value specifying the type of thresholding to be used:
 \itemize{
@@ -37,8 +37,8 @@ SURE_MSEthresh(
 
 \item{policy}{A character string determining the thresholding policy. Valid options include:
 \itemize{
-              \item "uniform" for a global threshold applied uniformly across all coefficients.
-              \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+    \item "uniform" for a global threshold applied uniformly across all coefficients.
+    \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
               }}
 
 \item{keepwc}{A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).}
@@ -52,12 +52,14 @@ A list containing:
         }
 }
 \description{
-Adaptive Threshold Selection Using Principle of SURE with the inclusion of Mean Squared Error (MSE) for comparison. The irreducible variance term is intentionally not included in the SURE calculations, as it does not change the position of the minimum.
+Adaptive Threshold Selection Using Principle of SURE with the inclusion of Mean Squared Error (MSE) for comparison.
 }
 \details{
 \code{SURE_MSEthresh} function extends the \code{SUREthresh} function by providing an MSE between the true coefficients and their thresholded versions for a given thresholding function \eqn{h}. This allows for a more comprehensive evaluation of the denoising quality in simulated scenarios where the true function is known.
 }
 \references{
+Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
 Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.

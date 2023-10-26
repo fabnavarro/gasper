@@ -1,11 +1,11 @@
-#' Stein's Unbiased Risk Estimate (SURE).
+#' Stein's Unbiased Risk Estimate
 #'
-#' Adaptive Threshold Selection Using Principle of SURE.
+#' Adaptive Threshold Selection Using Principle of Stein's Unbiased Risk Estimate (SURE).
 #'
 #' @export SUREthresh
-#' @param wcn Noisy wavelet coefficients (numeric vector).
-#' @param thresh Threshold values (numeric vector).
-#' @param diagWWt Weights (numeric vector). These weights are typically derived from the diagonal
+#' @param wcn Numeric vector of the noisy spectral graph wavelet coefficients.
+#' @param thresh Numeric vector of threshold values.
+#' @param diagWWt Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.
 #'                elements of the wavelet frame operator matrix.
 #' @param beta A numeric value specifying the type of thresholding to be used:
 #'  \itemize{
@@ -49,9 +49,15 @@
 #' \code{\link{GVN}} and \code{\link{HPFVN}} provide naive noise variance estimation.
 #'
 #' @note
-#' The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location. Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
+#' The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, please refer to the references provided.
+#'
+#' The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location.
+#'
+#' Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
 #'
 #' @references
+#' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+#'
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'
 #' Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.

@@ -1,18 +1,20 @@
-#' Compute Forward Spectral Graph Wavelet Transform.
+#' Compute Forward Spectral Graph Wavelet Transform
 #'
-#' \code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}. The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. Other filters can be passed as parameters. The SGWT provides a multi-scale analysis of graph signals.
+#' \code{forward_sgwt} computes the forward Spectral Graph Wavelet Transform (SGWT) for a given graph signal \eqn{f}{f}.
 #'
 #' @export forward_sgwt
-#' @param f Graph signal to analyze (numeric vector).
-#' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
-#' @param evectors Eigenvectors of the Laplacian matrix (matrix).
-#' @param b Parameter that control the number of scales in the SGWT (numeric scalar). It must be greater than 1.
+#' @param f Numeric vector representing the graph signal to analyze.
+#' @param evalues Numeric vector of eigenvalues of the Laplacian matrix.
+#' @param evectors Matrix of eigenvectors of the Laplacian matrix.
+#' @param b Numeric scalar that control the number of scales in the SGWT. It must be greater than 1.
 #' @param filter_func Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.
-#' @param filter_params List of additional parameters required by filter_func. Default is an empty list.
+#' @param filter_params List of additional parameters required by \code{filter_func}. Default is an empty list.
 #' @return \code{wc} A concatenated vector of wavelet coefficients.
 #' @seealso \code{\link{inverse_sgwt}}, \code{\link{tight_frame}}
 #'
 #' @details
+#'
+#' The transform is constructed based on the frame defined by the \code{\link{tight_frame}} function, without the need for its explicit calculation. Other filters can be passed as parameters. The SGWT provides a multi-scale analysis of graph signals.
 #'
 #' Given a graph signal \eqn{f}{f} of length \eqn{N}{N}, \code{forward_sgwt} computes the wavelet coefficients using SGWT.
 #'
@@ -29,6 +31,7 @@
 #'
 #' @note
 #' \code{forward_sgwt} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+#'
 #' The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
 #'
 #' @examples

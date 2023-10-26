@@ -1,37 +1,36 @@
-#' Level Dependent Stein's Unbiased Risk Estimate Thresholding.
+#' Level Dependent Stein's Unbiased Risk Estimate Thresholding
 #'
-#' Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Estimate (LD-SURE).
-#' This function applies SURE in a level dependent manner to wavelet coefficients, which aims to
-#' minimize SURE at each wavelet scale.
+#' Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Estimate.
 #'
 #' @export
-#' @param J The finest scale, or the highest frequency. This parameter determines the total number of scales that the function will process (interger).
-#' @param wcn A vector of noisy wavelet coefficients that need to be thresholded (numeric).
-#' @param diagWWt A vector of weights (numeric).
-#' @param beta The type of thresholding to be used. If beta=1, soft thresholding is applied.
-#'        If beta=2, James-Stein thresholding is applied (Default is 2).
-#' @param sigma The standard deviation of the noise present in the wavelet coefficients (numeric).
-#' @param hatsigma An optional estimator of the noise standard deviation. If provided, the
-#'        function will also compute wavelet coefficient estimates using this estimator (numeric).
+#' @param J Integer. The finest scale, or the highest frequency. This parameter determines the total number of scales that the function will process.
+#' @param wcn A numeric vector of noisy spectral graph wavelet coefficients that need to be thresholded.
+#' @param diagWWt Numeric vector of weights.
+#' @param beta Numeric. The type of thresholding to be used. If beta=1, soft thresholding is applied. If beta=2, James-Stein thresholding is applied (Default is 2).
+#' @param sigma Numeric. The standard deviation of the noise present in the wavelet coefficients.
+#' @param hatsigma Numeric. An optional estimator of the noise standard deviation. If provided, the function will also compute wavelet coefficient estimates using this estimator.
 #' @param policy The policy for threshold setting. It can be either "uniform" (default) or
-#'        "dependent". In the "uniform" policy, the thresholds are set based on the absolute
-#'        value of the wavelet coefficients. In the "dependent" policy, the thresholds are
-#'        set based on the wavelet coefficients normalized by the weights from `diagWWt`.
-#' @param keepSURE A logical flag. If \code{TRUE}, the function will also return a list containing
-#'        the results of the SURE thresholding for each scale.
+#'        "dependent".
+#' @param keepSURE A logical flag. If \code{TRUE}, the function will also return a list containing the results of the SURE thresholding for each scale.
 #' @return A list containing the wavelet coefficient estimates after applying the SURE
-#'         thresholding. The list will contain the following components:
+#'         thresholding.
 #'         \itemize{
 #'           \item \code{wcLDSURE}: The wavelet coefficient estimates obtained by minimizing SURE.
-#'           \item \code{wcLDhatSURE}: If `hatsigma` is provided, this component contains the
-#'                  wavelet coefficient estimates obtained using the `hatsigma` estimator.
-#'           \item \code{lev_thresh}: If `keepSURE` is `TRUE`, this component contains a list
-#'                  of results similar to the output of \code{SUREthresh} for each scale.
-#'         }
+#'           \item \code{wcLDhatSURE}: If \code{hatsigma} is provided, this component contains the
+#'                  wavelet coefficient estimates obtained using the \code{hatsigma} estimator.
+#'           \item \code{lev_thresh}: If \code{keepSURE} is \code{TRUE}, this component contains a list of results similar to the output of \code{SUREthresh} for each scale.
+#' }
 #' @seealso
-#' \code{\link{SUREthresh}}
-#' @note See \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
+#' \code{\link{SUREthresh}} for the underlying thresholding method used at each scale.
+#'
+#' @details
+#' This function applies SURE in a level dependent manner to wavelet coefficients, which aims to minimize SURE at each wavelet scale.
+#'
+#' In the "uniform" policy, the thresholds are set based on the absolute value of the wavelet coefficients. In the "dependent" policy, the thresholds are set based on the wavelet coefficients normalized by the weights from \code{diagWWt}.
+#'
 #' @references
+#' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+#'
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with
 #' Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'

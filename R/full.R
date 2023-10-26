@@ -1,11 +1,11 @@
-#' Conversion of Symmetric Sparse Matrix to Full Matrix.
+#' Conversion of Symmetric Sparse Matrix to Full Matrix
 #'
-#' \code{full} converts a symmetric sparse matrix, represented as \eqn{sA}{sA}, into a full matrix \eqn{A}{A}.
+#' \code{full} converts a symmetric sparse matrix, represented as \code{sA}, into a full matrix \code{A}.
 #'
 #' @export full
 #' @importFrom methods is
 #' @param sA Symmetric sparse matrix, either in a sparse matrix format or in a three-column format, that needs to be converted into a full matrix.
-#' @return \eqn{A}{A} Full matrix constructed from the symmetric sparse matrix \eqn{sA}{sA}.
+#' @return \code{A} Full matrix constructed from the symmetric sparse matrix \code{sA}.
 #' @seealso \code{\link{fullup}}
 #' @examples
 #' sA <- pittsburgh$sA

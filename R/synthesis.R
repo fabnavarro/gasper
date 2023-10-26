@@ -1,11 +1,11 @@
-#' Compute the Synthesis Operator for Transform Coefficients.
+#' Compute the Synthesis Operator for Transform Coefficients
 #'
 #' \code{synthesis} computes the graph signal synthesis from its transform coefficients using the provided frame coefficients.
 #'
 #' @export synthesis
-#' @param coeff Transform coefficients of the graph signal (numeric vector/matrix).
-#' @param tf Frame coefficients (numeric matrix).
-#' @return \code{y} Synthesized graph signal (numeric vector/matrix).
+#' @param coeff Numeric vector/matrix. Transformed coefficients of the graph signal.
+#' @param tf Numeric matrix. Frame coefficients.
+#' @return \code{y} Numeric vector/matrix. Synthesized graph signal.
 #'
 #' @details
 #' The \code{synthesis} operator uses the frame coefficients to retrieve the graph signal from its representation in the transform domain. It is the adjoint of the analysis operator \eqn{T_{\mathfrak F}}{T_F} and is defined by the linear map \eqn{T_{\mathfrak F}^\ast : \mathbb R^I \rightarrow \mathbb R^V}{T_F* : R^I -> R^V}. For a vector of coefficients \eqn{(c_i)_{i \in I}}{(c_i) for all i in I}, the synthesis operation is defined as:

@@ -2,7 +2,7 @@
 % Please edit documentation in R/tight_frame.R
 \name{tight_frame}
 \alias{tight_frame}
-\title{Tight-Frame Computation.}
+\title{Tight-Frame Computation}
 \usage{
 tight_frame(
   evalues,

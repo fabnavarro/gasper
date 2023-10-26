@@ -1,16 +1,15 @@
-#' Compute Inverse Graph Fourier Transform.
+#' Compute Inverse Graph Fourier Transform
 #'
-#' \code{inverse_gft} computes the Inverse Graph Fourier Transform (IGFT) of a given transformed graph signal \eqn{\hat{f}}{\hat{f}}. The IGFT retrieves the original graph signal from its projection in the eigenspace of the graph's Laplacian matrix.
+#' \code{inverse_gft} computes the Inverse Graph Fourier Transform (IGFT) of a given transformed graph signal \eqn{\hat{f}}{\hat{f}}.
 #'
 #' @export inverse_gft
 #' @param L Laplacian matrix of the graph (matrix).
-#' @param hatf Graph Fourier Transform of the signal to be inverted (numeric vector).
-#' @param U Eigenvectors of the Laplacian matrix (matrix). If NULL (default), the function will compute the eigendecomposition of the Laplacian.
-#' @return \code{f} Original graph signal obtained from the inverse transform of \eqn{\hat{f}}{\hat{f}} (numeric vector).
+#' @param hatf Numeric vector. Graph Fourier Transform of the signal to be inverted.
+#' @param U Matrix of the eigenvectors of the Laplacian matrix. If NULL (default), the function will compute the eigendecomposition of the Laplacian.
+#' @return \code{f} Numeric vector. Original graph signal obtained from the inverse transform of \eqn{\hat{f}}{\hat{f}}.
 #' @seealso \code{\link{forward_gft}}
 #' @details
-#'
-#' The IGFT enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
+#'The IGFT retrieves the original graph signal from its projection in the eigenspace of the graph's Laplacian matrix. It enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
 #'
 #' The IGFT of a transformed graph signal \eqn{\hat{f}}{\hat{f}} is given by:
 #' \deqn{

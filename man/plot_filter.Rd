@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_filter.R
 \name{plot_filter}
 \alias{plot_filter}
-\title{Plot Tight-Frame Filters.}
+\title{Plot Tight-Frame Filters}
 \usage{
 plot_filter(lmax, b, N = 1000, filter_func = zetav, filter_params = list())
 }
@@ -18,9 +18,11 @@ plot_filter(lmax, b, N = 1000, filter_func = zetav, filter_params = list())
 \item{filter_params}{List of additional parameters required by filter_func. Default is an empty list.}
 }
 \description{
-\code{plot_filter} provides a graphical representation of tight-frame filters as functions of the eigenvalues of the Laplacian matrix. The plotted functions represent the square root of the values given by the \code{zetav} function at different scales. Other filters can be passed as parameters.
+\code{plot_filter} provides a graphical representation of tight-frame filters as functions of the eigenvalues of the Laplacian matrix.
 }
 \details{
+The plotted functions represent the square root of the values given by the \code{zetav} function at different scales.
+
 This function plots the square roots of the functions forming the partition of unity, corresponding to the construction of tight frames on the graph. The square root operation is essential as it ensures the Parseval identity, making the constructed frame "tight" and preserving the energy of signals on the graph when mapped to their frame representation.
 
 \code{plot_filter} first determines the number of scales based on the largest eigenvalue \eqn{\lambda_{\text{max}}}{lambda_max} and the parameter \eqn{b}{b} as:

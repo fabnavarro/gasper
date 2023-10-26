@@ -2,7 +2,7 @@
 % Please edit documentation in R/swissroll.R
 \name{swissroll}
 \alias{swissroll}
-\title{Swiss Roll Graph Generation.}
+\title{Swiss Roll Graph Generation}
 \usage{
 swissroll(N = 500, seed = NULL, a = 1, b = 4)
 }

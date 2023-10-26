@@ -1,4 +1,4 @@
-#' Minnesota Road Network.
+#' Minnesota Road Network
 #'
 #' A dataset representing the Minnesota road network along with two associated synthetic signals.
 #'

@@ -1,11 +1,13 @@
-#' Localize a Kernel at a Specific Vertex using SGWT.
+#' Localize a Kernel at a Specific Vertex using SGWT
+#'
+#' This function localizes a kernel at a specific vertex using the Spectral Graph Wavelet Transform (SGWT).
 #'
 #' @export localize_sgwt
-#' @param i Index of the node where to localize the kernel (integer).
-#' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
-#' @param evectors Eigenvectors of the Laplacian matrix (matrix).
-#' @param b Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.
-#' @return \code{s} Kernel localized at vertex i using SGWT.
+#' @param i Integer index of the node where to localize the kernel.
+#' @param evalues Numeric vector of the eigenvalues of the Laplacian matrix.
+#' @param evectors Numeric matrix of the eigenvectors of the Laplacian matrix.
+#' @param b Numeric scalar that controls the number of scales in the SGWT. It must be greater than 1.
+#' @return \code{s} Kernel localized at vertex \code{i} using SGWT.
 #'
 #' @details
 #'
@@ -13,7 +15,7 @@
 #'
 #' The kernel is localized by transforming an impulse signal centered at vertex \eqn{i}{i} using the SGWT.
 #' The SGWT leverages a wavelet function \eqn{\psi(\lambda)} to provide a multi-resolution analysis of the graph signal.
-#' The impulse signal for vertex \eqn{i}{i} is represented by a vector \eqn{s} with all zeros except for a single one at the i-th position.
+#' The impulse signal at vertex \eqn{i}{i} is a vector \eqn{s} with a one at the i-th position and zeros elsewhere.
 #' The SGWT is given by:
 #' \deqn{W_s(\lambda) = s \ast \psi(\lambda) = U \psi(\Lambda) U^T s}
 #' where \eqn{U} is the matrix of eigenvectors of the Laplacian and \eqn{\Lambda} is the diagonal matrix of eigenvalues.

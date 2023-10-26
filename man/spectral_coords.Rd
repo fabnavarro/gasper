@@ -2,7 +2,7 @@
 % Please edit documentation in R/spectral_coords.R
 \name{spectral_coords}
 \alias{spectral_coords}
-\title{Spectral Coordinates for Graph Drawing.}
+\title{Spectral Coordinates for Graph Drawing}
 \usage{
 spectral_coords(adj_mat)
 }

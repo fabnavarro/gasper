@@ -2,31 +2,31 @@
 % Please edit documentation in R/localize_sgwt.R
 \name{localize_sgwt}
 \alias{localize_sgwt}
-\title{Localize a Kernel at a Specific Vertex using SGWT.}
+\title{Localize a Kernel at a Specific Vertex using SGWT}
 \usage{
 localize_sgwt(i, evalues, evectors, b = 2)
 }
 \arguments{
-\item{i}{Index of the node where to localize the kernel (integer).}
+\item{i}{Integer index of the node where to localize the kernel.}
 
-\item{evalues}{Eigenvalues of the Laplacian matrix (numeric vector).}
+\item{evalues}{Numeric vector of the eigenvalues of the Laplacian matrix.}
 
-\item{evectors}{Eigenvectors of the Laplacian matrix (matrix).}
+\item{evectors}{Numeric matrix of the eigenvectors of the Laplacian matrix.}
 
-\item{b}{Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.}
+\item{b}{Numeric scalar that controls the number of scales in the SGWT. It must be greater than 1.}
 }
 \value{
-\code{s} Kernel localized at vertex i using SGWT.
+\code{s} Kernel localized at vertex \code{i} using SGWT.
 }
 \description{
-Localize a Kernel at a Specific Vertex using SGWT.
+This function localizes a kernel at a specific vertex using the Spectral Graph Wavelet Transform (SGWT).
 }
 \details{
 The SGWT offers a comprehensive understanding of graph signals by providing insights into both vertex (spatial) and spectral (frequency) domains.
 
 The kernel is localized by transforming an impulse signal centered at vertex \eqn{i}{i} using the SGWT.
 The SGWT leverages a wavelet function \eqn{\psi(\lambda)} to provide a multi-resolution analysis of the graph signal.
-The impulse signal for vertex \eqn{i}{i} is represented by a vector \eqn{s} with all zeros except for a single one at the i-th position.
+The impulse signal at vertex \eqn{i}{i} is a vector \eqn{s} with a one at the i-th position and zeros elsewhere.
 The SGWT is given by:
 \deqn{W_s(\lambda) = s \ast \psi(\lambda) = U \psi(\Lambda) U^T s}
 where \eqn{U} is the matrix of eigenvectors of the Laplacian and \eqn{\Lambda} is the diagonal matrix of eigenvalues.

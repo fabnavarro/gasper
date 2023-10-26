@@ -3,7 +3,7 @@
 \docType{data}
 \name{NYCdata}
 \alias{NYCdata}
-\title{NYC Taxi Network Dataset.}
+\title{NYC Taxi Network Dataset}
 \format{
 A list with 2 elements:
 \itemize{
@@ -15,9 +15,11 @@ A list with 2 elements:
 NYCdata
 }
 \description{
-A dataset derived from NYC taxi trip records. The graph constructed represents the connectivity based on taxi trips between different locations. The weights of the edges represent the frequency and distances of trips between locations. Additionally, the dataset includes a signal \code{f} that represents the total amount with added noise.
+A dataset derived from NYC taxi trip records. Additionally, the dataset includes a signal \code{f} that represents the total amount with added noise.
 }
 \details{
+The graph constructed represents the connectivity based on taxi trips between different locations. The weights of the edges represent the frequency and distances of trips between locations.
+
 The data comes from the methodology in the referenced paper. It is constructed from real-world data fetched from NYC taxis databases. The graph consists of 265 vertices which correspond to different LocationID (both Pick-Up and Drop-Off points). Gaussian weights are defined by
 \deqn{w_{ij} = \exp(-\tau d_{i,j}^2)}{w_ij = exp(-tau * d_ij^2)}, where \eqn{d_{i,j}}{d_ij} represents the mean distance taken on all the trips between locations \eqn{i}{i} and \eqn{j}{j} or \eqn{j}{j} and \eqn{i}{i}.
 

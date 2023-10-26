@@ -1,16 +1,22 @@
-#' Plot a signal on top of a given graph
+#' Plot a Signal on Top of a Given Graph
 #'
-#' Visualize a signal \code{f} over a graph defined by \code{z}.
-#' If the graph does not provide spatial coordinates \code{xy}, the function computes them using spectral graph embedding based on the graph's Laplacian eigenvectors.
+#' Visualize a signal over a graph.
 #'
-#'@note If node coordinates \code{xy} are not provided, they will be calculated using spectral methods. For larger graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
+#'@details
+#' This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain.
+#'
+#'@note If node coordinates \code{xy} are not provided, they will be calculated using spectral methods \code{\link{spectral_coords}}. For large graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
 #'
 #' @export plot_signal
 #' @importFrom methods is
 #' @importFrom Matrix summary
-#' @param z Graph data.
+#' @param z A list containing graph data. This list must have the following components:
+#'          \itemize{
+#'            \item{sA}  An adjacency matrix or a sparse Matrix representation of the graph.
+#'            \item{xy}  A matrix or dataframe containing the x and y coordinates of each node in the graph.
+#'          }
 #' @param f Signal to plot.
-#' @param size Dot size.
+#' @param size Numeric. Dot size for nodes. Default is 0.75.
 #' @param limits Set colormap limits.
 #' @examples
 #' f <- rnorm(length(grid1$xy[,1]))

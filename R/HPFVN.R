@@ -1,16 +1,17 @@
-#' High Pass Filter Von Neumann Estimator.
+#' High Pass Filter Von Neumann Estimator
 #'
 #' \code{HPFVN} computes graph extension of the Von Neummann variance estimator using finest scale coefficients (as in classical wavelet approaches).
 #'
 #' @export HPFVN
-#' @param wcn Noisy wavelet coefficients (numeric vector).
-#' @param b Parameter that control the number of scales (numeric).
-#' @param evalues Laplacian spectrum (numeric vector).
+#' @param wcn Numeric vector of noisy wavelet coefficients.
+#' @param b numeric parameter that control the number of scales.
+#' @param evalues Numeric vector corresponding to Laplacian spectrum.
 #' @param filter_func Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.
 #' @param filter_params List of additional parameters required by filter_func. Default is an empty list.
 #'
 #' @note
 #' \code{HPFVN} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+#'
 #' The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
 #'
 #' @examples

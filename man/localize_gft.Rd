@@ -2,32 +2,32 @@
 % Please edit documentation in R/localize_gft.R
 \name{localize_gft}
 \alias{localize_gft}
-\title{Localize a Kernel at a Specific Vertex using GFT.}
+\title{Localize Kernel at a Graph Vertex Using GFT}
 \usage{
 localize_gft(i, L, evectors = NULL)
 }
 \arguments{
-\item{i}{Index of the node where to localize the kernel (integer).}
+\item{i}{Integer index of the node where to localize the kernel.}
 
-\item{L}{Laplacian matrix of the graph (matrix).}
+\item{L}{Laplacian matrix of the graph.}
 
-\item{evectors}{Eigenvectors of the Laplacian matrix (matrix). If NULL (default), the function will compute the eigendecomposition of the Laplacian.}
+\item{evectors}{Numeric matrix of the eigenvectors of the Laplacian matrix. If NULL (default), the function will compute the eigendecomposition of the Laplacian.}
 }
 \value{
-\code{s} Kernel localized at vertex i using GFT.
+\code{s} Kernel localized at vertex \code{i} using GFT.
 }
 \description{
-Localize a Kernel at a Specific Vertex using GFT.
+This function localizes a kernel at a specific vertex using the Graph Fourier Transform (GFT).
 }
 \details{
-The kernel is localized by transforming an impulse signal centered at vertex \eqn{i}{i} using the GFT.
-The GFT represents the signal in the graph's frequency domain through the eigen-decomposition of the Laplacian matrix.
-The impulse for vertex \eqn{i}{i} is represented by a vector \eqn{s} with all zeros except for a single one at the i-th position.
+The GFT represents the signal in the graph's frequency domain through the eigendecomposition of the Laplacian matrix.
+
+The kernel is localized by transforming an impulse signal centered at vertex \eqn{i}{i} using the GFT. The impulse for vertex \eqn{i}{i} is represented by a vector \eqn{s} with all zeros except for a single one at the i-th position.
 The GFT of a signal \eqn{s} is given by:
 \deqn{\hat{s} = U^T s}
 where \eqn{U} is the matrix of eigenvectors of the Laplacian.
-Applying the GFT to the impulse signal provides a spatial representation of the eigenvector (or kernel) associated with a specific frequency (eigenvalue)
-centered around vertex \eqn{i}{i}. This depicts how the kernel influences the local neighborhood of the vertex.
+
+Applying the GFT to the impulse signal provides a spatial representation of the eigenvector (or kernel) associated with a specific frequency (eigenvalue) centered around vertex \eqn{i}{i}. This depicts how the kernel influences the local neighborhood of the vertex.
 }
 \examples{
 \dontrun{

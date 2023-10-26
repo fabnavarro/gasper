@@ -1,12 +1,12 @@
-#' Stein's Unbiased Risk Estimate with MSE.
+#' Stein's Unbiased Risk Estimate with MSE
 #'
-#' Adaptive Threshold Selection Using Principle of SURE with the inclusion of Mean Squared Error (MSE) for comparison. The irreducible variance term is intentionally not included in the SURE calculations, as it does not change the position of the minimum.
+#' Adaptive Threshold Selection Using Principle of SURE with the inclusion of Mean Squared Error (MSE) for comparison.
 #'
 #' @export SURE_MSEthresh
-#' @param wcn Noisy wavelet coefficients (numeric vector).
-#' @param wcf True wavelet coefficients (numeric vector).
-#' @param thresh Threshold values (numeric vector).
-#' @param diagWWt Weights (numeric vector). These weights are typically derived from the diagonal elements of the wavelet frame matrix.
+#' @param wcn Numeric vector of the noisy spectral graph wavelet coefficients.
+#' @param wcf Numeric vector of the true spectral graph wavelet coefficients.
+#' @param thresh Numeric vector of threshold values.
+#' @param diagWWt Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.
 #' @param beta A numeric value specifying the type of thresholding to be used:
 #'  \itemize{
 #'             \item 1 for soft thresholding.
@@ -16,8 +16,8 @@
 #' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is NA).
 #' @param policy A character string determining the thresholding policy. Valid options include:
 #' \itemize{
-#'               \item "uniform" for a global threshold applied uniformly across all coefficients.
-#'               \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
+#'     \item "uniform" for a global threshold applied uniformly across all coefficients.
+#'     \item "dependent" for threshold values that adaptively depend on the corresponding `diagWWt` weights.
 #'               }
 #' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is TRUE).
 #' @return A list containing:
@@ -32,6 +32,8 @@
 #' @seealso \code{\link{SUREthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
 #'
 #' @references
+#' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+#'
 #' de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 #'
 #' Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.

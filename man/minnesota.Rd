@@ -3,7 +3,7 @@
 \docType{data}
 \name{minnesota}
 \alias{minnesota}
-\title{Minnesota Road Network.}
+\title{Minnesota Road Network}
 \format{
 A list with 6 elements:
 \itemize{

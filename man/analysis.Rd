@@ -2,20 +2,20 @@
 % Please edit documentation in R/analysis.R
 \name{analysis}
 \alias{analysis}
-\title{Compute the Analysis Operator for a Graph Signal.}
+\title{Compute the Analysis Operator for a Graph Signal}
 \usage{
 analysis(y, tf)
 }
 \arguments{
-\item{y}{Graph signal to analyze (numeric vector/matrix).}
+\item{y}{Numeric vector or matrix representing the graph signal to analyze.}
 
-\item{tf}{Frame coefficients (numeric matrix).}
+\item{tf}{Numeric matrix of frame coefficients.}
 }
 \value{
-\code{coef} Transform coefficients of the graph signal (numeric vector/matrix).
+\code{coef} Numeric vector or matrix of transform coefficients of the graph signal.
 }
 \description{
-\code{analysis} function computes the transform coefficients of a given graph signal using the provided frame coefficients.
+\code{analysis} computes the transform coefficients of a given graph signal using the provided frame coefficients.
 }
 \details{
 The \code{analysis} operator uses the frame coefficients to transform a given graph signal into its representation in the transform domain. It is defined by the linear map \eqn{T_{\mathfrak F} : \mathbb R^V \rightarrow \mathbb R^I}{T_{F} : R^V -> R^I}. Given a function \eqn{f \in \mathbb R^V}{f in R^V}, the analysis operation is defined as:

@@ -2,17 +2,17 @@
 % Please edit documentation in R/synthesis.R
 \name{synthesis}
 \alias{synthesis}
-\title{Compute the Synthesis Operator for Transform Coefficients.}
+\title{Compute the Synthesis Operator for Transform Coefficients}
 \usage{
 synthesis(coeff, tf)
 }
 \arguments{
-\item{coeff}{Transform coefficients of the graph signal (numeric vector/matrix).}
+\item{coeff}{Numeric vector/matrix. Transformed coefficients of the graph signal.}
 
-\item{tf}{Frame coefficients (numeric matrix).}
+\item{tf}{Numeric matrix. Frame coefficients.}
 }
 \value{
-\code{y} Synthesized graph signal (numeric vector/matrix).
+\code{y} Numeric vector/matrix. Synthesized graph signal.
 }
 \description{
 \code{synthesis} computes the graph signal synthesis from its transform coefficients using the provided frame coefficients.

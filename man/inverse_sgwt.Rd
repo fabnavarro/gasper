@@ -2,7 +2,7 @@
 % Please edit documentation in R/inverse_sgwt.R
 \name{inverse_sgwt}
 \alias{inverse_sgwt}
-\title{Compute Inverse Spectral Graph Wavelet Transform.}
+\title{Compute Inverse Spectral Graph Wavelet Transform}
 \usage{
 inverse_sgwt(
   wc,
@@ -14,13 +14,13 @@ inverse_sgwt(
 )
 }
 \arguments{
-\item{wc}{Wavelet coefficients to reconstruct the graph signal from (numeric vector).}
+\item{wc}{Numeric vector representing the spectral graph wavelet coefficients to reconstruct the graph signal from.}
 
-\item{evalues}{Eigenvalues of the Laplacian matrix (numeric vector).}
+\item{evalues}{Numeric vector of eigenvalues of the Laplacian matrix.}
 
-\item{evectors}{Eigenvectors of the Laplacian matrix (matrix).}
+\item{evectors}{Matrix of eigenvectors of the Laplacian matrix.}
 
-\item{b}{Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.}
+\item{b}{Numeric scalar that control the number of scales in the SGWT. It must be greater than 1.}
 
 \item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.}
 
@@ -30,9 +30,11 @@ inverse_sgwt(
 \code{f} A graph signal obtained by applying the SGWT adjoint to \code{wc}.
 }
 \description{
-\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
+\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
 }
 \details{
+The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
+
 Given wavelet coefficients \code{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
 
 The eigenvalues and eigenvectors of the graph Laplacian are denoted as \eqn{\Lambda}{Lambda} and \eqn{U}{U} respectively. The parameter \eqn{b}{b} controls the number of scales, and \eqn{\lambda_{\text{max}}}{lambda_max} is the largest eigenvalue.

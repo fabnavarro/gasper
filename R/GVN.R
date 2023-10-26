@@ -1,12 +1,12 @@
-#' Graph Von Neumann Variance Estimator.
+#' Graph Von Neumann Variance Estimator
 #'
 #' \code{GVN} computes graph equivalent of the Von Neummann variance estimator.
 #'
 #' @export GVN
 #' @importFrom Matrix diag
-#' @param y Vector that represents the noisy data (numeric).
-#' @param A Adjacency matrix of the graph (matrix).
-#' @param L  Laplacian matrix of the graph (matrix).
+#' @param y Numeric vector that represents the noisy data.
+#' @param A Adjacency matrix of the graph.
+#' @param L Laplacian matrix of the graph.
 #' @return The Graph Von Neumann variance estimate for the given noisy data.
 #' @examples
 #' \dontrun{

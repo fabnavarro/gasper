@@ -2,16 +2,16 @@
 % Please edit documentation in R/GVN.R
 \name{GVN}
 \alias{GVN}
-\title{Graph Von Neumann Variance Estimator.}
+\title{Graph Von Neumann Variance Estimator}
 \usage{
 GVN(y, A, L)
 }
 \arguments{
-\item{y}{Vector that represents the noisy data (numeric).}
+\item{y}{Numeric vector that represents the noisy data.}
 
-\item{A}{Adjacency matrix of the graph (matrix).}
+\item{A}{Adjacency matrix of the graph.}
 
-\item{L}{Laplacian matrix of the graph (matrix).}
+\item{L}{Laplacian matrix of the graph.}
 }
 \value{
 The Graph Von Neumann variance estimate for the given noisy data.

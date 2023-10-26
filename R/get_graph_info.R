@@ -1,13 +1,21 @@
 #' Retrieve Information Tables about a Specific Graph from the SuiteSparse Matrix Collection.
 #'
-#' \code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection. The tables contain detailed information about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+#' \code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection.
 #'
 #' @export get_graph_info
 #' @importFrom httr GET timeout http_error message_for_status
 #' @importFrom curl has_internet
 #' @param matrixname Name of the matrix/graph for which to fetch information.
 #' @param groupname Name of the group that provides the matrix/graph.
-#' @return A list of tables with detailed information about the specified matrix/graph.
+#' @return A list of tables with detailed information about the specified matrix/graph:
+#' \itemize{
+#'   \item "Matrix Information"
+#'   \item "Matrix Properties"
+#'   \item "SVD Statistics" (if available)
+#' }
+#'
+#' @details The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+#'
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
 #'

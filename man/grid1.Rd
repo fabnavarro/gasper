@@ -3,7 +3,7 @@
 \docType{data}
 \name{grid1}
 \alias{grid1}
-\title{Grid1 Graph from AG-Monien Graph Collection.}
+\title{Grid1 Graph from AG-Monien Graph Collection}
 \format{
 list of 3 elements
 \itemize{

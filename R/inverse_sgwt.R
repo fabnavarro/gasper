@@ -1,18 +1,20 @@
-#' Compute Inverse Spectral Graph Wavelet Transform.
+#' Compute Inverse Spectral Graph Wavelet Transform
 #'
-#' \code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}. The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
+#' \code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
 #'
 #' @export inverse_sgwt
-#' @param wc Wavelet coefficients to reconstruct the graph signal from (numeric vector).
-#' @param evalues Eigenvalues of the Laplacian matrix (numeric vector).
-#' @param evectors Eigenvectors of the Laplacian matrix (matrix).
-#' @param b Parameter that controls the number of scales in the SGWT (numeric scalar). It must be greater than 1.
+#' @param wc Numeric vector representing the spectral graph wavelet coefficients to reconstruct the graph signal from.
+#' @param evalues Numeric vector of eigenvalues of the Laplacian matrix.
+#' @param evectors Matrix of eigenvectors of the Laplacian matrix.
+#' @param b Numeric scalar that control the number of scales in the SGWT. It must be greater than 1.
 #' @param filter_func Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.
 #' @param filter_params List of additional parameters required by filter_func. Default is an empty list.
 #' @return \code{f} A graph signal obtained by applying the SGWT adjoint to \code{wc}.
 #' @seealso \code{\link{forward_sgwt}}, \code{\link{tight_frame}}
 #'
 #' @details
+#'
+#' The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
 #'
 #' Given wavelet coefficients \code{wc}, \code{inverse_sgwt} reconstructs the original graph signal using the inverse SGWT.
 #'

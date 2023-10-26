@@ -1,4 +1,4 @@
-#' Swiss Roll Graph Generation.
+#' Swiss Roll Graph Generation
 #'
 #' Generates points for a Swiss roll graph. The function maps points from the square \eqn{[0,1]^2} into the Swiss roll using the specified transformations.
 #'

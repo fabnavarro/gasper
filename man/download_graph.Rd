@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_graph.R
 \name{download_graph}
 \alias{download_graph}
-\title{Download Sparse Matrix form the SuiteSparse Matrix Collection.}
+\title{Download Sparse Matrix form the SuiteSparse Matrix Collection}
 \usage{
 download_graph(matrixname, groupname, svd = FALSE)
 }
@@ -11,7 +11,7 @@ download_graph(matrixname, groupname, svd = FALSE)
 
 \item{groupname}{Name of the group that provides the graph.}
 
-\item{svd}{Logical, if \code{TRUE}, a ".mat" file containing the sigular values of the matrix is downloaded (if available). Default is \code{FALSE}.}
+\item{svd}{Logical, if \code{TRUE}, a ".mat" file containing the singular values of the matrix is downloaded (if available). Default is \code{FALSE}.}
 }
 \value{
 A list containing several components:

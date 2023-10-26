@@ -1,6 +1,6 @@
-#' Evaluate Localized Tight-Frame Filter Functions.
+#' Evaluate Localized Tight-Frame Filter Functions
 #'
-#' \code{zetav} evaluates the filters associated with a specific tight-frame construction of the Littlewood-Paley type, based on a partition of unity, as proposed in the reference papers.
+#' \code{zetav} evaluates the filters associated with a specific tight-frame construction.
 #'
 #' @export zetav
 #' @param x A vector representing the support on which to evaluate the filter
@@ -15,7 +15,7 @@
 #' }
 #'
 #' @details
-#' The function \code{zetav} evaluates the partition of unity functions \eqn{\psi} following the methodology described in the references. This approach, inspired by frame theory, facilitates the construction of band-pass filters, ensuring effective spectral localization.
+#' The function \code{zetav} evaluates the partition of unity functions \eqn{\psi} following the methodology described in the references similar to the Littlewood-Paley type, based on a partition of unity, as proposed in the reference papers. This approach, inspired by frame theory, facilitates the construction of filter banks, ensuring effective spectral localization.
 #'
 #' A finite collection \eqn{(\psi_j)_{j=0, \ldots, J}} is a finite partition of unity on the compact interval \eqn{[0, \lambda_{\mathrm{max}}]}. It satisfies:
 #' \deqn{

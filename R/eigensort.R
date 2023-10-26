@@ -1,4 +1,4 @@
-#' Spectral Decomposition of a Symmetric Matrix.
+#' Spectral Decomposition of a Symmetric Matrix
 #'
 #' \code{eigensort} performs the spectral decomposition of a symmetric matrix. The eigenvalues and eigenvectors are sorted in increasing order by eigenvalues.
 #'

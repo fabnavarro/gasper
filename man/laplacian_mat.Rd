@@ -2,12 +2,12 @@
 % Please edit documentation in R/laplacian_mat.R
 \name{laplacian_mat}
 \alias{laplacian_mat}
-\title{Compute the Graph Laplacian Matrix.}
+\title{Compute the Graph Laplacian Matrix}
 \usage{
 laplacian_mat(W, type = "unnormalized")
 }
 \arguments{
-\item{W}{Adjacency matrix (matrix or sparseMatrix).}
+\item{W}{Adjacency matrix (dense or sparseMatrix).}
 
 \item{type}{Character string, type of Laplacian matrix to compute. Can be "unnormalized" (default), "normalized", or "randomwalk".}
 }
@@ -15,7 +15,7 @@ laplacian_mat(W, type = "unnormalized")
 \code{L} The graph Laplacian matrix.
 }
 \description{
-\code{laplacian_mat} computes various forms of the graph Laplacian matrix for a given adjacency matrix \eqn{W}{W}.
+\code{laplacian_mat} computes various forms of the graph Laplacian matrix for a given adjacency matrix \code{W}.
 }
 \details{
 The function supports three types of Laplacian matrices:

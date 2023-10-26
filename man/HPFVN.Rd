@@ -2,16 +2,16 @@
 % Please edit documentation in R/HPFVN.R
 \name{HPFVN}
 \alias{HPFVN}
-\title{High Pass Filter Von Neumann Estimator.}
+\title{High Pass Filter Von Neumann Estimator}
 \usage{
 HPFVN(wcn, evalues, b, filter_func = zetav, filter_params = list())
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficients (numeric vector).}
+\item{wcn}{Numeric vector of noisy wavelet coefficients.}
 
-\item{evalues}{Laplacian spectrum (numeric vector).}
+\item{evalues}{Numeric vector corresponding to Laplacian spectrum.}
 
-\item{b}{Parameter that control the number of scales (numeric).}
+\item{b}{numeric parameter that control the number of scales.}
 
 \item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be passed.}
 
@@ -26,6 +26,7 @@ The High Pass Filter Von Neumann Estimator (HPFVN) is the graph analog of the cl
 }
 \note{
 \code{HPFVN} can be adapted for other filters by passing a different filter function to the \code{filter_func} parameter.
+
 The computation of \eqn{k_{\text{max}}}{k_max} using \eqn{\lambda_{\text{max}}}{lambda_max} and \eqn{b}{b} applies primarily to the default \code{zetav} filter. It can be overridden by providing it in the \code{filter_params} list for other filters.
 }
 \examples{

@@ -2,25 +2,25 @@
 % Please edit documentation in R/inverse_gft.R
 \name{inverse_gft}
 \alias{inverse_gft}
-\title{Compute Inverse Graph Fourier Transform.}
+\title{Compute Inverse Graph Fourier Transform}
 \usage{
 inverse_gft(L, hatf, U = NULL)
 }
 \arguments{
 \item{L}{Laplacian matrix of the graph (matrix).}
 
-\item{hatf}{Graph Fourier Transform of the signal to be inverted (numeric vector).}
+\item{hatf}{Numeric vector. Graph Fourier Transform of the signal to be inverted.}
 
-\item{U}{Eigenvectors of the Laplacian matrix (matrix). If NULL (default), the function will compute the eigendecomposition of the Laplacian.}
+\item{U}{Matrix of the eigenvectors of the Laplacian matrix. If NULL (default), the function will compute the eigendecomposition of the Laplacian.}
 }
 \value{
-\code{f} Original graph signal obtained from the inverse transform of \eqn{\hat{f}}{\hat{f}} (numeric vector).
+\code{f} Numeric vector. Original graph signal obtained from the inverse transform of \eqn{\hat{f}}{\hat{f}}.
 }
 \description{
-\code{inverse_gft} computes the Inverse Graph Fourier Transform (IGFT) of a given transformed graph signal \eqn{\hat{f}}{\hat{f}}. The IGFT retrieves the original graph signal from its projection in the eigenspace of the graph's Laplacian matrix.
+\code{inverse_gft} computes the Inverse Graph Fourier Transform (IGFT) of a given transformed graph signal \eqn{\hat{f}}{\hat{f}}.
 }
 \details{
-The IGFT enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
+The IGFT retrieves the original graph signal from its projection in the eigenspace of the graph's Laplacian matrix. It enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
 
 The IGFT of a transformed graph signal \eqn{\hat{f}}{\hat{f}} is given by:
 \deqn{

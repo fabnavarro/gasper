@@ -2,7 +2,7 @@
 % Please edit documentation in R/eigensort.R
 \name{eigensort}
 \alias{eigensort}
-\title{Spectral Decomposition of a Symmetric Matrix.}
+\title{Spectral Decomposition of a Symmetric Matrix}
 \usage{
 eigensort(x)
 }

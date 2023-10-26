@@ -2,7 +2,7 @@
 % Please edit documentation in R/forward_gft.R
 \name{forward_gft}
 \alias{forward_gft}
-\title{Compute Forward Graph Fourier Transform.}
+\title{Compute Forward Graph Fourier Transform}
 \usage{
 forward_gft(L, f, U = NULL)
 }
@@ -17,10 +17,10 @@ forward_gft(L, f, U = NULL)
 \code{hatf} Graph Fourier Transform of \eqn{f}{f} (numeric vector).
 }
 \description{
-\code{forward_gft} computes the Graph Fourier Transform (GFT) of a given graph signal \eqn{f}{f}. The GFT is the projection of the graph signal onto the eigenspace of the graph's Laplacian matrix.
+\code{forward_gft} computes the Graph Fourier Transform (GFT) of a given graph signal \eqn{f}{f}.
 }
 \details{
-The GFT allows one to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are similar to the harmonics of classical Fourier analysis.
+The GFT is the projection of the graph signal onto the eigenspace of the graph's Laplacian matrix. It allows to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are similar to the harmonics of classical Fourier analysis.
 
 The GFT of a graph signal \eqn{f}{f} is given by:
 \deqn{

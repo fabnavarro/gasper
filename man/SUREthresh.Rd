@@ -2,7 +2,7 @@
 % Please edit documentation in R/SUREthresh.R
 \name{SUREthresh}
 \alias{SUREthresh}
-\title{Stein's Unbiased Risk Estimate (SURE).}
+\title{Stein's Unbiased Risk Estimate}
 \usage{
 SUREthresh(
   wcn,
@@ -16,11 +16,11 @@ SUREthresh(
 )
 }
 \arguments{
-\item{wcn}{Noisy wavelet coefficients (numeric vector).}
+\item{wcn}{Numeric vector of the noisy spectral graph wavelet coefficients.}
 
-\item{thresh}{Threshold values (numeric vector).}
+\item{thresh}{Numeric vector of threshold values.}
 
-\item{diagWWt}{Weights (numeric vector). These weights are typically derived from the diagonal
+\item{diagWWt}{Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.
 elements of the wavelet frame operator matrix.}
 
 \item{beta}{A numeric value specifying the type of thresholding to be used:
@@ -50,7 +50,7 @@ A list containing:
         }
 }
 \description{
-Adaptive Threshold Selection Using Principle of SURE.
+Adaptive Threshold Selection Using Principle of Stein's Unbiased Risk Estimate (SURE).
 }
 \details{
 The \code{SUREthresh} function is a data-driven approach to finding the optimal thresholding value for denoising wavelet coefficients. SURE provides a means to evaluate the denoising quality of a given thresholding function \eqn{h}. The expected risk in terms of the mean squared error (MSE) between the original coefficients \eqn{\mathbf{F}} and their thresholded counterparts \eqn{h(\widetilde{\mathbf{F}})}, considering a noise variance \eqn{\sigma^2}, is given by:
@@ -73,9 +73,15 @@ The thresholding operator, represented by \eqn{h} in the \code{\link{SUREthresh}
 \code{\link{GVN}} and \code{\link{HPFVN}} provide naive noise variance estimation.
 }
 \note{
-The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location. Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
+The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, please refer to the references provided.
+
+The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location.
+
+Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
 }
 \references{
+Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
+
 de Loynes, B., Navarro, F., Olivier, B. (2021). Data-driven thresholding in denoising with Spectral Graph Wavelet Transform. Journal of Computational and Applied Mathematics, Vol. 389.
 
 Stein, C. M. (1981). Estimation of the mean of a multivariate normal distribution. The annals of Statistics, 1135-1151.
