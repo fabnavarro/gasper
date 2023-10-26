@@ -23,6 +23,7 @@ gasper News
 * add more info in doc.
 * add `localize_gft`/`localize_sgwt` fun.
 * add custom frame filters support (in `forward/inverse_sgwt`, `HPFVN`, `plot_filter` and `tight_frame`) by passing additional arguments (`filter_params`/`filter_func`).
+* add `graph_info` to retrieve from SuiteSparse the three tables with "Matrix Information," "Matrix Properties" and "SVD Statistics".
 
 # gasper 1.1.4 relase (08/26/2023)
 * satisfy CRAN policy (by removing external download).

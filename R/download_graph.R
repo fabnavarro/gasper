@@ -1,4 +1,4 @@
-#' Download sparse matrix form the SuiteSparse Matrix Collection.
+#' Download Sparse mMatrix form the SuiteSparse Matrix Collection.
 #'
 #' If coordinates are associated with the graphs,
 #' they are automatically downloaded and added to the output. See \url{https://sparse.tamu.edu/} for the list of groups and graph/matrix names.

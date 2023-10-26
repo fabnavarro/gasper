@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_graph.R
 \name{download_graph}
 \alias{download_graph}
-\title{Download sparse matrix form the SuiteSparse Matrix Collection.}
+\title{Download Sparse mMatrix form the SuiteSparse Matrix Collection.}
 \usage{
 download_graph(matrixname, groupname)
 }

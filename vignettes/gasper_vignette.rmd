@@ -34,6 +34,7 @@ knitr::opts_chunk$set(
   fig.align="center"
 )
 ```
+
 \begin{abstract}
 We present a short tutorial on to the use of the \proglang{R} \pkg{gasper} package. Gasper is a package dedicated to signal processing on graphs. It also provides an interface to the SuiteSparse Matrix Collection.
 \end{abstract}
@@ -76,6 +77,11 @@ grid1$dim
 ```{r, eval = FALSE}
 cat(readLines(grid1$info, n=14), sep = "\n")
 ```
+For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "Matrix Information", "Matrix Properties," and "SVD Statistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
+```{r, eval=FALSE}
+matrix_info <- get_graph_info(matrixname, groupname)
+matrix_info
+```
 
 The package also allows to plot a (planar) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
 ```{r, fig.show='hold'}
@@ -86,7 +92,7 @@ plot_signal(grid1, f, size = 2)
 
 # Example of application to denoising
 
-We give an example of an application in the case of the denoising of a noisy signal $f$ defined on a graph $G$ with set of vertices $V$. More precisely, the (unnormalized) graph Laplacian matrix $\L\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\L=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
+We give an example of an application in the case of the denoising of a noisy signal $f$ defined on a graph $G$ with set of vertices $V$. More precisely, the (unnormalized) graph Laplacian matrix $\La\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\La=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
 
 The degradation model can be written as
 \[
@@ -126,13 +132,13 @@ b <- 2
 tf <- tight_frame(evalues, evectors, b=b)
 ```
 
-Wavelet frames can be seen as special filter banks. The tight-frame considered here is a finite collection $(\psi_j)_{j=0, \ldots,J}$ forming a finite partition of unity on the compact $[0,\lambda_1]$, where $\lambda_1$ is the largest eigenvalue of the Laplacian spectrum $\mathrm{sp}(\L)$. This partition is defined as follows: let $\omega : \mathbb R^+ \rightarrow [0,1]$ be some function with support in $[0,1]$, satisfying $\omega \equiv 1$ on $[0,b^{-1}]$, for some $b>1$, and set
+Wavelet frames can be seen as special filter banks. The tight-frame considered here is a finite collection $(\psi_j)_{j=0, \ldots,J}$ forming a finite partition of unity on the compact $[0,\lambda_1]$, where $\lambda_1$ is the largest eigenvalue of the Laplacian spectrum $\mathrm{sp}(\La)$. This partition is defined as follows: let $\omega : \mathbb R^+ \rightarrow [0,1]$ be some function with support in $[0,1]$, satisfying $\omega \equiv 1$ on $[0,b^{-1}]$, for some $b>1$, and set
 \begin{equation*}
 \psi_0(x)=\omega(x)~~\textrm{and}~~\psi_j(x)=\omega(b^{-j}x)-\omega(b^{-j+1}x)~~\textrm{for}~~j=1, \ldots, J,~~\textrm{where}~~J= \left \lfloor \frac{\log \lambda_1}{\log b} \right \rfloor + 2.
 \end{equation*}
 Thanks to Parseval's identity, the following set of vectors is a tight frame:
 \[
-\mathfrak F = \left \{ \sqrt{\psi_j}(\L)\delta_i, j=0, \ldots, J, i \in V \right \}.
+\mathfrak F = \left \{ \sqrt{\psi_j}(\La)\delta_i, j=0, \ldots, J, i \in V \right \}.
 \]
 The `plot_filter` function allows to represent the elements (filters) of this partition.
 ```{r,fig.width=5}
@@ -141,11 +147,11 @@ plot_filter(lmax,b)
 
 The  SGWT of a signal $f \in \mathbb R^V$ is given by
 \[
-\WT f = \left ( \sqrt{\psi_0}(\L)f^{T},\ldots,\sqrt{\psi_J}(\L)f^{T} \right )^{T} \in \mathbb R^{n(J+1)}.
+\WT f = \left ( \sqrt{\psi_0}(\La)f^{T},\ldots,\sqrt{\psi_J}(\La)f^{T} \right )^{T} \in \mathbb R^{n(J+1)}.
 \]
 The adjoint linear transformation $\WT^\ast$ of $\WT$ is:
 \[
-\WT^\ast \left (\eta_{0}^{T}, \eta_{1}^{T}, \ldots, \eta_{J}^T \right )^{T} = \sum_{j\geq 0} \sqrt{\psi_j}(\L)\eta_{j}.
+\WT^\ast \left (\eta_{0}^{T}, \eta_{1}^{T}, \ldots, \eta_{J}^T \right )^{T} = \sum_{j\geq 0} \sqrt{\psi_j}(\La)\eta_{j}.
 \]
 The tightness of the underlying frame implies that $\WT^\ast \WT=\mathrm{Id}_{\mathbb R^V}$ so that a signal $f \in \mathbb R^V$ can be recovered by applying $\WT^\ast$ to its wavelet coefficients $((\WT f)_i)_{i=1, \ldots, n(J+1)} \in \mathbb R^{n(J+1)}$.
 

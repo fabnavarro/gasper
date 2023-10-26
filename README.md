@@ -5,7 +5,7 @@
 Downloads](http://cranlogs.r-pkg.org/badges/grand-total/gasper)
 
 Graph signal processing in R.
-<img src="README_files/figure-markdown_github/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />
 
 ## Download and Install
 
@@ -85,7 +85,7 @@ attributes(`usroads-48`)
 column format), coordinates `xy` (if present, in a data.frame), `dim`
 the number of rows, columns and numerically nonzero elements and `info`
 about the matrix (stored in a temporary folder as a plain text file)
-that can be display via `file.show(usroads-48$info)` for example or in
+that can be display via `file.show(`usroads-48`$info)` for example or in
 the console:
 
 ``` r
@@ -107,16 +107,44 @@ cat(readLines(`usroads-48`$info), sep = "\n")
 #> 126146 126146 161950
 ```
 
+In addition, the `get_graph_info` function allows to retrieve detailed
+information about the matrix from the SuiteSparse Matrix Collection
+website (`rvest` package needs to be installed to use it). This function
+extracts and formats various properties and metadata associated with the
+matrix (i.e., it fetches the two to three tables with “Matrix
+Information,” “Matrix Properties” and, if available, “SVD Statistics”),
+providing a convenient way to access this overview of the graph directly
+within R. Here is how you can use it:
+
+``` r
+graph_info <- get_graph_info(matrixname, groupname)
+#> [1] 3
+knitr::kable(graph_info[[2]])
+```
+
+|                             | Matrix Properties |
+|:----------------------------|:------------------|
+| Structural Rank             |                   |
+| Structural Rank Full        |                   |
+| Num Dmperm Blocks           |                   |
+| Strongly Connect Components | 1                 |
+| Num Explicit Zeros          | 0                 |
+| Pattern Symmetry            | 100%              |
+| Numeric Symmetry            | 100%              |
+| Cholesky Candidate          | no                |
+| Positive Definite           | no                |
+| Type                        | binary            |
+
 It is also possible to plot a (planar) graph and plot signals defined on
 top of it. For example :
 
 ``` r
-f <- rnorm(nrow(`usroads-48`$xy))
+f <- sin(rnorm(nrow(`usroads-48`$xy)))
 plot_graph(`usroads-48`, size = 0.05)
 plot_signal(`usroads-48`, f, size = f/4)
 ```
 
-<img src="README_files/figure-markdown_github/unnamed-chunk-10-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-markdown_github/unnamed-chunk-10-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-11-2.png" width="50%" style="display: block; margin: auto;" />
 
 In cases where these coordinates are not supplied, `plot_graph` employs
 simple spectral graph embedding to calculate some node coordinates
@@ -138,4 +166,20 @@ plot_signal(delaunay_n10,
             cos(1:nrow(delaunay_n10$sA)))
 ```
 
-<img src="README_files/figure-markdown_github/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-markdown_github/unnamed-chunk-11-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-12-2.png" width="50%" style="display: block; margin: auto;" />
+
+``` r
+graph_info <- get_graph_info(matrixname, groupname)
+#> [1] 4
+knitr::kable(graph_info[[3]])
+```
+
+|                        | SVD Statistics |
+|:-----------------------|:---------------|
+| Matrix Norm            | 6.293702e+00   |
+| Minimum Singular Value | 1.875512e-03   |
+| Condition Number       | 3.355724e+03   |
+| Rank                   | 1,024          |
+| sprank(A)-rank(A)      |                |
+| Null Space Dimension   | 0              |
+| Full Numerical Rank?   | yes            |
