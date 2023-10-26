@@ -48,25 +48,6 @@ get_graph_info <- function(matrixname, groupname) {
   gracefully_fail(url)
   page_content <- rvest::read_html(url)
   tables <- rvest::html_table(page_content)
-  # tables <- tables[-4]
-  # tables[[2]] <- tables[[2]][,-3]
-  # tables[[3]] <- tables[[3]][-nrow(tables[[3]]), ]
-  print(length(tables))
-  # if (length(tables) = 4) {
-  #   tables <- tables[-4]
-  # }
-  # if (length(tables) >= 2) {
-  #   tables[[2]] <- tables[[2]][,-3]
-  # }
-  # if (length(tables) >= 3) {
-  #   tables[[3]] <- tables[[3]][-nrow(tables[[3]]),]
-  # }
-  # tables <- lapply(tables, function(t) {
-  #   df <- as.data.frame(t)
-  #   rownames(df) <- df[[1]]
-  #   df <- df[-1]
-  #   return(df)
-  # })
   if (length(tables) == 3) {
     tables <- tables[-3]
   }

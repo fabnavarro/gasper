@@ -118,9 +118,31 @@ within R. Here is how you can use it:
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)
-#> [1] 3
-knitr::kable(graph_info[[2]])
+graph_info
 ```
+
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+
+|                 | Matrix Information |
+|:----------------|:-------------------|
+| Name            | usroads-48         |
+| Group           | Gleich             |
+| Matrix ID       | 2332               |
+| Num Rows        | 126,146            |
+| Num Cols        | 126,146            |
+| Nonzeros        | 323,900            |
+| Pattern Entries | 323,900            |
+| Kind            | Undirected Graph   |
+| Symmetric       | Yes                |
+| Date            | 2010               |
+| Author          | D. Gleich          |
+| Editor          | T. Davis           |
+
+</td>
+<td>
 
 |                             | Matrix Properties |
 |:----------------------------|:------------------|
@@ -135,6 +157,11 @@ knitr::kable(graph_info[[2]])
 | Positive Definite           | no                |
 | Type                        | binary            |
 
+</td>
+</tr>
+</tbody>
+</table>
+
 It is also possible to plot a (planar) graph and plot signals defined on
 top of it. For example :
 
@@ -144,7 +171,7 @@ plot_graph(`usroads-48`, size = 0.05)
 plot_signal(`usroads-48`, f, size = f/4)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-11-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-11-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-12-2.png" width="50%" style="display: block; margin: auto;" />
 
 In cases where these coordinates are not supplied, `plot_graph` employs
 simple spectral graph embedding to calculate some node coordinates
@@ -166,13 +193,33 @@ plot_signal(delaunay_n10,
             cos(1:nrow(delaunay_n10$sA)))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-12-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-12-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" style="display: block; margin: auto;" />
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)
-#> [1] 4
-knitr::kable(graph_info[[3]])
+graph_info
 ```
+
+<table class="kable_wrapper">
+<tbody>
+<tr>
+<td>
+
+|                             | Matrix Properties |
+|:----------------------------|:------------------|
+| Structural Rank             |                   |
+| Structural Rank Full        |                   |
+| Num Dmperm Blocks           |                   |
+| Strongly Connect Components | 1                 |
+| Num Explicit Zeros          | 0                 |
+| Pattern Symmetry            | 100%              |
+| Numeric Symmetry            | 100%              |
+| Cholesky Candidate          | no                |
+| Positive Definite           | no                |
+| Type                        | binary            |
+
+</td>
+<td>
 
 |                        | SVD Statistics |
 |:-----------------------|:---------------|
@@ -183,3 +230,8 @@ knitr::kable(graph_info[[3]])
 | sprank(A)-rank(A)      |                |
 | Null Space Dimension   | 0              |
 | Full Numerical Rank?   | yes            |
+
+</td>
+</tr>
+</tbody>
+</table>

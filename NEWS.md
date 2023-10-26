@@ -17,6 +17,9 @@ gasper News
 -   add custom frame filters support (in `forward/inverse_sgwt`,
     `HPFVN`, `plot_filter` and `tight_frame`) by passing additional
     arguments (`filter_params`/`filter_func`).
+-   add `graph_info` to retrieve from SuiteSparse the two/three tables
+    with “Matrix Information,” “Matrix Properties” and, if available,
+    “SVD Statistics”.
 
 # gasper 1.1.4 relase (08/26/2023)
 
