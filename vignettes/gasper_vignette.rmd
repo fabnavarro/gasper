@@ -274,7 +274,7 @@ wc_oracle_u <- betathresh(wcn,
 Notably, SURE can also be applied in a level-dependent manner using `SUREthresh` at each scale (the output of `SUREthresh` can be retrieve with the argument "keepSURE = TRUE" at the function call).
 ```{r}
 J <- floor(log(lmax)/log(b)) + 2
-LD_opt_thresh_d <- LD_SUREthresh(J=J, 
+LD_opt_thresh_u <- LD_SUREthresh(J=J, 
                              wcn=wcn, 
                              diagWWt=diagWWt, 
                              beta=2, 
@@ -282,8 +282,8 @@ LD_opt_thresh_d <- LD_SUREthresh(J=J,
                              hatsigma=NA,
                              policy = "uniform",
                              keepSURE = FALSE)
-hatf_LD_SURE_d <- synthesis(LD_opt_thresh_d$wcLDSURE, tf)
-print(paste0("LD_SURE_u = ",round(SNR(f,hatf_LD_SURE_d),2),"dB"))
+hatf_LD_SURE_u <- synthesis(LD_opt_thresh_u$wcLDSURE, tf)
+print(paste0("LD_SURE_u = ",round(SNR(f,hatf_LD_SURE_u),2),"dB"))
 ```
 
 Even though the SURE no longer depends on the original signal, it does depend on $\sigma^2$, two naive (biased) estimators are obtained via `GVN` or `HPVN` functions (see @de2019data for more details). Another possible improvement would be to use a scale-dependent variance estimator (especially in the case of "policy = "dependent"").
