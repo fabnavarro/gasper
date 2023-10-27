@@ -15,6 +15,16 @@ A matrix where each row represents the spectral coordinates of a node in the gra
 \description{
 Calculates the spectral coordinates of a graph using the two smallest non-zero eigenvalues of the graph Laplacian.
 }
+\examples{
+\dontrun{
+matrixname <- "bcspwr02"
+groupname <- "HB"
+download_graph(matrixname,groupname)
+xy <- spectral_coords(bcspwr02$sA)
+bcspwr02$xy <- xy
+plot_graph(bcspwr02)
+}
+}
 \references{
 Chung, F. R. K. (1997). Spectral Graph Theory. American Mathematical Soc.
 
