@@ -31,6 +31,53 @@
 #'
 #' @seealso \code{\link{SUREthresh}}, \code{\link{GVN}}, \code{\link{HPFVN}}
 #'
+#' @examples
+#' \dontrun{
+#' # Compute the Laplacian matrix and its eigen-decomposition
+#' L <- laplacian_mat(grid1$sA)
+#' U <- eigensort(L)
+#'
+#' # Compute the tight frame coefficients
+#' tf <- tight_frame(U$evalues, U$evectors)
+#'
+#' # Generate some noisy observation
+#' n <- nrow(L)
+#' f <- randsignal(0.01, 3, grid1$sA)
+#' sigma <- 0.01
+#' noise <- rnorm(n, sd = sigma)
+#' tilde_f <- f + noise
+#'
+#' # Compute the transform coefficients
+#' wcn <- analysis(tilde_f, tf)
+#' wcf <- analysis(f, tf)
+#'
+#' # Compute the weigths and use D&J trick for the SURE evaluation
+#' diagWWt <- colSums(t(tf)^2)
+#' thresh <- sort(abs(wcn))
+#'
+#' # Compute to optimal threshlod
+#' opt_thresh_u <- SURE_MSEthresh(wcn,
+#'                                wcf,
+#'                                thresh,
+#'                                diagWWt,
+#'                                beta=2,
+#'                                sigma,
+#'                                NA,
+#'                                policy = "uniform",
+#'                                keepwc = TRUE)
+#' # Extract corresponding wavelet coefficients
+#' wc_oracle_u <- opt_thresh_u$wc[, opt_thresh_u$min["xminMSE"]]
+#' wc_SURE_u <- opt_thresh_u$wc[, opt_thresh_u$min["xminSURE"]]
+#'
+#' # Get the graph signal estimators
+#' hatf_oracle_u <- synthesis(wc_oracle_u, tf)
+#' hatf_SURE_u  <- synthesis(wc_SURE_u, tf)
+#'
+#' # Compare the perfomance according to SNR measure
+#' round(SNR(f, hatf_oracle_u), 2)
+#' round(SNR(f, hatf_SURE_u), 2)
+#' }
+#'
 #' @references
 #' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
 #'
