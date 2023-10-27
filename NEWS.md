@@ -1,6 +1,6 @@
 gasper News
 
-# gasper 1.1.4.xxx
+# gasper 1.1.5 (10/27/2023)
 
 -   change `b` by `beta` in `betathresh` and `SUREThresh` to avoid
     confusion with the parameter that control the number of scales in
