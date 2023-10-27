@@ -28,6 +28,45 @@
 #'
 #' In the "uniform" policy, the thresholds are set based on the absolute value of the wavelet coefficients. In the "dependent" policy, the thresholds are set based on the wavelet coefficients normalized by the weights from \code{diagWWt}.
 #'
+#' #' @examples
+#' \dontrun{
+#' # Compute the Laplacian matrix and its eigen-decomposition
+#' L <- laplacian_mat(grid1$sA)
+#' U <- eigensort(L)
+#'
+#' # Compute the tight frame coefficients
+#' tf <- tight_frame(U$evalues, U$evectors)
+#'
+#' # Generate some noisy observation
+#' n <- nrow(L)
+#' f <- randsignal(0.01, 3, grid1$sA)
+#' sigma <- 0.01
+#' noise <- rnorm(n, sd = sigma)
+#' tilde_f <- f + noise
+#'
+#' # Compute the transform coefficients
+#' wcn <- forward_sgwt(f, U$evalues, U$evectors)
+#' wcf <- forward_sgwt(f, U$evalues, U$evectors)
+#'
+#' # Compute the weights
+#' diagWWt <- colSums(t(tf)^2)
+#'
+#' # Compute to optimal threshold
+#' lmax <- max(U$evalues)
+#' J <- floor(log(lmax)/log(b)) + 2
+#' LD_opt_thresh_u <- LD_SUREthresh(J=J,
+#'                                  wcn=wcn,
+#'                                  diagWWt=diagWWt,
+#'                                  beta=2,
+#'                                  sigma=sigma,
+#'                                  hatsigma=NA,
+#'                                  policy = "uniform",
+#'                                  keepSURE = FALSE)
+#'
+#' # Get the graph signal estimator
+#' hatf_LD_SURE_u <- synthesis(LD_opt_thresh_u$wcLDSURE, tf)
+#' }
+#'
 #' @references
 #' Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
 #'

@@ -51,11 +51,11 @@
 #' wcn <- analysis(tilde_f, tf)
 #' wcf <- analysis(f, tf)
 #'
-#' # Compute the weigths and use D&J trick for the SURE evaluation
+#' # Compute the weights and use D&J trick for the SURE evaluation
 #' diagWWt <- colSums(t(tf)^2)
 #' thresh <- sort(abs(wcn))
 #'
-#' # Compute to optimal threshlod
+#' # Compute to optimal threshold
 #' opt_thresh_u <- SURE_MSEthresh(wcn,
 #'                                wcf,
 #'                                thresh,
