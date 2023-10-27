@@ -79,6 +79,12 @@ The function intentionally omits the irreducible variance term from the SURE cal
 
 Also, when `keepwc = TRUE`, the function provides thresholded wavelet coefficients for all evaluated threshold values, offering deeper insights into the effects of different thresholds.
 }
+\examples{
+#
+# See example in SURE_MSEthresh
+#
+
+}
 \references{
 Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.
 
