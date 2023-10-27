@@ -50,8 +50,8 @@ Adaptive threshold selection using the Level Dependent Stein's Unbiased Risk Est
 This function applies SURE in a level dependent manner to wavelet coefficients, which aims to minimize SURE at each wavelet scale.
 
 In the "uniform" policy, the thresholds are set based on the absolute value of the wavelet coefficients. In the "dependent" policy, the thresholds are set based on the wavelet coefficients normalized by the weights from \code{diagWWt}.
-
-#' @examples
+}
+\examples{
 \dontrun{
 # Compute the Laplacian matrix and its eigen-decomposition
 L <- laplacian_mat(grid1$sA)
@@ -89,6 +89,7 @@ LD_opt_thresh_u <- LD_SUREthresh(J=J,
 # Get the graph signal estimator
 hatf_LD_SURE_u <- synthesis(LD_opt_thresh_u$wcLDSURE, tf)
 }
+
 }
 \references{
 Donoho, D. L., & Johnstone, I. M. (1995). Adapting to unknown smoothness via wavelet shrinkage. Journal of the american statistical association, 90(432), 1200-1224.

@@ -28,7 +28,7 @@
 #'
 #' In the "uniform" policy, the thresholds are set based on the absolute value of the wavelet coefficients. In the "dependent" policy, the thresholds are set based on the wavelet coefficients normalized by the weights from \code{diagWWt}.
 #'
-#' #' @examples
+#' @examples
 #' \dontrun{
 #' # Compute the Laplacian matrix and its eigen-decomposition
 #' L <- laplacian_mat(grid1$sA)
