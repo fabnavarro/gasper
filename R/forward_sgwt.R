@@ -6,7 +6,7 @@
 #' @param f Numeric vector representing the graph signal to analyze.
 #' @param evalues Numeric vector of eigenvalues of the Laplacian matrix.
 #' @param evectors Matrix of eigenvectors of the Laplacian matrix.
-#' @param b Numeric scalar that control the number of scales in the SGWT. It must be greater than 1.
+#' @param b Numeric scalar that controls the number of scales in the SGWT. It must be greater than 1.
 #' @param filter_func Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.
 #' @param filter_params List of additional parameters required by \code{filter_func}. Default is an empty list.
 #' @return \code{wc} A concatenated vector of wavelet coefficients.

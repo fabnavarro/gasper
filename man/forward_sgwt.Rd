@@ -20,7 +20,7 @@ forward_sgwt(
 
 \item{evectors}{Matrix of eigenvectors of the Laplacian matrix.}
 
-\item{b}{Numeric scalar that control the number of scales in the SGWT. It must be greater than 1.}
+\item{b}{Numeric scalar that controls the number of scales in the SGWT. It must be greater than 1.}
 
 \item{filter_func}{Function used to compute the filter values. By default, it uses the \code{\link{zetav}} function but other frame filters can be pass.}
 

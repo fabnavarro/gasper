@@ -1,6 +1,6 @@
 #' Apply Beta Threshold to Data
 #'
-#' This function performs a generalized thresholding operation on noisy data based on the parameter \code{beta}.
+#' \code{betathresh} performs a generalized thresholding operation on the data \code{y}. The thresholding operation is parameterized by the parameter \code{beta}.
 #'
 #' @export betathresh
 #' @param y Numeric vector or matrix representing the noisy data.

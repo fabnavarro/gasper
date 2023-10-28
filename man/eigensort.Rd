@@ -4,10 +4,10 @@
 \alias{eigensort}
 \title{Spectral Decomposition of a Symmetric Matrix}
 \usage{
-eigensort(x)
+eigensort(M)
 }
 \arguments{
-\item{x}{Symmetric matrix, either sparse or dense, to be decomposed.}
+\item{M}{Symmetric matrix, either sparse or dense, to be decomposed.}
 }
 \value{
 A list containing:

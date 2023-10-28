@@ -29,11 +29,11 @@
 #' von Neumann, J. (1941). Distribution of the ratio of the mean square successive difference to the variance. \emph{Ann. Math. Statistics}, 35(3), 433--451.
 #'
 #' @details
-#' In many real-world scenarios, the noise level \eqn{\sigma^2} remains generally unknown. Given any function \eqn{g : \mathbb R_+ \rightarrow \mathbb R_+}, the expectation of the graph signal can be expressed as:
+#' In many real-world scenarios, the noise level \eqn{\sigma^2} remains generally unknown. Given any function \eqn{g : \mathbb R_+ \rightarrow \mathbb R_+}, a straightforward computation gives:
 #' \deqn{\mathbf E[\widetilde f^T g(L) \widetilde f] = f^T g(L) f + \mathbf E[\xi^T g(L) \xi] = f^T g(L) f + \sigma^2 \mathrm{Tr}(g(L))}
 #' A biased estimator of the variance \eqn{\sigma^2} can be given by:
 #' \deqn{\hat \sigma^2_1 = \frac{\widetilde f^T g(L) \widetilde f}{\mathrm{Tr}(g(L))}}
-#' Assuming the original graph signal is smooth enough that \eqn{f^T g(L) f} is negligible compared to \eqn{\mathrm{Tr}(g(L))}, \eqn{\hat \sigma^2} provides a reasonably accurate estimate of \eqn{\sigma^2}. For this function, a common choice is \eqn{g(x) = x}, leading to:
+#' Assuming the original graph signal is smooth enough that \eqn{f^T g(L) f} is negligible compared to \eqn{\mathrm{Tr}(g(L))}, \eqn{\hat \sigma^2} provides a reasonably accurate estimate of \eqn{\sigma^2}. For this function, a common choice is \eqn{g(x) = x}. Thanks to Dirichlet's formula, it follows:
 #' \deqn{\hat \sigma^2_1 = \frac{\widetilde f^T L \widetilde f}{\mathrm{Tr}(L)} = \frac{\sum_{i,j \in V} w_{ij} |\widetilde f(i) - \widetilde f(j)|^2}{2 \mathrm{Tr}(L)}}
 #' This is the graph adaptation of the Von Neumann estimator, hence the term Graph Von Neumann estimator (GVN).
 #'

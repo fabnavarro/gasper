@@ -3,14 +3,14 @@
 #' \code{forward_gft} computes the Graph Fourier Transform (GFT) of a given graph signal \eqn{f}{f}.
 #'
 #' @export forward_gft
-#' @param L Laplacian matrix of the graph (matrix).
-#' @param f Graph signal to analyze (numeric vector).
-#' @param U Eigenvectors of the Laplacian matrix (matrix). If NULL (default), the function will compute the eigendecomposition of the Laplacian.
-#' @return \code{hatf} Graph Fourier Transform of \eqn{f}{f} (numeric vector).
+#' @param L Laplacian matrix of the graph.
+#' @param f Numeric vector of the graph signal to analyze.
+#' @param U Matrix of the Eigenvectors of the Laplacian matrix. If NULL (default), the function will compute the eigendecomposition of the Laplacian.
+#' @return \code{hatf} Numeric vector. Graph Fourier Transform of \eqn{f}{f}.
 #' @seealso \code{\link{inverse_gft}}
 #' @details
 #'
-#' The GFT is the projection of the graph signal onto the eigenspace of the graph's Laplacian matrix. It allows to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are similar to the harmonics of classical Fourier analysis.
+#' The GFT is the representation of the graph signal on an orthonormal basis of the  graph's Laplacian matrix. It allows to analyze the frequency content of signals defined on graphs. In this context, the "frequency" of a graph signal refers to its decomposition in terms of the graph's Laplacian eigenvectors, which are similar to the harmonics of classical Fourier analysis.
 #'
 #' The GFT of a graph signal \eqn{f}{f} is given by:
 #' \deqn{

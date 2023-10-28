@@ -10,10 +10,10 @@
 #' @details
 #' The \code{analysis} operator uses the frame coefficients to transform a given graph signal into its representation in the transform domain. It is defined by the linear map \eqn{T_{\mathfrak F} : \mathbb R^V \rightarrow \mathbb R^I}{T_{F} : R^V -> R^I}. Given a function \eqn{f \in \mathbb R^V}{f in R^V}, the analysis operation is defined as:
 #' \deqn{T_{\mathfrak F}f=(\langle f,r_i \rangle)_{i \in I}}{T_Ff = (f, r_i) for all i in I}
-#' where \eqn{r_i}{r_i} are the frame coefficients.
+#' where \eqn{r_i}{r_i} are the frame vectors.
 #'
 #' The transform is computed as:
-#' \deqn{coef = tf \times y}{coef = tf \%*\% y}
+#' \deqn{coef = tf . y}{coef = tf \%*\% y}
 #'
 #' @examples
 #' \dontrun{

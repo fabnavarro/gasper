@@ -17,7 +17,7 @@ betathresh(y, t, beta = 2)
 \code{x} Numeric vector or matrix of the filtered result.
 }
 \description{
-This function performs a generalized thresholding operation on noisy data based on the parameter \code{beta}.
+\code{betathresh} performs a generalized thresholding operation on the data \code{y}. The thresholding operation is parameterized by the parameter \code{beta}.
 }
 \details{
 The function offers flexibility by allowing for different types of thresholding based on the \code{beta} parameter. Soft thresholding, commonly used in wavelet-based denoising corresponds to \code{beta}=1 . James-Stein thresholding corresponds to \code{beta}=2. The implementation includes a small constant for numerical stability when computing the thresholding operation.
