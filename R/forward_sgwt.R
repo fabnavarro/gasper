@@ -20,7 +20,7 @@
 #'
 #' The eigenvalues and eigenvectors of the graph Laplacian, are denoted as \eqn{\Lambda}{Lambda} and \eqn{U}{U} respectively. The parameter \eqn{b}{b} controls the number of scales, and \eqn{\lambda_{\text{max}}}{lambda_max} is the largest eigenvalue.
 #'
-#' For each scale \eqn{j = 0, 1, \ldots, J}{j = 0, 1, ..., J}, where
+#' For each scale \eqn{j = 0, \ldots, J}{j = 0, ..., J}, where
 #' \deqn{J = \left\lfloor \frac{\log(\lambda_{\text{max}})}{\log(b)} \right\rfloor + 2}{J = floor(log(lambda_max)/log(b)) + 2} the wavelet coefficients are computed as:
 #' \deqn{
 #' \mathbf{w}_j = U \left( g_j \odot (U^T f) \right)

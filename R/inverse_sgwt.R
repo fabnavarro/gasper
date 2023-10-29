@@ -1,6 +1,6 @@
 #' Compute Inverse Spectral Graph Wavelet Transform
 #'
-#' \code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
+#' \code{inverse_sgwt} computes the pseudo-inverse Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
 #'
 #' @export inverse_sgwt
 #' @param wc Numeric vector representing the spectral graph wavelet coefficients to reconstruct the graph signal from.

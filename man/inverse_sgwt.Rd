@@ -30,7 +30,7 @@ inverse_sgwt(
 \code{f} A graph signal obtained by applying the SGWT adjoint to \code{wc}.
 }
 \description{
-\code{inverse_sgwt} computes the inverse (adjoint) Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
+\code{inverse_sgwt} computes the pseudo-inverse Spectral Graph Wavelet Transform (SGWT) for wavelet coefficients \code{wc}.
 }
 \details{
 The computation corresponds to the frame defined by the \code{\link{tight_frame}} function. Other filters can be passed as parameters. Given the tightness of the frame, the inverse is simply the application of the adjoint linear transformation to the wavelet coefficients.
