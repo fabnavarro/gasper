@@ -16,7 +16,7 @@ localize_sgwt(i, evalues, evectors, b = 2)
 \item{b}{Numeric scalar that controls the number of scales in the SGWT. It must be greater than 1.}
 }
 \value{
-\code{s} Kernel localized at vertex \code{i} using SGWT.
+\code{f} Kernel localized at vertex \code{i} using SGWT.
 }
 \description{
 This function localizes a kernel at a specific vertex using the Spectral Graph Wavelet Transform (SGWT).
@@ -26,9 +26,9 @@ The SGWT offers a comprehensive understanding of graph signals by providing insi
 
 The kernel is localized by transforming an impulse signal centered at vertex \eqn{i}{i} using the SGWT.
 The SGWT leverages a wavelet function \eqn{\psi(\lambda)} to provide a multi-resolution analysis of the graph signal.
-The impulse signal at vertex \eqn{i}{i} is a vector \eqn{s} with a one at the i-th position and zeros elsewhere.
+The impulse signal at vertex \eqn{i}{i} is a vector \eqn{f} with a one at the i-th position and zeros elsewhere.
 The SGWT is given by:
-\deqn{W_s(\lambda) = s \ast \psi(\lambda) = U \psi(\Lambda) U^T s}
+\deqn{W_f(\lambda) = f \ast \psi(\lambda) = U \psi(\Lambda) U^T f}
 where \eqn{U} is the matrix of eigenvectors of the Laplacian and \eqn{\Lambda} is the diagonal matrix of eigenvalues.
 The localized spatial view of the kernel's behavior around vertex \eqn{i}{i} is achieved by transforming this impulse signal using the above expression.
 
@@ -43,18 +43,18 @@ decomp <- eigensort(L)
 # Randomly select a vertex
 vertex_i <- sample(1:nrow(L), 1)
 
-s_sgwt <- localize_sgwt(vertex_i, evalues=decomp$evalues, evectors=decomp$evectors, b=2)
+f_sgwt <- localize_sgwt(vertex_i, evalues=decomp$evalues, evectors=decomp$evectors, b=2)
 
-# Select one scale j from s_sgwt.
+# Select one scale j from f_sgwt.
 N <- nrow(grid1$sA)
 j <- 5 # change scale j to view other scales
-s <- s_sgwt[ ((j-1)*N+1):(j*N)]
+f <- f_sgwt[ ((j-1)*N+1):(j*N)]
 
 # Plot the localized kernel (for the chosen scale) as a signal on the graph
-plot_signal(grid1, s)
+plot_signal(grid1, f)
 
 # Plot the magnitude of the GFT coefficients
-barplot(abs(s_gft), main="GFT of Localized Signal",
+barplot(abs(f_gft), main="GFT of Localized Signal",
         xlab="Eigenvalue Index", ylab="Magnitude")
 }
 }
