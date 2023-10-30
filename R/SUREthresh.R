@@ -6,8 +6,7 @@
 #' @param wcn Numeric vector of the noisy spectral graph wavelet coefficients.
 #' @param thresh Numeric vector of threshold values.
 #' @param diagWWt Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.
-#'                elements of the wavelet frame operator matrix.
-#' @param beta A numeric value specifying the type of thresholding to be used:
+#' @param beta A numeric value specifying the type of thresholding to be used, for example:
 #'  \itemize{
 #'             \item 1 for soft thresholding.
 #'             \item 2 for James-Stein thresholding.
@@ -16,9 +15,9 @@
 #' @param hatsigma An optional numeric value providing an estimate of the noise standard deviation (default is \code{NA}).
 #' @param policy A character string determining the thresholding policy. Valid options include:
 #' \itemize{
-#'               \item \code{"uniform"} for a global threshold applied uniformly across all coefficients.
-#'               \item \code{"dependent"} for threshold values that adaptively depend on the corresponding \code{diagWWt} weights.
-#'               }
+#'          \item \code{"uniform"} for a global threshold applied uniformly across all coefficients.
+#'          \item \code{"dependent"} for threshold values that adaptively depend on the corresponding \code{diagWWt} weights.
+#'          }
 #' @param keepwc A logical value determining if the thresholded wavelet coefficients should be returned (Default is \code{TRUE}).
 #' @return A list containing:
 #' \itemize{

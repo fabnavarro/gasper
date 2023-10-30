@@ -25,7 +25,7 @@ SURE_MSEthresh(
 
 \item{diagWWt}{Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.}
 
-\item{beta}{A numeric value specifying the type of thresholding to be used:
+\item{beta}{A numeric value specifying the type of thresholding to be used, for example:
 \itemize{
            \item 1 for soft thresholding.
            \item 2 for James-Stein thresholding.

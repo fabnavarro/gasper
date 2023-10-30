@@ -7,7 +7,7 @@
 #' @param wcf Numeric vector of the true spectral graph wavelet coefficients.
 #' @param thresh Numeric vector of threshold values.
 #' @param diagWWt Numeric vector of weights typically derived from the diagonal elements of the wavelet frame matrix.
-#' @param beta A numeric value specifying the type of thresholding to be used:
+#' @param beta A numeric value specifying the type of thresholding to be used, for example:
 #'  \itemize{
 #'             \item 1 for soft thresholding.
 #'             \item 2 for James-Stein thresholding.
