@@ -5,15 +5,12 @@
 \alias{pittsburgh}
 \title{Pittsburgh Census Tracts Network.}
 \format{
-A list with 7 elements:
+A list with 4 elements:
 \itemize{
-  \item \code{A} A dense matrix capturing the connections between spatially adjacent census tracts in Allegheny County.
-  \item \code{sA} A sparse matrix representation of the census tracts' adjacency matrix.
+  \item \code{sA} A sparse matrix capturing the connections between spatially adjacent census tracts in Allegheny County.
   \item \code{xy} A matrix indicating the spatial location of each census tract.
   \item \code{f} Artificial signal with inhomogeneous smoothness across nodes and two sharp peaks near the center. This signal is formed using a mixture of five Gaussians in the underlying spatial coordinates.
   \item \code{y} Noisy version of the signal.
-  \item \code{f1} Synthetic signal, possibly generated with specific smoothness parameters.
-  \item \code{geo} Geometry data for the census tract nodes.
 }
 }
 \source{
