@@ -2,10 +2,9 @@
 #'
 #' A dataset representing the Minnesota road network along with two associated synthetic signals.
 #'
-#' @format A list with 6 elements:
+#' @format A list with 5 elements:
 #' \itemize{
 #'   \item \code{xy} A matrix indicating the spatial location of each node.
-#'   \item \code{A} A dense matrix capturing the connections between nodes.
 #'   \item \code{sA} A sparse matrix representation of the road network's adjacency matrix.
 #'   \item \code{f1} Synthetic signal generated with parameters \eqn{\eta = 0.01}{eta = 0.01} and \eqn{k = 2}{k = 2}.
 #'   \item \code{f2} Synthetic signal generated with parameters \eqn{\eta = 0.001}{eta = 0.001} and \eqn{k = 4}{k = 4}.
