@@ -49,7 +49,7 @@
 #' \code{\link{GVN}} and \code{\link{HPFVN}} provide naive noise variance estimation.
 #'
 #' @note
-#' The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, please refer to the references provided.
+#' The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, see Donoho and Johnstone Section 2.3 and de Loynes et al. Section 3.3.
 #'
 #' The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location.
 #'
@@ -140,21 +140,3 @@ SUREthresh <- function(wcn, thresh, diagWWt, beta = 2, sigma, hatsigma = NA, pol
   }
   return(res)
 }
-
-
-
-
-#
-# The expression for SURE is:
-# \deqn{
-# \mathbf{SURE}(h)=-n \sigma^2 + \sum_{i=1}^{n(J+1)} \widetilde F_i^2 \left ( 1 \wedge \frac{t_i^\beta}{|\widetilde F_i|^\beta} \right )^2
-# + 2 \sum_{i=1}^{n(J+1)} \mathbf{V}(\Xi_i) \mathbf 1_{[t_i,\infty)}(|\widetilde F_i|) \left [ 1+\frac{(\beta-1) t_i^\beta}{|\widetilde F_i|^\beta} \right ].
-# }
-#
-# \deqn{
-# \mathbf{SURE}(h)=-n \sigma^2 + \sum_{i=1}^{n(J+1)} \widetilde F_i^2 \left ( 1 \wedge \frac{t_i^\beta}{|\widetilde F_i|^\beta} \right )^2
-# + 2 \sum_{i=1}^{n(J+1)} \gamma_{ij} \partial_j h_i(\widetilde{\mathbf{F}}).
-# }
-# \deqn{
-# \mathbf{SURE}(h) = -n\sigma^2 + \|\widetilde{\mathbf{F}} - h(\widetilde{\mathbf{F}})\|_2^2 + 2\sigma^2 \sum_{i,j = 1}^{n(J+1)} \gamma_{ij} \partial_j h_i(\widetilde{\mathbf{F}})
-# }

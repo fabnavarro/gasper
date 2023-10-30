@@ -73,7 +73,7 @@ The thresholding operator, represented by \eqn{h} in the \code{\link{SUREthresh}
 \code{\link{GVN}} and \code{\link{HPFVN}} provide naive noise variance estimation.
 }
 \note{
-The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, please refer to the references provided.
+The vector of thresholds \code{thresh} for evaluating the SURE can be effectively determined by ordering the absolute values of the noisy wavelet coefficients. This approach aligns with Donoho and Johnstone's trick in standard wavelet thresholding, where SURE typically reaches its minimum at one of these coefficients. For further details, see Donoho and Johnstone Section 2.3 and de Loynes et al. Section 3.3.
 
 The function intentionally omits the irreducible variance term from the SURE calculations, as it doesn't affect the minimum's location.
 
