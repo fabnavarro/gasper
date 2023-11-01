@@ -69,6 +69,54 @@ Collection, which is a large and actively growing set of sparse matrix
 benchmarks gathered from a broad spectrum of applications (for details
 see <https://sparse.tamu.edu/>).
 
+Included in the package, the SuiteSparseData dataset contains data from
+the SuiteSparse Matrix Collection. The structure of this dataframe
+mirrors the structure presented on the SuiteSparse Matrix Collection
+website, allowing users to query and explore the dataset directly within
+R.
+
+Here is a sample of the `SuiteSparseData` dataset, showing the first 15
+rows of the table:
+
+``` r
+SuiteSparseData_subset <- head(SuiteSparseData, 15)
+```
+
+| ID  | Name     | Group | Rows | Cols | Nonzeros | Kind                  | Date |
+|:----|:---------|:------|-----:|-----:|---------:|:----------------------|:-----|
+| 1   | 1138_bus | HB    | 1138 | 1138 |     4054 | Power Network Problem | 1985 |
+| 2   | 494_bus  | HB    |  494 |  494 |     1666 | Power Network Problem | 1985 |
+| 3   | 662_bus  | HB    |  662 |  662 |     2474 | Power Network Problem | 1985 |
+| 4   | 685_bus  | HB    |  685 |  685 |     3249 | Power Network Problem | 1985 |
+| 5   | abb313   | HB    |  313 |  176 |     1557 | Least Squares Problem | 1974 |
+| 6   | arc130   | HB    |  130 |  130 |     1037 | Materials Problem     | 1974 |
+| 7   | ash219   | HB    |  219 |   85 |      438 | Least Squares Problem | 1974 |
+| 8   | ash292   | HB    |  292 |  292 |     2208 | Least Squares Problem | 1974 |
+| 9   | ash331   | HB    |  331 |  104 |      662 | Least Squares Problem | 1974 |
+| 10  | ash608   | HB    |  608 |  188 |     1216 | Least Squares Problem | 1974 |
+| 11  | ash85    | HB    |   85 |   85 |      523 | Least Squares Problem | 1974 |
+| 12  | ash958   | HB    |  958 |  292 |     1916 | Least Squares Problem | 1974 |
+| 13  | bcspwr01 | HB    |   39 |   39 |      131 | Power Network Problem | 1981 |
+| 14  | bcspwr02 | HB    |   49 |   49 |      167 | Power Network Problem | 1981 |
+| 15  | bcspwr03 | HB    |  118 |  118 |      476 | Power Network Problem | 1981 |
+
+Here’s an example to retrieve all undirected weighted graphs with the
+number of columns and rows between 50 and 150:
+
+``` r
+filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Weighted Graph" & 
+                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 150 &
+                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 150, ]
+```
+
+|      | ID   | Name              | Group    | Rows | Cols | Nonzeros | Kind                      | Date |
+|:-----|:-----|:------------------|:---------|-----:|-----:|---------:|:--------------------------|:-----|
+| 1506 | 1506 | Journals          | Pajek    |  124 |  124 |    12068 | Undirected Weighted Graph | 2000 |
+| 1519 | 1519 | Sandi_authors     | Pajek    |   86 |   86 |      248 | Undirected Weighted Graph | 1999 |
+| 2400 | 2400 | lesmis            | Newman   |   77 |   77 |      508 | Undirected Weighted Graph | 1993 |
+| 2858 | 2858 | breasttissue_10NN | ML_Graph |  106 |  106 |     1412 | Undirected Weighted Graph | 2020 |
+| 2872 | 2872 | iris_dataset_30NN | ML_Graph |  150 |  150 |     5518 | Undirected Weighted Graph | 2020 |
+
 The `download_graph` function allows to download a test matrix from this
 collection. For example:
 
@@ -184,52 +232,6 @@ downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
 downloaded_graph$info
 ```
 
-Included in the package, the SuiteSparseData dataset contains data from
-the SuiteSparse Matrix Collection. The structure of this dataframe
-mirrors the structure presented on the SuiteSparse Matrix Collection
-website, allowing users to query and explore the dataset directly within
-R.
-
-| ID  | Name     | Group | Rows | Cols | Nonzeros | Kind                  | Date |
-|:----|:---------|:------|-----:|-----:|---------:|:----------------------|:-----|
-| 1   | 1138_bus | HB    | 1138 | 1138 |     4054 | Power Network Problem | 1985 |
-| 2   | 494_bus  | HB    |  494 |  494 |     1666 | Power Network Problem | 1985 |
-| 3   | 662_bus  | HB    |  662 |  662 |     2474 | Power Network Problem | 1985 |
-| 4   | 685_bus  | HB    |  685 |  685 |     3249 | Power Network Problem | 1985 |
-| 5   | abb313   | HB    |  313 |  176 |     1557 | Least Squares Problem | 1974 |
-| 6   | arc130   | HB    |  130 |  130 |     1037 | Materials Problem     | 1974 |
-| 7   | ash219   | HB    |  219 |   85 |      438 | Least Squares Problem | 1974 |
-| 8   | ash292   | HB    |  292 |  292 |     2208 | Least Squares Problem | 1974 |
-| 9   | ash331   | HB    |  331 |  104 |      662 | Least Squares Problem | 1974 |
-| 10  | ash608   | HB    |  608 |  188 |     1216 | Least Squares Problem | 1974 |
-| 11  | ash85    | HB    |   85 |   85 |      523 | Least Squares Problem | 1974 |
-| 12  | ash958   | HB    |  958 |  292 |     1916 | Least Squares Problem | 1974 |
-| 13  | bcspwr01 | HB    |   39 |   39 |      131 | Power Network Problem | 1981 |
-| 14  | bcspwr02 | HB    |   49 |   49 |      167 | Power Network Problem | 1981 |
-| 15  | bcspwr03 | HB    |  118 |  118 |      476 | Power Network Problem | 1981 |
-| 16  | bcspwr04 | HB    |  274 |  274 |     1612 | Power Network Problem | 1981 |
-| 17  | bcspwr05 | HB    |  443 |  443 |     1623 | Power Network Problem | 1981 |
-| 18  | bcspwr06 | HB    | 1454 | 1454 |     5300 | Power Network Problem | 1981 |
-| 19  | bcspwr07 | HB    | 1612 | 1612 |     5824 | Power Network Problem | 1981 |
-| 20  | bcspwr08 | HB    | 1624 | 1624 |     6050 | Power Network Problem | 1981 |
-
-Here’s an example of to retrieve all undirected weighted graphs with the
-number of columns and rows between 50 and 150:
-
-``` r
-filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Weighted Graph" & 
-                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 150 &
-                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 150, ]
-```
-
-|      | ID   | Name              | Group    | Rows | Cols | Nonzeros | Kind                      | Date |
-|:-----|:-----|:------------------|:---------|-----:|-----:|---------:|:--------------------------|:-----|
-| 1506 | 1506 | Journals          | Pajek    |  124 |  124 |    12068 | Undirected Weighted Graph | 2000 |
-| 1519 | 1519 | Sandi_authors     | Pajek    |   86 |   86 |      248 | Undirected Weighted Graph | 1999 |
-| 2400 | 2400 | lesmis            | Newman   |   77 |   77 |      508 | Undirected Weighted Graph | 1993 |
-| 2858 | 2858 | breasttissue_10NN | ML_Graph |  106 |  106 |     1412 | Undirected Weighted Graph | 2020 |
-| 2872 | 2872 | iris_dataset_30NN | ML_Graph |  150 |  150 |     5518 | Undirected Weighted Graph | 2020 |
-
 It is also possible to plot a (planar) graph and plot signals defined on
 top of it. For example:
 
@@ -239,7 +241,7 @@ plot_graph(`usroads-48`, size = 0.05)
 plot_signal(`usroads-48`, f, size = f/4)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-18-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-18-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-19-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-19-2.png" width="50%" style="display: block; margin: auto;" />
 
 In cases where these coordinates are not supplied, `plot_graph` employs
 simple spectral graph embedding to calculate some node coordinates
@@ -261,7 +263,7 @@ plot_signal(delaunay_n10,
             cos(1:nrow(delaunay_n10$sA)))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-19-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-19-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-20-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-20-2.png" width="50%" style="display: block; margin: auto;" />
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)
