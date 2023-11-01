@@ -39,6 +39,7 @@ LinkingTo:
     RcppArmadillo
 Suggests: 
     knitr,
+    kableExtra,
     rmarkdown,
     rvest
 VignetteBuilder: knitr
