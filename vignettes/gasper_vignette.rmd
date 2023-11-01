@@ -26,7 +26,6 @@ if (as.numeric(R.version$minor)>6){
   RNGkind(sample.kind = "Rounding")
 }
 set.seed(434343)
-data(grid1)
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -50,13 +49,23 @@ A certain number of graphs are present in the package. They are stored as an Rda
 
 An interface is also provided. It allows to retrieve the matrices  related to many problems provided by the SuiteSparse Matrix Collection (formerly known as the University of Florida Sparse Matrix Collection) @davis2011university, @kolodziej19. This collection is a large and actively growing set of sparse matrices that arise in real applications (as structural engineering, computational fluid dynamics, computer graphics/vision, optimization, economic and financial modeling, mathematics and statistics, to name just a few). For more details see https://sparse.tamu.edu/.
 
+```{r, include=FALSE}
+data(grid1)
+grid1_1 <- grid1
+grid1$info <- NULL
+```
+
 The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
-```{r, eval = T}
+```{r, eval = F}
 matrixname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(matrixname, groupname)
+```
+
+```{r}
 attributes(grid1)
 ```
+
 The output is stored (in a temporary folder) as a list composed of:
 
 * "sA" the corresponding sparse matrix (in compressed sparse column format);
@@ -74,14 +83,15 @@ head(grid1$xy, 3)
 grid1$dim
 ```
 * "temp" The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
-```{r}
+```{r, eval=FALSE}
 list.files(grid1$temp)
 ```
 
-Information about the matrix that can be display via `file.show(paste(grid1$temp,"grid1",sep=""))` for example or in the console:
+Information about the matrix that can be display via `file.show(paste(grid1$temp,"grid1",sep=""))` or in the console:
 ```{r, eval = FALSE}
 cat(readLines(paste(grid1$temp,"grid1",sep=""), n=14), sep = "\n")
 ```
+
 `download_graph` function has an optional svd argument; setting "svd = TRUE" downloads a ".mat" file containing the singular values of the matrix, if available.
 
 For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "Matrix Information", "Matrix Properties," and "SVD Statistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
@@ -90,10 +100,19 @@ matrix_info <- get_graph_info(matrixname, groupname)
 matrix_info
 ```
 
-```{r, echo=FALSE, eval=FALSE}
-graph_info <- get_graph_info(matrixname, groupname)
-knitr::kables(list(knitr::kable(graph_info[[2]], valign = 't'),
-                   knitr::kable(graph_info[[3]], valign = 't')))
+The `download_graph` function also has an optional argument `add_info` which, when set to `TRUE`, automatically calls `get_graph_info` and appends the retrieved information to the output of download_graph. This makes it easy to get both the graph data and its associated information in a single function call.
+```{r, eval=FALSE}
+downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
+downloaded_graph$info
+```
+
+```{r, echo=FALSE, eval=T,fig.pos='H'}
+data(grid1)
+x_table <- knitr::kables(
+  list(knitr::kable(grid1_1$info[[1]], valign = 't'),
+    knitr::kable(grid1_1$info[[2]], valign = 't')), 
+  format = "latex")
+kableExtra::kable_styling(x_table, latex_options = "HOLD_position")
 ```
 
 The package also allows to plot a (planar) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
