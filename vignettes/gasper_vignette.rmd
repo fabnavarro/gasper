@@ -108,11 +108,20 @@ downloaded_graph$info
 
 ```{r, echo=FALSE, eval=T,fig.pos='H'}
 data(grid1)
+df1 <-kableExtra::kbl(grid1_1$info[[1]], 
+                    valign = 't',
+                    format = "latex", booktabs = T)
+#kableExtra::kable_styling(df1, latex_options = c("striped","HOLD_position"))
+df2<-kableExtra::kable(grid1_1$info[[2]], 
+                 valign = 't',
+                 format = "latex", booktabs = T)
+#kableExtra::kable_styling(df2, latex_options = c("striped","HOLD_position"))
 x_table <- knitr::kables(
-  list(knitr::kable(grid1_1$info[[1]], valign = 't'),
-    knitr::kable(grid1_1$info[[2]], valign = 't')), 
-  format = "latex")
-kableExtra::kable_styling(x_table, latex_options = "HOLD_position")
+  list(df1,df2), 
+  format = "latex", 
+  caption = "Matrix Information and Matrix Properties")
+kableExtra::kable_styling(x_table,
+                          latex_options = c("HOLD_position"))
 ```
 
 The package also allows to plot a (planar) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
