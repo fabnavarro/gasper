@@ -2,6 +2,10 @@ gasper News
 
 # gasper 1.1.5.xxxx
 
+-   add `SuiteSparseData` data frame mirrors the structure presented on
+    the SuiteSparse Matrix Collection website. Now enables easy querying
+    and downloading of specific matrices directly from the Collection.
+
 # gasper 1.1.5 (10/27/2023)
 
 -   change `b` by `beta` in `betathresh` and `SUREThresh` to avoid

@@ -104,6 +104,35 @@ downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
 downloaded_graph$info
 ```
 
+Included in the package, the SuiteSparseData dataset contains data from the SuiteSparse Matrix Collection. The structure of this dataframe mirrors the structure presented on the SuiteSparse Matrix Collection website, allowing users to query and explore the dataset directly within R.
+```{r, include=FALSE, eval=FALSE}
+DT::datatable(SuiteSparseData, options = list(pageLength = 20, dom = 't'))
+```
+
+```{r, echo=FALSE}
+SuiteSparseData_subset <- head(SuiteSparseData, 20)
+# table <- knitr::kable(SuiteSparseData_subset, 
+#                format = "html", 
+#                caption = "First 20 Rows of SuiteSparseData")
+# styled_table <- kableExtra::kable_styling(table, 
+#                               full_width = FALSE, 
+#                               bootstrap_options = c("striped", "hover"))
+# 
+# styled_table
+knitr::kable(SuiteSparseData_subset, format = "markdown")
+```
+
+Here's an example of to retrieve all undirected weighted graphs with the number of columns and rows between 50 and 150:
+```{r}
+filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Weighted Graph" & 
+                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 100 &
+                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 100, ]
+```
+
+```{r, echo=FALSE}
+knitr::kable(filtered_mat, format = "markdown")
+```
+
 It is also possible to plot a (planar) graph and plot signals defined on top of it. For example:
 ```{r, fig.show='hold'}
 f <- sin(rnorm(nrow(`usroads-48`$xy)))
