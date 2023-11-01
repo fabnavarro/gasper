@@ -10,6 +10,8 @@ list of 3 elements
   \item \code{xy}: A matrix with the coordinates for each node in the graph.
   \item \code{sA}: A sparse matrix representation of the graph's adjacency matrix.
   \item \code{dim}: A numeric vector containing the numbers of rows, columns, and numerically nonzero elements in the adjacency matrix.
+  \item \code{temp}: empty list (the path to the temporary directory where the matrix and downloaded files from \code{\link{download_graph}} function).
+  \item \code{info}: \code{info}: Additional information about the graph.
 }
 }
 \source{
