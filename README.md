@@ -173,8 +173,19 @@ graph_info
 </tbody>
 </table>
 
+The `download_graph` function has an optional argument `add_info` which,
+when set to `TRUE`, automatically calls `get_graph_info` and appends the
+retrieved information to the output of `download_graph`. This makes it
+easy to get both the graph data and its associated information in a
+single function call.
+
+``` r
+downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
+downloaded_graph$info
+```
+
 It is also possible to plot a (planar) graph and plot signals defined on
-top of it. For example :
+top of it. For example:
 
 ``` r
 f <- sin(rnorm(nrow(`usroads-48`$xy)))
@@ -182,7 +193,7 @@ plot_graph(`usroads-48`, size = 0.05)
 plot_signal(`usroads-48`, f, size = f/4)
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-13-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-13-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-14-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-14-2.png" width="50%" style="display: block; margin: auto;" />
 
 In cases where these coordinates are not supplied, `plot_graph` employs
 simple spectral graph embedding to calculate some node coordinates
@@ -204,7 +215,7 @@ plot_signal(delaunay_n10,
             cos(1:nrow(delaunay_n10$sA)))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-14-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-14-2.png" width="50%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-15-1.png" width="50%" style="display: block; margin: auto;" /><img src="README_files/figure-gfm/unnamed-chunk-15-2.png" width="50%" style="display: block; margin: auto;" />
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)

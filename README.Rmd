@@ -98,7 +98,13 @@ knitr::kables(
     knitr::kable(graph_info[[2]], valign = 't')))
 ```
 
-It is also possible to plot a (planar) graph and plot signals defined on top of it. For example :
+The `download_graph` function has an optional argument `add_info` which, when set to `TRUE`, automatically calls `get_graph_info` and appends the retrieved information to the output of `download_graph`. This makes it easy to get both the graph data and its associated information in a single function call.
+```{r, eval=FALSE}
+downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
+downloaded_graph$info
+```
+
+It is also possible to plot a (planar) graph and plot signals defined on top of it. For example:
 ```{r, fig.show='hold'}
 f <- sin(rnorm(nrow(`usroads-48`$xy)))
 plot_graph(`usroads-48`, size = 0.05)
