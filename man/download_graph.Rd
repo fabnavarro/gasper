@@ -4,7 +4,7 @@
 \alias{download_graph}
 \title{Download Sparse Matrix form the SuiteSparse Matrix Collection}
 \usage{
-download_graph(matrixname, groupname, svd = FALSE)
+download_graph(matrixname, groupname, svd = FALSE, add_info = FALSE)
 }
 \arguments{
 \item{matrixname}{Name of the graph to download.}
@@ -12,6 +12,8 @@ download_graph(matrixname, groupname, svd = FALSE)
 \item{groupname}{Name of the group that provides the graph.}
 
 \item{svd}{Logical, if \code{TRUE}, a ".mat" file containing the singular values of the matrix is downloaded (if available). Default is \code{FALSE}.}
+
+\item{add_info}{Logical, if \code{TRUE}, additional information about the graph will be fetched and included in the output. Default is \code{FALSE}.}
 }
 \value{
 A list containing several components:
@@ -20,6 +22,7 @@ A list containing several components:
           \item \code{xy}: Coordinates associated with the graph nodes (if available).
           \item \code{dim}: A data frame with the number of rows, columns, and numerically nonzero elements.
           \item \code{temp}: The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+          \item \code{info}: Additional information about the graph (included when \code{add_info} is \code{TRUE}).
 }
 }
 \description{
@@ -30,6 +33,8 @@ A list containing several components:
 }
 \note{
 This temporary directory can be accessed, for example, via \code{list.files(grid1$temp)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used. After using the downloaded data, you can delete the content of the temporary folder.
+
+When \code{add_info} is set to \code{TRUE}, the function retrieves comprehensive information about the graph using \code{\link{get_graph_info}}.
 }
 \examples{
 \dontrun{

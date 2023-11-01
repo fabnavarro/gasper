@@ -10,18 +10,22 @@
 #' @param matrixname Name of the graph to download.
 #' @param groupname Name of the group that provides the graph.
 #' @param svd Logical, if \code{TRUE}, a ".mat" file containing the singular values of the matrix is downloaded (if available). Default is \code{FALSE}.
+#' @param add_info Logical, if \code{TRUE}, additional information about the graph will be fetched and included in the output. Default is \code{FALSE}.
 #' @return A list containing several components:
 #'         \itemize{
 #'           \item \code{sA}: A sparse matrix representation of the downloaded graph.
 #'           \item \code{xy}: Coordinates associated with the graph nodes (if available).
 #'           \item \code{dim}: A data frame with the number of rows, columns, and numerically nonzero elements.
 #'           \item \code{temp}: The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+#'           \item \code{info}: Additional information about the graph (included when \code{add_info} is \code{TRUE}).
 #' }
 #'
 #' @details
 #' \code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
 #'
 #' @note This temporary directory can be accessed, for example, via \code{list.files(grid1$temp)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used. After using the downloaded data, you can delete the content of the temporary folder.
+#'
+#' When \code{add_info} is set to \code{TRUE}, the function retrieves comprehensive information about the graph using \code{\link{get_graph_info}}.
 #'
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
@@ -37,7 +41,7 @@
 #' }
 #' @seealso \code{\link{get_graph_info}}
 
-download_graph <- function(matrixname, groupname, svd = FALSE) {
+download_graph <- function(matrixname, groupname, svd = FALSE, add_info = FALSE) {
     url <- paste("https://sparse.tamu.edu/MM/",
                  groupname,"/",
                  matrixname,".tar.gz",sep = "")
@@ -101,6 +105,11 @@ download_graph <- function(matrixname, groupname, svd = FALSE) {
     # }
 
     #if (length(list.files(tempp))!=1) {
+
+    # add graph_info
+    if (add_info) {
+      info <- get_graph_info(matrixname, groupname)
+    }
     if (length(list.files(path=tempp,
                           pattern = "_coord.mtx"))==1) {
       writeLines(tmp[1:(nskip)],
@@ -122,21 +131,31 @@ download_graph <- function(matrixname, groupname, svd = FALSE) {
       {
         colnames(dfc) <- c("x", "y")
       }
-      return(assign(matrixname,
-                    list("sA"=m,
-                         "xy"=dfc,
-                         "dim"=graphdim,
-                         "temp"=tempp),
-                    envir = parent.frame()))
+      # return(assign(matrixname,
+      #               list("sA"=m,
+      #                    "xy"=dfc,
+      #                    "dim"=graphdim,
+      #                    "temp"=tempp),
+      #               envir = parent.frame()))
+      result <- list("sA"=m, "xy"=dfc, "dim"=graphdim, "temp"=tempp)
+      if (add_info) {
+        result$info <- info
+      }
+      return(assign(matrixname, result, envir = parent.frame()))
     }
     else {
       writeLines(tmp[1:(nskip)],
                  graphdesc)
-      return(assign(matrixname,
-                    list("sA"=m,
-                         "dim"=graphdim,
-                         "temp"=tempp),
-                    envir = parent.frame()))
+      # return(assign(matrixname,
+      #               list("sA"=m,
+      #                    "dim"=graphdim,
+      #                    "temp"=tempp),
+      #               envir = parent.frame()))
+      result <- list("sA"=m, "dim"=graphdim, "temp"=tempp)
+      if (add_info) {
+        result$info <- info
+      }
+      return(assign(matrixname, result, envir = parent.frame()))
     }
 }
 
