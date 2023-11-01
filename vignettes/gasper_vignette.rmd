@@ -13,6 +13,7 @@ output:
 geometry: margin=1in
 fontsize: 11pt
 bibliography: references
+biblio-style: apalike
 vignette: >
   %\VignetteIndexEntry{Gasper Vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -290,7 +291,6 @@ Even though the SURE no longer depends on the original signal, it does depend on
 
 Furthermore, the major limitations are the need to diagonalize the graph's Laplacian, and the calculation of the weights involved in the SURE (which requires an explicit calculation of the frame). To address the first limitation, several strategies have been proposed in the literature, notably via approximation by Chebyshev polynomials (see @hammond2011wavelets or @shuman18). Combined with these approximations, a Monte Carlo method to estimate the SURE weights has been proposed in @chedemail22, extending the applicability of SURE to large graphs.
 
-# Bibliography
 
 
 
