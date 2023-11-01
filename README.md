@@ -218,14 +218,17 @@ number of columns and rows between 50 and 150:
 
 ``` r
 filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Weighted Graph" & 
-                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 100 &
-                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 100, ]
+                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 150 &
+                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 150, ]
 ```
 
-|      | ID   | Name          | Group  | Rows | Cols | Nonzeros | Kind                      | Date |
-|:-----|:-----|:--------------|:-------|-----:|-----:|---------:|:--------------------------|:-----|
-| 1519 | 1519 | Sandi_authors | Pajek  |   86 |   86 |      248 | Undirected Weighted Graph | 1999 |
-| 2400 | 2400 | lesmis        | Newman |   77 |   77 |      508 | Undirected Weighted Graph | 1993 |
+|      | ID   | Name              | Group    | Rows | Cols | Nonzeros | Kind                      | Date |
+|:-----|:-----|:------------------|:---------|-----:|-----:|---------:|:--------------------------|:-----|
+| 1506 | 1506 | Journals          | Pajek    |  124 |  124 |    12068 | Undirected Weighted Graph | 2000 |
+| 1519 | 1519 | Sandi_authors     | Pajek    |   86 |   86 |      248 | Undirected Weighted Graph | 1999 |
+| 2400 | 2400 | lesmis            | Newman   |   77 |   77 |      508 | Undirected Weighted Graph | 1993 |
+| 2858 | 2858 | breasttissue_10NN | ML_Graph |  106 |  106 |     1412 | Undirected Weighted Graph | 2020 |
+| 2872 | 2872 | iris_dataset_30NN | ML_Graph |  150 |  150 |     5518 | Undirected Weighted Graph | 2020 |
 
 It is also possible to plot a (planar) graph and plot signals defined on
 top of it. For example:

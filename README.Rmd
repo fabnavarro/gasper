@@ -125,8 +125,8 @@ knitr::kable(SuiteSparseData_subset, format = "markdown")
 Here's an example of to retrieve all undirected weighted graphs with the number of columns and rows between 50 and 150:
 ```{r}
 filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Weighted Graph" & 
-                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 100 &
-                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 100, ]
+                                SuiteSparseData$Rows >= 50 & SuiteSparseData$Rows <= 150 &
+                                SuiteSparseData$Cols >= 50 & SuiteSparseData$Cols <= 150, ]
 ```
 
 ```{r, echo=FALSE}
