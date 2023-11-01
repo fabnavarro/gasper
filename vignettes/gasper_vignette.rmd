@@ -131,6 +131,13 @@ plot_graph(grid1)
 plot_signal(grid1, f, size = 2)
 ```
 
+In cases where these coordinates are not available, `plot_graph` employs simple spectral graph drawing to calculate some node coordinates. This is done using the function `spectral_coords`, which computes the spectral coordinates based on the eigenvectors associated with the two smallest non-zero eigenvalues of the graph's Laplacian.
+```{r, eval=FALSE, include=FALSE}
+grid1$xy <- NULL
+attributes(grid1)
+plot_graph(grid1)
+```
+
 # Example of application to denoising
 
 We give an example of an application in the case of the denoising of a noisy signal $f$ defined on a graph $G$ with set of vertices $V$. More precisely, the (unnormalized) graph Laplacian matrix $\La\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\La=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
