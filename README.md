@@ -69,8 +69,8 @@ Collection, which is a large and actively growing set of sparse matrix
 benchmarks gathered from a broad spectrum of applications (for details
 see <https://sparse.tamu.edu/>).
 
-Included in the package, the SuiteSparseData dataset contains data from
-the SuiteSparse Matrix Collection. The structure of this dataframe
+Included in the package, the `SuiteSparseData` dataset contains data
+from the SuiteSparse Matrix Collection. The structure of this dataframe
 mirrors the structure presented on the SuiteSparse Matrix Collection
 website, allowing users to query and explore the dataset directly within
 R.
