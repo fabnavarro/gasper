@@ -73,6 +73,12 @@ get_graph_info <- function(matrixname, groupname) {
   })
   names(tables[[1]])="Matrix Information"
   names(tables[[2]])="Matrix Properties"
+
+  table_names <- c("MatrixInfo", "MatrixProp")
+  if (length(tables) == 3) {
+    table_names <- c(table_names, "SVDStats")
+  }
+  names(tables) <- table_names
   return(tables)
 }
 
