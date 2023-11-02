@@ -118,7 +118,7 @@ cat(readLines(paste(`usroads-48`$temp,"usroads-48",sep="")), sep = "\n")
 list.files(`usroads-48`$temp)
 ```
 
-In addition, the `get_graph_info` function allows to retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website (`rvest` package needs to be installed to use it). This function extracts and formats various properties and metadata associated with the matrix (i.e., it fetches the two to three tables with "Matrix Information," "Matrix Properties" and, if available, "SVD Statistics"), providing a convenient way to access this overview of the graph directly within R. Here is how you can use it:
+In addition, the `get_graph_info` function allows to retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website (`rvest` package needs to be installed to use it). This function extracts and formats various properties and metadata associated with the matrix (i.e., it fetches the two to three tables with "MatrixInformation," "MatrixProperties" and, if available, "SVDStatistics"), providing a convenient way to access this overview of the graph directly within R. Here is how you can use it:
 ```{r, eval=FALSE}
 graph_info <- get_graph_info(matrixname, groupname)
 graph_info
