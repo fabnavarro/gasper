@@ -44,6 +44,9 @@ The emerging field of Graph Signal Processing (GSP) aims to bridge the gap betwe
 
 Different software programs exist for processing signals on graphs, in different languages. The Graph Signal Processing toolbox (GSPbox) is an easy to use matlab toolbox that performs a wide variety of operations on graphs. This toolbox was port to Python as the PyGSP @perraudin2014gspbox. There is also another matlab toolbox the Spectral Graph Wavelet Transform (SGWT) toolbox dedicated to the implementation of the SGWT developed in @hammond2011wavelets. However, to our knowledge, there are not yet any tools dedicated to GSP in \proglang{R}. A first version of the \pkg{gasper} package is available online\footnote{https://github.com/fabnavarro/gasper}. In particular, it includes the methodology and codes\footnote{https://github.com/fabnavarro/SGWT-SURE} developed in @de2019data and provides an interface to the SuiteSparse Matrix Collection @davis2011university. 
 
+This vignette is organized as follows. Section 2 introduces the interface to the SuiteSparse Matrix Collection and some visualization tools for GSP. Section 3 gives a short introduction to some underlying concepts of GSP, focusing on the Graph Fourier Transform. Section 4 gives an illustration for denoising signals on graphs using SGWT, thresholding techniques, and the minimization of Stein Unbiased Risk Estimator for an automatic selection of the threshold parameter.
+
+
 # Graphs Collection and Visualization
 A certain number of graphs are present in the package. They are stored as an Rdata file  which contains a list consisting of the graph's weight matrix $W$ (in the form of a sparse matrix denoted by `sA`) and the coordinates associated with the graph (if it has any).
 
@@ -128,7 +131,7 @@ cat(readLines(paste(grid1$temp,"grid1",sep=""), n=14), sep = "\n")
 
 `download_graph` function has an optional `svd` argument; setting `svd = "TRUE"` downloads a ".mat" file containing the singular values of the matrix, if available.
 
-For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "Matrix Information", "Matrix Properties," and "SVD Statistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
+For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "MatrixInformation", "MatrixProperties," and "SVDStatistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
 ```{r, eval=FALSE}
 matrix_info <- get_graph_info(matrixname, groupname)
 matrix_info
@@ -172,6 +175,42 @@ attributes(grid1)
 plot_graph(grid1)
 ```
 
+# A Short Introduction to Graph Signal Processing
+
+Graph theory provides a robust mathematical framework for representing complex systems. In this context, entities are modeled as vertices (or nodes) and their interconnections as edges, encapsulating a broad spectrum of real-world phenomena from social and communication networks to molecular structures and 
+brain connectivity patterns
+
+Among the diverse types of graphs, such as undirected, directed, weighted, bipartite, and multigraphs, each offers distinct analytical advantages tailored to specific contexts. This vignette is devoted to undirected graphs where edges link two vertices symmetrically, often with weighted values to express connection strength or intensity.  For instance, in a road network graph, the weights might correspond to the length of each road segment. 
+
+Graphs are defined by ${G}=({V}, {E})$, where ${V}$ denotes the set of vertices or nodes and ${E}$ represents the set of edges. Each edge $(i, j) \in {E}$ connects nodes $i$ and $j$, potentially with an associated weight $w_{ij}$. The connectivity and interaction structure of ${G}$ is encoded in the adjacency matrix $W$, where $w_{ij} = w_{ji}$ for $i,j\in V$. The size of the graph is the number of nodes $n=|V|$. The degree matrix $\D$ is a diagonal matrix with $\D_{ii} = \sum_{j\in V} w_{ij}$. These matrices, $\W$ and $\D$, serve as the foundation for analyzing signal behavior on graph structures in GSP.
+
+The spectral properties of the Laplacian matrices offer deep insights into the structure of graphs. The unnormalized Laplacian, $\La = \D - \W$, has non-negative eigenvalues, with the smallest being zero, indicating the number of connected components in the graph. This number can be retrieved from the "MatrixProperty" dataframe using the `get_graph_info` function, if the graph has been downloaded with `download_graph`, or computed using Depth-First Search algorithm, using \pkg{igraph}\cite{igraph} package for instance.
+```{r}
+grid1$info$MatrixProp["Strongly Connect Components",]
+```
+
+On the other hand, the normalized Laplacian, $\La_{\mathrm{norm}} = I - \D^{-1/2} \W \D^{-1/2}$, has a spectrum that typically lies between 0 and 2. The zero eigenvalue corresponds to the number of connected components, and the first non-zero smallest eigenvalue, often referred to as the spectral gap, plays a crucial role in determining the graph's propensity for clustering. The larger this gap, the more pronounced the cluster structures within the graph. By scaling the eigenvalues according to node degrees, the normalized Laplacian accentuates the separation between clusters, making the spectral gap a significant measure in spectral graph clustering algorithms. However, a large spectral gap might present challenges for fast spectral filtering, especially depending on the approximation methods used, where it could lead to issues in convergence or computational efficiency.
+
+Lastly, the random walk Laplacian, $\La_{\mathrm{rw}} = I - \D^{-1}\W$, is generally better suited for directed graphs and scenarios involving random walk dynamics. Its spectrum is also non-negative. The choice of which Laplacian to use is dictated by the particular graph properties one aims to emphasize or analyze in a given application.	
+
+The `laplacian_mat` function (which supports both standard and sparse matrix representations) allows to compute those three forms of Laplacian matrices. For example, let $G=({V}, {E})$ a simple undirected graph with the vertex set ${V} = \{1, 2, 3\}$ and the edge set ${E} = \{\{1, 2\}, \{2, 3\}\}$. The corresponding adjacency matrix $\W$, as well as its unnormalized, normalized, and random walk Laplacians, can be represented and calculated as follows: 
+```{r}
+W <- matrix(c(0, 1, 0,
+              1, 0, 1,
+              0, 1, 0), ncol=3)
+laplacian_mat(W, "unnormalized")
+laplacian_mat(W, "normalized")
+laplacian_mat(W, "randomwalk")
+```
+
+GSP extends classical signal processing concepts to signals defined on graphs. Let ${G}$ be a graph on the vertex set ${V} = \{v_1, \ldots, v_n\}$. A graph signal on ${G}$ is a function  $f : {V} \rightarrow \R$, that assigns a value to each node of the graph. It can be represented as a vector $(f(v_1), f(v_2), \ldots, f(v_n))^\top \in \R^n$, where each entry $f_i$ corresponds to the signal value at node $i$.
+
+To analyze graph signals, the concept of the Graph Fourier Transform (GFT) is fundamental. The GFT provides a means to represent graph signals in the frequency domain, analogous to the classical Fourier Transform for traditional signals. Given a graph ${G}$, a GFT can be defined as the representation of signals on an orthonormal basis for $\R^n$ consisting of eigenvectors of the graph shift operator. The choice of graph shift operator is essential, as it determines the basis for the GFT, it can be either the Laplacian matrix or the adjacency matrix. In this tutorial, we primarily focus on signal processing using the Laplacian matrix as the shift operator.
+
+Given the eigenvalue decomposition of the graph Laplacian $\La = U \Lambda U^T$, where $U$ is the matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues, the GFT of a signal $f$ is given by $\hat{f} = U^T f$. Here, $\hat{f}$ represents the graph signal in the frequency domain. The elements of $\hat{f}$ are the coefficients of the signal $f$ with respect to the eigenvectors of $\La$, which can be interpreted as the frequency components of the signal on the graph.
+
+The inverse Graph Fourier Transform is given by $f = U \hat{f}$. This allows for the reconstruction of the graph signal in the vertex domain from its frequency representation.The GFT provides a powerful tool for analyzing and processing signals on graphs. It enables the identification of signal components that vary smoothly or abruptly over the graph, facilitating tasks such as filtering, denoising, and compression of graph signals.
+
 # Data-Driven Graph Signal Denoising 
 
 We give an example of an application in the case of the denoising of a noisy signal $f$ defined on a graph $G$ with set of vertices $V$. More precisely, the (unnormalized) graph Laplacian matrix $\La\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\La=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
@@ -180,7 +219,7 @@ The degradation model can be written as
 \[
 \tilde f = f + \xi,
 \]
-where $\xi\sim\mathcal{N}(0,\sigma^2)$. The purpose of denoising is to build an estimator $\hat f$ of $f$ that depends only on $\tilde f$.
+where $\xi\sim\mathcal{N}(0,\sigma^2)$. The purpose of denoising is to build an estimator of $f$ that depends only on $\tilde f$.
 
 A simple way to construct an effective non-linear estimator is obtained by thresholding the SGWT coefficients of $f$ on a frame (see @hammond2011wavelets for details about the SGWT).
 
@@ -196,7 +235,7 @@ Given the Laplacian and a given frame, denoising in this framework can be summar
 
 * Thresholding: apply a given thresholding operator to the coefficients $\WT  \tilde f$; 
 
-* Synthesis: apply the inverse SGWT transform to obtain an estimation $\hat f$ of the original signal.
+* Synthesis: apply the inverse SGWT transform to obtain an estimation of the original signal.
 
 Each of these steps can be performed via one of the functions `analysis`, `synthesis`, `beta_thresh`. Laplacian is given by the function `laplacian_mat`. The `tight_frame` function allows the construction of a tight frame based on @gobel2018construction and @coulhon2012heat. In order to select a threshold value, we consider the method developed in @de2019data which consists in determining the threshold that minimizes the Stein unbiased risk estimator (SURE) in a graph setting (see @de2019data for more details).
 
@@ -222,7 +261,15 @@ Thanks to Parseval's identity, the following set of vectors is a tight frame:
 \[
 \mathfrak F = \left \{ \sqrt{\psi_j}(\La)\delta_i, j=0, \ldots, J, i \in V \right \}.
 \]
-The `plot_filter` function allows to represent the elements (filters) of this partition.
+The `plot_filter` function allows to represent the elements $\sqrt{\psi_j}$ (filters) of this partition, with 
+\[
+\omega(x) = \begin{cases}
+1 & \text{if } x \in [0,b^{-1}] \\
+b \cdot \frac{x}{1 - b} + \frac{b}{b - 1} & \text{if } x \in (b^{-1}, 1] \\
+0 & \text{if } x > 1
+\end{cases}
+\]
+which corresponds to the tigth-frame constructed from the `zetav` function.
 ```{r,fig.width=5}
 plot_filter(lmax,b)
 ```
@@ -258,7 +305,7 @@ wcn <- analysis(tilde_f,tf)
 wcf <- analysis(f,tf)
 ```
 
-An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a fast forward SGWT. For example:
+An alternative to avoid frame calculation is given by the `forward_sgwt` function which provides a forward SGWT. For example:
 ```{r, eval=FALSE}
 wcf <- forward_sgwt(f, evalues, evectors, b=b)
 ```
@@ -267,7 +314,7 @@ The optimal threshold is then determined by minimizing the SURE (using Donoho an
 \begin{equation}
 \mathbf{SURE}(h)=-n \sigma^2 + \|h(\widetilde F)-\widetilde F\|^2 + 2 \sum_{i,j=1}^{n(J+1)} \gamma_{i,j}^2 \partial_j h_i(\widetilde F),
 \end{equation}
-where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh`allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau}. These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame). A comparative example of these two approaches is given below (with $\beta=2$ James-Stein attenuation threshold).
+where $\gamma_{i,j}^2=\sigma^2(\WT \WT ^\ast)_{i,j}$ that can be computed from the frame (or estimated via Monte-Carlo simulation). The `SURE_thresh`/`SURE_MSEthresh` allow to evaluate the SURE (in a global fashion) considering the general thresholding operator $\tau$ \eqref{eq:tau}. These functions provide two different ways of applying the threshold, "uniform" and "dependent" (\emph{i.e.}, the same threshold for each coefficient vs a threshold normalized by the variance of each coefficient). The second approach generally provides better results (especially when the weights have been calculated via the frame). A comparative example of these two approaches is given below (with $\beta=2$ James-Stein attenuation threshold).
 ```{r}
 diagWWt <- colSums(t(tf)^2)
 thresh <- sort(abs(wcn))
@@ -325,7 +372,11 @@ res <- data.frame("Input_SNR"=round(SNR(f,tilde_f),2),
 ```
 
 ```{r, echo=F}
-knitr::kable(res, caption="Uniform vs Dependent" )
+df <-kableExtra::kbl(res, 
+                    valign = 't',
+                    format = "latex", booktabs = T, caption="Uniform vs Dependent" )
+kableExtra::kable_styling(df, latex_options = c("striped","HOLD_position"))
+#knitr::kable(res, caption="Uniform vs Dependent" )
 ```
 It can be seen from Table 1 that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators have performances close (in terms of SNR) to those obtained by minimizing the unknown risk.
 
