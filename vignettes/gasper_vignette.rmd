@@ -49,7 +49,7 @@ A certain number of graphs are present in the package. They are stored as an Rda
 
 An interface is also provided. It allows to retrieve the matrices  related to many problems provided by the SuiteSparse Matrix Collection (formerly known as the University of Florida Sparse Matrix Collection) @davis2011university, @kolodziej19. This collection is a large and actively growing set of sparse matrices that arise in real applications (as structural engineering, computational fluid dynamics, computer graphics/vision, optimization, economic and financial modeling, mathematics and statistics, to name just a few). For more details see https://sparse.tamu.edu/.
 
-The package includes the `SuiteSparseData` dataset, which contains data from the SuiteSparse Matrix Collection. The structure of this dataframe mirrors the structure of the main table presented on the SuiteSparse Matrix Collection website, allowing users to query and explore the dataset directly within R.
+The package includes the `SuiteSparseData` dataset, which contains data from the SuiteSparse Matrix Collection. The structure of this dataframe mirrors the structure of the main table presented on the SuiteSparse Matrix Collection website, allowing users to query and explore the dataset directly within \proglang{R}.
 
 Here is a sample of the `SuiteSparseData` dataset, showing the first 15 rows of the table:
 ```{r, eval=F}
@@ -64,7 +64,7 @@ df1 <-kableExtra::kbl(SuiteSparseData_subset,
 kableExtra::kable_styling(df1, latex_options = c("striped","HOLD_position"))
 ```
 
-Here's an example to retrieve all undirected graphs with the number of columns and rows between 50 and 150:
+For example, to retrieve all undirected graphs with between 100 and 150 columns and rows:
 ```{r, eval=FALSE}
 filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Graph" & 
                  SuiteSparseData$Rows >= 100 & SuiteSparseData$Rows <= 150 &
@@ -88,7 +88,7 @@ grid1_1 <- grid1
 grid1$info <- NULL
 ```
 
-The `download_graph` function allows to download a graph from this collection, based on the name of the graph and the name of the group that provides it. An example is given below
+The `download_graph` function allows to download a matrix from this collection, based on the name of the matrix and the name of the group that provides it. An example is given below
 ```{r, eval = F}
 matrixname <- "grid1"
 groupname <- "AG-Monien"
@@ -101,21 +101,22 @@ attributes(grid1)
 
 The output is stored (in a temporary folder) as a list composed of:
 
-* "sA" the corresponding sparse matrix (in compressed sparse column format);
+* `sA` the corresponding sparse matrix (in compressed sparse column format);
 ```{r}
 str(grid1$sA)
 ```
 
-* possibly coordinates "xy" (stored in a `data.frame`); 
+* possibly coordinates `xy` (stored in a `data.frame`); 
 ```{r}
 head(grid1$xy, 3)
 ```
 
-* "dim" the numbers of rows, columns and numerically nonzero elements and 
+* `dim"` the numbers of rows, columns and numerically nonzero elements and 
 ```{r}
 grid1$dim
 ```
-* "temp" The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+
+* `temp` The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
 ```{r, eval=FALSE}
 list.files(grid1$temp)
 ```
@@ -125,7 +126,7 @@ Information about the matrix that can be display via `file.show(paste(grid1$temp
 cat(readLines(paste(grid1$temp,"grid1",sep=""), n=14), sep = "\n")
 ```
 
-`download_graph` function has an optional svd argument; setting "svd = TRUE" downloads a ".mat" file containing the singular values of the matrix, if available.
+`download_graph` function has an optional `svd` argument; setting `svd = "TRUE"` downloads a ".mat" file containing the singular values of the matrix, if available.
 
 For further insights, the `get_graph_info` function retrieve detailed information about the matrix from the SuiteSparse Matrix Collection website. `get_graph_info` fetches the three tables with "Matrix Information", "Matrix Properties," and "SVD Statistics", providing a comprehensive overview of the matrix (`rvest` package needs to be installed).
 ```{r, eval=FALSE}
@@ -133,7 +134,7 @@ matrix_info <- get_graph_info(matrixname, groupname)
 matrix_info
 ```
 
-The `download_graph` function also has an optional argument `add_info` which, when set to `TRUE`, automatically calls `get_graph_info` and appends the retrieved information to the output of download_graph. This makes it easy to get both the graph data and its associated information in a single function call.
+The `download_graph` function also has an optional argument `add_info` which, when set to `TRUE`, automatically calls `get_graph_info` and appends the retrieved information to the output of `download_graph`. This makes it easy to get both the graph data and its associated information in a single function call.
 ```{r, eval=FALSE}
 downloaded_graph <- download_graph(matrixname, groupname, add_info = TRUE)
 downloaded_graph$info
@@ -164,14 +165,14 @@ plot_graph(grid1)
 plot_signal(grid1, f, size = 2)
 ```
 
-In cases where these coordinates are not available, `plot_graph` employs simple spectral graph drawing to calculate some node coordinates. This is done using the function `spectral_coords`, which computes the spectral coordinates based on the eigenvectors associated with the two smallest non-zero eigenvalues of the graph's Laplacian.
+In cases where these coordinates are not available, `plot_graph` employs simple spectral graph drawing to calculate some node coordinates. This is done using the function `spectral_coords`, which computes the spectral coordinates based on the eigenvectors associated with the two smallest non-zero eigenvalues of the graph's Laplacian @hall70.
 ```{r, eval=FALSE, include=FALSE}
 grid1$xy <- NULL
 attributes(grid1)
 plot_graph(grid1)
 ```
 
-# Example of application to denoising
+# Data-Driven Graph Signal Denoising 
 
 We give an example of an application in the case of the denoising of a noisy signal $f$ defined on a graph $G$ with set of vertices $V$. More precisely, the (unnormalized) graph Laplacian matrix $\La\in\R^{V\times V}$ associated with $G$ is the symmetric matrix defined as $\La=\D - \W$, where $\W$ is the matrix of weights with coefficients $(w_{ij})_{i,j\in V}$, and $\D$ the diagonal matrix with diagonal coefficients $\D_{ii}= \sum_{j\in V} w_{ij}$. A signal $f$ on the graph $G$ is a function $f:V\rightarrow \R$. 
 
