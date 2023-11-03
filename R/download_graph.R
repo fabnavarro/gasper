@@ -21,7 +21,7 @@
 #' }
 #'
 #' @details
-#' \code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+#' \code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} or see \code{\link{SuiteSparseData}} to explore groups and matrix names.
 #'
 #' @note This temporary directory can be accessed, for example, via \code{list.files(grid1$temp)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used. After using the downloaded data, you can delete the content of the temporary folder.
 #'
@@ -39,7 +39,7 @@
 #' download_graph(matrixname,groupname)
 #' list.files(grid1$info)
 #' }
-#' @seealso \code{\link{get_graph_info}}
+#' @seealso \code{\link{get_graph_info}}, \code{\link{SuiteSparseData}}
 
 download_graph <- function(matrixname, groupname, svd = FALSE, add_info = FALSE) {
     url <- paste("https://sparse.tamu.edu/MM/",

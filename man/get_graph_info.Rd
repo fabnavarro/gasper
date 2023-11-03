@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_graph_info.R
 \name{get_graph_info}
 \alias{get_graph_info}
-\title{Retrieve Information Tables about a Specific Graph from the SuiteSparse Matrix Collection.}
+\title{Retrieve Information Tables about a Specific Graph from the SuiteSparse Matrix Collection}
 \usage{
 get_graph_info(matrixname, groupname)
 }
@@ -23,7 +23,7 @@ A list of tables with detailed information about the specified matrix/graph:
 \code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection.
 }
 \details{
-The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} of see \code{\link{SuiteSparseData}} to explore groups and matrix names.
 }
 \note{
 The \code{rvest} package is used for parsing HTML, if it is not installed, the function will prompt for installation.
@@ -43,7 +43,7 @@ info_tables[[2]]
 # SVD Statistics
 info_tables[[3]]
 }
-#' @seealso \code{\link{download_graph}}
+#' @seealso \code{\link{download_graph}}, \code{\link{SuiteSparseData}}
 }
 \references{
 Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.

@@ -1,4 +1,4 @@
-#' Retrieve Information Tables about a Specific Graph from the SuiteSparse Matrix Collection.
+#' Retrieve Information Tables about a Specific Graph from the SuiteSparse Matrix Collection
 #'
 #' \code{get_graph_info} fetches the overview tables about a specified graph/matrix from the SuiteSparse Matrix Collection.
 #'
@@ -14,7 +14,7 @@
 #'   \item "SVD Statistics" (if available)
 #' }
 #'
-#' @details The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+#' @details The tables contain detailed information and properties about the graph/matrix, such as its size, number of non-zero elements, etc. Visit \url{https://sparse.tamu.edu/} of see \code{\link{SuiteSparseData}} to explore groups and matrix names.
 #'
 #' @references
 #' Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collection. ACM Transactions on Mathematical Software (TOMS), 38(1), 1-25.
@@ -40,7 +40,7 @@
 #' # SVD Statistics
 #' info_tables[[3]]
 #' }
-#' #' @seealso \code{\link{download_graph}}
+#' #' @seealso \code{\link{download_graph}}, \code{\link{SuiteSparseData}}
 
 #- todo change download graph dependcy to rvest
 #- todo maybe check other possible conflict with different graphs

@@ -29,7 +29,7 @@ A list containing several components:
 \code{download_graph} allows to download sparse matrices from the SuiteSparse Matrix Collection.
 }
 \details{
-\code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} to explore groups and matrix names.
+\code{download_graph} automatically converts the downloaded matrix into a sparse matrix format. If coordinates are associated with the graphs, they are downloaded and included in the output. Visit \url{https://sparse.tamu.edu/} or see \code{\link{SuiteSparseData}} to explore groups and matrix names.
 }
 \note{
 This temporary directory can be accessed, for example, via \code{list.files(grid1$temp)}. To open the read .mat files (containing singular values),  "R.matlab" or "foreign" packages can be used. After using the downloaded data, you can delete the content of the temporary folder.
@@ -50,5 +50,5 @@ Davis, T. A., & Hu, Y. (2011). The University of Florida sparse matrix collectio
 Kolodziej, S. P., Aznaveh, M., Bullock, M., David, J., Davis, T. A., Henderson, M., Hu, Y., & Sandstrom, R. (2019). The suitesparse matrix collection website interface. Journal of Open Source Software, 4(35), 1244.
 }
 \seealso{
-\code{\link{get_graph_info}}
+\code{\link{get_graph_info}}, \code{\link{SuiteSparseData}}
 }
