@@ -20,7 +20,7 @@ inverse_gft(L, hatf, U = NULL)
 \code{inverse_gft} computes the Inverse Graph Fourier Transform (IGFT) of a given transformed graph signal \eqn{\hat{f}}{\hat{f}}.
 }
 \details{
-The IGFT retrieves the original graph signal from its projection in the eigenspace of the graph's Laplacian matrix. It enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
+The IGFT enables the reconstruction of graph signals from their frequency domain representation. The "frequency" in the context of graph signal processing refers to the decomposition of the signal using the graph's Laplacian eigenvectors.
 
 The IGFT of a transformed graph signal \eqn{\hat{f}}{\hat{f}} is given by:
 \deqn{
