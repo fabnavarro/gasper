@@ -33,6 +33,7 @@ knitr::opts_chunk$set(
   fig.height=3, 
   fig.align="center"
 )
+knitr::opts_knit$set(global.par = TRUE)
 ```
 
 \begin{abstract}
@@ -42,10 +43,9 @@ We present a short tutorial on to the use of the \proglang{R} \pkg{gasper} packa
 # Introduction
 The emerging field of Graph Signal Processing (GSP) aims to bridge the gap between signal processing and spectral graph theory. One of the objectives is to generalize fundamental analysis operations from regular grid signals to irregular structures in the form of graphs. There is an abundant literature on GSP, in particular we refer the reader to @shuman2013emerging and @ortega2018graph for an introduction to this field and an overview of recent developments, challenges and applications. GSP has also given rise to numerous applications in machine/deep learning: convolutional neural networks (CNN) on graphs @bruna2013spectral, @henaff2015deep, @defferrard2016convolutional, semi-supervised classification with graph CNN @kipf2016semi, @hamilton2017inductive, community detection @tremblay2014graph, to name just a few.
 
-Different software programs exist for processing signals on graphs, in different languages. The Graph Signal Processing toolbox (GSPbox) is an easy to use matlab toolbox that performs a wide variety of operations on graphs. This toolbox was port to Python as the PyGSP @perraudin2014gspbox. There is also another matlab toolbox the Spectral Graph Wavelet Transform (SGWT) toolbox dedicated to the implementation of the SGWT developed in @hammond2011wavelets. However, to our knowledge, there are not yet any tools dedicated to GSP in \proglang{R}. A first version of the \pkg{gasper} package is available online\footnote{https://github.com/fabnavarro/gasper}. In particular, it includes the methodology and codes\footnote{https://github.com/fabnavarro/SGWT-SURE} developed in @de2019data and provides an interface to the SuiteSparse Matrix Collection @davis2011university. 
+Different software programs exist for processing signals on graphs, in different languages. The Graph Signal Processing toolbox (GSPbox) is an easy to use matlab toolbox that performs a wide variety of operations on graphs. This toolbox was port to Python as the PyGSP @perraudin2014gspbox. There is also another matlab toolbox the Spectral Graph Wavelet Transform (SGWT) toolbox dedicated to the implementation of the SGWT developed in @hammond2011wavelets. However, to our knowledge, there are not yet any tools dedicated to GSP in \proglang{R}. A development version of the \pkg{gasper} package is currently available online\footnote{\url{https://github.com/fabnavarro/gasper}}, while the latest stable release can be obtained from the Comprehensive R Archive Network\footnote{\url{https://cran.r-project.org/web/packages/gasper/}}. In particular, it includes the methodology and codes\footnote{\url{https://github.com/fabnavarro/SGWT-SURE}} developed in @de2019data and provides an interface to the SuiteSparse Matrix Collection @davis2011university. 
 
 This vignette is organized as follows. Section 2 introduces the interface to the SuiteSparse Matrix Collection and some visualization tools for GSP. Section 3 gives a short introduction to some underlying concepts of GSP, focusing on the Graph Fourier Transform. Section 4 gives an illustration for denoising signals on graphs using SGWT, thresholding techniques, and the minimization of Stein Unbiased Risk Estimator for an automatic selection of the threshold parameter.
-
 
 # Graphs Collection and Visualization
 A certain number of graphs are present in the package. They are stored as an Rdata file  which contains a list consisting of the graph's weight matrix $W$ (in the form of a sparse matrix denoted by `sA`) and the coordinates associated with the graph (if it has any).
@@ -63,7 +63,8 @@ head(SuiteSparseData, 15)
 SuiteSparseData_subset <- head(SuiteSparseData, 15)
 df1 <-kableExtra::kbl(SuiteSparseData_subset, 
                     valign = 't',
-                    format = "latex", booktabs = T)
+                    format = "latex", booktabs = T,
+                    caption="Overview of the first 15 matrices from the SuiteSparse Matrix Collection.")
 kableExtra::kable_styling(df1, latex_options = c("striped","HOLD_position"))
 ```
 
@@ -81,7 +82,8 @@ filtered_mat <- SuiteSparseData[SuiteSparseData$Kind == "Undirected Graph" &
                  SuiteSparseData$Cols >= 100 & SuiteSparseData$Cols <= 150, ]
 df2 <-kableExtra::kbl(filtered_mat, 
                     valign = 't',
-                    format = "latex", booktabs = T)
+                    format = "latex", booktabs = T,
+                    caption = "Subset of undirected matrices with 100 to 150 rows and columns.")
 kableExtra::kable_styling(df2, latex_options = c("striped","HOLD_position"))
 ```
 
@@ -114,18 +116,23 @@ str(grid1$sA)
 head(grid1$xy, 3)
 ```
 
-* `dim"` the numbers of rows, columns and numerically nonzero elements and 
+* `dim"` the numbers of rows, columns and numerically nonzero elements; 
 ```{r}
 grid1$dim
 ```
 
-* `temp` The path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
+* `temp` the path to the temporary directory where the matrix and downloaded files (including singular values if requested) are stored.
 ```{r, eval=FALSE}
 list.files(grid1$temp)
 ```
 
-Information about the matrix that can be display via `file.show(paste(grid1$temp,"grid1",sep=""))` or in the console:
-```{r, eval = FALSE}
+Metadata associated with the matrix can be display via
+```{r, eval = F}
+file.show(paste(grid1$temp,"grid1",sep=""))
+```
+
+or in the console:
+```{r, eval = F}
 cat(readLines(paste(grid1$temp,"grid1",sep=""), n=14), sep = "\n")
 ```
 
@@ -156,13 +163,13 @@ df2<-kableExtra::kable(grid1_1$info[[2]],
 x_table <- knitr::kables(
   list(df1,df2), 
   format = "latex", 
-  caption = "Matrix Information and Matrix Properties")
+  caption = "Matrix Information (left) and Matrix Properties (right).")
 kableExtra::kable_styling(x_table,
                           latex_options = c("HOLD_position"))
 ```
 
 The package also allows to plot a (planar) graph using the function `plot_graph`. It also contains a function to plot signals defined on top of the graph `plot_signal`.
-```{r, fig.show='hold'}
+```{r, fig.show='hold', fig.cap="Graph (left) and graph signal (right)."}
 f <- rnorm(nrow(grid1$sA))
 plot_graph(grid1)
 plot_signal(grid1, f, size = 2)
@@ -177,14 +184,13 @@ plot_graph(grid1)
 
 # A Short Introduction to Graph Signal Processing
 
-Graph theory provides a robust mathematical framework for representing complex systems. In this context, entities are modeled as vertices (or nodes) and their interconnections as edges, encapsulating a broad spectrum of real-world phenomena from social and communication networks to molecular structures and 
-brain connectivity patterns
+Graph theory provides a robust mathematical framework for representing complex systems. In this context, entities are modeled as vertices (or nodes) and their interconnections as edges, encapsulating a broad spectrum of real-world phenomena from social and communication networks to molecular structures and brain connectivity patterns.
 
-Among the diverse types of graphs, such as undirected, directed, weighted, bipartite, and multigraphs, each offers distinct analytical advantages tailored to specific contexts. This vignette is devoted to undirected graphs where edges link two vertices symmetrically, often with weighted values to express connection strength or intensity.  For instance, in a road network graph, the weights might correspond to the length of each road segment. 
+Among the diverse types of graphs, such as undirected, directed, weighted, bipartite, and multigraphs, each offers distinct analytical advantages tailored to specific contexts. This vignette is devoted to undirected graphs where edges link two vertices symmetrically, often with weighted values to express connection strength or intensity. For instance, in a road network graph, the weights might correspond to the length of each road segment. 
 
 Graphs are defined by ${G}=({V}, {E})$, where ${V}$ denotes the set of vertices or nodes and ${E}$ represents the set of edges. Each edge $(i, j) \in {E}$ connects nodes $i$ and $j$, potentially with an associated weight $w_{ij}$. The connectivity and interaction structure of ${G}$ is encoded in the adjacency matrix $W$, where $w_{ij} = w_{ji}$ for $i,j\in V$. The size of the graph is the number of nodes $n=|V|$. The degree matrix $\D$ is a diagonal matrix with $\D_{ii} = \sum_{j\in V} w_{ij}$. These matrices, $\W$ and $\D$, serve as the foundation for analyzing signal behavior on graph structures in GSP.
 
-The spectral properties of the Laplacian matrices offer deep insights into the structure of graphs. The unnormalized Laplacian, $\La = \D - \W$, has non-negative eigenvalues, with the smallest being zero, indicating the number of connected components in the graph. This number can be retrieved from the "MatrixProperty" dataframe using the `get_graph_info` function, if the graph has been downloaded with `download_graph`, or computed using Depth-First Search algorithm, using \pkg{igraph} \cite{igraph} package for instance.
+The spectral properties of the Laplacian matrices offer deep insights into the structure of graphs. The unnormalized Laplacian, $\La = \D - \W$, has non-negative eigenvalues, with the smallest being zero, indicating the number of connected components in the graph. This number can be retrieved from the "MatrixProperty" dataframe using the `get_graph_info` function, if the graph has been downloaded with `download_graph`, or computed using Depth-First Search algorithm, using \pkg{igraph} \proglang{R} package for instance \cite{igraph}.
 ```{r}
 grid1$info$MatrixProp["Strongly Connect Components",]
 ```
@@ -207,9 +213,12 @@ GSP extends classical signal processing concepts to signals defined on graphs. L
 
 To analyze graph signals, the concept of the Graph Fourier Transform (GFT) is fundamental. The GFT provides a means to represent graph signals in the frequency domain, analogous to the classical Fourier Transform for traditional signals. Given a graph ${G}$, a GFT can be defined as the representation of signals on an orthonormal basis for $\R^n$ consisting of eigenvectors of the graph shift operator. The choice of graph shift operator is essential, as it determines the basis for the GFT, it can be either the Laplacian matrix or the adjacency matrix. In this tutorial, we primarily focus on signal processing using the Laplacian matrix as the shift operator.
 
-Given the eigenvalue decomposition of the graph Laplacian $\La = U \Lambda U^T$, where $U$ is the matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues, the GFT of a signal $f$ is given by $\hat{f} = U^T f$. Here, $\hat{f}$ represents the graph signal in the frequency domain. The elements of $\hat{f}$ are the coefficients of the signal $f$ with respect to the eigenvectors of $\La$, which can be interpreted as the frequency components of the signal on the graph.
+For undirected graphs, the Laplacian matrix $\La$ is symmetric and positive semi-definite, with non-negative real eigenvalues. Given the eigenvalue decomposition of the graph Laplacian $\La = U \Lambda U^T$, where $U$ is the matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues, the GFT of a signal $f$ is given by $\hat{f} = U^T f$. Here, $\hat{f}$ represents the graph signal in the frequency domain. The elements of $\hat{f}$ are the coefficients of the signal $f$ with respect to the eigenvectors of $\La$, which can be interpreted as the frequency components of the signal on the graph.
 
-The inverse Graph Fourier Transform is given by $f = U \hat{f}$. This allows for the reconstruction of the graph signal in the vertex domain from its frequency representation.The GFT provides a powerful tool for analyzing and processing signals on graphs. It enables the identification of signal components that vary smoothly or abruptly over the graph, facilitating tasks such as filtering, denoising, and compression of graph signals.
+The inverse GFT is given by $f = U \hat{f}$. This allows for the reconstruction of the graph signal in the vertex domain from its frequency representation.The GFT provides a powerful tool for analyzing and processing signals on graphs. It enables the identification of signal components that vary smoothly or abruptly over the graph, facilitating tasks such as filtering, denoising, and compression of graph signals. The function `forward_gft` allows to perform a GFT decomposition and to obtain the associated Fourier coefficients. The function `inverse_gft` allows to make the reconstruction.
+
+
+
 
 # Data-Driven Graph Signal Denoising 
 
@@ -270,7 +279,16 @@ b \cdot \frac{x}{1 - b} + \frac{b}{b - 1} & \text{if } x \in (b^{-1}, 1] \\
 \end{cases}
 \]
 which corresponds to the tigth-frame constructed from the `zetav` function.
-```{r,fig.width=5}
+```{r, echo=FALSE}
+par(mgp = c(1.5, 0.5, 0), 
+    tcl = 0.2,
+    mar = .1 + c(2.5,2.5,0,0), 
+    oma = c(0,0,0,0),
+    cex.axis = 0.8,
+    las = 1)
+```
+
+```{r,fig.width=4,fig.height=2, fig.cap="Plot of the spectral graph filters on the spectrum of grid1 graph."}
 plot_filter(lmax,b)
 ```
 
@@ -294,7 +312,7 @@ tilde_f <- f + noise
 ```
 
 Below is a graphical representation of the original signal and its noisy version.
-```{r,fig.show='hold'}
+```{r, fig.show='hold', fig.cap="Original graph signal (left) and noisy observations (right)."}
 plot_signal(grid1, f, size = 2)
 plot_signal(grid1, tilde_f, size = 2)
 ```
@@ -340,7 +358,7 @@ opt_thresh_u <- SURE_MSEthresh(wcn,
 ```
 
 We can plot MSE risks and their SUREs estimates as a function of the threshold parameter (assuming that $\sigma$ is known).
-```{r, fig.width=5, fig.height=4}
+```{r, fig.width=4, fig.height=3, fig.cap="MSE risk and its SURE estimates as a function of the threshold parameter."}
 plot(thresh, opt_thresh_u$res$MSE,
      type="l", xlab = "t", ylab = "risk", log="x")
 lines(thresh, opt_thresh_u$res$SURE-n*sigma^2, col="red")
@@ -371,14 +389,14 @@ res <- data.frame("Input_SNR"=round(SNR(f,tilde_f),2),
                   "SURE_d"=round(SNR(f,hatf_SURE_d),2))
 ```
 
-```{r, echo=F}
+```{r risk, echo=F}
 df <-kableExtra::kbl(res, 
                     valign = 't',
-                    format = "latex", booktabs = T, caption="Uniform vs Dependent" )
+                    format = "latex", booktabs = T, caption="Comparison of SNR performance between  uniform and dependent policies." )
 kableExtra::kable_styling(df, latex_options = c("striped","HOLD_position"))
 #knitr::kable(res, caption="Uniform vs Dependent" )
 ```
-It can be seen from Table 1 that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators have performances close (in terms of SNR) to those obtained by minimizing the unknown risk.
+It can be seen from Table \ref{tab:risk} that in both cases, SURE provides a good estimator of the MSE and therefore the resulting estimators have performances close (in terms of SNR) to those obtained by minimizing the unknown risk.
 
 Equivalently, estimators can be obtained by the inverse of the SGWT given by the function `inverse_sgwt`. For exemple:
 ```{r, eval=FALSE}
