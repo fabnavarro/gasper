@@ -15,6 +15,9 @@ A matrix where each row represents the spectral coordinates of a node in the gra
 \description{
 Calculates the spectral coordinates of a graph using the two smallest non-zero eigenvalues of the graph Laplacian.
 }
+\details{
+The \code{spectral_coords} function implements a 2-dimensional spectral graph drawing method based on the eigenvectors of the graph Laplacian associated with its two smallest non-zero eigenvalues. Given a graph with adjacency matrix \code{adj_mat}, the graph Laplacian \code{L} is computed, which is a matrix representation that encodes the graph's topology. The Laplacian's eigenvalues and eigenvectors are calculated, and the eigenvectors corresponding to the second and third non-zero smallest eigenvalues are used to determine the coordinates of the graph's vertices in the plane.
+}
 \examples{
 \dontrun{
 matrixname <- "bcspwr02"
