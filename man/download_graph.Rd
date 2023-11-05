@@ -41,7 +41,7 @@ When \code{add_info} is set to \code{TRUE}, the function retrieves comprehensive
 matrixname <- "grid1"
 groupname <- "AG-Monien"
 download_graph(matrixname,groupname)
-list.files(grid1$info)
+list.files(grid1$temp)
 }
 }
 \references{

@@ -37,7 +37,7 @@
 #' matrixname <- "grid1"
 #' groupname <- "AG-Monien"
 #' download_graph(matrixname,groupname)
-#' list.files(grid1$info)
+#' list.files(grid1$temp)
 #' }
 #' @seealso \code{\link{get_graph_info}}, \code{\link{SuiteSparseData}}
 
