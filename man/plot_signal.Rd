@@ -4,7 +4,7 @@
 \alias{plot_signal}
 \title{Plot a Signal on Top of a Given Graph}
 \usage{
-plot_signal(z, f, size = 0.75, limits = range(f))
+plot_signal(z, f, size = 0.75, limits = range(f), ...)
 }
 \arguments{
 \item{z}{A list containing graph data. This list must have the following components:
@@ -18,12 +18,14 @@ plot_signal(z, f, size = 0.75, limits = range(f))
 \item{size}{Numeric. Dot size for nodes. Default is 0.75.}
 
 \item{limits}{Set colormap limits.}
+
+\item{...}{Additional arguments passed to \code{guide_colourbar} to customize the colorbar appearance (see \code{?guide_colourbar} for more details).}
 }
 \description{
 Visualize a signal over a graph.
 }
 \details{
-This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain.
+This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain. The appearance of the colorbar can be customized by passing additional arguments that are available for \code{ggplot2::guide-colourbar}.
 }
 \note{
 If node coordinates \code{xy} are not provided, they will be calculated using spectral methods \code{\link{spectral_coords}}. For large graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.

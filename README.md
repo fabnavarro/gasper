@@ -170,10 +170,10 @@ In addition, the `get_graph_info` function allows to retrieve detailed
 information about the matrix from the SuiteSparse Matrix Collection
 website (`rvest` package needs to be installed to use it). This function
 extracts and formats various properties and metadata associated with the
-matrix (i.e., it fetches the two to three tables with “Matrix
-Information,” “Matrix Properties” and, if available, “SVD Statistics”),
-providing a convenient way to access this overview of the graph directly
-within R. Here is how you can use it:
+matrix (i.e., it fetches the two to three tables with
+“MatrixInformation,” “MatrixProperties” and, if available,
+“SVDStatistics”), providing a convenient way to access this overview of
+the graph directly within R. Here is how you can use it:
 
 ``` r
 graph_info <- get_graph_info(matrixname, groupname)
@@ -185,36 +185,36 @@ graph_info
 <tr>
 <td>
 
-|                 | Matrix Information |
-|:----------------|:-------------------|
-| Name            | usroads-48         |
-| Group           | Gleich             |
-| Matrix ID       | 2332               |
-| Num Rows        | 126,146            |
-| Num Cols        | 126,146            |
-| Nonzeros        | 323,900            |
-| Pattern Entries | 323,900            |
-| Kind            | Undirected Graph   |
-| Symmetric       | Yes                |
-| Date            | 2010               |
-| Author          | D. Gleich          |
-| Editor          | T. Davis           |
+|                 | MatrixInformation |
+|:----------------|:------------------|
+| Name            | usroads-48        |
+| Group           | Gleich            |
+| Matrix ID       | 2332              |
+| Num Rows        | 126,146           |
+| Num Cols        | 126,146           |
+| Nonzeros        | 323,900           |
+| Pattern Entries | 323,900           |
+| Kind            | Undirected Graph  |
+| Symmetric       | Yes               |
+| Date            | 2010              |
+| Author          | D. Gleich         |
+| Editor          | T. Davis          |
 
 </td>
 <td>
 
-|                             | Matrix Properties |
-|:----------------------------|:------------------|
-| Structural Rank             |                   |
-| Structural Rank Full        |                   |
-| Num Dmperm Blocks           |                   |
-| Strongly Connect Components | 1                 |
-| Num Explicit Zeros          | 0                 |
-| Pattern Symmetry            | 100%              |
-| Numeric Symmetry            | 100%              |
-| Cholesky Candidate          | no                |
-| Positive Definite           | no                |
-| Type                        | binary            |
+|                             | MatrixProperties |
+|:----------------------------|:-----------------|
+| Structural Rank             |                  |
+| Structural Rank Full        |                  |
+| Num Dmperm Blocks           |                  |
+| Strongly Connect Components | 1                |
+| Num Explicit Zeros          | 0                |
+| Pattern Symmetry            | 100%             |
+| Numeric Symmetry            | 100%             |
+| Cholesky Candidate          | no               |
+| Positive Definite           | no               |
+| Type                        | binary           |
 
 </td>
 </tr>
@@ -275,18 +275,18 @@ graph_info
 <tr>
 <td>
 
-|                             | Matrix Properties |
-|:----------------------------|:------------------|
-| Structural Rank             |                   |
-| Structural Rank Full        |                   |
-| Num Dmperm Blocks           |                   |
-| Strongly Connect Components | 1                 |
-| Num Explicit Zeros          | 0                 |
-| Pattern Symmetry            | 100%              |
-| Numeric Symmetry            | 100%              |
-| Cholesky Candidate          | no                |
-| Positive Definite           | no                |
-| Type                        | binary            |
+|                             | SVDStatistics |
+|:----------------------------|:--------------|
+| Structural Rank             |               |
+| Structural Rank Full        |               |
+| Num Dmperm Blocks           |               |
+| Strongly Connect Components | 1             |
+| Num Explicit Zeros          | 0             |
+| Pattern Symmetry            | 100%          |
+| Numeric Symmetry            | 100%          |
+| Cholesky Candidate          | no            |
+| Positive Definite           | no            |
+| Type                        | binary        |
 
 </td>
 <td>

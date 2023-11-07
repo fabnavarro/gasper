@@ -3,7 +3,7 @@
 #' Visualize a signal over a graph.
 #'
 #'@details
-#' This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain.
+#' This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain. The appearance of the colorbar can be customized by passing additional arguments that are available for \code{ggplot2::guide-colourbar}.
 #'
 #'@note If node coordinates \code{xy} are not provided, they will be calculated using spectral methods \code{\link{spectral_coords}}. For large graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
 #'
@@ -18,12 +18,13 @@
 #' @param f Signal to plot.
 #' @param size Numeric. Dot size for nodes. Default is 0.75.
 #' @param limits Set colormap limits.
+#' @param ... Additional arguments passed to \code{guide_colourbar} to customize the colorbar appearance (see \code{?guide_colourbar} for more details).
 #' @examples
 #' f <- rnorm(length(grid1$xy[,1]))
 #' plot_signal(grid1, f)
 #' @seealso \code{\link{plot_graph}}, \code{\link{spectral_coords}}
 
-plot_signal <- function(z, f, size=0.75, limits=range(f)) {
+plot_signal <- function(z, f, size=0.75, limits=range(f),...) {
   if(!"xy" %in% names(z)){
     z$xy <- spectral_coords(z$sA)
   }
@@ -40,6 +41,19 @@ plot_signal <- function(z, f, size=0.75, limits=range(f)) {
   df2 <- data.frame(x = x[ind_i],
                     y = y[ind_i],
                     y1 = y1, y2 = y2)
+  # default_colorbar <- list(
+  #   barwidth = unit(1, "cm"),
+  #   barheight = unit(6, "cm")
+  # )
+  #colorbar_args <- modifyList(default_colorbar, list(...))
+  colorbar_args <- list(
+    barwidth = unit(0.3, "cm"),
+    barheight = unit(6, "cm")
+  )
+  additional_args <- list(...)
+  if (length(additional_args) > 0) {
+    colorbar_args[names(additional_args)] <- additional_args
+  }
   p2 <- ggplot(df1, aes(x, y)) +
     geom_segment(aes(x = x, y = y,
                      xend = y1, yend = y2),
@@ -53,6 +67,11 @@ plot_signal <- function(z, f, size=0.75, limits=range(f)) {
           legend.key.size = unit(0.8,"line"),
 
           legend.margin = margin(0.0,0.0,0.0,0.0),
-          plot.margin = unit(c(0.01,0.01,0.01,0.01), "cm"))
+          plot.margin = unit(c(0.01,0.01,0.01,0.01), "cm")) +
+    #coord_fixed(ratio = 1) +
+    #guides(colour = guide_colourbar(barwidth = unit(1, "cm"),
+    #                                barheight = unit(60, "mm"))) +
+    labs(colour = NULL)
+  p2 <- p2 + guides(colour = do.call("guide_colourbar", colorbar_args))
   print(p2)
 }
