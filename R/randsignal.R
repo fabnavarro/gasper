@@ -37,7 +37,7 @@
 #' f <- randsignal(eta = 0.7, k = 3, A = grid1$sA)
 #' }
 #' @references
-#'Behjat, H., Richter, U., Van De Ville, D., & Sörnmo, L. (2016). Signal-adapted tight frames on graphs. IEEE Transactions on Signal Processing, 64(22), 6017-6029.
+#' Behjat, H., Richter, U., Van De Ville, D., & Sörnmo, L. (2016). Signal-adapted tight frames on graphs. IEEE Transactions on Signal Processing, 64(22), 6017-6029.
 #'
 #' de Loynes, B., Navarro, F., & Olivier, B. (2021). Data-driven thresholding in denoising with spectral graph wavelet transform. Journal of Computational and Applied Mathematics, 389, 113319.
 

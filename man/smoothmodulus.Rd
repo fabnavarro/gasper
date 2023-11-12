@@ -28,7 +28,7 @@ This metric essentially sums up the squared differences of signal values across 
 }
 \examples{
 \dontrun{
-A <- grid1$A
+A <- grid1$sA
 x <- grid1$xy[,1]
 f <- sin(x)
 smoothmodulus(f, A)
