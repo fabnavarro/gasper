@@ -24,9 +24,13 @@
 #'
 #' The normalization by the largest eigenvalue ensures that the signal remains bounded. This signal generation can be related to the Laplacian quadratic form that quantifies the smoothness of signals on graphs. By controlling the parameters \eqn{\eta}{eta} and \eqn{k}{k}, we can modulate the smoothness or regularity of the generated signal.
 #'
-#'@note The generation is carried out in sparse matrices format in order to scale up.
+#'@note
+#' While the \code{randsignal} function uses the adjacency matrix to parameterize and generate signals reflecting node-to-node interactions, the smoothness of these signals can subsequently be measured using the \code{smoothmodulus} function.
+#'
+#'The generation is carried out in sparse matrices format in order to scale up.
 #'
 #' @return \code{f} a numeric vector representing the output signal.
+#' @seealso \code{\link{smoothmodulus}}
 #' @examples
 #' \dontrun{
 #' # Generate a signal with smoothness parameters eta = 0.7 and k = 3

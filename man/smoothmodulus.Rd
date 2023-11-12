@@ -34,3 +34,6 @@ f <- sin(x)
 smoothmodulus(f, A)
 }
 }
+\seealso{
+\code{\link{randsignal}}
+}

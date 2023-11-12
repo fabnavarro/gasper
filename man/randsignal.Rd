@@ -33,6 +33,8 @@ The power \eqn{k}{k} essentially captures the influence of a node's \eqn{k}{k}-h
 The normalization by the largest eigenvalue ensures that the signal remains bounded. This signal generation can be related to the Laplacian quadratic form that quantifies the smoothness of signals on graphs. By controlling the parameters \eqn{\eta}{eta} and \eqn{k}{k}, we can modulate the smoothness or regularity of the generated signal.
 }
 \note{
+While the \code{randsignal} function uses the adjacency matrix to parameterize and generate signals reflecting node-to-node interactions, the smoothness of these signals can subsequently be measured using the \code{smoothmodulus} function.
+
 The generation is carried out in sparse matrices format in order to scale up.
 }
 \examples{
@@ -45,4 +47,7 @@ f <- randsignal(eta = 0.7, k = 3, A = grid1$sA)
 Behjat, H., Richter, U., Van De Ville, D., & Sörnmo, L. (2016). Signal-adapted tight frames on graphs. IEEE Transactions on Signal Processing, 64(22), 6017-6029.
 
 de Loynes, B., Navarro, F., & Olivier, B. (2021). Data-driven thresholding in denoising with spectral graph wavelet transform. Journal of Computational and Applied Mathematics, 389, 113319.
+}
+\seealso{
+\code{\link{smoothmodulus}}
 }

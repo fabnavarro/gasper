@@ -16,6 +16,7 @@
 #' This metric essentially sums up the squared differences of signal values across adjacent nodes, weighted by the adjacency matrix. A high value indicates a more variable or irregular signal across the graph, while a lower value indicates a smoother signal.
 #'
 #' @return A numeric scalar value indicating the modulus of smoothness for the graph signal.
+#' @seealso \code{\link{randsignal}}
 #'
 #' @examples
 #' \dontrun{
