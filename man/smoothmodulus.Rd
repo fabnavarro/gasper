@@ -15,10 +15,10 @@ smoothmodulus(f, A)
 A numeric scalar value indicating the modulus of smoothness for the graph signal.
 }
 \description{
-\code{smoothmodulus} computes the modulus of smoothness for a graph signal.
+\code{smoothmodulus} computes the modulus of smoothness (or Laplacian quadratic form) for a graph signal.
 }
 \details{
-\code{smoothmodulus} provide a measure that quantifies the smoothness of a signal on a graph. In other words, it provides a measure of how much a signal varies between adjacent nodes.
+\code{smoothmodulus} provide a measure that quantifies the smoothness of a signal on a graph. In other words, it provides a measure of how much a signal varies between adjacent nodes. This measure is analogous to the Laplacian quadratic form, which is a widely used metric in spectral graph theory for quantifying signal smoothness.
 
 The modulus of smoothness is calculated using:
 \eqn{\mu(f) = 0.5 \times \sum_{(i,j) \in E} A_{ij} (f_i - f_j)^2}{mu(f) = 0.5 * sum(A * (f[i] - f[j])^2)}
