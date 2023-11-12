@@ -13,7 +13,7 @@ randsignal(eta, k, A, r)
 
 \item{A}{Adjacency matrix. Must be symmetric.}
 
-\item{r}{Optional. Largest eigenvalue of \code{A} in magnitude (obtained using the \code{eigs} function from the \code{RSpectra} package is not provided).}
+\item{r}{Optional. Largest eigenvalue of \code{A} in magnitude (obtained using the \code{eigs} function from the \code{RSpectra} package if not provided).}
 }
 \value{
 \code{f} a numeric vector representing the output signal.

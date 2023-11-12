@@ -10,7 +10,7 @@
 #' @param eta Numeric. Smoothness parameter (between 0 and 1).
 #' @param k Interger. Smoothness parameter.
 #' @param A Adjacency matrix. Must be symmetric.
-#' @param r Optional. Largest eigenvalue of \code{A} in magnitude (obtained using the \code{eigs} function from the \code{RSpectra} package is not provided).
+#' @param r Optional. Largest eigenvalue of \code{A} in magnitude (obtained using the \code{eigs} function from the \code{RSpectra} package if not provided).
 #'
 #' @details
 #'
