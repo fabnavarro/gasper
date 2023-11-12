@@ -209,7 +209,13 @@ laplacian_mat(W, "normalized")
 laplacian_mat(W, "randomwalk")
 ```
 
-GSP extends classical signal processing concepts to signals defined on graphs. Let ${G}$ be a graph on the vertex set ${V} = \{v_1, \ldots, v_n\}$. A graph signal on ${G}$ is a function  $f : {V} \rightarrow \R$, that assigns a value to each node of the graph. It can be represented as a vector $(f(v_1), f(v_2), \ldots, f(v_n))^\top \in \R^n$, where each entry $f_i$ corresponds to the signal value at node $i$.
+GSP extends classical signal processing concepts to signals defined on graphs. Let ${G}$ be a graph on the vertex set ${V} = \{v_1, \ldots, v_n\}$. A graph signal on ${G}$ is a function  $f : {V} \rightarrow \R$, that assigns a value to each node of the graph. It can be represented as a vector $(f(v_1), f(v_2), \ldots, f(v_n))^\top \in \R^n$, where each entry $f_i$ corresponds to the signal value at node $i$. 
+
+The Laplacian quadratic form $f^\top\La f$ gives a measure of a graph signal's smoothness:
+\[ 
+f^\top L f = \frac{1}{2} \sum_{(i,j) \in E} w_{ij} (f_i - f_j)^2,
+\]
+where a lower value suggests that the signal varies little between connected nodes, and thus is smoother on the graph. It's a global measure of the graph's "frequency" content which is insightful for understanding the overall variation in graph signals. The `smoothmodulus` function calculates this form for a given graph signal, returning a scalar value that quantifies the signal's smoothness in relation to the graph's structure. Moreover, the `randsignal` function can be used to generate graph signals with varying smoothness properties.
 
 To analyze graph signals, the concept of the Graph Fourier Transform (GFT) is fundamental. The GFT provides a means to represent graph signals in the frequency domain, analogous to the classical Fourier Transform for traditional signals. Given a graph ${G}$, a GFT can be defined as the representation of signals on an orthonormal basis for $\R^n$ consisting of eigenvectors of the graph shift operator. The choice of graph shift operator is essential, as it determines the basis for the GFT, it can be either the Laplacian matrix or the adjacency matrix. In this tutorial, we primarily focus on signal processing using the Laplacian matrix as the shift operator.
 
