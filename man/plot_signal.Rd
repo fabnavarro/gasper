@@ -9,8 +9,8 @@ plot_signal(z, f, size = 0.75, limits = range(f), ...)
 \arguments{
 \item{z}{A list containing graph data. This list must have the following components:
 \itemize{
-  \item{sA}  An adjacency matrix or a sparse Matrix representation of the graph.
-  \item{xy}  A matrix or dataframe containing the x and y coordinates of each node in the graph.
+\item{sA}  An adjacency matrix or a sparse Matrix representation of the graph.
+\item{xy}  A matrix or dataframe containing the x and y coordinates of each node in the graph.
 }}
 
 \item{f}{Signal to plot.}
@@ -25,7 +25,7 @@ plot_signal(z, f, size = 0.75, limits = range(f), ...)
 Visualize a signal over a graph.
 }
 \details{
-This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain. The appearance of the colorbar can be customized by passing additional arguments that are available for \code{ggplot2::guide-colourbar}.
+This function allows visualization of a graph signal \code{f} superimposed on the structure of a graph defined by \code{z}. It offers an intuitive way to analyze  the behavior of graph signals in the vertex domain. The appearance of the colorbar can be customized by passing additional arguments that are available for \code{ggplot2::guide_colourbar}.
 }
 \note{
 If node coordinates \code{xy} are not provided, they will be calculated using spectral methods \code{\link{spectral_coords}}. For large graphs, this can be computationally intensive and may take significant time. Use with caution for large graphs if node coordinates are not supplied.
