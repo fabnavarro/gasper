@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width=3,
-  fig.height=3, 
+  fig.height=3,
   fig.align="center"
 )
 knitr::opts_knit$set(global.par = TRUE)
@@ -213,7 +213,7 @@ GSP extends classical signal processing concepts to signals defined on graphs. L
 
 The Laplacian quadratic form $f^\top\La f$ gives a measure of a graph signal's smoothness:
 \[ 
-f^\top L f = \frac{1}{2} \sum_{(i,j) \in E} w_{ij} (f_i - f_j)^2,
+f^\top \La f = \frac{1}{2} \sum_{(i,j) \in E} w_{ij} (f_i - f_j)^2,
 \]
 where a lower value suggests that the signal varies little between connected nodes, and thus is smoother on the graph. It's a global measure of the graph's "frequency" content which is insightful for understanding the overall variation in graph signals. The `smoothmodulus` function calculates this form for a given graph signal, returning a scalar value that quantifies the signal's smoothness in relation to the graph's structure. Moreover, the `randsignal` function can be used to generate graph signals with varying smoothness properties.
 
@@ -221,7 +221,7 @@ To analyze graph signals, the concept of the Graph Fourier Transform (GFT) is fu
 
 For undirected graphs, the Laplacian matrix $\La$ is symmetric and positive semi-definite, with non-negative real eigenvalues. Given the eigenvalue decomposition of the graph Laplacian $\La = U \Lambda U^T$, where $U$ is the matrix of eigenvectors and $\Lambda$ is the diagonal matrix of eigenvalues, the GFT of a signal $f$ is given by $\hat{f} = U^T f$. Here, $\hat{f}$ represents the graph signal in the frequency domain. The elements of $\hat{f}$ are the coefficients of the signal $f$ with respect to the eigenvectors of $\La$, which can be interpreted as the frequency components of the signal on the graph.
 
-The inverse GFT is given by $f = U \hat{f}$. This allows for the reconstruction of the graph signal in the vertex domain from its frequency representation.The GFT provides a powerful tool for analyzing and processing signals on graphs. It enables the identification of signal components that vary smoothly or abruptly over the graph, facilitating tasks such as filtering, denoising, and compression of graph signals. The function `forward_gft` allows to perform a GFT decomposition and to obtain the associated Fourier coefficients. The function `inverse_gft` allows to make the reconstruction.
+The inverse GFT is given by $f = U \hat{f}$. This allows for the reconstruction of the graph signal in the vertex domain from its frequency representation. The GFT provides a powerful tool for analyzing and processing signals on graphs. It enables the identification of signal components that vary smoothly or abruptly over the graph, facilitating tasks such as filtering, denoising, and compression of graph signals. The function `forward_gft` allows to perform a GFT decomposition and to obtain the associated Fourier coefficients. The function `inverse_gft` allows to make the reconstruction.
 
 
 

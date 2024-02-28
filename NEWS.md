@@ -1,10 +1,11 @@
 gasper News
 
-# gasper 1.1.5.xxxx
+# gasper 1.1.6 (02/28/2024)
 
 -   add `SuiteSparseData` data frame mirrors the structure presented on
     the SuiteSparse Matrix Collection website. Enables now easily query
     and download specific matrices directly from the Collection.
+-   add GSP intro in vignettes
 
 # gasper 1.1.5 (10/27/2023)
 
