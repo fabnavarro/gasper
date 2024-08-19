@@ -1,6 +1,6 @@
 # gasper
 
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/errors)](https://cran.r-project.org/package=errors)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/gasper)](https://cran.r-project.org/package=gasper)
 ![CRAN Downloads](https://cranlogs.r-pkg.org/badges/gasper) ![CRAN
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/gasper)
 
