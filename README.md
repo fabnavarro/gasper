@@ -1,8 +1,8 @@
 # gasper
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
-![CRAN Downloads](http://cranlogs.r-pkg.org/badges/gasper) ![CRAN
-Downloads](http://cranlogs.r-pkg.org/badges/grand-total/gasper)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/errors)](https://cran.r-project.org/package=errors)
+![CRAN Downloads](https://cranlogs.r-pkg.org/badges/gasper) ![CRAN
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/gasper)
 
 Graph signal processing in R.
 <img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="50%" style="display: block; margin: auto;" />

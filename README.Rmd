@@ -15,9 +15,9 @@ knitr::opts_chunk$set(
 ```
 # gasper
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gasper)](http://cran.r-project.org/package=gasper)
-![CRAN Downloads](http://cranlogs.r-pkg.org/badges/gasper)
-![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/gasper)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/errors)](https://cran.r-project.org/package=errors)
+![CRAN Downloads](https://cranlogs.r-pkg.org/badges/gasper)
+![CRAN Downloads](https://cranlogs.r-pkg.org/badges/grand-total/gasper)
 
 Graph signal processing in R.
 ```{r,echo=FALSE}
