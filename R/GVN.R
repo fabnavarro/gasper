@@ -10,10 +10,9 @@
 #' @return The Graph Von Neumann variance estimate for the given noisy data.
 #' @examples
 #' \dontrun{
-#' data(minnesota)
-#' A <- minnesota$A
+#' A <- grid1$sA
 #' L <- laplacian_mat(A)
-#' x <- minnesota$xy[ ,1]
+#' x <- grid1$xy[ ,1]
 #' n <- length(x)
 #' f <- sin(x)
 #' sigma <- 0.1
@@ -39,6 +38,6 @@
 #'
 
 GVN <- function(y, A, L) {
-  sig <- 0.5 * sum(A * outer(y, y, "-")^2)/sum(Matrix::diag(L))
+  sig <- as.numeric((t(y) %*% L %*% y) / sum(Matrix::diag(L)))
   return(sig)
 }
