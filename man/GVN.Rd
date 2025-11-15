@@ -30,10 +30,9 @@ This is the graph adaptation of the Von Neumann estimator, hence the term Graph 
 }
 \examples{
 \dontrun{
-data(minnesota)
-A <- minnesota$A
+A <- grid1$sA
 L <- laplacian_mat(A)
-x <- minnesota$xy[ ,1]
+x <- grid1$xy[ ,1]
 n <- length(x)
 f <- sin(x)
 sigma <- 0.1
