@@ -14,6 +14,10 @@ knitr::opts_chunk$set(
 
 gasper News
 
+# gasper 1.1.7 (09/02/2026)
+* fix a regression in `zetav()` introduced in version 1.1.5. Values slightly below zero, which may arise from numerical eigendecomposition of graph Laplacians, are again treated as belonging to the zero-frequency region, preserving the tight-frame property.
+
+
 # gasper 1.1.6 (02/28/2024)
 * add `SuiteSparseData` data frame mirrors the structure presented on the SuiteSparse Matrix Collection website. Enables now easily query and download specific matrices directly from the Collection.
 * add GSP intro in vignettes

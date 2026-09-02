@@ -1,7 +1,7 @@
 Package: gasper
 Type: Package
 Title: Graph Signal Processing
-Version: 1.1.6
+Version: 1.1.7
 Authors@R: c(person("Basile", "de Loynes", role = "aut", 
                     email = "basile.deloynes@ensai.fr",
                     comment = c(ORCID = "0000-0002-5397-6811")),
@@ -15,7 +15,7 @@ Description: Provides the standard operations for signal processing on graphs:
     graph Fourier transform, spectral graph wavelet transform, 
     visualization tools. It also implements a data driven method
     for graph signal denoising/regression, for details see 
-    De Loynes, Navarro, Olivier (2019) <arxiv:1906.01882>. 
+    De Loynes, Navarro, Olivier (2021) <doi:10.1016/j.cam.2020.113319>. 
     The package also provides an interface to the SuiteSparse Matrix Collection, 
     <https://sparse.tamu.edu/>, a large and widely used set of sparse matrix 
     benchmarks collected from a wide range of applications.
