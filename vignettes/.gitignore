@@ -1,2 +1,5 @@
 *.html
 *.R
+gasper_vignette.pdf
+gasper_vignette.tex
+gasper_vignette_files/
